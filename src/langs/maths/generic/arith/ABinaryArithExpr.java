@@ -1,6 +1,12 @@
 package langs.maths.generic.arith;
 
 import langs.maths.generic.AGenericTypeExpr;
+import langs.maths.generic.arith.literals.Fun;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by gvoiron on 27/11/17.
@@ -16,6 +22,11 @@ public abstract class ABinaryArithExpr<Left extends AGenericTypeExpr, Right exte
         this.right = right;
     }
 
+    @Override
+    public LinkedHashSet<Fun> getFuns() {
+        return Stream.of(left.getFuns(), right.getFuns()).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
     public Left getLeft() {
         return left;
     }
@@ -23,5 +34,8 @@ public abstract class ABinaryArithExpr<Left extends AGenericTypeExpr, Right exte
     public Right getRight() {
         return right;
     }
+
+    @Override
+    public abstract ABinaryArithExpr<Left, Right> clone();
 
 }

@@ -26,4 +26,9 @@ public final class Equiv extends ABinaryBoolExpr<ABoolExpr, ABoolExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Equiv clone() {
+        return new Equiv(getLeft().clone(), getRight().clone());
+    }
+
 }

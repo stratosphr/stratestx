@@ -10,6 +10,7 @@ import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Range;
 import langs.maths.set.literals.Set;
+import langs.maths.set.literals.Z;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -156,6 +157,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(InDomain inDomain) {
         return inDomain.getLeft().accept(this) + " ∈ " + inDomain.getRight().accept(this);
+    }
+
+    @Override
+    public String visit(Z z) {
+        return "ℤ";
     }
 
     @Override

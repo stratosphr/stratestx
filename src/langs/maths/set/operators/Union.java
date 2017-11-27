@@ -28,4 +28,9 @@ public final class Union extends ANarySetExpr {
         return new Or(getOperands().stream().map(operand -> new InDomain(expr, operand)).toArray(ABoolExpr[]::new));
     }
 
+    @Override
+    public Union clone() {
+        return new Union(getOperands().stream().map(ASetExpr::clone).toArray(ASetExpr[]::new));
+    }
+
 }

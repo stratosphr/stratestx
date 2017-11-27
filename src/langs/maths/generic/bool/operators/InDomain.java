@@ -26,4 +26,9 @@ public final class InDomain extends AInDomain<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public InDomain clone() {
+        return new InDomain(getLeft().clone(), getRight().clone());
+    }
+
 }

@@ -26,4 +26,9 @@ public final class Plus extends ANaryArithExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Plus clone() {
+        return new Plus(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    }
+
 }

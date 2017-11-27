@@ -9,4 +9,7 @@ import visitors.interfaces.ISMTEncodable;
  */
 public abstract class AGenericTypeExpr extends AExpr implements ISMTEncodable {
 
+    @Override
+    public abstract AGenericTypeExpr clone();
+
 }

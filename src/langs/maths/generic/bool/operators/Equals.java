@@ -26,4 +26,9 @@ public final class Equals extends ANaryBoolExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Equals clone() {
+        return new Equals(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    }
+
 }

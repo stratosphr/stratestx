@@ -26,4 +26,9 @@ public final class Mod extends ABinaryArithExpr<AArithExpr, AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Mod clone() {
+        return new Mod(getLeft().clone(), getRight().clone());
+    }
+
 }

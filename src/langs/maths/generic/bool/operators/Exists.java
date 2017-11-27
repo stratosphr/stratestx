@@ -1,6 +1,7 @@
 package langs.maths.generic.bool.operators;
 
 import com.microsoft.z3.BoolExpr;
+import langs.maths.generic.bool.ABinaryBoolExpr;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
@@ -23,6 +24,11 @@ public final class Exists extends AQuantifier {
     @Override
     public BoolExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public Exists clone() {
+        return new Exists(((And) getBody()).getOperands().get(1).clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
     }
 
 }

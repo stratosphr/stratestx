@@ -28,4 +28,9 @@ public final class Intersection extends ANarySetExpr {
         return new And(getOperands().stream().map(operand -> new InDomain(expr, operand)).toArray(ABoolExpr[]::new));
     }
 
+    @Override
+    public Intersection clone() {
+        return new Intersection(getOperands().stream().map(ASetExpr::clone).toArray(ASetExpr[]::new));
+    }
+
 }

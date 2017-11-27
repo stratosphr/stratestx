@@ -29,4 +29,9 @@ public final class Difference extends ANarySetExpr {
         return new And(new InDomain(expr, getOperands().get(0)), new And(getOperands().subList(1, getOperands().size()).stream().map(operand -> new Not(new InDomain(expr, operand))).toArray(ABoolExpr[]::new)));
     }
 
+    @Override
+    public Difference clone() {
+        return new Difference(getOperands().stream().map(ASetExpr::clone).toArray(ASetExpr[]::new));
+    }
+
 }

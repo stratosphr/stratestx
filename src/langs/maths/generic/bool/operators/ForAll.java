@@ -1,6 +1,7 @@
 package langs.maths.generic.bool.operators;
 
 import com.microsoft.z3.BoolExpr;
+import langs.maths.generic.bool.ABinaryBoolExpr;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
@@ -23,6 +24,11 @@ public final class ForAll extends AQuantifier {
     @Override
     public BoolExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public ForAll clone() {
+        return new ForAll(((Implies) getBody()).getRight().clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
     }
 
 }

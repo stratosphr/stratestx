@@ -26,4 +26,9 @@ public final class NotEquals extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public NotEquals clone() {
+        return new NotEquals(getLeft().clone(), getRight().clone());
+    }
+
 }

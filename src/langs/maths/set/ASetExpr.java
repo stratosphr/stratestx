@@ -12,4 +12,7 @@ public abstract class ASetExpr extends AExpr {
 
     public abstract ABoolExpr getConstraint(AArithExpr expr);
 
+    @Override
+    public abstract ASetExpr clone();
+
 }

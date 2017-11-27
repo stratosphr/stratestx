@@ -1,6 +1,12 @@
 package langs.maths.generic.bool;
 
 import langs.maths.AExpr;
+import langs.maths.generic.arith.literals.Fun;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -16,6 +22,11 @@ public abstract class ABinaryBoolExpr<Left extends AExpr, Right extends AExpr> e
         this.right = right;
     }
 
+    @Override
+    public LinkedHashSet<Fun> getFuns() {
+        return Stream.of(left.getFuns(), right.getFuns()).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
     public Left getLeft() {
         return left;
     }
@@ -23,5 +34,8 @@ public abstract class ABinaryBoolExpr<Left extends AExpr, Right extends AExpr> e
     public Right getRight() {
         return right;
     }
+
+    @Override
+    public abstract ABinaryBoolExpr<Left, Right> clone();
 
 }

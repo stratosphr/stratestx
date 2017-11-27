@@ -26,4 +26,9 @@ public final class LEQ extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public LEQ clone() {
+        return new LEQ(getLeft().clone(), getRight().clone());
+    }
+
 }

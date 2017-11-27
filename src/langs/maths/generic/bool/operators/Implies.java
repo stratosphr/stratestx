@@ -26,4 +26,9 @@ public final class Implies extends ABinaryBoolExpr<ABoolExpr, ABoolExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Implies clone() {
+        return new Implies(getLeft().clone(), getRight().clone());
+    }
+
 }

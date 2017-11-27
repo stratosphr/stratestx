@@ -26,4 +26,9 @@ public final class Times extends ANaryArithExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Times clone() {
+        return new Times(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    }
+
 }

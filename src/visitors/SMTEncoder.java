@@ -1,6 +1,7 @@
 package visitors;
 
 import com.microsoft.z3.*;
+import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
@@ -9,6 +10,7 @@ import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
+import langs.maths.set.literals.Z;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.ArrayList;
@@ -23,14 +25,22 @@ public final class SMTEncoder implements ISMTEncoder {
 
     private final Context context;
     private final Solver solver;
+    private final DefsRegister defsRegister;
+    private final HashMap<String, IntExpr> constsDecls;
+    private final HashMap<String, IntExpr> varsDecls;
+    private final HashMap<String, FuncDecl> funsDecls;
     private List<Var> quantifiedVars;
-    private HashMap<String, FuncDecl> funsDecls;
+    private boolean isVisitingQuantifier;
 
-    public SMTEncoder(Context context, Solver solver) {
+    public SMTEncoder(Context context, Solver solver, DefsRegister defsRegister) {
         this.context = context;
         this.solver = solver;
-        this.quantifiedVars = new ArrayList<>();
+        this.defsRegister = defsRegister;
+        this.constsDecls = new HashMap<>();
+        this.varsDecls = new HashMap<>();
         this.funsDecls = new HashMap<>();
+        this.quantifiedVars = new ArrayList<>();
+        this.isVisitingQuantifier = false;
     }
 
     @Override
@@ -40,21 +50,46 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public IntExpr visit(Const aConst) {
-        return context.mkIntConst(aConst.getName());
+        if (!defsRegister.getConstsDefs().containsKey(aConst.getName())) {
+            throw new Error("Error: Constant \"" + aConst.getName() + "\" was not declared in this scope.");
+        } else if (!constsDecls.containsKey(aConst.getName())) {
+            constsDecls.put(aConst.getName(), context.mkIntConst(aConst.getName()));
+            solver.add(new Equals(aConst, defsRegister.getConstsDefs().get(aConst.getName())).accept(this));
+        }
+        return constsDecls.get(aConst.getName());
     }
 
     @Override
     public IntExpr visit(Var var) {
         if (quantifiedVars.contains(var)) {
             return (IntExpr) context.mkBound(quantifiedVars.size() - quantifiedVars.indexOf(var) - 1, context.getIntSort());
+        } else if (!defsRegister.getVarsDefs().containsKey(var.getName())) {
+            throw new Error("Error: Variable \"" + var.getName() + "\" was not declared in this scope.");
+        } else if (!varsDecls.containsKey(var.getName())) {
+            varsDecls.put(var.getName(), context.mkIntConst(var.getName()));
+            solver.add(new InDomain(var, defsRegister.getVarsDefs().get(var.getName())).accept(this));
         }
-        return context.mkIntConst(var.getName());
+        return varsDecls.get(var.getName());
     }
 
     @Override
     public IntExpr visit(Fun fun) {
+        if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+            throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
+        }
         if (!funsDecls.containsKey(fun.getName())) {
             funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
+            if (!isVisitingQuantifier) {
+                solver.add(new InDomain(fun.getParameter(), defsRegister.getFunsDefs().get(fun.getName()).getLeft()).accept(this));
+            }
+            Var index = new Var("i!");
+            solver.add(new ForAll(
+                    new Equiv(
+                            new InDomain(index, defsRegister.getFunsDefs().get(fun.getName()).getLeft()),
+                            new InDomain(new Fun(fun.getName(), index), defsRegister.getFunsDefs().get(fun.getName()).getRight())
+                    ),
+                    new VarInDomain(index, new Z())
+            ).accept(this));
         }
         return (IntExpr) funsDecls.get(fun.getName()).apply(fun.getParameter().accept(this));
     }
@@ -156,25 +191,38 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Exists exists) {
+        for (Fun fun : exists.getFuns()) {
+            if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+                throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
+            }
+        }
+        isVisitingQuantifier = true;
         exists.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
-        System.out.println(quantifiedVars);
         Sort[] sorts = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);
         Quantifier quantifier = context.mkExists(
                 sorts,
                 symbols,
-                exists.getBody().accept(this),
+                new And(
+                        new And(exists.getFuns().stream().map(fun -> new InDomain(fun.getParameter(), defsRegister.getFunsDefs().get(fun.getName()).getLeft())).toArray(InDomain[]::new)),
+                        exists.getBody()
+                ).accept(this),
                 0, null, null, null, null
         );
         quantifiedVars = quantifiedVars.subList(0, quantifiedVars.size() - exists.getQuantifiedVarsDefs().size());
-        System.out.println("#" + quantifiedVars);
         return quantifier;
     }
 
+    // TODO: Should additional constraints be added if "fun(expr)" is used in ForAll and "expr" is not in "fun" domain?
     @Override
     public BoolExpr visit(ForAll forAll) {
+        for (Fun fun : forAll.getFuns()) {
+            if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+                throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
+            }
+        }
+        isVisitingQuantifier = true;
         forAll.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
-        System.out.println(quantifiedVars);
         Sort[] sorts = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);
         Quantifier quantifier = context.mkForall(
@@ -184,7 +232,6 @@ public final class SMTEncoder implements ISMTEncoder {
                 0, null, null, null, null
         );
         quantifiedVars = quantifiedVars.subList(0, quantifiedVars.size() - forAll.getQuantifiedVarsDefs().size());
-        System.out.println("#" + quantifiedVars);
         return quantifier;
     }
 

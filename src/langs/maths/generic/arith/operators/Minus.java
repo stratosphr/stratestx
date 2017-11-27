@@ -26,4 +26,9 @@ public final class Minus extends ANaryArithExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Minus clone() {
+        return new Minus(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    }
+
 }

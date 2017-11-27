@@ -26,4 +26,9 @@ public final class LT extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public LT clone() {
+        return new LT(getLeft().clone(), getRight().clone());
+    }
+
 }

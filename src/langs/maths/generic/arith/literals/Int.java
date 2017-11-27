@@ -5,6 +5,8 @@ import langs.maths.generic.arith.AArithExpr;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
 
+import java.util.LinkedHashSet;
+
 /**
  * Created by gvoiron on 27/11/17.
  * Time : 00:20
@@ -27,8 +29,18 @@ public final class Int extends AArithExpr {
         return encoder.visit(this);
     }
 
+    @Override
+    public LinkedHashSet<Fun> getFuns() {
+        return new LinkedHashSet<>();
+    }
+
     public Integer getValue() {
         return value;
+    }
+
+    @Override
+    public Int clone() {
+        return new Int(value);
     }
 
 }

@@ -1,9 +1,10 @@
 package langs.maths.generic.bool.operators;
 
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.bool.ABoolExpr;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -13,18 +14,23 @@ import java.util.List;
 public abstract class AQuantifier extends ABoolExpr {
 
     private final ABoolExpr body;
-    private final List<AInDomain<Var>> quantifiedVarsDefs;
+    private final List<VarInDomain> quantifiedVarsDefs;
 
     AQuantifier(ABoolExpr body, VarInDomain[] quantifiedVarsDefs) {
         this.body = body;
         this.quantifiedVarsDefs = Arrays.asList(quantifiedVarsDefs);
     }
 
+    @Override
+    public LinkedHashSet<Fun> getFuns() {
+        return body.getFuns();
+    }
+
     public ABoolExpr getBody() {
         return body;
     }
 
-    public List<AInDomain<Var>> getQuantifiedVarsDefs() {
+    public List<VarInDomain> getQuantifiedVarsDefs() {
         return quantifiedVarsDefs;
     }
 

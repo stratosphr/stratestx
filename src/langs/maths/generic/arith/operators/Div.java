@@ -26,4 +26,9 @@ public final class Div extends ANaryArithExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Div clone() {
+        return new Div(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    }
+
 }

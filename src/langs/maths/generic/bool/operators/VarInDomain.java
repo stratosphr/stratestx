@@ -26,4 +26,9 @@ public final class VarInDomain extends AInDomain<Var> {
         return encoder.visit(this);
     }
 
+    @Override
+    public VarInDomain clone() {
+        return new VarInDomain(getLeft().clone(), getRight().clone());
+    }
+
 }

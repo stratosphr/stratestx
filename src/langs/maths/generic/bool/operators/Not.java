@@ -26,4 +26,9 @@ public final class Not extends AUnaryBoolExpr<ABoolExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Not clone() {
+        return new Not(getOperand().clone());
+    }
+
 }

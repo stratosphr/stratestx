@@ -26,4 +26,9 @@ public final class GT extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public GT clone() {
+        return new GT(getLeft().clone(), getRight().clone());
+    }
+
 }

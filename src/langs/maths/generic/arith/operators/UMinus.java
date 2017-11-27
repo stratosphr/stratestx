@@ -26,4 +26,9 @@ public final class UMinus extends AUnaryArithExpr<AArithExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public UMinus clone() {
+        return new UMinus(getOperand().clone());
+    }
+
 }

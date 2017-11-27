@@ -13,4 +13,7 @@ public abstract class AArithExpr extends AGenericTypeExpr {
     @Override
     public abstract IntExpr accept(ISMTEncoder encoder);
 
+    @Override
+    public abstract AArithExpr clone();
+
 }

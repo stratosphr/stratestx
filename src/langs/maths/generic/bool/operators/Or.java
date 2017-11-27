@@ -26,4 +26,9 @@ public final class Or extends ANaryBoolExpr<ABoolExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public Or clone() {
+        return new Or(getOperands().stream().map(ABoolExpr::clone).toArray(ABoolExpr[]::new));
+    }
+
 }

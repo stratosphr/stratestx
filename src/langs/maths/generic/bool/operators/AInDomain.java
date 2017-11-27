@@ -14,4 +14,7 @@ public abstract class AInDomain<Left extends AArithExpr> extends ABinaryBoolExpr
         super(left, domain);
     }
 
+    @Override
+    public abstract AInDomain<Left> clone();
+
 }

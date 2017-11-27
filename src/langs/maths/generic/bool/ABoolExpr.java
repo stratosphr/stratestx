@@ -13,4 +13,7 @@ public abstract class ABoolExpr extends AGenericTypeExpr {
     @Override
     public abstract BoolExpr accept(ISMTEncoder encoder);
 
+    @Override
+    public abstract ABoolExpr clone();
+
 }

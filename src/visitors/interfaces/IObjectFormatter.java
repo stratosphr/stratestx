@@ -10,6 +10,7 @@ import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Range;
 import langs.maths.set.literals.Set;
+import langs.maths.set.literals.Z;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -73,6 +74,8 @@ public interface IObjectFormatter {
     String visit(VarInDomain varInDomain);
 
     String visit(InDomain inDomain);
+
+    String visit(Z z);
 
     String visit(Set set);
 

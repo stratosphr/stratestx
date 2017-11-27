@@ -26,4 +26,9 @@ public final class And extends ANaryBoolExpr<ABoolExpr> {
         return encoder.visit(this);
     }
 
+    @Override
+    public And clone() {
+        return new And(getOperands().stream().map(ABoolExpr::clone).toArray(ABoolExpr[]::new));
+    }
+
 }

@@ -20,8 +20,8 @@ public final class Set extends ASetExpr {
     }
 
     @Override
-    public String accept(IObjectFormatter visitor) {
-        return visitor.visit(this);
+    public String accept(IObjectFormatter formatter) {
+        return formatter.visit(this);
     }
 
     public LinkedHashSet<AArithExpr> getElements() {

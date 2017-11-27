@@ -19,8 +19,8 @@ public final class Range extends ASetExpr {
     }
 
     @Override
-    public String accept(IObjectFormatter visitor) {
-        return visitor.visit(this);
+    public String accept(IObjectFormatter formatter) {
+        return formatter.visit(this);
     }
 
     public AArithExpr getLowerBound() {

@@ -6,6 +6,6 @@ package visitors.interfaces;
  */
 public interface IObjectFormattable {
 
-    String accept(IObjectFormatter visitor);
+    String accept(IObjectFormatter formatter);
 
 }

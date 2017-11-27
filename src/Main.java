@@ -1,3 +1,5 @@
+import com.microsoft.z3.Context;
+import com.microsoft.z3.Solver;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
@@ -12,6 +14,7 @@ import langs.maths.set.literals.Set;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
+import visitors.SMTEncoder;
 
 public class Main {
 
@@ -61,7 +64,10 @@ public class Main {
     );
 
     public static void main(String[] args) {
+        Context context = new Context();
+        Solver solver = context.mkSolver();
         System.out.println(formula);
+        System.out.println(formula.accept(new SMTEncoder(context, solver)));
     }
 
 }

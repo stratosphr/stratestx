@@ -15,8 +15,8 @@ public final class Intersection extends ANarySetExpr {
     }
 
     @Override
-    public String accept(IObjectFormatter visitor) {
-        return visitor.visit(this);
+    public String accept(IObjectFormatter formatter) {
+        return formatter.visit(this);
     }
 
 }

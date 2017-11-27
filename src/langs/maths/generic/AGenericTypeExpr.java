@@ -1,11 +1,12 @@
 package langs.maths.generic;
 
 import langs.maths.AExpr;
+import visitors.interfaces.ISMTEncodable;
 
 /**
  * Created by gvoiron on 26/11/17.
  * Time : 22:57
  */
-public abstract class AGenericTypeExpr extends AExpr {
+public abstract class AGenericTypeExpr extends AExpr implements ISMTEncodable {
 
 }

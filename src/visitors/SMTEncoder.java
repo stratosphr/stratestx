@@ -11,6 +11,10 @@ import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import visitors.interfaces.ISMTEncoder;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by gvoiron on 27/11/17.
  * Time : 03:57
@@ -19,63 +23,70 @@ public final class SMTEncoder implements ISMTEncoder {
 
     private final Context context;
     private final Solver solver;
+    private List<Var> quantifiedVars;
+    private HashMap<String, FuncDecl> funsDecls;
 
     public SMTEncoder(Context context, Solver solver) {
         this.context = context;
         this.solver = solver;
+        this.quantifiedVars = new ArrayList<>();
+        this.funsDecls = new HashMap<>();
     }
 
     @Override
-    public ArithExpr visit(Const aConst) {
+    public IntExpr visit(Int anInt) {
+        return context.mkInt(anInt.getValue());
+    }
+
+    @Override
+    public IntExpr visit(Const aConst) {
         return context.mkIntConst(aConst.getName());
     }
 
     @Override
-    public ArithExpr visit(Int anInt) {
-        return context.mkInt(anInt.getValue());
-    }
-
-    // TODO : Take care of quantified vars
-    @Override
-    public ArithExpr visit(Var var) {
+    public IntExpr visit(Var var) {
+        if (quantifiedVars.contains(var)) {
+            return (IntExpr) context.mkBound(quantifiedVars.size() - quantifiedVars.indexOf(var) - 1, context.getIntSort());
+        }
         return context.mkIntConst(var.getName());
     }
 
-    // TODO : Return FunDecl application
     @Override
-    public ArithExpr visit(Fun fun) {
-        return context.mkIntConst(fun.getName());
+    public IntExpr visit(Fun fun) {
+        if (!funsDecls.containsKey(fun.getName())) {
+            funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
+        }
+        return (IntExpr) funsDecls.get(fun.getName()).apply(fun.getParameter().accept(this));
     }
 
     @Override
-    public ArithExpr visit(Plus plus) {
-        throw new Error();
+    public IntExpr visit(Plus plus) {
+        return (IntExpr) context.mkAdd(plus.getOperands().stream().map(operand -> operand.accept(this)).toArray(ArithExpr[]::new));
     }
 
     @Override
-    public ArithExpr visit(UMinus uMinus) {
-        return context.mkSub(uMinus.getOperand().accept(this));
+    public IntExpr visit(UMinus uMinus) {
+        return (IntExpr) context.mkUnaryMinus(uMinus.getOperand().accept(this));
     }
 
     @Override
-    public ArithExpr visit(Minus minus) {
-        return context.mkSub(minus.getOperands().stream().map(operand -> operand.accept(this)).toArray(ArithExpr[]::new));
+    public IntExpr visit(Minus minus) {
+        return (IntExpr) context.mkSub(minus.getOperands().stream().map(operand -> operand.accept(this)).toArray(ArithExpr[]::new));
     }
 
     @Override
-    public ArithExpr visit(Times times) {
-        return context.mkMul(times.getOperands().stream().map(operand -> operand.accept(this)).toArray(ArithExpr[]::new));
-    }
-
-    // TODO : Return correct division
-    @Override
-    public ArithExpr visit(Div div) {
-        return context.mkInt(0);
+    public IntExpr visit(Times times) {
+        return (IntExpr) context.mkMul(times.getOperands().stream().map(operand -> operand.accept(this)).toArray(ArithExpr[]::new));
     }
 
     @Override
-    public ArithExpr visit(Mod mod) {
-        throw new Error();
+    public IntExpr visit(Div div) {
+        return div.getOperands().subList(2, div.getOperands().size()).stream().reduce((IntExpr) context.mkDiv(div.getOperands().get(0).accept(this), div.getOperands().get(1).accept(this)), (left, expr) -> (IntExpr) context.mkDiv(left, expr.accept(this)), (left, right) -> left);
+    }
+
+    @Override
+    public IntExpr visit(Mod mod) {
+        return context.mkMod(mod.getLeft().accept(this), mod.getRight().accept(this));
     }
 
     @Override
@@ -110,7 +121,7 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Equals equals) {
-        return context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(aArithExpr -> context.mkEq(equals.getOperands().get(0).accept(this), aArithExpr.accept(this))).toArray(BoolExpr[]::new));
+        return equals.getOperands().size() == 2 ? context.mkEq(equals.getOperands().get(0).accept(this), equals.getOperands().get(1).accept(this)) : context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(aArithExpr -> context.mkEq(equals.getOperands().get(0).accept(this), aArithExpr.accept(this))).toArray(BoolExpr[]::new));
     }
 
     @Override
@@ -145,38 +156,46 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Exists exists) {
+        exists.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
+        System.out.println(quantifiedVars);
         Sort[] sorts = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);
-        return context.mkExists(
+        Quantifier quantifier = context.mkExists(
                 sorts,
                 symbols,
                 exists.getBody().accept(this),
                 0, null, null, null, null
         );
+        quantifiedVars = quantifiedVars.subList(0, quantifiedVars.size() - exists.getQuantifiedVarsDefs().size());
+        System.out.println("#" + quantifiedVars);
+        return quantifier;
     }
 
     @Override
     public BoolExpr visit(ForAll forAll) {
+        forAll.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
+        System.out.println(quantifiedVars);
         Sort[] sorts = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);
-        return context.mkForall(
+        Quantifier quantifier = context.mkForall(
                 sorts,
                 symbols,
                 forAll.getBody().accept(this),
                 0, null, null, null, null
         );
+        quantifiedVars = quantifiedVars.subList(0, quantifiedVars.size() - forAll.getQuantifiedVarsDefs().size());
+        System.out.println("#" + quantifiedVars);
+        return quantifier;
     }
 
-    // TODO : Return domain constraint
     @Override
     public BoolExpr visit(VarInDomain varInDomain) {
-        return context.mkTrue();
+        return varInDomain.getRight().getConstraint(varInDomain.getLeft()).accept(this);
     }
 
-    // TODO : Return domain constraint
     @Override
     public BoolExpr visit(InDomain inDomain) {
-        return context.mkTrue();
+        return inDomain.getRight().getConstraint(inDomain.getLeft()).accept(this);
     }
 
 }

@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
 public final class ObjectFormatter extends AFormatter implements IObjectFormatter {
 
     @Override
-    public String visit(Const aConst) {
-        return aConst.getName();
+    public String visit(Int anInt) {
+        return anInt.getValue().toString();
     }
 
     @Override
-    public String visit(Int anInt) {
-        return anInt.getValue().toString();
+    public String visit(Const aConst) {
+        return aConst.getName();
     }
 
     @Override

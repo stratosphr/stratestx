@@ -1,6 +1,6 @@
 package langs.maths.generic.arith.operators;
 
-import com.microsoft.z3.ArithExpr;
+import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.ANaryArithExpr;
 import visitors.interfaces.IObjectFormatter;
@@ -22,7 +22,7 @@ public final class Plus extends ANaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public ArithExpr accept(ISMTEncoder encoder) {
+    public IntExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
     }
 

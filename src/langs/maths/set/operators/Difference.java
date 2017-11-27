@@ -1,5 +1,10 @@
 package langs.maths.set.operators;
 
+import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
+import langs.maths.generic.bool.operators.InDomain;
+import langs.maths.generic.bool.operators.Not;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
@@ -17,6 +22,11 @@ public final class Difference extends ANarySetExpr {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public ABoolExpr getConstraint(AArithExpr expr) {
+        return new And(new InDomain(expr, getOperands().get(0)), new And(getOperands().subList(1, getOperands().size()).stream().map(operand -> new Not(new InDomain(expr, operand))).toArray(ABoolExpr[]::new)));
     }
 
 }

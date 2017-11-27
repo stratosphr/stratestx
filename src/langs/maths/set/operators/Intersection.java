@@ -1,5 +1,9 @@
 package langs.maths.set.operators;
 
+import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
+import langs.maths.generic.bool.operators.InDomain;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
@@ -17,6 +21,11 @@ public final class Intersection extends ANarySetExpr {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public ABoolExpr getConstraint(AArithExpr expr) {
+        return new And(getOperands().stream().map(operand -> new InDomain(expr, operand)).toArray(ABoolExpr[]::new));
     }
 
 }

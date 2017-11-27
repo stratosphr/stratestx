@@ -20,9 +20,9 @@ import langs.maths.set.operators.Union;
  */
 public interface IObjectFormatter {
 
-    String visit(Const aConst);
-
     String visit(Int anInt);
+
+    String visit(Const aConst);
 
     String visit(Var var);
 

@@ -1,6 +1,6 @@
 package langs.maths.generic.arith.literals;
 
-import com.microsoft.z3.ArithExpr;
+import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
@@ -25,7 +25,7 @@ public final class Fun extends AArithExpr {
     }
 
     @Override
-    public ArithExpr accept(ISMTEncoder encoder) {
+    public IntExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
     }
 

@@ -1,6 +1,6 @@
 package langs.maths.generic.arith;
 
-import com.microsoft.z3.ArithExpr;
+import com.microsoft.z3.IntExpr;
 import langs.maths.generic.AGenericTypeExpr;
 import visitors.interfaces.ISMTEncoder;
 
@@ -11,6 +11,6 @@ import visitors.interfaces.ISMTEncoder;
 public abstract class AArithExpr extends AGenericTypeExpr {
 
     @Override
-    public abstract ArithExpr accept(ISMTEncoder encoder);
+    public abstract IntExpr accept(ISMTEncoder encoder);
 
 }

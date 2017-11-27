@@ -51,7 +51,7 @@ public class Main {
                     new Exists(
                             new Equals(
                                     new UMinus(new Minus(
-                                            new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Const("c"))
+                                            new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Var("c"))
                                     )),
                                     new Const("c")
                             ),
@@ -59,15 +59,17 @@ public class Main {
                             new VarInDomain(new Var("b"), new Set(new Int(42), new Int(0)))
                     ),
                     new VarInDomain(new Var("a"), new Set(new Int(0), new Int(42))),
-                    new VarInDomain(new Var("b"), new Set(new Int(42), new Int(0)))
+                    new VarInDomain(new Var("b"), new Set(new Int(42), new Int(0))),
+                    new VarInDomain(new Var("c"), new Set(new Var("a"), new Var("b")))
             )
     );
 
     public static void main(String[] args) {
         Context context = new Context();
         Solver solver = context.mkSolver();
+        solver.add(formula.accept(new SMTEncoder(context, solver)));
         System.out.println(formula);
-        System.out.println(formula.accept(new SMTEncoder(context, solver)));
+        System.out.println(solver);
     }
 
 }

@@ -1,6 +1,9 @@
 package langs.maths.set.literals;
 
 import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.Equals;
+import langs.maths.generic.bool.operators.Or;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
 
@@ -26,6 +29,11 @@ public final class Set extends ASetExpr {
 
     public LinkedHashSet<AArithExpr> getElements() {
         return elements;
+    }
+
+    @Override
+    public ABoolExpr getConstraint(AArithExpr expr) {
+        return new Or(elements.stream().map(element -> new Equals(expr, element)).toArray(ABoolExpr[]::new));
     }
 
 }

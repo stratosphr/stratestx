@@ -1,7 +1,7 @@
 package visitors.interfaces;
 
-import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BoolExpr;
+import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
@@ -17,25 +17,25 @@ import langs.maths.generic.bool.operators.*;
  */
 public interface ISMTEncoder {
 
-    ArithExpr visit(Const aConst);
+    IntExpr visit(Int anInt);
 
-    ArithExpr visit(Int anInt);
+    IntExpr visit(Const aConst);
 
-    ArithExpr visit(Var var);
+    IntExpr visit(Var var);
 
-    ArithExpr visit(Fun fun);
+    IntExpr visit(Fun fun);
 
-    ArithExpr visit(Plus plus);
+    IntExpr visit(Plus plus);
 
-    ArithExpr visit(UMinus uMinus);
+    IntExpr visit(UMinus uMinus);
 
-    ArithExpr visit(Minus minus);
+    IntExpr visit(Minus minus);
 
-    ArithExpr visit(Times times);
+    IntExpr visit(Times times);
 
-    ArithExpr visit(Div div);
+    IntExpr visit(Div div);
 
-    ArithExpr visit(Mod mod);
+    IntExpr visit(Mod mod);
 
     BoolExpr visit(False aFalse);
 

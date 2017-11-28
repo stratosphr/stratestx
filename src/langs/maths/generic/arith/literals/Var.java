@@ -1,7 +1,8 @@
 package langs.maths.generic.arith.literals;
 
 import com.microsoft.z3.IntExpr;
-import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.arith.AAssignable;
+import visitors.interfaces.IModelVisitor;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
 
@@ -11,12 +12,10 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 26/11/17.
  * Time : 23:06
  */
-public final class Var extends AArithExpr {
-
-    private String name;
+public final class Var extends AAssignable {
 
     public Var(String name) {
-        this.name = name;
+        super(name);
     }
 
     @Override
@@ -29,8 +28,9 @@ public final class Var extends AArithExpr {
         return encoder.visit(this);
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public void accept(IModelVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
@@ -40,7 +40,7 @@ public final class Var extends AArithExpr {
 
     @Override
     public Var clone() {
-        return new Var(name);
+        return new Var(getName());
     }
 
 }

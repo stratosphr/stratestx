@@ -2,10 +2,7 @@ package visitors;
 
 import com.microsoft.z3.*;
 import langs.maths.def.DefsRegister;
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
@@ -41,6 +38,14 @@ public final class SMTEncoder implements ISMTEncoder {
         this.funsDecls = new HashMap<>();
         this.quantifiedVars = new ArrayList<>();
         this.isVisitingQuantifier = false;
+        /*defsRegister.getConstsDefs().keySet().forEach(name -> new Const(name).accept(this));
+        defsRegister.getVarsDefs().keySet().forEach(name -> new Var(name).accept(this));
+        defsRegister.getFunsDefs().forEach((name, tuple) -> {
+            DefsRegister tmpDefsRegister = new DefsRegister(defsRegister);
+            tmpDefsRegister.getFunsDefs().remove(name);
+            System.out.println(tuple.getLeft().getElementsValues(tmpDefsRegister));
+            tuple.getLeft().getElementsValues(tmpDefsRegister).forEach(value -> new FunVar(new Fun(name, value)).accept(this));
+        });*/
     }
 
     @Override
@@ -70,6 +75,17 @@ public final class SMTEncoder implements ISMTEncoder {
             solver.add(new InDomain(var, defsRegister.getVarsDefs().get(var.getName())).accept(this));
         }
         return varsDecls.get(var.getName());
+    }
+
+    @Override
+    public IntExpr visit(FunVar funVar) {
+        if (!defsRegister.getFunsDefs().containsKey(funVar.getFun().getName())) {
+            throw new Error("Error: Function \"" + funVar.getFun() + "\" was not declared in this scope.");
+        } else if (!varsDecls.containsKey(funVar.getName())) {
+            varsDecls.put(funVar.getName(), context.mkIntConst(funVar.getName()));
+            solver.add(new InDomain(funVar, defsRegister.getFunsDefs().get(funVar.getFun().getName()).getRight()).accept(this));
+        }
+        return varsDecls.get(funVar.getName());
     }
 
     @Override

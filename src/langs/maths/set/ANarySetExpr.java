@@ -13,20 +13,20 @@ import java.util.stream.Collectors;
  * Created by gvoiron on 27/11/17.
  * Time : 00:52
  */
-public abstract class ANarySetExpr extends ASetExpr {
+public abstract class ANarySetExpr extends AFiniteSetExpr {
 
-    private final List<ASetExpr> operands;
+    private final List<AFiniteSetExpr> operands;
 
-    public ANarySetExpr(ASetExpr[] operands) {
+    public ANarySetExpr(AFiniteSetExpr[] operands) {
         this.operands = Arrays.asList(operands);
     }
 
     @Override
-    public LinkedHashSet<Fun> getFuns() {
+    public final LinkedHashSet<Fun> getFuns() {
         return operands.stream().map(AExpr::getFuns).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    public List<ASetExpr> getOperands() {
+    public final List<AFiniteSetExpr> getOperands() {
         return operands;
     }
 

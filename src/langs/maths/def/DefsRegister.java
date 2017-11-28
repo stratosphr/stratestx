@@ -17,6 +17,12 @@ public final class DefsRegister {
     private final LinkedHashMap<String, ASetExpr> varsDefs;
     private final LinkedHashMap<String, Tuple<AFiniteSetExpr, ASetExpr>> funsDefs;
 
+    public DefsRegister(DefsRegister defsRegister) {
+        this.constsDefs = new LinkedHashMap<>(defsRegister.getConstsDefs());
+        this.varsDefs = new LinkedHashMap<>(defsRegister.getVarsDefs());
+        this.funsDefs = new LinkedHashMap<>(defsRegister.getFunsDefs());
+    }
+
     public DefsRegister() {
         this.constsDefs = new LinkedHashMap<>();
         this.varsDefs = new LinkedHashMap<>();

@@ -8,7 +8,7 @@ import visitors.interfaces.IObjectFormattable;
  * Created by gvoiron on 27/11/17.
  * Time : 00:09
  */
-public abstract class AObject implements IObjectFormattable, ICloneable {
+public abstract class AObject implements IObjectFormattable, ICloneable, Comparable<AObject> {
 
     private Integer hashCode;
 
@@ -26,6 +26,11 @@ public abstract class AObject implements IObjectFormattable, ICloneable {
     @Override
     public final boolean equals(Object o) {
         return this == o || (getClass().equals(o.getClass()) && hashCode() == o.hashCode());
+    }
+
+    @Override
+    public int compareTo(AObject aObject) {
+        return toString().compareTo(aObject.toString());
     }
 
     @Override

@@ -1,9 +1,6 @@
 package visitors.interfaces;
 
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
@@ -26,6 +23,8 @@ public interface IObjectFormatter {
     String visit(Const aConst);
 
     String visit(Var var);
+
+    String visit(FunVar funVar);
 
     String visit(Fun fun);
 

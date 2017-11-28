@@ -1,7 +1,7 @@
 package langs.maths.generic.arith.literals;
 
 import com.microsoft.z3.IntExpr;
-import langs.maths.generic.arith.AArithExpr;
+import langs.AObject;
 import visitors.interfaces.IObjectFormatter;
 import visitors.interfaces.ISMTEncoder;
 
@@ -11,12 +11,10 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 27/11/17.
  * Time : 00:20
  */
-public final class Int extends AArithExpr {
-
-    private int value;
+public final class Int extends AValue {
 
     public Int(int value) {
-        this.value = value;
+        super(value);
     }
 
     @Override
@@ -34,13 +32,14 @@ public final class Int extends AArithExpr {
         return new LinkedHashSet<>();
     }
 
-    public Integer getValue() {
-        return value;
+    @Override
+    public Int clone() {
+        return new Int(getValue());
     }
 
     @Override
-    public Int clone() {
-        return new Int(value);
+    public int compareTo(AObject aObject) {
+        return getValue().compareTo(((Int) aObject).getValue());
     }
 
 }

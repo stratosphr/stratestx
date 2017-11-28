@@ -1,12 +1,19 @@
 package langs.maths.set.operators;
 
+import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.operators.InDomain;
 import langs.maths.generic.bool.operators.Or;
+import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -14,7 +21,7 @@ import visitors.interfaces.IObjectFormatter;
  */
 public final class Union extends ANarySetExpr {
 
-    public Union(ASetExpr... operands) {
+    public Union(AFiniteSetExpr... operands) {
         super(operands);
     }
 
@@ -29,8 +36,13 @@ public final class Union extends ANarySetExpr {
     }
 
     @Override
+    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
+        return getOperands().stream().map(operand -> operand.getElementsValues(defsRegister)).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    @Override
     public Union clone() {
-        return new Union(getOperands().stream().map(ASetExpr::clone).toArray(ASetExpr[]::new));
+        return new Union(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
     }
 
 }

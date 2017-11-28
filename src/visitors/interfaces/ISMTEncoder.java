@@ -2,10 +2,7 @@ package visitors.interfaces;
 
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.IntExpr;
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
@@ -22,6 +19,8 @@ public interface ISMTEncoder {
     IntExpr visit(Const aConst);
 
     IntExpr visit(Var var);
+
+    IntExpr visit(FunVar funVar);
 
     IntExpr visit(Fun fun);
 

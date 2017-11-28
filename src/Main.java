@@ -31,7 +31,7 @@ public class Main {
             ),
             new Not(new InDomain(
                     new Plus(new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Var("c"))),
-                    new Set(new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Var("c")))
+                    new Z()
             )),
             new NotEquals(
                     new Times(new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Fun("fun", new Var("c")))),
@@ -47,7 +47,7 @@ public class Main {
                                             new Set(new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Fun("fun", new Var("c"))))
                                     )
                             ),
-                            new Z()
+                            new Set(new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Var("c")))
                     )
             ),
             new ForAll(
@@ -102,6 +102,8 @@ public class Main {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         coverAll();
+        DefsRegister defsRegister = new DefsRegister();
+        defsRegister.getConstsDefs().put("n", new Int(10));
     }
 
 }

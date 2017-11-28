@@ -1,9 +1,6 @@
 package visitors;
 
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
@@ -37,6 +34,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(Var var) {
         return var.getName();
+    }
+
+    @Override
+    public String visit(FunVar funVar) {
+        return funVar.getName();
     }
 
     @Override

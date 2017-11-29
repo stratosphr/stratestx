@@ -83,23 +83,6 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public IntExpr visit(Fun fun) {
-        /*if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
-            throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
-        } else if (!funsDecls.containsKey(fun.getName())) {
-            funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
-            if (!isVisitingQuantifier) {
-                solver.add(new InDomain(fun.getParameter(), defsRegister.getFunsDefs().get(fun.getName()).getLeft()).accept(this));
-            }
-            Var index = new Var("i!");
-            solver.add(new ForAll(
-                    new Equiv(
-                            new InDomain(index, defsRegister.getFunsDefs().get(fun.getName()).getLeft()),
-                            new InDomain(new Fun(fun.getName(), index), defsRegister.getFunsDefs().get(fun.getName()).getRight())
-                    ),
-                    new VarInDomain(index, new Z())
-            ).accept(this));
-        }
-        return (IntExpr) funsDecls.get(fun.getName()).apply(fun.getParameter().accept(this));*/
         if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
             throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
         } else if (!funsDecls.containsKey(fun.getName())) {
@@ -186,6 +169,7 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Equals equals) {
+        System.out.println("# " + equals);
         return equals.getOperands().size() == 2 ? context.mkEq(equals.getOperands().get(0).accept(this), equals.getOperands().get(1).accept(this)) : context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(aArithExpr -> context.mkEq(equals.getOperands().get(0).accept(this), aArithExpr.accept(this))).toArray(BoolExpr[]::new));
     }
 

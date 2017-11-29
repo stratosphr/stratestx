@@ -28,7 +28,7 @@ public class Main {
 
     private static final DefsRegister defsRegister = new DefsRegister();
 
-    private final ABoolExpr formula1 = new And(
+    private final static ABoolExpr formula1 = new And(
             new False(),
             new True(),
             new Or(
@@ -94,36 +94,30 @@ public class Main {
         defsRegister.getVarsDefs().put("b", new Z());
         defsRegister.getVarsDefs().put("c", new Z());
         defsRegister.getFunsDefs().put("fun", new Tuple<>(new Set(defsRegister), new Set(defsRegister)));
-        System.out.println(main.formula1);
+        System.out.println(formula1);
         long l = System.nanoTime();
-        solver.add(main.formula1.accept(new SMTEncoder(context, solver, defsRegister)));
+        solver.add(formula1.accept(new SMTEncoder(context, solver, defsRegister)));
         solver.check();
         System.out.println((System.nanoTime() - l) * 1.0E-9);
         System.out.println(solver.check());
-        if (main.formula1.hashCode() != main.formula1.clone().hashCode()) {
-            throw new Error(main.formula1 + "\n\n\n" + main.formula1.clone());
+        if (formula1.hashCode() != formula1.clone().hashCode()) {
+            throw new Error(formula1 + "\n\n\n" + formula1.clone());
         }
-        if (!main.formula1.toString().equals(main.formula1.clone().toString())) {
+        if (!formula1.toString().equals(formula1.clone().toString())) {
             throw new Error();
         }
-        if (!main.formula1.equals(main.formula1.clone())) {
+        if (!formula1.equals(formula1.clone())) {
             throw new Error();
         }
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {
         DefsRegister defsRegister = new DefsRegister();
-        Range swDomain = new Range(defsRegister, new Int(1), new Int(3));
-        Range sw_Domain = new Range(defsRegister, new Int(1), new Int(3));
-        Range batDomain = new Range(defsRegister, new Int(1), new Int(3));
-        Range bat_Domain = new Range(defsRegister, new Int(1), new Int(7));
-        Set batRange = new Set(defsRegister, new Int(0), new Int(1));
-        Range bat_Range = new Range(defsRegister, new Int(0), new Int(4));
         defsRegister.getConstsDefs().put("n", new Int(10));
-        defsRegister.getVarsDefs().put("sw", swDomain);
-        defsRegister.getVarsDefs().put("sw_", sw_Domain);
-        defsRegister.getFunsDefs().put("bat", new Tuple<>(batDomain, batRange));
-        defsRegister.getFunsDefs().put("bat_", new Tuple<>(bat_Domain, bat_Range));
+        defsRegister.getVarsDefs().put("sw", new Range(defsRegister, new Int(1), new Int(3)));
+        defsRegister.getVarsDefs().put("sw_", new Range(defsRegister, new Int(1), new Int(3)));
+        defsRegister.getFunsDefs().put("bat", new Tuple<>(new Range(defsRegister, new Int(1), new Int(3)), new Set(defsRegister, new Int(0), new Int(1))));
+        defsRegister.getFunsDefs().put("bat_", new Tuple<>(new Range(defsRegister, new Int(1), new Int(10)), new Range(defsRegister, new Int(0), new Int(4))));
         ABoolExpr expr = new And(
                 new Equals(new Fun("bat", new Var("sw")), new Int(1)),
                 new Equals(new Fun("bat_", new Var("sw_")), new Int(1)),
@@ -142,6 +136,7 @@ public class Main {
                 new Fun("bat", new Int(2)),
                 new Fun("bat", new Int(3)),
                 new Fun("bat", new Int(4)),
+                new Fun("bat", new Int(12)),
                 new Fun("bat_", new Int(1)),
                 new Fun("bat_", new Int(2)),
                 new Fun("bat_", new Int(3)),

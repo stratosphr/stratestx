@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
  */
 public final class Difference extends ANarySetExpr {
 
-    public Difference(AFiniteSetExpr... operands) {
-        super(operands);
+    public Difference(DefsRegister defsRegister, AFiniteSetExpr... operands) {
+        super(defsRegister, operands);
     }
 
     @Override
@@ -36,13 +36,13 @@ public final class Difference extends ANarySetExpr {
     }
 
     @Override
-    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
-        return getOperands().get(0).getElementsValues(defsRegister).stream().filter(aValue -> !new Union(getOperands().subList(1, getOperands().size()).toArray(new AFiniteSetExpr[0])).getElementsValues(defsRegister).contains(aValue)).collect(Collectors.toCollection(LinkedHashSet::new));
+    protected LinkedHashSet<AValue> computeElementsValues() {
+        return getOperands().get(0).getElementsValues().stream().filter(aValue -> !new Union(getDefsRegister(), getOperands().subList(1, getOperands().size()).toArray(new AFiniteSetExpr[0])).getElementsValues().contains(aValue)).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override
     public Difference clone() {
-        return new Difference(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+        return new Difference(new DefsRegister(getDefsRegister()), getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
     }
 
 }

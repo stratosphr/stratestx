@@ -4,6 +4,7 @@ import com.microsoft.z3.*;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
+import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
@@ -38,14 +39,6 @@ public final class SMTEncoder implements ISMTEncoder {
         this.funsDecls = new HashMap<>();
         this.quantifiedVars = new ArrayList<>();
         this.isVisitingQuantifier = false;
-        /*defsRegister.getConstsDefs().keySet().forEach(name -> new Const(name).accept(this));
-        defsRegister.getVarsDefs().keySet().forEach(name -> new Var(name).accept(this));
-        defsRegister.getFunsDefs().forEach((name, tuple) -> {
-            DefsRegister tmpDefsRegister = new DefsRegister(defsRegister);
-            tmpDefsRegister.getFunsDefs().remove(name);
-            System.out.println(tuple.getLeft().getElementsValues(tmpDefsRegister));
-            tuple.getLeft().getElementsValues(tmpDefsRegister).forEach(value -> new FunVar(new Fun(name, value)).accept(this));
-        });*/
     }
 
     @Override
@@ -90,10 +83,9 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public IntExpr visit(Fun fun) {
-        if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+        /*if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
             throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
-        }
-        if (!funsDecls.containsKey(fun.getName())) {
+        } else if (!funsDecls.containsKey(fun.getName())) {
             funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
             if (!isVisitingQuantifier) {
                 solver.add(new InDomain(fun.getParameter(), defsRegister.getFunsDefs().get(fun.getName()).getLeft()).accept(this));
@@ -106,6 +98,28 @@ public final class SMTEncoder implements ISMTEncoder {
                     ),
                     new VarInDomain(index, new Z())
             ).accept(this));
+        }
+        return (IntExpr) funsDecls.get(fun.getName()).apply(fun.getParameter().accept(this));*/
+        if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+            throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
+        } else if (!funsDecls.containsKey(fun.getName())) {
+            funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
+            solver.add(new And(
+                    defsRegister.getFunsDefs().get(fun.getName()).getLeft().getElementsValues().stream().map(value ->
+                            new Equals(new Fun(fun.getName(), value), new FunVar(new Fun(fun.getName(), value)))
+                    ).toArray(ABoolExpr[]::new)
+            ).accept(this));
+            Var index = new Var("i!");
+            ForAll forAll = new ForAll(
+                    new And(
+                            new Implies(
+                                    new Not(new InDomain(index, defsRegister.getFunsDefs().get(fun.getName()).getLeft())),
+                                    new Not(new InDomain(new Fun(fun.getName(), index), defsRegister.getFunsDefs().get(fun.getName()).getRight()))
+                            )
+                    ),
+                    new VarInDomain(index, new Z())
+            );
+            solver.add(forAll.accept(this));
         }
         return (IntExpr) funsDecls.get(fun.getName()).apply(fun.getParameter().accept(this));
     }

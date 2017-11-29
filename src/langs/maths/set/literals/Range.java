@@ -34,7 +34,8 @@ public final class Range extends AFiniteSetExpr {
     private final AArithExpr lowerBound;
     private final AArithExpr upperBound;
 
-    public Range(AArithExpr lowerBound, AArithExpr upperBound) {
+    public Range(DefsRegister defsRegister, AArithExpr lowerBound, AArithExpr upperBound) {
+        super(defsRegister);
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
     }
@@ -63,8 +64,8 @@ public final class Range extends AFiniteSetExpr {
     }
 
     @Override
-    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
-        DefsRegister tmpDefsRegister = new DefsRegister(defsRegister);
+    protected LinkedHashSet<AValue> computeElementsValues() {
+        DefsRegister tmpDefsRegister = new DefsRegister(getDefsRegister());
         ArrayList<ABoolExpr> boundsBindings = new ArrayList<>();
         Var lowerBoundVar = new Var("lowerBound!");
         Var upperBoundVar = new Var("upperBound!");
@@ -85,7 +86,7 @@ public final class Range extends AFiniteSetExpr {
 
     @Override
     public Range clone() {
-        return new Range(lowerBound, upperBound);
+        return new Range(new DefsRegister(getDefsRegister()), lowerBound, upperBound);
     }
 
 }

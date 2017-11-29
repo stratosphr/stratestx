@@ -16,13 +16,12 @@ import static com.microsoft.z3.Status.SATISFIABLE;
  */
 public final class Z3 {
 
-    private static final Context context = new Context();
-    private static final Solver solver = context.mkSolver();
-
     private Z3() {
     }
 
     public static Z3Result checkSAT(ABoolExpr expr, DefsRegister defsRegister) {
+        Context context = new Context();
+        Solver solver = context.mkSolver();
         solver.reset();
         BoolExpr accept = expr.accept(new SMTEncoder(context, solver, defsRegister));
         solver.add(accept);

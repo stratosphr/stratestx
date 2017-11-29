@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
  */
 public final class Union extends ANarySetExpr {
 
-    public Union(AFiniteSetExpr... operands) {
-        super(operands);
+    public Union(DefsRegister defsRegister, AFiniteSetExpr... operands) {
+        super(defsRegister, operands);
     }
 
     @Override
@@ -36,13 +36,13 @@ public final class Union extends ANarySetExpr {
     }
 
     @Override
-    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
-        return getOperands().stream().map(operand -> operand.getElementsValues(defsRegister)).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
+    protected LinkedHashSet<AValue> computeElementsValues() {
+        return getOperands().stream().map(AFiniteSetExpr::getElementsValues).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override
     public Union clone() {
-        return new Union(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+        return new Union(new DefsRegister(getDefsRegister()), getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
     }
 
 }

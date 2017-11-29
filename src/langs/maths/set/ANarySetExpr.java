@@ -1,6 +1,7 @@
 package langs.maths.set;
 
 import langs.maths.AExpr;
+import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.Fun;
 
 import java.util.Arrays;
@@ -17,7 +18,8 @@ public abstract class ANarySetExpr extends AFiniteSetExpr {
 
     private final List<AFiniteSetExpr> operands;
 
-    public ANarySetExpr(AFiniteSetExpr[] operands) {
+    public ANarySetExpr(DefsRegister defsRegister, AFiniteSetExpr[] operands) {
+        super(defsRegister);
         this.operands = Arrays.asList(operands);
     }
 

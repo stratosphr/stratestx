@@ -11,20 +11,26 @@ import java.util.LinkedHashSet;
  */
 public abstract class AFiniteSetExpr extends ASetExpr {
 
+    private final DefsRegister defsRegister;
     private LinkedHashSet<AValue> elementsValues;
 
-    protected AFiniteSetExpr() {
+    protected AFiniteSetExpr(DefsRegister defsRegister) {
+        this.defsRegister = new DefsRegister(defsRegister);
         this.elementsValues = null;
     }
 
-    public final LinkedHashSet<AValue> getElementsValues(DefsRegister defsRegister) {
+    public final LinkedHashSet<AValue> getElementsValues() {
         if (elementsValues == null) {
-            elementsValues = computeElementsValues(defsRegister);
+            elementsValues = computeElementsValues();
         }
         return elementsValues;
     }
 
-    protected abstract LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister);
+    protected abstract LinkedHashSet<AValue> computeElementsValues();
+
+    public DefsRegister getDefsRegister() {
+        return defsRegister;
+    }
 
     @Override
     public abstract AFiniteSetExpr clone();

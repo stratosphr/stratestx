@@ -37,7 +37,7 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
         if (Arrays.stream(model.getConstDecls()).anyMatch(funcDecl -> funcDecl.getName().toString().equals(var.getName()))) {
             put(var, new Int(Integer.parseInt(model.eval(context.mkIntConst(var.getName()), true).toString())));
         } else {
-            throw new Error("Error: Variable \"" + var + "\" was not declared in this scope.");
+            throw new Error("Error: Variable \"" + var + "\" is never used in checked expression.");
         }
     }
 
@@ -46,7 +46,7 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
         if (Arrays.stream(model.getFuncDecls()).anyMatch(funcDecl -> funcDecl.getName().toString().equals(fun.getName()))) {
             put(fun, new Int(Integer.parseInt(model.eval(context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()).apply(context.mkInt(((Int) fun.getParameter()).getValue())), true).toString())));
         } else {
-            throw new Error("Error: Function \"" + fun + "\" was not declared in this scope.");
+            throw new Error("Error: Function \"" + fun + "\" is never used in checked expression.");
         }
     }
 

@@ -47,17 +47,14 @@ public class Main {
             new VarInDomain(
                     new Var("a"),
                     new Intersection(
-                            defsRegister,
                             new Union(
-                                    defsRegister,
-                                    new Range(defsRegister, new Int(0), new Mod(new Int(42), new Int(0))),
+                                    new Range(new Int(0), new Mod(new Int(42), new Int(0))),
                                     new Difference(
-                                            defsRegister,
-                                            new Set(defsRegister, new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Var("c"))),
-                                            new Set(defsRegister, new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Fun("fun", new Var("c"))))
+                                            new Set(new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Var("c"))),
+                                            new Set(new Int(0), new Int(42), new Var("a"), new Var("b"), new Fun("fun", new Fun("fun", new Var("c"))))
                                     )
                             ),
-                            new Set(defsRegister, new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Var("c")))
+                            new Set(new Int(0), new Int(42), new Var("a"), new Const("b"), new Fun("fun", new Var("c")))
                     )
             ),
             new ForAll(
@@ -72,14 +69,14 @@ public class Main {
                                                     )),
                                                     new Mod(new Int(42), new Const("c"))
                                             ),
-                                            new VarInDomain(new Var("a"), new Set(defsRegister, new Int(0), new Int(42))),
-                                            new VarInDomain(new Var("b"), new Set(defsRegister, new Int(42), new Int(0)))
+                                            new VarInDomain(new Var("a"), new Set(new Int(0), new Int(42))),
+                                            new VarInDomain(new Var("b"), new Set(new Int(42), new Int(0)))
                                     ))
                             )
                     ),
-                    new VarInDomain(new Var("a"), new Range(defsRegister, new Int(0), new Int(42))),
-                    new VarInDomain(new Var("b"), new Union(defsRegister, new Set(defsRegister, new Int(42), new Int(0)), new Set(defsRegister, new Int(1)))),
-                    new VarInDomain(new Var("c"), new Set(defsRegister, new Var("a"), new Var("b")))
+                    new VarInDomain(new Var("a"), new Range(new Int(0), new Int(42))),
+                    new VarInDomain(new Var("b"), new Union(new Set(new Int(42), new Int(0)), new Set(new Int(1)))),
+                    new VarInDomain(new Var("c"), new Set(new Var("a"), new Var("b")))
             )
     );
 
@@ -93,7 +90,7 @@ public class Main {
         defsRegister.getVarsDefs().put("a", new Z());
         defsRegister.getVarsDefs().put("b", new Z());
         defsRegister.getVarsDefs().put("c", new Z());
-        defsRegister.getFunsDefs().put("fun", new Tuple<>(new Set(defsRegister), new Set(defsRegister)));
+        defsRegister.getFunsDefs().put("fun", new Tuple<>(new Set(), new Set()));
         System.out.println(formula1);
         long l = System.nanoTime();
         solver.add(formula1.accept(new SMTEncoder(context, solver, defsRegister)));
@@ -113,38 +110,44 @@ public class Main {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         DefsRegister defsRegister = new DefsRegister();
-        defsRegister.getConstsDefs().put("n", new Int(10));
-        defsRegister.getVarsDefs().put("sw", new Range(defsRegister, new Int(1), new Int(3)));
-        defsRegister.getVarsDefs().put("sw_", new Range(defsRegister, new Int(1), new Int(3)));
-        defsRegister.getFunsDefs().put("bat", new Tuple<>(new Range(defsRegister, new Int(1), new Int(3)), new Set(defsRegister, new Int(0), new Int(1))));
-        defsRegister.getFunsDefs().put("bat_", new Tuple<>(new Range(defsRegister, new Int(1), new Int(10)), new Range(defsRegister, new Int(0), new Int(4))));
-        ABoolExpr expr = new And(
-                new Equals(new Fun("bat", new Var("sw")), new Int(1)),
-                new Equals(new Fun("bat_", new Var("sw_")), new Int(1)),
-                new Equals(new Fun("bat", new Int(1)), new Int(0)),
-                new Equals(new Fun("bat", new Int(2)), new Int(1)),
-                new Equals(new Fun("bat", new Int(3)), new Int(0)),
-                new Equals(new Fun("bat_", new Int(1)), new Int(1)),
-                new Equals(new Fun("bat_", new Int(2)), new Int(1)),
-                new Equals(new Fun("bat_", new Int(3)), new Int(1))
+        defsRegister.getConstsDefs().put("n", new Int(7000));
+        defsRegister.getVarsDefs().put("sw", new Range(new Int(1), new Const("n")));
+        defsRegister.getVarsDefs().put("sw_", new Range(new Int(1), new Const("n")));
+        defsRegister.getFunsDefs().put("bat", new Tuple<>(new Range(new Int(1), new Const("n")), new Set(new Int(0), new Int(1))));
+        defsRegister.getFunsDefs().put("bat_", new Tuple<>(new Range(new Int(1), new Const("n")), new Range(new Int(0), new Int(1))));
+        ABoolExpr expr = new Or(
+                new Exists(
+                        new Not(new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))),
+                        new VarInDomain(new Var("i"), new Range(new Int(1), new Const("n")))
+                ),
+                new Exists(
+                        new And(
+                                new Not(new InDomain(new Var("i"), new Range(new Int(1), new Const("n")))),
+                                new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))
+                        ),
+                        new VarInDomain(new Var("i"), new Z())
+                ),
+                new Exists(
+                        new Not(new InDomain(new Fun("bat_", new Var("i")), new Range(new Int(0), new Int(1)))),
+                        new VarInDomain(new Var("i"), new Range(new Int(1), new Const("n")))
+                ),
+                new Exists(
+                        new And(
+                                new Not(new InDomain(new Var("i"), new Range(new Int(1), new Const("n")))),
+                                new InDomain(new Fun("bat_", new Var("i")), new Range(new Int(0), new Int(1)))
+                        ),
+                        new VarInDomain(new Var("i"), new Z())
+                )
         );
+        System.out.println(expr);
         Z3Result result = Z3.checkSAT(expr, defsRegister);
         System.out.println(result.getModel(new LinkedHashSet<>(Arrays.asList(
-                new Var("sw"),
-                new Var("sw_"),
                 new Fun("bat", new Int(1)),
                 new Fun("bat", new Int(2)),
                 new Fun("bat", new Int(3)),
-                new Fun("bat", new Int(4)),
-                new Fun("bat", new Int(12)),
                 new Fun("bat_", new Int(1)),
                 new Fun("bat_", new Int(2)),
-                new Fun("bat_", new Int(3)),
-                new Fun("bat_", new Int(4)),
-                new Fun("bat_", new Int(5)),
-                new Fun("bat_", new Int(6)),
-                new Fun("bat_", new Int(7)),
-                new Fun("bat_", new Int(8))
+                new Fun("bat_", new Int(3))
         ))));
     }
 

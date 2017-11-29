@@ -88,7 +88,7 @@ public final class SMTEncoder implements ISMTEncoder {
         } else if (!funsDecls.containsKey(fun.getName())) {
             funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
             solver.add(new And(
-                    defsRegister.getFunsDefs().get(fun.getName()).getLeft().getElementsValues().stream().map(value ->
+                    defsRegister.getFunsDefs().get(fun.getName()).getLeft().getElementsValues(defsRegister).stream().map(value ->
                             new Equals(new Fun(fun.getName(), value), new FunVar(new Fun(fun.getName(), value)))
                     ).toArray(ABoolExpr[]::new)
             ).accept(this));
@@ -169,7 +169,6 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Equals equals) {
-        System.out.println("# " + equals);
         return equals.getOperands().size() == 2 ? context.mkEq(equals.getOperands().get(0).accept(this), equals.getOperands().get(1).accept(this)) : context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(aArithExpr -> context.mkEq(equals.getOperands().get(0).accept(this), aArithExpr.accept(this))).toArray(BoolExpr[]::new));
     }
 

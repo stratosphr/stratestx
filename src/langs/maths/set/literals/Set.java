@@ -27,8 +27,7 @@ public final class Set extends AFiniteSetExpr {
 
     private final LinkedHashSet<AArithExpr> elements;
 
-    public Set(DefsRegister defsRegister, AArithExpr... elements) {
-        super(defsRegister);
+    public Set(AArithExpr... elements) {
         this.elements = new LinkedHashSet<>(Arrays.asList(elements));
     }
 
@@ -43,8 +42,8 @@ public final class Set extends AFiniteSetExpr {
     }
 
     @Override
-    protected LinkedHashSet<AValue> computeElementsValues() {
-        DefsRegister tmpDefsRegister = new DefsRegister(getDefsRegister());
+    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
+        DefsRegister tmpDefsRegister = new DefsRegister(defsRegister);
         ABoolExpr[] elementsBindings = new ABoolExpr[elements.size()];
         LinkedHashSet<AAssignable> elementsVars = new LinkedHashSet<>();
         List<AArithExpr> elementsList = new ArrayList<>(elements);
@@ -73,7 +72,7 @@ public final class Set extends AFiniteSetExpr {
 
     @Override
     public Set clone() {
-        return new Set(new DefsRegister(getDefsRegister()), elements.toArray(new AArithExpr[0]));
+        return new Set(elements.toArray(new AArithExpr[0]));
     }
 
 }

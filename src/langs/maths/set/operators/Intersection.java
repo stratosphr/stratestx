@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
  */
 public final class Intersection extends ANarySetExpr {
 
-    public Intersection(DefsRegister defsRegister, AFiniteSetExpr... operands) {
-        super(defsRegister, operands);
+    public Intersection(AFiniteSetExpr... operands) {
+        super(operands);
     }
 
     @Override
@@ -35,13 +35,13 @@ public final class Intersection extends ANarySetExpr {
     }
 
     @Override
-    protected LinkedHashSet<AValue> computeElementsValues() {
-        return getOperands().get(0).getElementsValues().stream().filter(elementValue -> getOperands().subList(1, getOperands().size()).stream().allMatch(aFiniteSetExpr -> aFiniteSetExpr.getElementsValues().contains(elementValue))).collect(Collectors.toCollection(LinkedHashSet::new));
+    protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
+        return getOperands().get(0).getElementsValues(defsRegister).stream().filter(elementValue -> getOperands().subList(1, getOperands().size()).stream().allMatch(operand -> operand.getElementsValues(defsRegister).contains(elementValue))).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override
     public Intersection clone() {
-        return new Intersection(new DefsRegister(getDefsRegister()), getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+        return new Intersection(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
     }
 
 }

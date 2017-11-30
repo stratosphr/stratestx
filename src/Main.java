@@ -129,33 +129,23 @@ public class Main {
         defsRegister.getConstsDefs().put("n", new Int(3));
         defsRegister.getVarsDefs().put("sw", new Range(new Int(1), new Const("n")));
         defsRegister.getFunsDefs().put("bat", new Tuple<>(new Range(new Int(1), new Const("n")), new Set(new Int(0), new Int(1))));
-        ABoolExpr expr = new Or(
-                new Exists(
-                        new Not(new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))),
-                        new VarInDomain(new Var("i"), new Range(new Int(1), new Const("n")))
+        ABoolExpr expr = new And(
+                new Equals(new Var("sw"), new Int(3)),
+                new Equals(new Fun("bat", new Var("sw")), new Int(1)),
+                new ForAll(
+                        new NotEquals(new Fun("bat", new Var("i")), new Int(1)),
+                        new VarInDomain(new Var("i"), new Difference(new Range(new Int(1), new Const("n")), new Set(new Var("sw"))))
                 ),
-                new Exists(
-                        new And(
-                                new Not(new InDomain(new Var("i"), new Intersection(new Range(new Int(1), new Const("n"))))),
-                                new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))
-                        ),
+                new Equals(new Fun("bat", new Var("sw")), new Int(1)).accept(new Primer(1)),
+                new ForAll(
+                        new Equals(new Fun("bat", new Var("i")).accept(new Primer(1)), new Fun("bat", new Var("i"))),
                         new VarInDomain(new Var("i"), new Z())
-                ),
-                new Exists(
-                        new Not(new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))),
-                        new VarInDomain(new Var("i"), new Range(new Int(1), new Const("n")))
-                ).accept(new Primer(1)),
-                new Exists(
-                        new And(
-                                new Not(new InDomain(new Var("i"), new Range(new Int(1), new Const("n")))),
-                                new InDomain(new Fun("bat", new Var("i")), new Range(new Int(0), new Int(1)))
-                        ),
-                        new VarInDomain(new Var("i"), new Z())
-                ).accept(new Primer(1))
+                )
         );
         System.out.println(expr);
         Z3Result result = Z3.checkSAT(expr, defsRegister);
         System.out.println(result.getModel(new LinkedHashSet<>(Arrays.asList(
+                new Var("sw"),
                 new Fun("bat", new Int(1)),
                 new Fun("bat", new Int(2)),
                 new Fun("bat", new Int(3)),

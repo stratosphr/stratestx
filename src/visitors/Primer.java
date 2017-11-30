@@ -64,7 +64,7 @@ public class Primer implements IPrimer {
 
     @Override
     public Fun visit(Fun fun) {
-        return new Fun(prime(fun.getName()), fun.getParameter().accept(this));
+        return new Fun(prime(fun.getName()), fun.getParameter());
     }
 
     @Override

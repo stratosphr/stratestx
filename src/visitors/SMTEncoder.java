@@ -28,7 +28,6 @@ public final class SMTEncoder implements ISMTEncoder {
     private final HashMap<String, IntExpr> varsDecls;
     private final HashMap<String, FuncDecl> funsDecls;
     private List<Var> quantifiedVars;
-    private boolean isVisitingQuantifier;
 
     public SMTEncoder(Context context, Solver solver, DefsRegister defsRegister) {
         this.context = context;
@@ -38,7 +37,6 @@ public final class SMTEncoder implements ISMTEncoder {
         this.varsDecls = new HashMap<>();
         this.funsDecls = new HashMap<>();
         this.quantifiedVars = new ArrayList<>();
-        this.isVisitingQuantifier = false;
     }
 
     @Override
@@ -213,7 +211,6 @@ public final class SMTEncoder implements ISMTEncoder {
                 throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
             }
         }
-        isVisitingQuantifier = true;
         exists.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
         Sort[] sorts = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = exists.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);
@@ -240,7 +237,6 @@ public final class SMTEncoder implements ISMTEncoder {
                 throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
             }
         }
-        isVisitingQuantifier = true;
         forAll.getQuantifiedVarsDefs().forEach(varAInDomain -> quantifiedVars.add(varAInDomain.getLeft()));
         Sort[] sorts = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.getIntSort()).toArray(Sort[]::new);
         Symbol[] symbols = forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> context.mkSymbol(varInDomain.getLeft().getName())).toArray(Symbol[]::new);

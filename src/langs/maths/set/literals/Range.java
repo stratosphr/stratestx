@@ -17,6 +17,7 @@ import solvers.z3.Z3;
 import solvers.z3.Z3Result;
 import utilities.Maths;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +43,11 @@ public final class Range extends AFiniteSetExpr {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public Range accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

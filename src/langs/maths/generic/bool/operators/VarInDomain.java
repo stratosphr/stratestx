@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.arith.literals.Var;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -14,6 +15,11 @@ public final class VarInDomain extends AInDomain<Var> {
 
     public VarInDomain(Var var, ASetExpr set) {
         super(var, set);
+    }
+
+    @Override
+    public VarInDomain accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

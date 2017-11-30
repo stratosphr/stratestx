@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -24,6 +25,11 @@ public final class InDomain extends AInDomain<AArithExpr> {
     @Override
     public BoolExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public InDomain accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

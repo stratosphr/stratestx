@@ -177,13 +177,13 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     }
 
     @Override
-    public String visit(Union union) {
-        return "∪(" + union.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(", ")) + ")";
+    public String visit(Intersection intersection) {
+        return "∩(" + intersection.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(", ")) + ")";
     }
 
     @Override
-    public String visit(Intersection intersection) {
-        return "∩(" + intersection.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(", ")) + ")";
+    public String visit(Union union) {
+        return "∪(" + union.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(", ")) + ")";
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.ABinaryArithExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -24,6 +25,11 @@ public final class Mod extends ABinaryArithExpr<AArithExpr, AArithExpr> {
     @Override
     public IntExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public Mod accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

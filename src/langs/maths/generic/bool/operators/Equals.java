@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.bool.ANaryBoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -24,6 +25,11 @@ public final class Equals extends ANaryBoolExpr<AArithExpr> {
     @Override
     public BoolExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public Equals accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

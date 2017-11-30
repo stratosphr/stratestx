@@ -4,6 +4,7 @@ import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.ANaryArithExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -14,6 +15,11 @@ public final class Minus extends ANaryArithExpr<AArithExpr> {
 
     public Minus(AArithExpr... operands) {
         super(operands);
+    }
+
+    @Override
+    public Minus accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

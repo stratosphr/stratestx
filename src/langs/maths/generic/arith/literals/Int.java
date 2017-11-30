@@ -3,6 +3,7 @@ package langs.maths.generic.arith.literals;
 import com.microsoft.z3.IntExpr;
 import langs.AObject;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.LinkedHashSet;
@@ -25,6 +26,11 @@ public final class Int extends AValue {
     @Override
     public IntExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public Int accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

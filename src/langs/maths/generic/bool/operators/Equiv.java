@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.bool.ABinaryBoolExpr;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -14,6 +15,11 @@ public final class Equiv extends ABinaryBoolExpr<ABoolExpr, ABoolExpr> {
 
     public Equiv(ABoolExpr left, ABoolExpr right) {
         super(left, right);
+    }
+
+    @Override
+    public Equiv accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

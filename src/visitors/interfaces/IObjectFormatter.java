@@ -80,9 +80,9 @@ public interface IObjectFormatter {
 
     String visit(Range range);
 
-    String visit(Union union);
-
     String visit(Intersection intersection);
+
+    String visit(Union union);
 
     String visit(Difference difference);
 

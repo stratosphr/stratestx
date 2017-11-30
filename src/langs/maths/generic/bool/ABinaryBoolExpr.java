@@ -2,6 +2,7 @@ package langs.maths.generic.bool;
 
 import langs.maths.AExpr;
 import langs.maths.generic.arith.literals.Fun;
+import visitors.interfaces.IPrimer;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -21,6 +22,9 @@ public abstract class ABinaryBoolExpr<Left extends AExpr, Right extends AExpr> e
         this.left = left;
         this.right = right;
     }
+
+    @Override
+    public abstract ABinaryBoolExpr<Left, Right> accept(IPrimer primer);
 
     @Override
     public LinkedHashSet<Fun> getFuns() {

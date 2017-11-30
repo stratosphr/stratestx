@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.LinkedHashSet;
@@ -22,6 +23,11 @@ public final class True extends ABoolExpr {
     @Override
     public BoolExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public True accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

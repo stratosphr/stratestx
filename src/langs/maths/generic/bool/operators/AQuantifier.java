@@ -2,6 +2,7 @@ package langs.maths.generic.bool.operators;
 
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.bool.ABoolExpr;
+import visitors.interfaces.IPrimer;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -20,6 +21,9 @@ public abstract class AQuantifier extends ABoolExpr {
         this.body = body;
         this.quantifiedVarsDefs = Arrays.asList(quantifiedVarsDefs);
     }
+
+    @Override
+    public abstract AQuantifier accept(IPrimer primer);
 
     @Override
     public LinkedHashSet<Fun> getFuns() {

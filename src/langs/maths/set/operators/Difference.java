@@ -11,6 +11,7 @@ import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
@@ -23,6 +24,11 @@ public final class Difference extends ANarySetExpr {
 
     public Difference(AFiniteSetExpr... operands) {
         super(operands);
+    }
+
+    @Override
+    public Difference accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

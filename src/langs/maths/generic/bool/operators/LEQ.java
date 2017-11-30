@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.bool.ABinaryBoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -14,6 +15,11 @@ public final class LEQ extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
 
     public LEQ(AArithExpr left, AArithExpr right) {
         super(left, right);
+    }
+
+    @Override
+    public LEQ accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

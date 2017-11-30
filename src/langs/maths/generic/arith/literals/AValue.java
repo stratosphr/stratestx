@@ -1,6 +1,7 @@
 package langs.maths.generic.arith.literals;
 
 import langs.maths.generic.arith.AArithExpr;
+import visitors.interfaces.IPrimer;
 
 /**
  * Created by gvoiron on 27/11/17.
@@ -15,10 +16,13 @@ public abstract class AValue extends AArithExpr {
     }
 
     @Override
-    public abstract AValue clone();
+    public abstract AValue accept(IPrimer primer);
 
     public Integer getValue() {
         return value;
     }
+
+    @Override
+    public abstract AValue clone();
 
 }

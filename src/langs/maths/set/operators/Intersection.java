@@ -10,6 +10,7 @@ import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
@@ -22,6 +23,11 @@ public final class Intersection extends ANarySetExpr {
 
     public Intersection(AFiniteSetExpr... operands) {
         super(operands);
+    }
+
+    @Override
+    public Intersection accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

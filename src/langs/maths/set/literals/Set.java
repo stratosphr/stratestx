@@ -15,6 +15,7 @@ import langs.maths.set.AFiniteSetExpr;
 import solvers.z3.Z3;
 import solvers.z3.Z3Result;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,6 +35,11 @@ public final class Set extends AFiniteSetExpr {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public Set accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

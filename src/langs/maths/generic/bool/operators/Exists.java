@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.bool.ABinaryBoolExpr;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -27,8 +28,18 @@ public final class Exists extends AQuantifier {
     }
 
     @Override
+    public Exists accept(IPrimer primer) {
+        return primer.visit(this);
+    }
+
+    @Override
+    public And getBody() {
+        return (And) super.getBody();
+    }
+
+    @Override
     public Exists clone() {
-        return new Exists(((And) getBody()).getOperands().get(1).clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
+        return new Exists(getBody().getOperands().get(1).clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
     }
 
 }

@@ -1,6 +1,7 @@
 package langs.maths.generic;
 
 import langs.maths.AExpr;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncodable;
 
 /**
@@ -8,6 +9,9 @@ import visitors.interfaces.ISMTEncodable;
  * Time : 22:57
  */
 public abstract class AGenericTypeExpr extends AExpr implements ISMTEncodable {
+
+    @Override
+    public abstract AGenericTypeExpr accept(IPrimer primer);
 
     @Override
     public abstract AGenericTypeExpr clone();

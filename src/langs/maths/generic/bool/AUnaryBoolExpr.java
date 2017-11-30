@@ -2,6 +2,7 @@ package langs.maths.generic.bool;
 
 import langs.maths.generic.AGenericTypeExpr;
 import langs.maths.generic.arith.literals.Fun;
+import visitors.interfaces.IPrimer;
 
 import java.util.LinkedHashSet;
 
@@ -16,6 +17,9 @@ public abstract class AUnaryBoolExpr<Operand extends AGenericTypeExpr> extends A
     public AUnaryBoolExpr(Operand operand) {
         this.operand = operand;
     }
+
+    @Override
+    public abstract AUnaryBoolExpr<Operand> accept(IPrimer primer);
 
     @Override
     public LinkedHashSet<Fun> getFuns() {

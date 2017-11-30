@@ -2,6 +2,7 @@ package langs.maths.set;
 
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.AValue;
+import visitors.interfaces.IPrimer;
 
 import java.util.LinkedHashSet;
 
@@ -10,6 +11,9 @@ import java.util.LinkedHashSet;
  * Time : 15:26
  */
 public abstract class AFiniteSetExpr extends ASetExpr {
+
+    @Override
+    public abstract AFiniteSetExpr accept(IPrimer primer);
 
     public final LinkedHashSet<AValue> getElementsValues(DefsRegister defsRegister) {
         return computeElementsValues(defsRegister);

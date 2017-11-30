@@ -4,6 +4,7 @@ import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.bool.ABinaryBoolExpr;
 import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -27,8 +28,18 @@ public final class ForAll extends AQuantifier {
     }
 
     @Override
+    public ForAll accept(IPrimer primer) {
+        return primer.visit(this);
+    }
+
+    @Override
+    public Implies getBody() {
+        return (Implies) super.getBody();
+    }
+
+    @Override
     public ForAll clone() {
-        return new ForAll(((Implies) getBody()).getRight().clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
+        return new ForAll(getBody().getRight().clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
     }
 
 }

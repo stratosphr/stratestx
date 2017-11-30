@@ -3,6 +3,7 @@ package langs.maths.generic.arith.literals;
 import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.LinkedHashSet;
@@ -29,6 +30,11 @@ public class FunVar extends AArithExpr {
     @Override
     public LinkedHashSet<Fun> getFuns() {
         return new LinkedHashSet<>();
+    }
+
+    @Override
+    public FunVar accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

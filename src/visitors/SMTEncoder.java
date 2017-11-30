@@ -59,36 +59,39 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public IntExpr visit(Var var) {
+        Var nonPrimedVar = var.accept(new Primer(0));
         if (quantifiedVars.contains(var)) {
             return (IntExpr) context.mkBound(quantifiedVars.size() - quantifiedVars.indexOf(var) - 1, context.getIntSort());
-        } else if (!defsRegister.getVarsDefs().containsKey(var.getName())) {
+        } else if (!defsRegister.getVarsDefs().containsKey(nonPrimedVar.getName())) {
             throw new Error("Error: Variable \"" + var.getName() + "\" was not declared in this scope.");
         } else if (!varsDecls.containsKey(var.getName())) {
             varsDecls.put(var.getName(), context.mkIntConst(var.getName()));
-            solver.add(new InDomain(var, defsRegister.getVarsDefs().get(var.getName())).accept(this));
+            solver.add(new InDomain(var, defsRegister.getVarsDefs().get(nonPrimedVar.getName())).accept(this));
         }
         return varsDecls.get(var.getName());
     }
 
     @Override
     public IntExpr visit(FunVar funVar) {
-        if (!defsRegister.getFunsDefs().containsKey(funVar.getFun().getName())) {
-            throw new Error("Error: Function \"" + funVar.getFun() + "\" was not declared in this scope.");
+        FunVar nonPrimedFunVar = funVar.accept(new Primer(0));
+        if (!defsRegister.getFunsDefs().containsKey(nonPrimedFunVar.getFun().getName())) {
+            throw new Error("Error: Function \"" + nonPrimedFunVar.getFun() + "\" was not declared in this scope.");
         } else if (!varsDecls.containsKey(funVar.getName())) {
             varsDecls.put(funVar.getName(), context.mkIntConst(funVar.getName()));
-            solver.add(new InDomain(funVar, defsRegister.getFunsDefs().get(funVar.getFun().getName()).getRight()).accept(this));
+            solver.add(new InDomain(funVar, defsRegister.getFunsDefs().get(nonPrimedFunVar.getFun().getName()).getRight()).accept(this));
         }
         return varsDecls.get(funVar.getName());
     }
 
     @Override
     public IntExpr visit(Fun fun) {
-        if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
-            throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
+        Fun nonPrimedFun = fun.accept(new Primer(0));
+        if (!defsRegister.getFunsDefs().containsKey(nonPrimedFun.getName())) {
+            throw new Error("Error: Function \"" + nonPrimedFun.getName() + "\" was not declared in this scope.");
         } else if (!funsDecls.containsKey(fun.getName())) {
             funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
             solver.add(new And(
-                    defsRegister.getFunsDefs().get(fun.getName()).getLeft().getElementsValues(defsRegister).stream().map(value ->
+                    defsRegister.getFunsDefs().get(nonPrimedFun.getName()).getLeft().getElementsValues(defsRegister).stream().map(value ->
                             new Equals(new Fun(fun.getName(), value), new FunVar(new Fun(fun.getName(), value)))
                     ).toArray(ABoolExpr[]::new)
             ).accept(this));
@@ -96,8 +99,8 @@ public final class SMTEncoder implements ISMTEncoder {
             ForAll forAll = new ForAll(
                     new And(
                             new Implies(
-                                    new Not(new InDomain(index, defsRegister.getFunsDefs().get(fun.getName()).getLeft())),
-                                    new Not(new InDomain(new Fun(fun.getName(), index), defsRegister.getFunsDefs().get(fun.getName()).getRight()))
+                                    new Not(new InDomain(index, defsRegister.getFunsDefs().get(nonPrimedFun.getName()).getLeft())),
+                                    new Not(new InDomain(new Fun(fun.getName(), index), defsRegister.getFunsDefs().get(nonPrimedFun.getName()).getRight()))
                             )
                     ),
                     new VarInDomain(index, new Z())
@@ -202,10 +205,11 @@ public final class SMTEncoder implements ISMTEncoder {
         return context.mkIff(equiv.getLeft().accept(this), equiv.getRight().accept(this));
     }
 
+    // TODO: Should additional constraints be added if "fun(expr)" is used in Exists and "expr" is not in "fun" domain?
     @Override
     public BoolExpr visit(Exists exists) {
         for (Fun fun : exists.getFuns()) {
-            if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+            if (!defsRegister.getFunsDefs().containsKey(fun.accept(new Primer(0)).getName())) {
                 throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
             }
         }
@@ -216,10 +220,11 @@ public final class SMTEncoder implements ISMTEncoder {
         Quantifier quantifier = context.mkExists(
                 sorts,
                 symbols,
-                new And(
+                /*new And(
                         new And(exists.getFuns().stream().map(fun -> new InDomain(fun.getParameter(), defsRegister.getFunsDefs().get(fun.getName()).getLeft())).toArray(InDomain[]::new)),
                         exists.getBody()
-                ).accept(this),
+                ).accept(this),*/
+                exists.getBody().accept(this),
                 0, null, null, null, null
         );
         quantifiedVars = quantifiedVars.subList(0, quantifiedVars.size() - exists.getQuantifiedVarsDefs().size());
@@ -230,7 +235,8 @@ public final class SMTEncoder implements ISMTEncoder {
     @Override
     public BoolExpr visit(ForAll forAll) {
         for (Fun fun : forAll.getFuns()) {
-            if (!defsRegister.getFunsDefs().containsKey(fun.getName())) {
+            Fun nonPrimedFun = fun.accept(new Primer(0));
+            if (!defsRegister.getFunsDefs().containsKey(nonPrimedFun.getName())) {
                 throw new Error("Error: Function \"" + fun.getName() + "\" was not declared in this scope.");
             }
         }

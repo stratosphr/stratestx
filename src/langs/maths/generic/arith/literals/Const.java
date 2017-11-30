@@ -3,6 +3,7 @@ package langs.maths.generic.arith.literals;
 import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AArithExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.LinkedHashSet;
@@ -27,6 +28,11 @@ public final class Const extends AArithExpr {
     @Override
     public IntExpr accept(ISMTEncoder encoder) {
         return encoder.visit(this);
+    }
+
+    @Override
+    public Const accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

@@ -2,6 +2,7 @@ package langs.maths.set;
 
 import langs.maths.AExpr;
 import langs.maths.generic.arith.literals.Fun;
+import visitors.interfaces.IPrimer;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,6 +21,9 @@ public abstract class ANarySetExpr extends AFiniteSetExpr {
     public ANarySetExpr(AFiniteSetExpr[] operands) {
         this.operands = Arrays.asList(operands);
     }
+
+    @Override
+    public abstract ANarySetExpr accept(IPrimer primer);
 
     @Override
     public final LinkedHashSet<Fun> getFuns() {

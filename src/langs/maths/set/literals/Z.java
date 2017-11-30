@@ -5,6 +5,7 @@ import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.set.AInfiniteSetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 /**
  * Created by gvoiron on 27/11/17.
@@ -20,6 +21,11 @@ public final class Z extends AInfiniteSetExpr {
     @Override
     public ABoolExpr getConstraint(AArithExpr expr) {
         return new True();
+    }
+
+    @Override
+    public Z accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

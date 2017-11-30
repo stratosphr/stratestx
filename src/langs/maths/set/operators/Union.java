@@ -10,6 +10,7 @@ import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ANarySetExpr;
 import langs.maths.set.ASetExpr;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -23,6 +24,11 @@ public final class Union extends ANarySetExpr {
 
     public Union(AFiniteSetExpr... operands) {
         super(operands);
+    }
+
+    @Override
+    public Union accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

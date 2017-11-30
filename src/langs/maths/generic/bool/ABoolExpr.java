@@ -2,6 +2,7 @@ package langs.maths.generic.bool;
 
 import com.microsoft.z3.BoolExpr;
 import langs.maths.generic.AGenericTypeExpr;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 /**
@@ -12,6 +13,9 @@ public abstract class ABoolExpr extends AGenericTypeExpr {
 
     @Override
     public abstract BoolExpr accept(ISMTEncoder encoder);
+
+    @Override
+    public abstract ABoolExpr accept(IPrimer primer);
 
     @Override
     public abstract ABoolExpr clone();

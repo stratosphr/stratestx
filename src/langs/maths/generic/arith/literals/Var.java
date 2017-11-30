@@ -4,6 +4,7 @@ import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.AAssignable;
 import visitors.interfaces.IModelVisitor;
 import visitors.interfaces.IObjectFormatter;
+import visitors.interfaces.IPrimer;
 import visitors.interfaces.ISMTEncoder;
 
 import java.util.LinkedHashSet;
@@ -21,6 +22,11 @@ public final class Var extends AAssignable {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public Var accept(IPrimer primer) {
+        return primer.visit(this);
     }
 
     @Override

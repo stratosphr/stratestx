@@ -170,7 +170,6 @@ public class Primer implements IPrimer {
                 exists.getBody().getOperands().get(1).accept(this),
                 exists.getQuantifiedVarsDefs().stream().map(varInDomain -> varInDomain.accept(this)).toArray(VarInDomain[]::new)
         );
-        System.out.println(quantifier);
         quantifiedVars = oldQuantifiedVars;
         return quantifier;
     }
@@ -183,7 +182,6 @@ public class Primer implements IPrimer {
                 forAll.getBody().getRight().accept(this),
                 forAll.getQuantifiedVarsDefs().stream().map(varInDomain -> varInDomain.accept(this)).toArray(VarInDomain[]::new)
         );
-        System.out.println(quantifier);
         quantifiedVars = oldQuantifiedVars;
         return quantifier;
     }

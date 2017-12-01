@@ -16,14 +16,17 @@ import langs.maths.set.literals.Z;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
-import solvers.z3.Z3;
-import solvers.z3.Z3Result;
+import parsers.xml.XMLNode;
+import parsers.xml.XMLParser;
+import parsers.xml.schemas.XMLAttributesSchema;
+import parsers.xml.schemas.XMLNodeSchema;
+import utilities.ResourcesManager;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
+import static utilities.ResourcesManager.EModel.EXAMPLE;
+import static utilities.ResourcesManager.EXMLSchema.EBM;
 
 public class Main {
 
@@ -123,36 +126,27 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        coverAll();
-        DefsRegister defsRegister = new DefsRegister();
-        defsRegister.getConstsDefs().put("n", new Int(3));
-        defsRegister.getVarsDefs().put("sw", new Range(new Int(1), new Const("n")));
-        defsRegister.getFunsDefs().put("bat", new Tuple<>(new Range(new Int(1), new Const("n")), new Set(new Int(0), new Int(1))));
-        ABoolExpr expr = new And(
-                new Equals(new Var("sw"), new Int(3)),
-                new Equals(new Fun("bat", new Var("sw")), new Int(1)),
-                new ForAll(
-                        new NotEquals(new Fun("bat", new Var("i")), new Int(1)),
-                        new VarInDomain(new Var("i"), new Difference(new Range(new Int(1), new Const("n")), new Set(new Var("sw"))))
-                ),
-                new Equals(new Fun("bat", new Var("sw")), new Int(1)).accept(new Primer(1)),
-                new ForAll(
-                        new Equals(new Fun("bat", new Var("i")).accept(new Primer(1)), new Fun("bat", new Var("i"))),
-                        new VarInDomain(new Var("i"), new Z())
+    public static void main(String[] args) {
+        XMLParser xmlParser = new XMLParser(false);
+        XMLNode parse = xmlParser.parse(ResourcesManager.getModel(EXAMPLE), ResourcesManager.getXMLSchema(EBM));
+        XMLNodeSchema child1 = new XMLNodeSchema("expected-child-name", new XMLAttributesSchema(
+                new String[]{"required-child-attribute", "also-required-child-attribute"},
+                new String[]{"not-required-child-attribute", "not-required-either-child-attribute"}
+        ));
+        XMLNodeSchema child2 = new XMLNodeSchema("other-expected-child-name", new XMLAttributesSchema(
+                new String[]{"other-required-child-attribute", "other-also-required-child-attribute"},
+                new String[]{"other-not-required-child-attribute", "other-not-required-either-child-attribute"}
+        ));
+        XMLNodeSchema child3 = new XMLNodeSchema("another-expected-child-name", new XMLAttributesSchema(
+                new String[]{"another-required-child-attribute", "another-also-required-child-attribute"},
+                new String[]{"another-not-required-child-attribute", "another-not-required-either-child-attribute"}
+        ));
+        parse.assertConformsTo(new XMLNodeSchema(
+                "expected-name",
+                new XMLAttributesSchema(
+                        new String[]{"required", "also-required"},
+                        new String[]{"not-required", "not-required-either"}
                 )
-        );
-        System.out.println(expr);
-        Z3Result result = Z3.checkSAT(expr, defsRegister);
-        System.out.println(result.getModel(new LinkedHashSet<>(Arrays.asList(
-                new Var("sw"),
-                new Fun("bat", new Int(1)),
-                new Fun("bat", new Int(2)),
-                new Fun("bat", new Int(3)),
-                new Fun("bat_", new Int(1)),
-                new Fun("bat_", new Int(2)),
-                new Fun("bat_", new Int(3))
-        ))));
+        ));
     }
-
 }

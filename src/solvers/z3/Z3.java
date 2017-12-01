@@ -25,7 +25,6 @@ public final class Z3 {
         BoolExpr accept = expr.accept(new SMTEncoder(context, solver, defsRegister));
         solver.add(accept);
         Status status = solver.check();
-        System.out.println(solver);
         return new Z3Result(expr, status, (status == SATISFIABLE ? solver.getModel() : null), context, defsRegister);
     }
 

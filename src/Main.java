@@ -16,17 +16,13 @@ import langs.maths.set.literals.Z;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
-import parsers.xml.XMLNode;
-import parsers.xml.XMLParser;
-import parsers.xml.schemas.XMLAttributesSchema;
-import parsers.xml.schemas.XMLNodeSchema;
-import utilities.ResourcesManager;
+import parsers.stratest.StratestParser;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
 import static utilities.ResourcesManager.EModel.EXAMPLE;
-import static utilities.ResourcesManager.EXMLSchema.EBM;
+import static utilities.ResourcesManager.getModel;
 
 public class Main {
 
@@ -127,26 +123,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        XMLParser xmlParser = new XMLParser(false);
-        XMLNode parse = xmlParser.parse(ResourcesManager.getModel(EXAMPLE), ResourcesManager.getXMLSchema(EBM));
-        XMLNodeSchema child1 = new XMLNodeSchema("expected-child-name", new XMLAttributesSchema(
-                new String[]{"required-child-attribute", "also-required-child-attribute"},
-                new String[]{"not-required-child-attribute", "not-required-either-child-attribute"}
-        ));
-        XMLNodeSchema child2 = new XMLNodeSchema("other-expected-child-name", new XMLAttributesSchema(
-                new String[]{"other-required-child-attribute", "other-also-required-child-attribute"},
-                new String[]{"other-not-required-child-attribute", "other-not-required-either-child-attribute"}
-        ));
-        XMLNodeSchema child3 = new XMLNodeSchema("another-expected-child-name", new XMLAttributesSchema(
-                new String[]{"another-required-child-attribute", "another-also-required-child-attribute"},
-                new String[]{"another-not-required-child-attribute", "another-not-required-either-child-attribute"}
-        ));
-        parse.assertConformsTo(new XMLNodeSchema(
-                "expected-name",
-                new XMLAttributesSchema(
-                        new String[]{"required", "also-required"},
-                        new String[]{"not-required", "not-required-either"}
-                )
-        ));
+        StratestParser stratestParser = new StratestParser();
+        stratestParser.parseModel(getModel(EXAMPLE));
     }
 }

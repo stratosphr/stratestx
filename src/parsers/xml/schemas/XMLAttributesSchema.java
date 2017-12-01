@@ -12,7 +12,7 @@ public final class XMLAttributesSchema {
     private final List<String> requiredAttributes;
     private final List<String> optionalAttributes;
 
-    public XMLAttributesSchema(String[] required) {
+    public XMLAttributesSchema(String... required) {
         this(required, new String[]{});
     }
 

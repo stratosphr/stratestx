@@ -11,6 +11,10 @@ public final class XMLNodeSchema {
     private final String name;
     private final XMLAttributesSchema attributesSchema;
 
+    public XMLNodeSchema(String name) {
+        this(name, new XMLAttributesSchema());
+    }
+
     public XMLNodeSchema(String name, XMLAttributesSchema attributesSchema) {
         this.name = name;
         this.attributesSchema = attributesSchema;

@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="CM">
+
+    <consts-defs>
+        <const-def name="MaxPot">
+            <int value="1000"/>
+        </const-def>
+        <const-def name="MaxBal">
+            <int value="200"/>
+        </const-def>
+        <const-def name="MaxCoffee">
+            <int value="15"/>
+        </const-def>
+    </consts-defs>
+
+    <vars-defs>
+        <var-def name="Pot">
+            <set>
+                <int value="0"/>
+                <int value="50"/>
+                <int value="100"/>
+                <int value="150"/>
+                <int value="200"/>
+                <int value="250"/>
+                <int value="300"/>
+                <int value="350"/>
+                <int value="400"/>
+                <int value="450"/>
+                <int value="500"/>
+                <int value="550"/>
+                <int value="600"/>
+                <int value="650"/>
+                <int value="700"/>
+                <int value="750"/>
+                <int value="800"/>
+                <int value="850"/>
+                <int value="900"/>
+                <int value="950"/>
+                <int value="1000"/>
+                <int value="1050"/>
+            </set>
+        </var-def>
+        <var-def name="Balance">
+            <set>
+                <int value="0"/>
+                <int value="50"/>
+                <int value="100"/>
+                <int value="150"/>
+                <int value="200"/>
+            </set>
+        </var-def>
+        <var-def name="CoffeeLeft">
+            <range>
+                <int value="0"/>
+                <const name="MaxCoffee"/>
+            </range>
+        </var-def>
+        <var-def name="Status">
+            <enum>
+                <enum-value name="off"/>
+                <enum-value name="on"/>
+                <enum-value name="error"/>
+            </enum>
+        </var-def>
+        <var-def name="AskCoffee">
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="AskChange">
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+    </vars-defs>
+
+    <invariant>
+        <and>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </equals>
+                </not>
+                <and>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <and>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <gt>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </gt>
+                </and>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <and>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </gt>
+                        <equals>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </equals>
+                    </or>
+                </and>
+            </or>
+        </and>
+    </invariant>
+
+    <initialisation>
+        <assignments>
+            <var-assignment>
+                <var name="Status"/>
+                <enum-value name="off"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Pot"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Balance"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="CoffeeLeft"/>
+                <const name="MaxCoffee"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="AskCoffee"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="AskChange"/>
+                <int value="0"/>
+            </var-assignment>
+        </assignments>
+    </initialisation>
+
+    <events>
+
+        <event name="insert50">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <const name="MaxBal"/>
+                            <plus>
+                                <var name="Balance"/>
+                                <int value="50"/>
+                            </plus>
+                        </gt>
+                        <equals>
+                            <const name="MaxBal"/>
+                            <plus>
+                                <var name="Balance"/>
+                                <int value="50"/>
+                            </plus>
+                        </equals>
+                    </or>
+                </and>
+                <var-assignment>
+                    <var name="Balance"/>
+                    <plus>
+                        <var name="Balance"/>
+                        <int value="50"/>
+                    </plus>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="insert100">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <const name="MaxBal"/>
+                            <plus>
+                                <var name="Balance"/>
+                                <int value="100"/>
+                            </plus>
+                        </gt>
+                        <equals>
+                            <const name="MaxBal"/>
+                            <plus>
+                                <var name="Balance"/>
+                                <int value="100"/>
+                            </plus>
+                        </equals>
+                    </or>
+                </and>
+                <var-assignment>
+                    <var name="Balance"/>
+                    <plus>
+                        <var name="Balance"/>
+                        <int value="100"/>
+                    </plus>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="powerUp">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="off"/>
+                    </equals>
+                    <gt>
+                        <var name="CoffeeLeft"/>
+                        <int value="0"/>
+                    </gt>
+                    <or>
+                        <gt>
+                            <const name="MaxPot"/>
+                            <var name="Pot"/>
+                        </gt>
+                        <equals>
+                            <const name="MaxPot"/>
+                            <var name="Pot"/>
+                        </equals>
+                    </or>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="powerDown">
+            <select>
+                <or>
+                    <and>
+                        <equals>
+                            <var name="Status"/>
+                            <enum-value name="on"/>
+                        </equals>
+                        <equals>
+                            <var name="AskChange"/>
+                            <int value="0"/>
+                        </equals>
+                        <equals>
+                            <var name="AskCoffee"/>
+                            <int value="0"/>
+                        </equals>
+                        <equals>
+                            <var name="Balance"/>
+                            <int value="0"/>
+                        </equals>
+                    </and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="error"/>
+                    </equals>
+                </or>
+                <var-assignment>
+                    <var name="Status"/>
+                    <enum-value name="off"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="autoOut">
+            <select>
+                <equals>
+                    <var name="Status"/>
+                    <enum-value name="on"/>
+                </equals>
+                <var-assignment>
+                    <var name="Status"/>
+                    <enum-value name="error"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="takePot">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="off"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <var name="Pot"/>
+                            <minus>
+                                <const name="MaxPot"/>
+                                <int value="50"/>
+                            </minus>
+                        </gt>
+                        <equals>
+                            <var name="Pot"/>
+                            <minus>
+                                <const name="MaxPot"/>
+                                <int value="50"/>
+                            </minus>
+                        </equals>
+                    </or>
+                </and>
+                <var-assignment>
+                    <var name="Pot"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="coffeeReq">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </gt>
+                        <equals>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </equals>
+                    </or>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="AskCoffee"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="changeReq">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <gt>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </gt>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="AskChange"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="addCoffee">
+            <any>
+                <vars-defs>
+                    <var-def name="x">
+                        <range>
+                            <int value="1"/>
+                            <const name="MaxCoffee"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <or>
+                    <gt>
+                        <const name="MaxCoffee"/>
+                        <plus>
+                            <var name="CoffeeLeft"/>
+                            <var name="x"/>
+                        </plus>
+                    </gt>
+                    <equals>
+                        <const name="MaxCoffee"/>
+                        <plus>
+                            <var name="CoffeeLeft"/>
+                            <var name="x"/>
+                        </plus>
+                    </equals>
+                </or>
+                <select>
+                    <and>
+                        <equals>
+                            <var name="Status"/>
+                            <enum-value name="off"/>
+                        </equals>
+                        <gt>
+                            <const name="MaxCoffee"/>
+                            <var name="CoffeeLeft"/>
+                        </gt>
+                    </and>
+                    <var-assignment>
+                        <var name="CoffeeLeft"/>
+                        <plus>
+                            <var name="CoffeeLeft"/>
+                            <var name="x"/>
+                        </plus>
+                    </var-assignment>
+                </select>
+            </any>
+        </event>
+
+        <event name="serveCoffee">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <or>
+                        <gt>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </gt>
+                        <equals>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </equals>
+                    </or>
+                    <equals>
+                        <var name="AskCoffee"/>
+                        <int value="1"/>
+                    </equals>
+                    <gt>
+                        <var name="CoffeeLeft"/>
+                        <int value="0"/>
+                    </gt>
+                </and>
+                <if-then-else>
+                    <and>
+                        <or>
+                            <gt>
+                                <plus>
+                                    <var name="Pot"/>
+                                    <int value="50"/>
+                                </plus>
+                                <const name="MaxPot"/>
+                            </gt>
+                            <equals>
+                                <var name="CoffeeLeft"/>
+                                <int value="1"/>
+                            </equals>
+                        </or>
+                        <gt>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </gt>
+                    </and>
+                    <assignments>
+                        <var-assignment>
+                            <var name="Status"/>
+                            <enum-value name="error"/>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="AskChange"/>
+                            <int value="1"/>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="AskCoffee"/>
+                            <int value="0"/>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="Balance"/>
+                            <minus>
+                                <var name="Balance"/>
+                                <int value="50"/>
+                            </minus>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="CoffeeLeft"/>
+                            <minus>
+                                <var name="CoffeeLeft"/>
+                                <int value="1"/>
+                            </minus>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="Pot"/>
+                            <plus>
+                                <var name="Pot"/>
+                                <int value="50"/>
+                            </plus>
+                        </var-assignment>
+                    </assignments>
+                    <if-then-else>
+                        <or>
+                            <gt>
+                                <plus>
+                                    <var name="Pot"/>
+                                    <int value="50"/>
+                                </plus>
+                                <const name="MaxPot"/>
+                            </gt>
+                            <equals>
+                                <var name="CoffeeLeft"/>
+                                <int value="1"/>
+                            </equals>
+                        </or>
+                        <assignments>
+                            <var-assignment>
+                                <var name="Status"/>
+                                <enum-value name="error"/>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="AskCoffee"/>
+                                <int value="0"/>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="Balance"/>
+                                <minus>
+                                    <var name="Balance"/>
+                                    <int value="50"/>
+                                </minus>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="CoffeeLeft"/>
+                                <minus>
+                                    <var name="CoffeeLeft"/>
+                                    <int value="1"/>
+                                </minus>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="Pot"/>
+                                <plus>
+                                    <var name="Pot"/>
+                                    <int value="50"/>
+                                </plus>
+                            </var-assignment>
+                        </assignments>
+                        <if-then-else>
+                            <gt>
+                                <var name="Balance"/>
+                                <int value="50"/>
+                            </gt>
+                            <assignments>
+                                <var-assignment>
+                                    <var name="AskChange"/>
+                                    <int value="1"/>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="AskCoffee"/>
+                                    <int value="0"/>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="Balance"/>
+                                    <minus>
+                                        <var name="Balance"/>
+                                        <int value="50"/>
+                                    </minus>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="CoffeeLeft"/>
+                                    <minus>
+                                        <var name="CoffeeLeft"/>
+                                        <int value="1"/>
+                                    </minus>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="Pot"/>
+                                    <plus>
+                                        <var name="Pot"/>
+                                        <int value="50"/>
+                                    </plus>
+                                </var-assignment>
+                            </assignments>
+                            <assignments>
+                                <var-assignment>
+                                    <var name="AskCoffee"/>
+                                    <int value="0"/>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="Balance"/>
+                                    <minus>
+                                        <var name="Balance"/>
+                                        <int value="50"/>
+                                    </minus>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="CoffeeLeft"/>
+                                    <minus>
+                                        <var name="CoffeeLeft"/>
+                                        <int value="1"/>
+                                    </minus>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="Pot"/>
+                                    <plus>
+                                        <var name="Pot"/>
+                                        <int value="50"/>
+                                    </plus>
+                                </var-assignment>
+                            </assignments>
+                        </if-then-else>
+                    </if-then-else>
+                </if-then-else>
+            </select>
+        </event>
+
+        <event name="changeBack">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Status"/>
+                        <enum-value name="on"/>
+                    </equals>
+                    <gt>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </gt>
+                    <equals>
+                        <var name="AskChange"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Balance"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="AskChange"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+    </events>
+</model>

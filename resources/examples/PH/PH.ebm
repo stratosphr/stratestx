@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="PH">
+
+    <vars-defs>
+        <var-def name="Combine">
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="NbEssai">
+            <range>
+                <int value="0"/>
+                <int value="2"/>
+            </range>
+        </var-def>
+        <var-def name="Etat">
+            <range>
+                <int value="0"/>
+                <int value="5"/>
+            </range>
+        </var-def>
+    </vars-defs>
+
+    <invariant>
+        <and>
+            <and>
+                <or>
+                    <not>
+                        <equals>
+                            <var name="Etat"/>
+                            <int value="4"/>
+                        </equals>
+                    </not>
+                    <equals>
+                        <var name="Combine"/>
+                        <int value="0"/>
+                    </equals>
+                </or>
+                <or>
+                    <not>
+                        <equals>
+                            <var name="Combine"/>
+                            <int value="0"/>
+                        </equals>
+                    </not>
+                    <equals>
+                        <var name="Etat"/>
+                        <int value="4"/>
+                    </equals>
+                </or>
+                <or>
+                    <not>
+                        <equals>
+                            <var name="Etat"/>
+                            <int value="4"/>
+                        </equals>
+                    </not>
+                    <equals>
+                        <var name="NbEssai"/>
+                        <int value="0"/>
+                    </equals>
+                </or>
+            </and>
+        </and>
+    </invariant>
+    <initialisation>
+        <assignments>
+            <var-assignment>
+                <var name="Combine"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="NbEssai"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Etat"/>
+                <int value="4"/>
+            </var-assignment>
+        </assignments>
+    </initialisation>
+    <events>
+        <event name="Start">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Combine"/>
+                        <int value="1"/>
+                    </equals>
+                    <not>
+                        <equals>
+                            <var name="Etat"/>
+                            <int value="5"/>
+                        </equals>
+                    </not>
+                    <not>
+                        <equals>
+                            <var name="Etat"/>
+                            <int value="4"/>
+                        </equals>
+                    </not>
+                </and>
+                <any>
+                    <vars-defs>
+                        <var-def name="e">
+                            <set>
+                                <int value="3"/>
+                                <int value="6"/>
+                            </set>
+                        </var-def>
+                    </vars-defs>
+                    <true/>
+                    <if-then-else>
+                        <and>
+                            <equals>
+                                <var name="e"/>
+                                <int value="6"/>
+                            </equals>
+                            <equals>
+                                <var name="Etat"/>
+                                <int value="0"/>
+                            </equals>
+                        </and>
+                        <var-assignment>
+                            <var name="Etat"/>
+                            <int value="1"/>
+                        </var-assignment>
+                        <if-then-else>
+                            <and>
+                                <equals>
+                                    <var name="e"/>
+                                    <int value="3"/>
+                                </equals>
+                                <equals>
+                                    <var name="Etat"/>
+                                    <int value="1"/>
+                                </equals>
+                            </and>
+                            <var-assignment>
+                                <var name="Etat"/>
+                                <int value="3"/>
+                            </var-assignment>
+                            <if-then-else>
+                                <and>
+                                    <equals>
+                                        <var name="e"/>
+                                        <int value="6"/>
+                                    </equals>
+                                    <equals>
+                                        <var name="Etat"/>
+                                        <int value="2"/>
+                                    </equals>
+                                </and>
+                                <var-assignment>
+                                    <var name="Etat"/>
+                                    <int value="1"/>
+                                </var-assignment>
+                                <select>
+                                    <and>
+                                        <equals>
+                                            <var name="e"/>
+                                            <int value="6"/>
+                                        </equals>
+                                        <equals>
+                                            <var name="Etat"/>
+                                            <int value="3"/>
+                                        </equals>
+                                    </and>
+                                    <var-assignment>
+                                        <var name="Etat"/>
+                                        <int value="1"/>
+                                    </var-assignment>
+                                </select>
+                            </if-then-else>
+                        </if-then-else>
+                    </if-then-else>
+                </any>
+            </select>
+        </event>
+        <event name="Timeout">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Combine"/>
+                        <int value="1"/>
+                    </equals>
+                    <not>
+                        <equals>
+                            <var name="Etat"/>
+                            <int value="5"/>
+                        </equals>
+                    </not>
+                </and>
+                <if-then-else>
+                    <equals>
+                        <var name="Etat"/>
+                        <int value="2"/>
+                    </equals>
+                    <var-assignment>
+                        <var name="Etat"/>
+                        <int value="5"/>
+                    </var-assignment>
+                    <if-then-else>
+                        <equals>
+                            <var name="NbEssai"/>
+                            <int value="2"/>
+                        </equals>
+                        <var-assignment>
+                            <var name="Etat"/>
+                            <int value="5"/>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="NbEssai"/>
+                            <plus>
+                                <var name="NbEssai"/>
+                                <int value="1"/>
+                            </plus>
+                        </var-assignment>
+                    </if-then-else>
+                </if-then-else>
+            </select>
+        </event>
+        <event name="HangUp">
+            <select>
+                <or>
+                    <equals>
+                        <var name="Combine"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Etat"/>
+                        <int value="5"/>
+                    </equals>
+                </or>
+                <assignments>
+                    <var-assignment>
+                        <var name="Etat"/>
+                        <int value="4"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Combine"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="NbEssai"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+        <event name="Appel_Qui_Donc">
+            <select>
+                <equals>
+                    <var name="Combine"/>
+                    <int value="0"/>
+                </equals>
+                <assignments>
+                    <var-assignment>
+                        <var name="Combine"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Etat"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+    </events>
+</model>

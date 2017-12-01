@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="ap"
+           xmlns="ap"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="identifier">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z][a-zA-Z0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- SCHEMA **************************************************** -->
+    <xs:element name="predicates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="predicate" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="vars-defs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="var-def" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="var-def">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="set-expr"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- *********************************************************** -->
+
+    <!-- SET ******************************************************* -->
+    <xs:element name="set-expr" abstract="true"/>
+    <xs:element name="set-expr-non-named" abstract="true" substitutionGroup="set-expr"/>
+    <xs:element name="named-set" substitutionGroup="set-expr">
+        <xs:complexType>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="set" substitutionGroup="set-expr-non-named">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr-non-enum" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="enum" substitutionGroup="set-expr-non-named">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enum-value" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="range" substitutionGroup="set-expr-non-named">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr-non-enum"/>
+                <xs:element ref="arith-expr-non-enum"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- *********************************************************** -->
+
+    <!-- ARITH ***************************************************** -->
+    <xs:element name="arith-expr" abstract="true"/>
+    <xs:element name="arith-expr-non-enum" abstract="true" substitutionGroup="arith-expr"/>
+    <xs:element name="assignable" abstract="true" substitutionGroup="arith-expr-non-enum"/>
+    <xs:element name="enum-value" substitutionGroup="arith-expr">
+        <xs:complexType>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="int" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:attribute name="value" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="const" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="var" substitutionGroup="assignable">
+        <xs:complexType>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fun" substitutionGroup="assignable">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="plus" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="minus" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="times" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="div" substitutionGroup="arith-expr-non-enum">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- *********************************************************** -->
+
+    <!-- BOOL ****************************************************** -->
+    <xs:element name="bool-expr" abstract="true"/>
+    <xs:element name="false" substitutionGroup="bool-expr" fixed=""/>
+    <xs:element name="true" substitutionGroup="bool-expr" fixed=""/>
+    <xs:element name="not" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="and" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="or" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="equals" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="neq" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lt" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="leq" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gt" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="geq" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="implies" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="bool-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="equiv" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="bool-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bool-ite" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="bool-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="forall" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="vars-defs"/>
+                <xs:element ref="bool-expr"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="exists" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="vars-defs"/>
+                <xs:element ref="bool-expr"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="predicate" substitutionGroup="bool-expr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="name" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- *********************************************************** -->
+
+    <!-- SUBSTITUTIONS ********************************************* -->
+    <xs:element name="substitution" abstract="true"/>
+    <xs:element name="assignment" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="assignable"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="assignments" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="assignment" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="select" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="substitution"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="if-then-else" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="substitution"/>
+                <xs:element ref="substitution"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="choice" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="substitution" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="any" substitutionGroup="substitution">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="vars-defs"/>
+                <xs:element ref="bool-expr"/>
+                <xs:element ref="substitution"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <!-- *********************************************************** -->
+
+</xs:schema>

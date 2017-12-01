@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="EXAMPLE">
+
+    <consts-defs>
+        <const-def name="n">
+            <int value="3"/>
+        </const-def>
+    </consts-defs>
+
+    <vars-defs>
+        <var-def name="sw">
+            <range>
+                <int value="1"/>
+                <const name="n"/>
+            </range>
+        </var-def>
+        <var-def name="h">
+            <enum>
+                <enum-value name="tic"/>
+                <enum-value name="tac"/>
+            </enum>
+        </var-def>
+    </vars-defs>
+
+    <funs-defs>
+        <fun-def name="bat">
+            <range>
+                <int value="1"/>
+                <const name="n"/>
+            </range>
+            <enum>
+                <enum-value name="ko"/>
+                <enum-value name="ok"/>
+            </enum>
+        </fun-def>
+    </funs-defs>
+
+    <invariant>
+        <equals>
+            <fun name="bat">
+                <var name="sw"/>
+            </fun>
+            <enum-value name="ok"/>
+        </equals>
+    </invariant>
+
+    <initialisation>
+        <assignments>
+            <var-assignment>
+                <var name="h"/>
+                <enum-value name="tac"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="sw"/>
+                <int value="1"/>
+            </var-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="1"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="2"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="3"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+        </assignments>
+    </initialisation>
+
+    <events>
+
+        <event name="Tic">
+            <select>
+                <equals>
+                    <var name="h"/>
+                    <enum-value name="tac"/>
+                </equals>
+                <var-assignment>
+                    <var name="h"/>
+                    <enum-value name="tic"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Commute">
+            <any>
+                <vars-defs>
+                    <var-def name="i">
+                        <range>
+                            <int value="1"/>
+                            <const name="n"/>
+                        </range>
+                    </var-def>
+                    <var-def name="j">
+                        <range>
+                            <int value="1"/>
+                            <const name="n"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <neq>
+                        <var name="i"/>
+                        <var name="j"/>
+                    </neq>
+                    <equals>
+                        <fun name="bat">
+                            <var name="i"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </equals>
+                    <equals>
+                        <fun name="bat">
+                            <var name="j"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </equals>
+                    <equals>
+                        <var name="h"/>
+                        <enum-value name="tic"/>
+                    </equals>
+                </and>
+                <any>
+                    <vars-defs>
+                        <var-def name="ns">
+                            <range>
+                                <int value="1"/>
+                                <const name="n"/>
+                            </range>
+                        </var-def>
+                    </vars-defs>
+                    <and>
+                        <equals>
+                            <fun name="bat">
+                                <var name="ns"/>
+                            </fun>
+                            <enum-value name="ok"/>
+                        </equals>
+                        <neq>
+                            <var name="ns"/>
+                            <var name="sw"/>
+                        </neq>
+                    </and>
+                    <assignments>
+                        <var-assignment>
+                            <var name="h"/>
+                            <enum-value name="tac"/>
+                        </var-assignment>
+                        <var-assignment>
+                            <var name="sw"/>
+                            <var name="ns"/>
+                        </var-assignment>
+                    </assignments>
+                </any>
+            </any>
+        </event>
+
+        <event name="Fail">
+            <any>
+                <vars-defs>
+                    <var-def name="i">
+                        <range>
+                            <int value="1"/>
+                            <const name="n"/>
+                        </range>
+                    </var-def>
+                    <var-def name="j">
+                        <range>
+                            <int value="1"/>
+                            <const name="n"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <neq>
+                        <var name="i"/>
+                        <var name="j"/>
+                    </neq>
+                    <equals>
+                        <fun name="bat">
+                            <var name="i"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </equals>
+                    <equals>
+                        <fun name="bat">
+                            <var name="j"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </equals>
+                </and>
+                <any>
+                    <vars-defs>
+                        <var-def name="nb">
+                            <range>
+                                <int value="1"/>
+                                <const name="n"/>
+                            </range>
+                        </var-def>
+                    </vars-defs>
+                    <equals>
+                        <fun name="bat">
+                            <var name="nb"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </equals>
+                    <choice>
+                        <select>
+                            <equals>
+                                <var name="nb"/>
+                                <var name="sw"/>
+                            </equals>
+                            <any>
+                                <vars-defs>
+                                    <var-def name="ns">
+                                        <range>
+                                            <int value="1"/>
+                                            <const name="n"/>
+                                        </range>
+                                    </var-def>
+                                </vars-defs>
+                                <and>
+                                    <neq>
+                                        <var name="ns"/>
+                                        <var name="sw"/>
+                                    </neq>
+                                    <equals>
+                                        <fun name="bat">
+                                            <var name="ns"/>
+                                        </fun>
+                                        <enum-value name="ok"/>
+                                    </equals>
+                                </and>
+                                <assignments>
+                                    <var-assignment>
+                                        <var name="sw"/>
+                                        <var name="ns"/>
+                                    </var-assignment>
+                                    <fun-assignment>
+                                        <fun name="bat">
+                                            <var name="nb"/>
+                                        </fun>
+                                        <enum-value name="ko"/>
+                                    </fun-assignment>
+                                </assignments>
+                            </any>
+                        </select>
+                        <select>
+                            <neq>
+                                <var name="nb"/>
+                                <var name="sw"/>
+                            </neq>
+                            <fun-assignment>
+                                <fun name="bat">
+                                    <var name="nb"/>
+                                </fun>
+                                <enum-value name="ko"/>
+                            </fun-assignment>
+                        </select>
+                    </choice>
+                </any>
+            </any>
+        </event>
+
+        <event name="Repair">
+            <any>
+                <vars-defs>
+                    <var-def name="nb">
+                        <range>
+                            <int value="1"/>
+                            <const name="n"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <equals>
+                    <fun name="bat">
+                        <var name="nb"/>
+                    </fun>
+                    <enum-value name="ko"/>
+                </equals>
+                <fun-assignment>
+                    <fun name="bat">
+                        <var name="nb"/>
+                    </fun>
+                    <enum-value name="ok"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+    </events>
+</model>

@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="CA">
+
+    <vars-defs>
+        <var-def name="Be"> <!-- Bell -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="AC"> <!-- Alarm Controller -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Do"> <!-- Door -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Lo"> <!-- Lock -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Wa"> <!-- Warnings -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Us"> <!-- User -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Gl"> <!-- Glasses -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="CS"> <!-- Children Security -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Li"> <!-- Lights -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Mv"> <!-- Moving -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="Tr"> <!-- Timer Triggered -->
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </var-def>
+        <var-def name="De"> <!-- Delay -->
+            <range>
+                <int value="0"/>
+                <int value="10"/>
+            </range>
+        </var-def>
+    </vars-defs>
+
+    <invariant>
+        <and>
+            <!-- | | -->
+            <or>
+                <not>
+                    <and>
+                        <equals>
+                            <var name="AC"/>
+                            <int value="1"/>
+                        </equals>
+                        <equals>
+                            <var name="Us"/>
+                            <int value="1"/>
+                        </equals>
+                    </and>
+                </not>
+                <equals>
+                    <var name="Do"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Be"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="AC"/>
+                    <int value="1"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Be"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Wa"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Be"/>
+                    <int value="1"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Wa"/>
+                        <int value="0"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Be"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <or>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="0"/>
+                    </equals>
+                </or>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Be"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Gl"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+
+            <or>
+                <not>
+                    <equals>
+                        <var name="Be"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Gl"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Do"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="AC"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Us"/>
+                    <int value="1"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <and>
+                    <equals>
+                        <var name="De"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Li"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Lo"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Li"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="AC"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Li"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Tr"/>
+                    <int value="0"/>
+                </equals>
+            </or>
+            <or>
+                <not>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="1"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="Lo"/>
+                    <int value="1"/>
+                </equals>
+            </or>
+        </and>
+    </invariant>
+
+    <initialisation>
+
+        <assignments>
+            <var-assignment>
+                <var name="Do"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Lo"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="AC"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Be"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Li"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Wa"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="De"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Tr"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Mv"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="CS"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Gl"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Us"/>
+                <int value="1"/>
+            </var-assignment>
+        </assignments>
+
+    </initialisation>
+
+    <events>
+
+        <event name="Be_Activation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Wa"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Be"/>
+                        <int value="1"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Be_Stop">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Be"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Wa"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Be"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Doors_Opening">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <equals>
+                            <var name="Us"/>
+                            <int value="0"/>
+                        </equals>
+                        <and>
+                            <equals>
+                                <var name="Us"/>
+                                <int value="1"/>
+                            </equals>
+                            <equals>
+                                <var name="Lo"/>
+                                <int value="0"/>
+                            </equals>
+                            <equals>
+                                <var name="AC"/>
+                                <int value="0"/>
+                            </equals>
+                        </and>
+                    </or>
+                </and>
+                <var-assignment>
+                    <var name="Do"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Doors_Closing">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Do"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="User_Authorized">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Be"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Be"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Wa"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="User_Unauthorized">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Us"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Alarm_Deactivation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="AC"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Alarm_Activation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                    <gt>
+                        <var name="De"/>
+                        <int value="4"/>
+                    </gt>
+                    <gt>
+                        <int value="11"/>
+                        <var name="De"/>
+                    </gt>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="AC"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="De"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Doors_Locking">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Gl"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Li"/>
+                        <int value="0"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="Tr"/>
+                        <int value="1"/>
+                    </var-assignment>
+                    <var-assignment>
+                        <var name="De"/>
+                        <int value="0"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Doors_Unlocking">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Us"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Lo"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Glasses_Opening">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Gl"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Gl"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Glasses_Closing">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Gl"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Gl"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Ch_Sec_Activation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="CS"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="CS"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Ch_Sec_Deactivation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="CS"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="1"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="CS"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Car_Moving">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Mv"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Car_Stopping">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Mv"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Do"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Mv"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Light_Activation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Li"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Li"/>
+                    <int value="1"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Light_Deactivation">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="Li"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="Lo"/>
+                        <int value="0"/>
+                    </equals>
+                    <equals>
+                        <var name="AC"/>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="Li"/>
+                    <int value="0"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Increment_Chronometer">
+            <select>
+                <and>
+                    <equals>
+                        <var name="Tr"/>
+                        <int value="1"/>
+                    </equals>
+                    <gt>
+                        <int value="10"/>
+                        <var name="De"/>
+                    </gt>
+                </and>
+                <var-assignment>
+                    <var name="De"/>
+                    <plus>
+                        <var name="De"/>
+                        <int value="1"/>
+                    </plus>
+                </var-assignment>
+            </select>
+        </event>
+
+    </events>
+
+</model>

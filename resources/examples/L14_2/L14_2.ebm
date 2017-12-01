@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="L14_2">
+
+    <consts-defs>
+        <const-def name="NS">
+            <int value="14"/>
+        </const-def>
+        <const-def name="NS1"> <!-- NS - 1 -->
+            <minus>
+                <const name="NS"/>
+                <int value="1"/>
+            </minus>
+        </const-def>
+        <const-def name="NR">
+            <int value="3"/>
+        </const-def>
+    </consts-defs>
+
+    <sets-defs>
+        <set-def name="Rames">
+            <range>
+                <int value="1"/>
+                <const name="NR"/>
+            </range>
+        </set-def>
+        <set-def name="Stations">
+            <range>
+                <int value="0"/>
+                <const name="NS1"/>
+            </range>
+        </set-def>
+    </sets-defs>
+
+    <funs-defs>
+        <fun-def name="Pos">
+            <named-set name="Rames"/>
+            <named-set name="Stations"/>
+        </fun-def>
+        <fun-def name="Dir">
+            <named-set name="Rames"/>
+            <set>
+                <int value="-1"/>
+                <int value="1"/>
+            </set>
+        </fun-def>
+        <fun-def name="Portes">
+            <named-set name="Rames"/>
+            <enum>
+                <enum-value name="ouvertes"/>
+                <enum-value name="fermees"/>
+                <enum-value name="refermees"/>
+            </enum>
+        </fun-def>
+        <fun-def name="Mvt">
+            <named-set name="Rames"/>
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </fun-def>
+    </funs-defs>
+
+    <invariant>
+        <and>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <and>
+                        <equals>
+                            <fun name="Mvt">
+                                <var name="R"/>
+                            </fun>
+                            <int value="1"/>
+                        </equals>
+                    </and>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                </implies>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </implies>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </implies>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <neq>
+                    <fun name="Dir">
+                        <var name="R"/>
+                    </fun>
+                    <int value="0"/>
+                </neq>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R1">
+                        <named-set name="Rames"/>
+                    </var-def>
+                    <var-def name="R2">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <neq>
+                        <var name="R1"/>
+                        <var name="R2"/>
+                    </neq>
+                    <or>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R1"/>
+                            </fun>
+                            <fun name="Dir">
+                                <var name="R2"/>
+                            </fun>
+                        </neq>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R1"/>
+                            </fun>
+                            <fun name="Pos">
+                                <var name="R2"/>
+                            </fun>
+                        </neq>
+                        <neq>
+                            <fun name="Mvt">
+                                <var name="R1"/>
+                            </fun>
+                            <fun name="Mvt">
+                                <var name="R2"/>
+                            </fun>
+                        </neq>
+                    </or>
+                </implies>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <and>
+                        <equals>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="-1"/>
+                        </equals>
+                        <equals>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <int value="0"/>
+                        </equals>
+                    </and>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </implies>
+            </forall>
+            <forall>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <and>
+                        <equals>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="1"/>
+                        </equals>
+                        <equals>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <const name="NS1"/>
+                        </equals>
+                    </and>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </implies>
+            </forall>
+        </and>
+    </invariant>
+
+    <initialisation>
+        <assignments>
+            <fun-assignment>
+                <fun name="Pos">
+                    <int value="1"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Pos">
+                    <int value="2"/>
+                </fun>
+                <int value="1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Pos">
+                    <int value="3"/>
+                </fun>
+                <int value="1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Dir">
+                    <int value="1"/>
+                </fun>
+                <int value="-1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Dir">
+                    <int value="2"/>
+                </fun>
+                <int value="-1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Dir">
+                    <int value="3"/>
+                </fun>
+                <int value="-1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Mvt">
+                    <int value="1"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Mvt">
+                    <int value="2"/>
+                </fun>
+                <int value="1"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Mvt">
+                    <int value="3"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Portes">
+                    <int value="1"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Portes">
+                    <int value="2"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="Portes">
+                    <int value="3"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+        </assignments>
+    </initialisation>
+
+    <events>
+
+        <event name="DS1">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <const name="NS1"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="1"/>
+                        </neq>
+                    </or>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <int value="0"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="-1"/>
+                        </neq>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <neq>
+                                <var name="R1"/>
+                                <var name="R"/>
+                            </neq>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="DS2">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="2"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <const name="NS1"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="1"/>
+                        </neq>
+                    </or>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <int value="0"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="-1"/>
+                        </neq>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <neq>
+                                <var name="R1"/>
+                                <var name="R"/>
+                            </neq>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="DS3">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="3"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <const name="NS1"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="1"/>
+                        </neq>
+                    </or>
+                    <or>
+                        <neq>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <int value="0"/>
+                        </neq>
+                        <neq>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                            <int value="-1"/>
+                        </neq>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <neq>
+                                <var name="R1"/>
+                                <var name="R"/>
+                            </neq>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="AS1">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </equals>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <plus>
+                                        <fun name="Pos">
+                                            <var name="R"/>
+                                        </fun>
+                                        <fun name="Dir">
+                                            <var name="R"/>
+                                        </fun>
+                                    </plus>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Pos">
+                            <var name="R"/>
+                        </fun>
+                        <plus>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </plus>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="AS2">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="2"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </equals>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <plus>
+                                        <fun name="Pos">
+                                            <var name="R"/>
+                                        </fun>
+                                        <fun name="Dir">
+                                            <var name="R"/>
+                                        </fun>
+                                    </plus>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Pos">
+                            <var name="R"/>
+                        </fun>
+                        <plus>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </plus>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="AS3">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="3"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="1"/>
+                    </equals>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <or>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <plus>
+                                        <fun name="Pos">
+                                            <var name="R"/>
+                                        </fun>
+                                        <fun name="Dir">
+                                            <var name="R"/>
+                                        </fun>
+                                    </plus>
+                                </neq>
+                                <neq>
+                                    <fun name="Dir">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </or>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Pos">
+                            <var name="R"/>
+                        </fun>
+                        <plus>
+                            <fun name="Pos">
+                                <var name="R"/>
+                            </fun>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </plus>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="CD1">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <or>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <const name="NS1"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </and>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="0"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="-1"/>
+                            </equals>
+                        </and>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <and>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </and>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Dir">
+                            <var name="R"/>
+                        </fun>
+                        <times>
+                            <int value="-1"/>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </times>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="CD2">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="2"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <or>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <const name="NS1"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </and>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="0"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="-1"/>
+                            </equals>
+                        </and>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <and>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </and>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Dir">
+                            <var name="R"/>
+                        </fun>
+                        <times>
+                            <int value="-1"/>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </times>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="CD3">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="3"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <or>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <const name="NS1"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </and>
+                        <and>
+                            <equals>
+                                <fun name="Pos">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="0"/>
+                            </equals>
+                            <equals>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                                <int value="-1"/>
+                            </equals>
+                        </and>
+                    </or>
+                    <forall>
+                        <vars-defs>
+                            <var-def name="R1">
+                                <named-set name="Rames"/>
+                            </var-def>
+                        </vars-defs>
+                        <implies>
+                            <and>
+                                <neq>
+                                    <var name="R1"/>
+                                    <var name="R"/>
+                                </neq>
+                            </and>
+                            <and>
+                                <neq>
+                                    <fun name="Pos">
+                                        <var name="R1"/>
+                                    </fun>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                </neq>
+                            </and>
+                        </implies>
+                    </forall>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="Dir">
+                            <var name="R"/>
+                        </fun>
+                        <times>
+                            <int value="-1"/>
+                            <fun name="Dir">
+                                <var name="R"/>
+                            </fun>
+                        </times>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="OP1">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="ouvertes"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="OP2">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="2"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="ouvertes"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="OP3">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="3"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="ouvertes"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="FP1">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="refermees"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="FP2">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="2"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="refermees"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="FP3">
+            <any>
+                <vars-defs>
+                    <var-def name="R">
+                        <named-set name="Rames"/>
+                    </var-def>
+                </vars-defs>
+                <and>
+                    <equals>
+                        <var name="R"/>
+                        <int value="3"/>
+                    </equals>
+                    <equals>
+                        <fun name="Portes">
+                            <var name="R"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <fun name="Mvt">
+                            <var name="R"/>
+                        </fun>
+                        <int value="0"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="Portes">
+                        <var name="R"/>
+                    </fun>
+                    <enum-value name="refermees"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+    </events>
+
+</model>

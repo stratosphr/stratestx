@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="ebm" name="ELV">
+
+    <consts-defs>
+        <const-def name="NE">
+            <int value="3"/>
+        </const-def>
+        <const-def name="LF"> <!-- Last Floor -->
+            <minus>
+                <const name="NE"/>
+                <int value="1"/>
+            </minus>
+        </const-def>
+    </consts-defs>
+
+    <sets-defs>
+        <set-def name="Floors">
+            <range>
+                <int value="0"/>
+                <const name="LF"/>
+            </range>
+        </set-def>
+        <set-def name="DoorsState">
+            <enum>
+                <enum-value name="ouvertes"/>
+                <enum-value name="fermees"/>
+                <enum-value name="refermees"/>
+            </enum>
+        </set-def>
+    </sets-defs>
+
+    <funs-defs>
+        <fun-def name="BC">
+            <named-set name="Floors"/>
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </fun-def>
+        <fun-def name="BM">
+            <named-set name="Floors"/>
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </fun-def>
+        <fun-def name="BD">
+            <named-set name="Floors"/>
+            <range>
+                <int value="0"/>
+                <int value="1"/>
+            </range>
+        </fun-def>
+        <fun-def name="PE">
+            <named-set name="Floors"/>
+            <named-set name="DoorsState"/>
+        </fun-def>
+    </funs-defs>
+
+    <vars-defs>
+        <var-def name="PC">
+            <named-set name="DoorsState"/>
+        </var-def>
+        <var-def name="Pos">
+            <named-set name="Floors"/>
+        </var-def>
+        <var-def name="Dir">
+            <set>
+                <int value="-1"/>
+                <int value="1"/>
+            </set>
+        </var-def>
+    </vars-defs>
+
+    <invariant>
+        <and>
+            <equals>
+                <fun name="BM">
+                    <const name="LF"/>
+                </fun>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <fun name="BD">
+                    <int value="0"/>
+                </fun>
+                <int value="0"/>
+            </equals>
+            <forall>
+                <vars-defs>
+                    <var-def name="etage">
+                        <named-set name="Floors"/>
+                    </var-def>
+                </vars-defs>
+                <implies>
+                    <and>
+                        <neq>
+                            <var name="etage"/>
+                            <var name="Pos"/>
+                        </neq>
+                    </and>
+                    <equals>
+                        <fun name="PE">
+                            <var name="etage"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                </implies>
+            </forall>
+            <implies>
+                <equals>
+                    <var name="PC"/>
+                    <enum-value name="ouvertes"/>
+                </equals>
+                <equals>
+                    <fun name="PE">
+                        <var name="Pos"/>
+                    </fun>
+                    <enum-value name="ouvertes"/>
+                </equals>
+            </implies>
+            <forall>
+                <vars-defs>
+                    <var-def name="etage">
+                        <named-set name="Floors"/>
+                    </var-def>
+                </vars-defs>
+                <neq>
+                    <fun name="PE">
+                        <var name="etage"/>
+                    </fun>
+                    <enum-value name="refermees"/>
+                </neq>
+            </forall>
+        </and>
+    </invariant>
+
+    <initialisation>
+        <assignments>
+            <var-assignment>
+                <var name="PC"/>
+                <enum-value name="fermees"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Pos"/>
+                <int value="0"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="Dir"/>
+                <int value="1"/>
+            </var-assignment>
+            <fun-assignment>
+                <fun name="PE">
+                    <int value="0"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="PE">
+                    <int value="1"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="PE">
+                    <int value="2"/>
+                </fun>
+                <enum-value name="fermees"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BC">
+                    <int value="0"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BC">
+                    <int value="1"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BC">
+                    <int value="2"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BM">
+                    <int value="0"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BM">
+                    <int value="1"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BM">
+                    <int value="2"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BD">
+                    <int value="0"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BD">
+                    <int value="1"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="BD">
+                    <int value="2"/>
+                </fun>
+                <int value="0"/>
+            </fun-assignment>
+        </assignments>
+    </initialisation>
+
+    <events>
+
+        <event name="Appel_Montee_Etage">
+            <any>
+                <vars-defs>
+                    <var-def name="etage">
+                        <range>
+                            <int value="0"/>
+                            <minus>
+                                <const name="LF"/>
+                                <int value="1"/>
+                            </minus>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <equals>
+                    <fun name="BM">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="0"/>
+                </equals>
+                <fun-assignment>
+                    <fun name="BM">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="1"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="Appel_Descente_Etage">
+            <any>
+                <vars-defs>
+                    <var-def name="etage">
+                        <range>
+                            <int value="1"/>
+                            <const name="LF"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <equals>
+                    <fun name="BD">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="0"/>
+                </equals>
+                <fun-assignment>
+                    <fun name="BD">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="1"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="Appel_Montee_Cabine">
+            <any>
+                <vars-defs>
+                    <var-def name="etage">
+                        <range>
+                            <plus>
+                                <var name="Pos"/>
+                                <int value="1"/>
+                            </plus>
+                            <const name="LF"/>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <equals>
+                    <fun name="BC">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="0"/>
+                </equals>
+                <fun-assignment>
+                    <fun name="BC">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="1"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="Appel_Descente_Cabine">
+            <any>
+                <vars-defs>
+                    <var-def name="etage">
+                        <range>
+                            <int value="0"/>
+                            <minus>
+                                <var name="Pos"/>
+                                <int value="1"/>
+                            </minus>
+                        </range>
+                    </var-def>
+                </vars-defs>
+                <equals>
+                    <fun name="BC">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="0"/>
+                </equals>
+                <fun-assignment>
+                    <fun name="BC">
+                        <var name="etage"/>
+                    </fun>
+                    <int value="1"/>
+                </fun-assignment>
+            </any>
+        </event>
+
+        <event name="Ouverture_Portes_Cabine">
+            <select>
+                <and>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="fermees"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="PC"/>
+                    <enum-value name="ouvertes"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Fermeture_Portes_Cabine">
+            <select>
+                <and>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                </and>
+                <var-assignment>
+                    <var name="PC"/>
+                    <enum-value name="refermees"/>
+                </var-assignment>
+            </select>
+        </event>
+
+        <event name="Ouverture_Portes_Etage">
+            <select>
+                <and>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="fermees"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="PE">
+                        <var name="Pos"/>
+                    </fun>
+                    <enum-value name="ouvertes"/>
+                </fun-assignment>
+            </select>
+        </event>
+
+        <event name="Fermeture_Portes_Etage">
+            <select>
+                <and>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="ouvertes"/>
+                    </equals>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="refermees"/>
+                    </equals>
+                </and>
+                <fun-assignment>
+                    <fun name="PE">
+                        <var name="Pos"/>
+                    </fun>
+                    <enum-value name="fermees"/>
+                </fun-assignment>
+            </select>
+        </event>
+
+        <event name="Montee_Cabine">
+            <select>
+                <and>
+                    <lt>
+                        <var name="Pos"/>
+                        <const name="LF"/>
+                    </lt>
+                    <geq>
+                        <var name="Pos"/>
+                        <int value="0"/>
+                    </geq>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <var name="Dir"/>
+                        <int value="1"/>
+                    </equals>
+                    <or>
+                        <exists>
+                            <vars-defs>
+                                <var-def name="etage">
+                                    <range>
+                                        <plus>
+                                            <var name="Pos"/>
+                                            <int value="1"/>
+                                        </plus>
+                                        <const name="LF"/>
+                                    </range>
+                                </var-def>
+                            </vars-defs>
+                            <equals>
+                                <fun name="BM">
+                                    <var name="etage"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </exists>
+                        <exists>
+                            <vars-defs>
+                                <var-def name="etage">
+                                    <range>
+                                        <plus>
+                                            <var name="Pos"/>
+                                            <int value="1"/>
+                                        </plus>
+                                        <const name="LF"/>
+                                    </range>
+                                </var-def>
+                            </vars-defs>
+                            <equals>
+                                <fun name="BC">
+                                    <var name="etage"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </exists>
+                    </or>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Pos"/>
+                        <plus>
+                            <var name="Pos"/>
+                            <var name="Dir"/>
+                        </plus>
+                    </var-assignment>
+                    <fun-assignment>
+                        <fun name="BC">
+                            <plus>
+                                <var name="Pos"/>
+                                <var name="Dir"/>
+                            </plus>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="BM">
+                            <plus>
+                                <var name="Pos"/>
+                                <var name="Dir"/>
+                            </plus>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                    <var-assignment>
+                        <var name="PC"/>
+                        <enum-value name="fermees"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Descente_Cabine">
+            <select>
+                <and>
+                    <gt>
+                        <var name="Pos"/>
+                        <int value="0"/>
+                    </gt>
+                    <leq>
+                        <var name="Pos"/>
+                        <const name="LF"/>
+                    </leq>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <equals>
+                        <var name="Dir"/>
+                        <int value="-1"/>
+                    </equals>
+                    <or>
+                        <exists>
+                            <vars-defs>
+                                <var-def name="etage">
+                                    <range>
+                                        <int value="0"/>
+                                        <minus>
+                                            <var name="Pos"/>
+                                            <int value="1"/>
+                                        </minus>
+                                    </range>
+                                </var-def>
+                            </vars-defs>
+                            <equals>
+                                <fun name="BD">
+                                    <var name="etage"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </exists>
+                        <exists>
+                            <vars-defs>
+                                <var-def name="etage">
+                                    <range>
+                                        <int value="0"/>
+                                        <minus>
+                                            <var name="Pos"/>
+                                            <int value="1"/>
+                                        </minus>
+                                    </range>
+                                </var-def>
+                            </vars-defs>
+                            <equals>
+                                <fun name="BC">
+                                    <var name="etage"/>
+                                </fun>
+                                <int value="1"/>
+                            </equals>
+                        </exists>
+                    </or>
+                </and>
+                <assignments>
+                    <var-assignment>
+                        <var name="Pos"/>
+                        <plus>
+                            <var name="Pos"/>
+                            <var name="Dir"/>
+                        </plus>
+                    </var-assignment>
+                    <fun-assignment>
+                        <fun name="BC">
+                            <plus>
+                                <var name="Pos"/>
+                                <var name="Dir"/>
+                            </plus>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="BD">
+                            <plus>
+                                <var name="Pos"/>
+                                <var name="Dir"/>
+                            </plus>
+                        </fun>
+                        <int value="0"/>
+                    </fun-assignment>
+                    <var-assignment>
+                        <var name="PC"/>
+                        <enum-value name="fermees"/>
+                    </var-assignment>
+                </assignments>
+            </select>
+        </event>
+
+        <event name="Changement_Direction">
+            <select>
+                <and>
+                    <equals>
+                        <var name="PC"/>
+                        <enum-value name="refermees"/>
+                    </equals>
+                    <equals>
+                        <fun name="PE">
+                            <var name="Pos"/>
+                        </fun>
+                        <enum-value name="fermees"/>
+                    </equals>
+                    <or>
+                        <and>
+                            <equals>
+                                <var name="Dir"/>
+                                <int value="1"/>
+                            </equals>
+                            <forall>
+                                <vars-defs>
+                                    <var-def name="etage">
+                                        <range>
+                                            <plus>
+                                                <var name="Pos"/>
+                                                <int value="1"/>
+                                            </plus>
+                                            <const name="LF"/>
+                                        </range>
+                                    </var-def>
+                                </vars-defs>
+                                <and>
+                                    <equals>
+                                        <fun name="BM">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="0"/>
+                                    </equals>
+                                    <equals>
+                                        <fun name="BC">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="0"/>
+                                    </equals>
+                                </and>
+                            </forall>
+                        </and>
+                        <and>
+                            <equals>
+                                <var name="Dir"/>
+                                <int value="-1"/>
+                            </equals>
+                            <forall>
+                                <vars-defs>
+                                    <var-def name="etage">
+                                        <range>
+                                            <int value="0"/>
+                                            <minus>
+                                                <var name="Pos"/>
+                                                <int value="1"/>
+                                            </minus>
+                                        </range>
+                                    </var-def>
+                                </vars-defs>
+                                <and>
+                                    <equals>
+                                        <fun name="BD">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="0"/>
+                                    </equals>
+                                    <equals>
+                                        <fun name="BC">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="0"/>
+                                    </equals>
+                                </and>
+                            </forall>
+                        </and>
+                    </or>
+                    <or>
+                        <and>
+                            <equals>
+                                <var name="Dir"/>
+                                <int value="-1"/>
+                            </equals>
+                            <exists>
+                                <vars-defs>
+                                    <var-def name="etage">
+                                        <range>
+                                            <plus>
+                                                <var name="Pos"/>
+                                                <int value="1"/>
+                                            </plus>
+                                            <const name="LF"/>
+                                        </range>
+                                    </var-def>
+                                </vars-defs>
+                                <or>
+                                    <equals>
+                                        <fun name="BM">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="1"/>
+                                    </equals>
+                                    <equals>
+                                        <fun name="BC">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="1"/>
+                                    </equals>
+                                </or>
+                            </exists>
+                        </and>
+                        <and>
+                            <equals>
+                                <var name="Dir"/>
+                                <int value="1"/>
+                            </equals>
+                            <exists>
+                                <vars-defs>
+                                    <var-def name="etage">
+                                        <range>
+                                            <int value="0"/>
+                                            <minus>
+                                                <var name="Pos"/>
+                                                <int value="1"/>
+                                            </minus>
+                                        </range>
+                                    </var-def>
+                                </vars-defs>
+                                <or>
+                                    <equals>
+                                        <fun name="BD">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="1"/>
+                                    </equals>
+                                    <equals>
+                                        <fun name="BC">
+                                            <var name="etage"/>
+                                        </fun>
+                                        <int value="1"/>
+                                    </equals>
+                                </or>
+                            </exists>
+                        </and>
+                    </or>
+                </and>
+                <var-assignment>
+                    <var name="Dir"/>
+                    <times>
+                        <int value="-1"/>
+                        <var name="Dir"/>
+                    </times>
+                </var-assignment>
+            </select>
+        </event>
+
+    </events>
+
+</model>

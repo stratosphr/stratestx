@@ -80,6 +80,7 @@ public final class StratestParser {
             }
             if (eventsNode != null) {
                 events = parseEvents(eventsNode);
+                System.out.println("events:");
                 events.forEach(System.out::println);
             }
         } catch (Exception e) {

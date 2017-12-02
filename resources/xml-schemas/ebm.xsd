@@ -343,6 +343,7 @@
     <!-- SUBSTITUTIONS ********************************************* -->
     <xs:element name="substitution" abstract="true"/>
     <xs:element name="assignment" abstract="true" substitutionGroup="substitution"/>
+    <xs:element name="skip" substitutionGroup="substitution"/>
     <xs:element name="var-assignment" substitutionGroup="assignment">
         <xs:complexType>
             <xs:sequence>

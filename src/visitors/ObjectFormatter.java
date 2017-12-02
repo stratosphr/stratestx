@@ -195,47 +195,47 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(Skip skip) {
-        return null;
+        return "SKIP";
     }
 
     @Override
     public String visit(Assignments assignments) {
-        return null;
+        return assignments.getAssignments().stream().map(aAssignment -> aAssignment.accept(this)).collect(Collectors.joining(" ||" + line() + indent("")));
     }
 
     @Override
     public String visit(VarAssignment varAssignment) {
-        return null;
+        return varAssignment.getAssignable().accept(this) + " := " + varAssignment.getValue().accept(this);
     }
 
     @Override
     public String visit(FunAssignment funAssignment) {
-        return null;
+        return funAssignment.getAssignable().accept(this) + " := " + funAssignment.getValue().accept(this);
     }
 
     @Override
     public String visit(Select select) {
-        return null;
+        return line("SELECT") + indentRight() + indentLine(select.getCondition().accept(this)) + indentLeft() + indentLine("THEN") + indentRight() + indentLine(select.getSubstitution().accept(this)) + indentLeft() + indent("END");
     }
 
     @Override
     public String visit(IfThenElse ifThenElse) {
-        return null;
+        return line("IF") + indentRight() + indentLine(ifThenElse.getCondition().accept(this)) + indentLeft() + indentLine("THEN") + indentRight() + indentLine(ifThenElse.getThenPart().accept(this)) + indentLeft() + indentLine("ELSE") + indentRight() + indentLine(ifThenElse.getElsePart().accept(this)) + indentLeft() + indent("END");
     }
 
     @Override
     public String visit(Choice choice) {
-        return null;
+        return line("CHOICE") + indentRight() + choice.getSubstitutions().stream().map(substitution -> indentLine(substitution.accept(this))).collect(Collectors.joining(indentLeft() + indentLine("OR") + indentRight())) + indentLeft() + indent("END");
     }
 
     @Override
     public String visit(Any any) {
-        return null;
+        return line("ANY") + indentRight() + any.getQuantifiedVarsDefs().stream().map(varInDomain -> indentLine(varInDomain.accept(this))).collect(Collectors.joining()) + indentLeft() + indentLine("WHERE") + indentRight() + indentLine(any.getCondition().accept(this)) + indentLeft() + indentLine("THEN") + indentRight() + indentLine(any.getSubstitution().accept(this)) + indentLeft() + indent("END");
     }
 
     @Override
     public String visit(Event event) {
-        return null;
+        return line(event.getName() + " = ") + indentRight() + indentLine(event.getSubstitution().accept(this)) + indentLeft();
     }
 
 }

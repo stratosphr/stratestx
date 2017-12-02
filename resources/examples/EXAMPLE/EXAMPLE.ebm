@@ -330,5 +330,9 @@
             </any>
         </event>
 
+        <event name="skip">
+            <skip/>
+        </event>
+
     </events>
 </model>

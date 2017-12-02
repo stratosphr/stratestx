@@ -12,7 +12,7 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 28/11/17.
  * Time : 00:22
  */
-public class FunVar extends AArithExpr {
+public final class FunVar extends AArithExpr {
 
     private final String name;
     private final Fun fun;

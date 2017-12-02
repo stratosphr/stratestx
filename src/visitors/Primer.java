@@ -23,7 +23,7 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 30/11/17.
  * Time : 14:34
  */
-public class Primer implements IPrimer {
+public final class Primer implements IPrimer {
 
     private final static String suffix = "_";
     private int primeLevel;
@@ -35,7 +35,7 @@ public class Primer implements IPrimer {
     }
 
     private String prime(String name) {
-        return name.replaceAll("_*$", "") + String.join("", Collections.nCopies(primeLevel, "_"));
+        return name.replaceAll(suffix + "*$", "") + String.join("", Collections.nCopies(primeLevel, suffix));
     }
 
     @Override

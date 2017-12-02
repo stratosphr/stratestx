@@ -1,5 +1,7 @@
 package visitors.interfaces;
 
+import langs.eventb.Event;
+import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -85,5 +87,23 @@ public interface IObjectFormatter {
     String visit(Union union);
 
     String visit(Difference difference);
+
+    String visit(Skip skip);
+
+    String visit(Assignments assignments);
+
+    String visit(VarAssignment varAssignment);
+
+    String visit(FunAssignment funAssignment);
+
+    String visit(Select select);
+
+    String visit(IfThenElse ifThenElse);
+
+    String visit(Choice choice);
+
+    String visit(Any any);
+
+    String visit(Event event);
 
 }

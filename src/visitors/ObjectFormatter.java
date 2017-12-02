@@ -1,5 +1,7 @@
 package visitors;
 
+import langs.eventb.Event;
+import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -189,6 +191,51 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(Difference difference) {
         return "(" + difference.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" - ")) + ")";
+    }
+
+    @Override
+    public String visit(Skip skip) {
+        return null;
+    }
+
+    @Override
+    public String visit(Assignments assignments) {
+        return null;
+    }
+
+    @Override
+    public String visit(VarAssignment varAssignment) {
+        return null;
+    }
+
+    @Override
+    public String visit(FunAssignment funAssignment) {
+        return null;
+    }
+
+    @Override
+    public String visit(Select select) {
+        return null;
+    }
+
+    @Override
+    public String visit(IfThenElse ifThenElse) {
+        return null;
+    }
+
+    @Override
+    public String visit(Choice choice) {
+        return null;
+    }
+
+    @Override
+    public String visit(Any any) {
+        return null;
+    }
+
+    @Override
+    public String visit(Event event) {
+        return null;
     }
 
 }

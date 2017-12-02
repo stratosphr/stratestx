@@ -17,11 +17,11 @@ import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
 import parsers.stratest.StratestParser;
+import utilities.ResourcesManager;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
-import static utilities.ResourcesManager.EModel.EXAMPLE;
 import static utilities.ResourcesManager.getModel;
 
 public class Main {
@@ -79,7 +79,7 @@ public class Main {
     );
     private final static ABoolExpr primedFormula = formula.accept(new Primer(1));
 
-    private static void coverAll() throws CloneNotSupportedException {
+    private static void coverAll() {
         Main main = new Main();
         Context context = new Context();
         Solver solver = context.mkSolver();
@@ -124,6 +124,7 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        stratestParser.parseModel(getModel(EXAMPLE));
+        stratestParser.parseModel(getModel(ResourcesManager.EModel.PH));
     }
+
 }

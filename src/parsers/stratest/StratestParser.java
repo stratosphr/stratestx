@@ -1,17 +1,26 @@
 package parsers.stratest;
 
+import langs.eventb.Event;
+import langs.eventb.substitutions.*;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
 import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.True;
-import langs.maths.generic.bool.operators.Equals;
+import langs.maths.generic.bool.operators.*;
 import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ASetExpr;
 import langs.maths.set.literals.Range;
+import langs.maths.set.literals.Set;
+import langs.maths.set.literals.Z;
+import langs.maths.set.operators.Difference;
+import langs.maths.set.operators.Intersection;
+import langs.maths.set.operators.Union;
 import parsers.xml.XMLNode;
 import parsers.xml.XMLParser;
 import parsers.xml.schemas.XMLAttributesSchema;
@@ -19,6 +28,7 @@ import parsers.xml.schemas.XMLNodeSchema;
 import utilities.Tuple;
 
 import java.io.File;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,13 +46,17 @@ public final class StratestParser {
         // TODO : put verification to true
         XMLParser parser = new XMLParser(false);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.EBM));
+        rootNode.assertConformsTo(new XMLNodeSchema("model", new XMLAttributesSchema("name")));
         DefsRegister defsRegister = new DefsRegister();
         ABoolExpr invariant = new True();
-        rootNode.assertConformsTo(new XMLNodeSchema("model", new XMLAttributesSchema("name")));
+        ASubstitution initialisation = new Skip();
+        LinkedHashSet<Event> events = new LinkedHashSet<>();
         XMLNode constsDefsNode = rootNode.getFirstChildWithName("consts-defs");
         XMLNode varsDefsNode = rootNode.getFirstChildWithName("vars-defs");
         XMLNode funsDefsNode = rootNode.getFirstChildWithName("funs-defs");
         XMLNode invariantNode = rootNode.getFirstChildWithName("invariant");
+        XMLNode initialisationNode = rootNode.getFirstChildWithName("initialisation");
+        XMLNode eventsNode = rootNode.getFirstChildWithName("events");
         try {
             if (constsDefsNode != null) {
                 parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
@@ -59,6 +73,14 @@ public final class StratestParser {
             if (invariantNode != null) {
                 invariant = parseInvariant(invariantNode);
                 System.out.println("invariant: " + invariant);
+            }
+            if (initialisationNode != null) {
+                initialisation = parseInitialisation(initialisationNode);
+                System.out.println("initialisation: " + initialisation);
+            }
+            if (eventsNode != null) {
+                events = parseEvents(eventsNode);
+                events.forEach(System.out::println);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,14 +134,23 @@ public final class StratestParser {
                 return parseFun(node);
             case "enum-value":
                 return parseEnumValue(node);
+            case "plus":
+                return parsePlus(node);
+            case "minus":
+                return parseMinus(node);
+            case "times":
+                return parseTimes(node);
+            case "div":
+                return parseDiv(node);
+            case "mod":
+                return parseMod(node);
             default:
                 handleException(node, "The following node was found but an arithmetic expression was expected:\n" + node);
         }
         throw new Error();
     }
 
-    // TODO : Use precise return type
-    private AArithExpr parseInt(XMLNode node) {
+    private Int parseInt(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("int", new XMLAttributesSchema("value")));
         try {
             return new Int(Integer.parseInt(node.getAttributes().get("value")));
@@ -129,59 +160,206 @@ public final class StratestParser {
         throw new Error();
     }
 
-    private AArithExpr parseConst(XMLNode node) {
+    private Const parseConst(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("const", new XMLAttributesSchema("name")));
         return new Const(node.getAttributes().get("name"));
     }
 
+    // TODO: Use specific return type EnumValue
     // TODO: Handle enum values
     private AArithExpr parseEnumValue(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("enum-value", new XMLAttributesSchema("name")));
         return new Int(-42);
     }
 
-    private AArithExpr parseVar(XMLNode node) {
+    private Var parseVar(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("var", new XMLAttributesSchema("name")));
         return new Var(node.getAttributes().get("name"));
     }
 
-    private AArithExpr parseFun(XMLNode node) {
+    private Fun parseFun(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("fun", new XMLAttributesSchema("name")));
         return new Fun(node.getAttributes().get("name"), parseArithExpr(node.getChildren().get(0)));
     }
 
+    private Plus parsePlus(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("plus"));
+        return new Plus(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
+    }
+
+    private Minus parseMinus(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("minus"));
+        return new Minus(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
+    }
+
+    private Times parseTimes(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("times"));
+        return new Times(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
+    }
+
+    private Div parseDiv(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("div"));
+        return new Div(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
+    }
+
+    private Mod parseMod(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("mod"));
+        return new Mod(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+
     private ABoolExpr parseBoolExpr(XMLNode node) {
         switch (node.getName()) {
+            case "false":
+                return parseFalse(node);
+            case "true":
+                return parseTrue(node);
+            case "not":
+                return parseNot(node);
+            case "and":
+                return parseAnd(node);
+            case "or":
+                return parseOr(node);
             case "equals":
                 return parseEquals(node);
+            case "neq":
+                return parseNotEquals(node);
+            case "lt":
+                return parseLT(node);
+            case "leq":
+                return parseLEQ(node);
+            case "geq":
+                return parseGEQ(node);
+            case "gt":
+                return parseGT(node);
+            case "implies":
+                return parseImplies(node);
+            case "equiv":
+                return parseEquiv(node);
+            case "in-domain":
+                return parseInDomain(node);
+            case "forall":
+                return parseForAll(node);
+            case "exists":
+                return parseExists(node);
             default:
-                handleException(node, "The following node was found but an boolean expression was expected:\n" + node);
+                handleException(node, "The following node was found but a boolean expression was expected:\n" + node);
         }
         throw new Error();
     }
 
-    private ABoolExpr parseEquals(XMLNode node) {
+    private False parseFalse(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("false"));
+        return new False();
+    }
+
+    private True parseTrue(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("true"));
+        return new True();
+    }
+
+    private Not parseNot(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("not"));
+        return new Not(parseBoolExpr(node.getChildren().get(0)));
+    }
+
+    private And parseAnd(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("and"));
+        return new And(node.getChildren().stream().map(this::parseBoolExpr).toArray(ABoolExpr[]::new));
+    }
+
+    private Or parseOr(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("or"));
+        return new Or(node.getChildren().stream().map(this::parseBoolExpr).toArray(ABoolExpr[]::new));
+    }
+
+    private NotEquals parseNotEquals(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("neq"));
+        return new NotEquals(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private Equals parseEquals(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("equals"));
         return new Equals(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
     }
 
-    // TODO: Return Invariant instance
+    private LT parseLT(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("lt"));
+        return new LT(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private LEQ parseLEQ(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("leq"));
+        return new LEQ(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private GEQ parseGEQ(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("geq"));
+        return new GEQ(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private GT parseGT(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("gt"));
+        return new GT(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private Exists parseExists(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("exists"));
+        return new Exists(parseBoolExpr(node.getChildren().get(1)), parseVarsDefs(node.getChildren().get(0)).stream().map(tuple -> new VarInDomain(new Var(tuple.getLeft()), tuple.getRight())).toArray(VarInDomain[]::new));
+    }
+
+    private ForAll parseForAll(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("forall"));
+        return new ForAll(parseBoolExpr(node.getChildren().get(1)), parseVarsDefs(node.getChildren().get(0)).stream().map(tuple -> new VarInDomain(new Var(tuple.getLeft()), tuple.getRight())).toArray(VarInDomain[]::new));
+    }
+
+    private Implies parseImplies(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("implies"));
+        return new Implies(parseBoolExpr(node.getChildren().get(0)), parseBoolExpr(node.getChildren().get(1)));
+    }
+
+    private Equiv parseEquiv(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("equiv"));
+        return new Equiv(parseBoolExpr(node.getChildren().get(0)), parseBoolExpr(node.getChildren().get(1)));
+    }
+
+    private InDomain parseInDomain(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("in-domain"));
+        return new InDomain(parseArithExpr(node.getChildren().get(0)), parseSetExpr(node.getChildren().get(1)));
+    }
+
+    // TODO: Use specific return type Invariant and return an Invariant instance
     private ABoolExpr parseInvariant(XMLNode node) {
         return parseBoolExpr(node.getChildren().get(0));
     }
 
     private ASetExpr parseSetExpr(XMLNode node) {
         switch (node.getName()) {
+            case "integers":
+                return parseZ(node);
             case "set":
                 return parseFiniteSetExpr(node);
             case "range":
                 return parseFiniteSetExpr(node);
             case "enum":
                 return parseFiniteSetExpr(node);
+            case "named-set":
+                return parseFiniteSetExpr(node);
+            case "union":
+                return parseFiniteSetExpr(node);
+            case "intersection":
+                return parseFiniteSetExpr(node);
+            case "difference":
+                return parseFiniteSetExpr(node);
             default:
                 handleException(node, "The following node was found but a set expression was expected:\n" + node);
         }
         throw new Error();
+    }
+
+    private Z parseZ(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("integers"));
+        return new Z();
     }
 
     private AFiniteSetExpr parseFiniteSetExpr(XMLNode node) {
@@ -192,24 +370,143 @@ public final class StratestParser {
                 return parseRange(node);
             case "enum":
                 return parseEnum(node);
+            case "named-set":
+                return parseNamedSet(node);
+            case "intersection":
+                return parseIntersection(node);
+            case "union":
+                return parseUnion(node);
+            case "difference":
+                return parseDifference(node);
             default:
                 handleException(node, "The following node was found but a finite set expression was expected:\n" + node);
         }
         throw new Error();
     }
 
-    private AFiniteSetExpr parseSet(XMLNode node) {
-        throw new Error();
+    private Set parseSet(XMLNode node) {
+        return new Set(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
     }
 
-    // TODO: Handle enums sets
+    // TODO: Use specific Enum return type and handle enums sets
     private AFiniteSetExpr parseEnum(XMLNode node) {
         return null;
     }
 
-    private AFiniteSetExpr parseRange(XMLNode node) {
+    private Range parseRange(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("range"));
         return new Range(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    // TODO: Use specific NamedSet return type and handle named sets
+    private AFiniteSetExpr parseNamedSet(XMLNode node) {
+        return null;
+    }
+
+    private Intersection parseIntersection(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("intersection"));
+        return new Intersection(node.getChildren().stream().map(this::parseFiniteSetExpr).toArray(AFiniteSetExpr[]::new));
+    }
+
+    private Union parseUnion(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("union"));
+        return new Union(node.getChildren().stream().map(this::parseFiniteSetExpr).toArray(AFiniteSetExpr[]::new));
+    }
+
+    private Difference parseDifference(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("difference"));
+        return new Difference(node.getChildren().stream().map(this::parseFiniteSetExpr).toArray(AFiniteSetExpr[]::new));
+    }
+
+    private ASubstitution parseInitialisation(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("initialisation"));
+        return parseSubstitution(node.getChildren().get(0));
+    }
+
+    private ASubstitution parseSubstitution(XMLNode node) {
+        switch (node.getName()) {
+            case "skip":
+                return parseSkip(node);
+            case "assignments":
+                return parseAssignments(node);
+            case "var-assignment":
+                return parseAssignment(node);
+            case "fun-assignment":
+                return parseAssignment(node);
+            case "select":
+                return parseSelect(node);
+            case "if-then-else":
+                return parseIfThenElse(node);
+            case "choice":
+                return parseChoice(node);
+            case "any":
+                return parseAny(node);
+            default:
+                handleException(node, "The following node was found but a substitution was expected:\n" + node);
+        }
+        throw new Error();
+    }
+
+    private Skip parseSkip(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("skip"));
+        return new Skip();
+    }
+
+    private Assignments parseAssignments(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("assignments"));
+        return new Assignments(node.getChildren().stream().map(this::parseAssignment).toArray(AAssignment[]::new));
+    }
+
+    private AAssignment parseAssignment(XMLNode node) {
+        switch (node.getName()) {
+            case "var-assignment":
+                return parseVarAssignment(node);
+            case "fun-assignment":
+                return parseFunAssignment(node);
+            default:
+                handleException(node, "The following node was found but an assignment was expected:\n" + node);
+        }
+        throw new Error();
+    }
+
+    private VarAssignment parseVarAssignment(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("var-assignment"));
+        return new VarAssignment(parseVar(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private FunAssignment parseFunAssignment(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("fun-assignment"));
+        return new FunAssignment(parseFun(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private Select parseSelect(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("select"));
+        return new Select(parseBoolExpr(node.getChildren().get(0)), parseSubstitution(node.getChildren().get(1)));
+    }
+
+    private IfThenElse parseIfThenElse(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("if-then-else"));
+        return new IfThenElse(parseBoolExpr(node.getChildren().get(0)), parseSubstitution(node.getChildren().get(1)), parseSubstitution(node.getChildren().get(2)));
+    }
+
+    private Choice parseChoice(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("choice"));
+        return new Choice(node.getChildren().stream().map(this::parseSubstitution).toArray(ASubstitution[]::new));
+    }
+
+    private Any parseAny(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("any"));
+        return new Any(parseBoolExpr(node.getChildren().get(1)), parseSubstitution(node.getChildren().get(2)), parseVarsDefs(node.getChildren().get(0)).stream().map(tuple -> new VarInDomain(new Var(tuple.getLeft()), tuple.getRight())).toArray(VarInDomain[]::new));
+    }
+
+    private LinkedHashSet<Event> parseEvents(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("events"));
+        return node.getChildren().stream().map(this::parseEvent).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    private Event parseEvent(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("event", new XMLAttributesSchema("name")));
+        return new Event(node.getAttributes().get("name"), parseSubstitution(node.getChildren().get(0)));
     }
 
 }

@@ -53,6 +53,10 @@ public class Machine extends AObject {
         return name;
     }
 
+    public DefsRegister getDefsRegister() {
+        return defsRegister;
+    }
+
     public LinkedHashMap<String, AArithExpr> getConstsDefs() {
         return defsRegister.getConstsDefs();
     }

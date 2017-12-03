@@ -16,6 +16,7 @@ import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ASetExpr;
 import langs.maths.set.literals.Enum;
 import langs.maths.set.literals.*;
+import langs.maths.set.literals.Set;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -26,10 +27,9 @@ import parsers.xml.schemas.XMLNodeSchema;
 import utilities.Tuple;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static utilities.ResourcesManager.EXMLSchema;
 import static utilities.ResourcesManager.getXMLSchema;
@@ -91,6 +91,14 @@ public final class StratestParser {
                 e.printStackTrace();
             }
         }
+        invariant = new Invariant(new And(
+                Stream.of(
+                        defsRegister.getConstsDefs().entrySet().stream().map(entry -> new Equals(new Const(entry.getKey()), entry.getValue())).collect(Collectors.toList()),
+                        defsRegister.getVarsDefs().entrySet().stream().map(entry -> new VarInDomain(new Var(entry.getKey()), entry.getValue())).collect(Collectors.toList()),
+                        defsRegister.getFunsDefs().entrySet().stream().map(entry -> entry.getValue().getLeft().getElementsValues(defsRegister).stream().map(value -> new InDomain(new Fun(entry.getKey(), value), entry.getValue().getRight())).collect(Collectors.toList())).flatMap(Collection::stream).collect(Collectors.toList()),
+                        Collections.singletonList(invariant)
+                ).flatMap(Collection::stream).toArray(ABoolExpr[]::new)
+        ));
         return new Machine(rootNode.getAttributes().get("name"), defsRegister, invariant, initialisation, events);
     }
 

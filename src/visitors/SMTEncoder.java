@@ -58,7 +58,7 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public IntExpr visit(EnumValue enumValue) {
-        return null;
+        return new Int(enumValue.getValue()).accept(this);
     }
 
     @Override

@@ -65,32 +65,24 @@ public final class StratestParser {
         try {
             if (constsDefsNode != null) {
                 parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
-                System.out.println("constsDefs: " + defsRegister.getConstsDefs());
             }
             if (setsDefsNode != null) {
                 parseSetsDefs(setsDefsNode).forEach(setDef -> defsRegister.getNamedSetsDefs().put(setDef.getLeft(), setDef.getRight()));
-                System.out.println("setsDefs: " + defsRegister.getNamedSetsDefs());
             }
             if (varsDefsNode != null) {
                 parseVarsDefs(varsDefsNode).forEach(varDef -> defsRegister.getVarsDefs().put(varDef.getLeft(), varDef.getRight()));
-                System.out.println("varsDefs: " + defsRegister.getVarsDefs());
             }
             if (funsDefsNode != null) {
                 parseFunsDefs(funsDefsNode).forEach(funDef -> defsRegister.getFunsDefs().put(funDef.getLeft(), funDef.getRight()));
-                System.out.println("funsDefs: " + defsRegister.getFunsDefs());
             }
             if (invariantNode != null) {
                 invariant = parseInvariant(invariantNode);
-                System.out.println("invariant: " + invariant);
             }
             if (initialisationNode != null) {
                 initialisation = parseInitialisation(initialisationNode);
-                System.out.println("initialisation: " + initialisation);
             }
             if (eventsNode != null) {
                 events = parseEvents(eventsNode);
-                System.out.println("events:");
-                events.forEach(System.out::println);
             }
         } catch (Exception e) {
             if (!errors.isEmpty()) {
@@ -99,7 +91,7 @@ public final class StratestParser {
                 e.printStackTrace();
             }
         }
-        return new Machine(defsRegister, invariant, initialisation, events);
+        return new Machine(rootNode.getAttributes().get("name"), defsRegister, invariant, initialisation, events);
     }
 
     private void handleException(XMLNode node, String message) {

@@ -126,6 +126,7 @@ public class Main {
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
         Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
+        System.out.println(machine);
     }
 
 }

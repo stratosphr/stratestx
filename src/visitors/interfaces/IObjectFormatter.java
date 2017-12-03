@@ -1,6 +1,7 @@
 package visitors.interfaces;
 
 import langs.eventb.Event;
+import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
@@ -113,5 +114,7 @@ public interface IObjectFormatter {
     String visit(Any any);
 
     String visit(Event event);
+
+    String visit(Machine machine);
 
 }

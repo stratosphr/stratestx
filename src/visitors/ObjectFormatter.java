@@ -1,6 +1,7 @@
 package visitors;
 
 import langs.eventb.Event;
+import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
@@ -256,6 +257,19 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(Event event) {
         return line(event.getName() + " = ") + indentRight() + indentLine(event.getSubstitution().accept(this)) + indentLeft();
+    }
+
+    @Override
+    public String visit(Machine machine) {
+        String formatted = line("MACHINE " + machine.getName());
+        formatted += machine.getConstsDefs().isEmpty() ? "" : line() + indentRight() + indentLine("CONSTS") + indentRight() + machine.getConstsDefs().entrySet().stream().map(entry -> indentLine(new Const(entry.getKey()).accept(this) + " = " + entry.getValue().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
+        formatted += machine.getNamedSetsDefs().isEmpty() ? "" : line() + indentRight() + indentLine("SETS") + indentRight() + machine.getNamedSetsDefs().entrySet().stream().map(entry -> indentLine(entry.getKey() + " = " + entry.getValue().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
+        formatted += machine.getVarsDefs().isEmpty() ? "" : line() + indentRight() + indentLine("VARS") + indentRight() + machine.getVarsDefs().entrySet().stream().map(entry -> indentLine(new Var(entry.getKey()).accept(this) + " : " + entry.getValue().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
+        formatted += machine.getFunsDefs().isEmpty() ? "" : line() + indentRight() + indentLine("FUNS") + indentRight() + machine.getFunsDefs().entrySet().stream().map(entry -> indentLine(entry.getKey() + " : " + entry.getValue().getLeft().accept(this) + " -> " + entry.getValue().getRight().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
+        formatted += line() + indentRight() + indentLine("INVARIANT") + indentRight() + indentLine(machine.getInvariant().accept(this)) + indentLeft() + indentLeft();
+        formatted += line() + indentRight() + indentLine("INITIALISATION") + indentRight() + indentLine(machine.getInitialisation().accept(this)) + indentLeft() + indentLeft();
+        formatted += line() + indentRight() + indentLine("EVENTS") + indentRight() + machine.getEvents().entrySet().stream().map(entry -> indentLine(entry.getValue().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
+        return formatted;
     }
 
 }

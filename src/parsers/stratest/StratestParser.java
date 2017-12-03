@@ -4,20 +4,17 @@ import langs.eventb.Event;
 import langs.eventb.substitutions.*;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ASetExpr;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import langs.maths.set.literals.Z;
+import langs.maths.set.literals.Enum;
+import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -26,8 +23,10 @@ import parsers.xml.XMLParser;
 import parsers.xml.schemas.XMLAttributesSchema;
 import parsers.xml.schemas.XMLNodeSchema;
 import utilities.Tuple;
+import visitors.Primer;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,17 +40,23 @@ import static utilities.ResourcesManager.getXMLSchema;
  */
 public final class StratestParser {
 
-    // TODO : Remove errors thrown and return null instead (The exceptions should all be handled safely)
+    private DefsRegister defsRegister;
+    private List<String> errors;
+
+    public StratestParser() {
+        this.defsRegister = new DefsRegister();
+        this.errors = new ArrayList<>();
+    }
+
     public void parseModel(File file) {
-        // TODO : put verification to true
-        XMLParser parser = new XMLParser(false);
+        XMLParser parser = new XMLParser(true);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.EBM));
         rootNode.assertConformsTo(new XMLNodeSchema("model", new XMLAttributesSchema("name")));
-        DefsRegister defsRegister = new DefsRegister();
         ABoolExpr invariant = new True();
         ASubstitution initialisation = new Skip();
         LinkedHashSet<Event> events = new LinkedHashSet<>();
         XMLNode constsDefsNode = rootNode.getFirstChildWithName("consts-defs");
+        XMLNode setsDefsNode = rootNode.getFirstChildWithName("sets-defs");
         XMLNode varsDefsNode = rootNode.getFirstChildWithName("vars-defs");
         XMLNode funsDefsNode = rootNode.getFirstChildWithName("funs-defs");
         XMLNode invariantNode = rootNode.getFirstChildWithName("invariant");
@@ -61,6 +66,10 @@ public final class StratestParser {
             if (constsDefsNode != null) {
                 parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
                 System.out.println("constsDefs: " + defsRegister.getConstsDefs());
+            }
+            if (setsDefsNode != null) {
+                parseSetsDefs(setsDefsNode).forEach(setDef -> defsRegister.getNamedSetsDefs().put(setDef.getLeft(), setDef.getRight()));
+                System.out.println("setsDefs: " + defsRegister.getNamedSetsDefs());
             }
             if (varsDefsNode != null) {
                 parseVarsDefs(varsDefsNode).forEach(varDef -> defsRegister.getVarsDefs().put(varDef.getLeft(), varDef.getRight()));
@@ -73,6 +82,7 @@ public final class StratestParser {
             if (invariantNode != null) {
                 invariant = parseInvariant(invariantNode);
                 System.out.println("invariant: " + invariant);
+                System.out.println("invariant: " + invariant.accept(new Primer(1)));
             }
             if (initialisationNode != null) {
                 initialisation = parseInitialisation(initialisationNode);
@@ -84,13 +94,21 @@ public final class StratestParser {
                 events.forEach(System.out::println);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new Error();
+            if (!errors.isEmpty()) {
+                throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\" as EBM model:\n" + errors.stream().collect(Collectors.joining("\n")));
+            } else {
+                e.printStackTrace();
+            }
         }
     }
 
     private void handleException(XMLNode node, String message) {
-        throw new Error("Error l." + node.getLine() + ", c." + node.getColumn() + ": " + message);
+        String fullMessage = "l." + node.getLine() + ", c." + node.getColumn() + ": " + message;
+        errors.add(fullMessage);
+        try {
+            throw new Exception(fullMessage);
+        } catch (Exception ignored) {
+        }
     }
 
     private List<Tuple<String, AArithExpr>> parseConstsDefs(XMLNode node) {
@@ -101,6 +119,16 @@ public final class StratestParser {
     private Tuple<String, AArithExpr> parseConstDef(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("const-def", new XMLAttributesSchema("name")));
         return new Tuple<>(node.getAttributes().get("name"), parseArithExpr(node.getChildren().get(0)));
+    }
+
+    private List<Tuple<String, AFiniteSetExpr>> parseSetsDefs(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("sets-defs"));
+        return node.getChildren().stream().map(this::parseSetDef).collect(Collectors.toList());
+    }
+
+    private Tuple<String, AFiniteSetExpr> parseSetDef(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("set-def", new XMLAttributesSchema("name")));
+        return new Tuple<>(node.getAttributes().get("name"), parseFiniteSetExpr(node.getChildren().get(0)));
     }
 
     private List<Tuple<String, ASetExpr>> parseVarsDefs(XMLNode node) {
@@ -148,7 +176,7 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but an arithmetic expression was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private Int parseInt(XMLNode node) {
@@ -158,7 +186,7 @@ public final class StratestParser {
         } catch (NumberFormatException ignored) {
             handleException(node, "Unable to parse value \"" + node.getAttributes().get("value") + "\" to integer.");
         }
-        throw new Error();
+        return null;
     }
 
     private Const parseConst(XMLNode node) {
@@ -166,11 +194,9 @@ public final class StratestParser {
         return new Const(node.getAttributes().get("name"));
     }
 
-    // TODO: Use specific return type EnumValue
-    // TODO: Handle enum values
-    private AArithExpr parseEnumValue(XMLNode node) {
+    private EnumValue parseEnumValue(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("enum-value", new XMLAttributesSchema("name")));
-        return new Int(-42);
+        return new EnumValue(node.getAttributes().get("name"));
     }
 
     private Var parseVar(XMLNode node) {
@@ -246,7 +272,7 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but a boolean expression was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private False parseFalse(XMLNode node) {
@@ -329,9 +355,8 @@ public final class StratestParser {
         return new InDomain(parseArithExpr(node.getChildren().get(0)), parseSetExpr(node.getChildren().get(1)));
     }
 
-    // TODO: Use specific return type Invariant and return an Invariant instance
-    private ABoolExpr parseInvariant(XMLNode node) {
-        return parseBoolExpr(node.getChildren().get(0));
+    private Invariant parseInvariant(XMLNode node) {
+        return new Invariant(parseBoolExpr(node.getChildren().get(0)));
     }
 
     private ASetExpr parseSetExpr(XMLNode node) {
@@ -355,7 +380,7 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but a set expression was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private Z parseZ(XMLNode node) {
@@ -382,16 +407,15 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but a finite set expression was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private Set parseSet(XMLNode node) {
         return new Set(node.getChildren().stream().map(this::parseArithExpr).toArray(AArithExpr[]::new));
     }
 
-    // TODO: Use specific Enum return type and handle enums sets
-    private AFiniteSetExpr parseEnum(XMLNode node) {
-        return null;
+    private Enum parseEnum(XMLNode node) {
+        return new Enum(node.getChildren().stream().map(this::parseEnumValue).toArray(EnumValue[]::new));
     }
 
     private Range parseRange(XMLNode node) {
@@ -399,9 +423,12 @@ public final class StratestParser {
         return new Range(parseArithExpr(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
     }
 
-    // TODO: Use specific NamedSet return type and handle named sets
-    private AFiniteSetExpr parseNamedSet(XMLNode node) {
-        return null;
+    private NamedSet parseNamedSet(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("named-set", new XMLAttributesSchema("name")));
+        if (!defsRegister.getNamedSetsDefs().containsKey(node.getAttributes().get("name"))) {
+            handleException(node, "Named set \"" + node.getAttributes().get("name") + "\" was not defined in this scope.");
+        }
+        return new NamedSet(node.getAttributes().get("name"), defsRegister.getNamedSetsDefs().get(node.getAttributes().get("name")));
     }
 
     private Intersection parseIntersection(XMLNode node) {
@@ -445,7 +472,7 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but a substitution was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private Skip parseSkip(XMLNode node) {
@@ -467,7 +494,7 @@ public final class StratestParser {
             default:
                 handleException(node, "The following node was found but an assignment was expected:\n" + node);
         }
-        throw new Error();
+        return null;
     }
 
     private VarAssignment parseVarAssignment(XMLNode node) {

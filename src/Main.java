@@ -124,7 +124,7 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        stratestParser.parseModel(getModel(ResourcesManager.EModel.PH));
+        stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
     }
 
 }

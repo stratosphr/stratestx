@@ -3,11 +3,11 @@ package visitors.interfaces;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import langs.maths.set.literals.Z;
+import langs.maths.set.literals.Enum;
+import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -21,6 +21,8 @@ public interface IPrimer {
     Int visit(Int anInt);
 
     Const visit(Const aConst);
+
+    EnumValue visit(EnumValue enumValue);
 
     Var visit(Var var);
 
@@ -43,6 +45,8 @@ public interface IPrimer {
     False visit(False aFalse);
 
     True visit(True aTrue);
+
+    Invariant visit(Invariant invariant);
 
     Not visit(Not not);
 
@@ -79,6 +83,10 @@ public interface IPrimer {
     Set visit(Set set);
 
     Range visit(Range range);
+
+    Enum visit(Enum anEnum);
+
+    NamedSet visit(NamedSet namedSet);
 
     Intersection visit(Intersection intersection);
 

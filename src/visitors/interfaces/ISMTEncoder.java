@@ -5,6 +5,7 @@ import com.microsoft.z3.IntExpr;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 
@@ -17,6 +18,8 @@ public interface ISMTEncoder {
     IntExpr visit(Int anInt);
 
     IntExpr visit(Const aConst);
+
+    IntExpr visit(EnumValue enumValue);
 
     IntExpr visit(Var var);
 
@@ -39,6 +42,8 @@ public interface ISMTEncoder {
     BoolExpr visit(False aFalse);
 
     BoolExpr visit(True aTrue);
+
+    BoolExpr visit(Invariant invariant);
 
     BoolExpr visit(Not not);
 

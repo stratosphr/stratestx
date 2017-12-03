@@ -69,24 +69,6 @@ public final class XMLNode implements IXMLFormattable {
         schema.validate(this);
     }
 
-    /*public final void assertConformsTo(String expectedName, int minNbChildren, int maxNbChildren, String... acceptedChildrenNames) {
-        if (!name.equals(expectedName)) {
-            throw new Error("Error l." + line + ",c." + column + ": The node name \"" + name + "\" does not conform to the expected one (\"" + expectedName + "\").");
-        }
-        if (children.size() < minNbChildren) {
-            throw new Error("Error l." + line + ",c." + column + ": The number of children for node \"" + name + "\" (" + children.size() + ") is less than the expected minimum number of children (\"" + minNbChildren + "\")");
-        }
-        if (maxNbChildren > 0 && children.size() > maxNbChildren) {
-            throw new Error("Error l." + line + ",c." + column + ": The number of children  for node \"" + name + "\" (" + children.size() + ") exceeds the expected maximum number of children (\"" + minNbChildren + "\")");
-        }
-        List<String> acceptedChildrenNamesList = Arrays.asList(acceptedChildrenNames);
-        for (XMLNode child : children) {
-            if (!acceptedChildrenNamesList.contains(child.getName())) {
-                throw new Error("Error l." + line + ",c." + column + ": a child node of type \"" + child.getName() + "\" has been found in a \"" + name + "\" node. The accepted children names are the following: " + acceptedChildrenNamesList.stream().map(childName -> "\"" + childName + "\"").collect(Collectors.joining(", ")) + ".");
-            }
-        }
-    }*/
-
     public XMLNode getFirstChildWithName(String name) {
         return children.stream().filter(node -> node.getName().equals(name)).findFirst().orElse(null);
     }

@@ -5,11 +5,11 @@ import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import langs.maths.set.literals.Z;
+import langs.maths.set.literals.Enum;
+import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -31,6 +31,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(Const aConst) {
         return aConst.getName();
+    }
+
+    @Override
+    public String visit(EnumValue enumValue) {
+        return enumValue.getName() + "[" + enumValue.getValue() + "]";
     }
 
     @Override
@@ -86,6 +91,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(True aTrue) {
         return "true";
+    }
+
+    @Override
+    public String visit(Invariant invariant) {
+        return invariant.getExpr().accept(this);
     }
 
     @Override
@@ -170,12 +180,22 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(Set set) {
-        return "{" + set.getElements().stream().map(aArithExpr -> aArithExpr.accept(this)).collect(Collectors.joining(", ")) + "}";
+        return "{" + set.getElements().stream().map(element -> element.accept(this)).collect(Collectors.joining(", ")) + "}";
     }
 
     @Override
     public String visit(Range range) {
         return "[" + range.getLowerBound().accept(this) + ".." + range.getUpperBound().accept(this) + "]";
+    }
+
+    @Override
+    public String visit(Enum anEnum) {
+        return "{" + anEnum.getEnumValues().stream().map(enumValue -> enumValue.accept(this)).collect(Collectors.joining(", ")) + "}";
+    }
+
+    @Override
+    public String visit(NamedSet namedSet) {
+        return namedSet.getName();
     }
 
     @Override

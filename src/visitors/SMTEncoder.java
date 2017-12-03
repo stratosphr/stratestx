@@ -6,6 +6,7 @@ import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Z;
@@ -53,6 +54,11 @@ public final class SMTEncoder implements ISMTEncoder {
             solver.add(new Equals(aConst, defsRegister.getConstsDefs().get(aConst.getName())).accept(this));
         }
         return constsDecls.get(aConst.getName());
+    }
+
+    @Override
+    public IntExpr visit(EnumValue enumValue) {
+        return null;
     }
 
     @Override
@@ -146,6 +152,11 @@ public final class SMTEncoder implements ISMTEncoder {
     @Override
     public BoolExpr visit(True aTrue) {
         return context.mkTrue();
+    }
+
+    @Override
+    public BoolExpr visit(Invariant invariant) {
+        return invariant.getExpr().accept(this);
     }
 
     @Override

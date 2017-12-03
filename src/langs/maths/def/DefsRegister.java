@@ -14,23 +14,30 @@ import java.util.LinkedHashMap;
 public final class DefsRegister {
 
     private final LinkedHashMap<String, AArithExpr> constsDefs;
+    private final LinkedHashMap<String, AFiniteSetExpr> namedSetsDefs;
     private final LinkedHashMap<String, ASetExpr> varsDefs;
     private final LinkedHashMap<String, Tuple<AFiniteSetExpr, ASetExpr>> funsDefs;
 
     public DefsRegister(DefsRegister defsRegister) {
         this.constsDefs = new LinkedHashMap<>(defsRegister.getConstsDefs());
+        this.namedSetsDefs = new LinkedHashMap<>(defsRegister.getNamedSetsDefs());
         this.varsDefs = new LinkedHashMap<>(defsRegister.getVarsDefs());
         this.funsDefs = new LinkedHashMap<>(defsRegister.getFunsDefs());
     }
 
     public DefsRegister() {
         this.constsDefs = new LinkedHashMap<>();
+        this.namedSetsDefs = new LinkedHashMap<>();
         this.varsDefs = new LinkedHashMap<>();
         this.funsDefs = new LinkedHashMap<>();
     }
 
     public LinkedHashMap<String, AArithExpr> getConstsDefs() {
         return constsDefs;
+    }
+
+    public LinkedHashMap<String, AFiniteSetExpr> getNamedSetsDefs() {
+        return namedSetsDefs;
     }
 
     public LinkedHashMap<String, ASetExpr> getVarsDefs() {

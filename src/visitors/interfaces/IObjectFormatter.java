@@ -5,11 +5,11 @@ import langs.eventb.substitutions.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import langs.maths.set.literals.Z;
+import langs.maths.set.literals.Enum;
+import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -23,6 +23,8 @@ public interface IObjectFormatter {
     String visit(Int anInt);
 
     String visit(Const aConst);
+
+    String visit(EnumValue enumValue);
 
     String visit(Var var);
 
@@ -45,6 +47,8 @@ public interface IObjectFormatter {
     String visit(False aFalse);
 
     String visit(True aTrue);
+
+    String visit(Invariant invariant);
 
     String visit(Not not);
 
@@ -81,6 +85,10 @@ public interface IObjectFormatter {
     String visit(Set set);
 
     String visit(Range range);
+
+    String visit(Enum anEnum);
+
+    String visit(NamedSet namedSet);
 
     String visit(Intersection intersection);
 

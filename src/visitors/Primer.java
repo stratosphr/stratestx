@@ -5,12 +5,12 @@ import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.AFiniteSetExpr;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import langs.maths.set.literals.Z;
+import langs.maths.set.literals.Enum;
+import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
@@ -28,10 +28,12 @@ public final class Primer implements IPrimer {
     private final static String suffix = "_";
     private int primeLevel;
     private LinkedHashSet<Var> quantifiedVars;
+    private boolean isVisitingInvariant;
 
     public Primer(int primeLevel) {
         this.primeLevel = primeLevel;
         this.quantifiedVars = new LinkedHashSet<>();
+        this.isVisitingInvariant = false;
     }
 
     private String prime(String name) {
@@ -46,6 +48,11 @@ public final class Primer implements IPrimer {
     @Override
     public Const visit(Const aConst) {
         return new Const(aConst.getName());
+    }
+
+    @Override
+    public EnumValue visit(EnumValue enumValue) {
+        return new EnumValue(enumValue.getName());
     }
 
     @Override
@@ -64,7 +71,11 @@ public final class Primer implements IPrimer {
 
     @Override
     public Fun visit(Fun fun) {
-        return new Fun(prime(fun.getName()), fun.getParameter());
+        if (isVisitingInvariant) {
+            return new Fun(prime(fun.getName()), fun.getParameter().accept(this));
+        } else {
+            return new Fun(prime(fun.getName()), fun.getParameter());
+        }
     }
 
     @Override
@@ -105,6 +116,14 @@ public final class Primer implements IPrimer {
     @Override
     public True visit(True aTrue) {
         return new True();
+    }
+
+    @Override
+    public Invariant visit(Invariant invariant) {
+        isVisitingInvariant = true;
+        Invariant primed = new Invariant(invariant.getExpr().accept(this));
+        isVisitingInvariant = false;
+        return primed;
     }
 
     @Override
@@ -209,6 +228,16 @@ public final class Primer implements IPrimer {
     @Override
     public Range visit(Range range) {
         return new Range(range.getLowerBound().accept(this), range.getUpperBound().accept(this));
+    }
+
+    @Override
+    public Enum visit(Enum anEnum) {
+        return new Enum(anEnum.getEnumValues().stream().map(enumValue -> enumValue.accept(this)).toArray(EnumValue[]::new));
+    }
+
+    @Override
+    public NamedSet visit(NamedSet namedSet) {
+        return new NamedSet(namedSet.getName(), namedSet.getSet().accept(this));
     }
 
     @Override

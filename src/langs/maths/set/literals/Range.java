@@ -55,19 +55,6 @@ public final class Range extends AFiniteSetExpr {
         return Stream.of(lowerBound.getFuns(), upperBound.getFuns()).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    public AArithExpr getLowerBound() {
-        return lowerBound;
-    }
-
-    public AArithExpr getUpperBound() {
-        return upperBound;
-    }
-
-    @Override
-    public ABoolExpr getConstraint(AArithExpr expr) {
-        return new And(new GEQ(expr, lowerBound), new LEQ(expr, upperBound));
-    }
-
     @Override
     protected LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister) {
         DefsRegister tmpDefsRegister = new DefsRegister(defsRegister);
@@ -85,8 +72,21 @@ public final class Range extends AFiniteSetExpr {
             AValue upperBoundValue = result.getModel(boundsVars).get(upperBoundVar);
             return Maths.range(lowerBoundValue.getValue(), upperBoundValue.getValue()).stream().map(Int::new).collect(Collectors.toCollection(LinkedHashSet::new));
         } else {
-            throw new Error("Error: Unable to compute values of elements in set \"" + this + "\".");
+            throw new Error("Error: Unable to compute values of elements in range \"" + this + "\".");
         }
+    }
+
+    @Override
+    public ABoolExpr getConstraint(AArithExpr expr) {
+        return new And(new GEQ(expr, lowerBound), new LEQ(expr, upperBound));
+    }
+
+    public AArithExpr getLowerBound() {
+        return lowerBound;
+    }
+
+    public AArithExpr getUpperBound() {
+        return upperBound;
     }
 
     @Override

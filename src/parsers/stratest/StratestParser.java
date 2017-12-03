@@ -1,6 +1,7 @@
 package parsers.stratest;
 
 import langs.eventb.Event;
+import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
@@ -23,7 +24,6 @@ import parsers.xml.XMLParser;
 import parsers.xml.schemas.XMLAttributesSchema;
 import parsers.xml.schemas.XMLNodeSchema;
 import utilities.Tuple;
-import visitors.Primer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,11 +48,11 @@ public final class StratestParser {
         this.errors = new ArrayList<>();
     }
 
-    public void parseModel(File file) {
+    public Machine parseModel(File file) {
         XMLParser parser = new XMLParser(true);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.EBM));
         rootNode.assertConformsTo(new XMLNodeSchema("model", new XMLAttributesSchema("name")));
-        ABoolExpr invariant = new True();
+        Invariant invariant = new Invariant(new True());
         ASubstitution initialisation = new Skip();
         LinkedHashSet<Event> events = new LinkedHashSet<>();
         XMLNode constsDefsNode = rootNode.getFirstChildWithName("consts-defs");
@@ -82,7 +82,6 @@ public final class StratestParser {
             if (invariantNode != null) {
                 invariant = parseInvariant(invariantNode);
                 System.out.println("invariant: " + invariant);
-                System.out.println("invariant: " + invariant.accept(new Primer(1)));
             }
             if (initialisationNode != null) {
                 initialisation = parseInitialisation(initialisationNode);
@@ -100,6 +99,7 @@ public final class StratestParser {
                 e.printStackTrace();
             }
         }
+        return new Machine(defsRegister, invariant, initialisation, events);
     }
 
     private void handleException(XMLNode node, String message) {

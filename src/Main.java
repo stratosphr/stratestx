@@ -1,5 +1,6 @@
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Solver;
+import langs.eventb.Machine;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
@@ -124,7 +125,7 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
     }
 
 }

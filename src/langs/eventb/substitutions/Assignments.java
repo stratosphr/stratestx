@@ -1,8 +1,12 @@
 package langs.eventb.substitutions;
 
+import langs.maths.generic.arith.AAssignable;
+import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -24,6 +28,11 @@ public final class Assignments extends ASubstitution {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
+        return new And(assignments.stream().filter(assignment -> assignables.contains(assignment.getAssignable())).map(assignment -> assignment.getPrdInAssignments(assignables)).toArray(ABoolExpr[]::new));
     }
 
     @Override

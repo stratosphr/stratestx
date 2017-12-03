@@ -2,6 +2,11 @@ package langs.eventb.substitutions;
 
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.AAssignable;
+import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.Equals;
+import visitors.Primer;
+
+import java.util.LinkedHashSet;
 
 /**
  * Created by gvoiron on 02/12/17.
@@ -17,11 +22,16 @@ public abstract class AAssignment<Assignable extends AAssignable> extends ASubst
         this.value = value;
     }
 
-    public Assignable getAssignable() {
+    // TODO: The assignable should have the assignable prime level PLUS 1
+    final ABoolExpr getPrdInAssignments(LinkedHashSet<AAssignable> assignables) {
+        return new Equals(getAssignable().accept(new Primer(1)), getValue());
+    }
+
+    public final Assignable getAssignable() {
         return assignable;
     }
 
-    public AArithExpr getValue() {
+    public final AArithExpr getValue() {
         return value;
     }
 

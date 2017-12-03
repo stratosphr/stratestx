@@ -1,8 +1,11 @@
 package langs.eventb.substitutions;
 
+import langs.maths.generic.arith.AAssignable;
+import langs.maths.generic.bool.ABoolExpr;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -24,6 +27,11 @@ public final class Choice extends ASubstitution {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
+    }
+
+    @Override
+    public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
+        return null;
     }
 
     @Override

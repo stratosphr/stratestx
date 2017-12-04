@@ -36,7 +36,7 @@ public class Machine extends AObject {
         this.defsRegister = defsRegister;
         this.invariant = invariant;
         this.initialisation = initialisation;
-        this.events = new LinkedHashMap<>(events.stream().collect(Collectors.toMap(Event::getName, Function.identity())));
+        this.events = events.stream().collect(Collectors.toMap(Event::getName, Function.identity(), (event1, event2) -> event1, LinkedHashMap::new));
         this.assignables = new LinkedHashSet<>();
         defsRegister.getVarsDefs().keySet().forEach(varName -> assignables.add(new Var(varName)));
         defsRegister.getFunsDefs().forEach((funName, tuple) -> tuple.getLeft().getElementsValues(defsRegister).forEach(value -> {

@@ -665,7 +665,7 @@
                             </var-assignment>
                             <var-assignment>
                                 <var name="currentFile"/>
-                                <var name="nofiles"/>
+                                <enum-value name="nofiles"/>
                             </var-assignment>
                         </assignments>
                         <var-assignment>
@@ -905,7 +905,7 @@
                         </and>
                         <var-assignment>
                             <var name="sw"/>
-                            <var name="sw9808"/>
+                            <enum-value name="sw9808"/>
                         </var-assignment>
                         <if-then-else>
                             <equals>

@@ -19,14 +19,10 @@ import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
 import parsers.stratest.StratestParser;
 import solvers.z3.Z3;
-import solvers.z3.Z3Result;
 import utilities.ResourcesManager;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
-
-import java.util.LinkedHashSet;
-import java.util.stream.Collectors;
 
 import static utilities.ResourcesManager.getModel;
 
@@ -130,25 +126,16 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
-        System.out.println(machine.getInitialisation().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("Tic").getSubstitution().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("Commute").getSubstitution().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("Fail").getSubstitution().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("Repair").getSubstitution().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("Skip").getSubstitution().getPrd(machine.getAssignables()));
-        System.out.println(machine.getEvents().get("IfThenElse").getSubstitution().getPrd(machine.getAssignables()));
-        Z3Result result = Z3.checkSAT(new And(
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.CA));
+        /*System.out.println(machine.getInitialisation().getPrd(machine.getAssignables()));
+        System.out.println();
+        machine.getEvents().forEach((key, value) -> System.out.println(key + "\n" + value.getSubstitution().getPrd(machine.getAssignables()) + "\n"));*/
+        System.out.println(machine);
+        System.out.println(Z3.checkSAT(new And(
                 machine.getInvariant(),
                 machine.getInvariant().accept(new Primer(1)),
-                machine.getInitialisation().getPrd(machine.getAssignables())
-        ), machine.getDefsRegister());
-        if (result.isSAT()) {
-            System.out.println(result.getModel(machine.getAssignables()));
-            System.out.println(result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
-        } else {
-            System.out.println("UNSAT or UNKNOWN");
-        }
+                machine.getEvents().get("Increment_Chronometer").getSubstitution().getPrd(machine.getAssignables())
+        ), machine.getDefsRegister()).isSAT());
     }
 
 }

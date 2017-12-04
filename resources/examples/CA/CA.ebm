@@ -396,6 +396,7 @@
             </select>
         </event>
 
+        <!-- INVARIANT DISABLES THIS EVENT -->
         <event name="Be_Stop">
             <select>
                 <and>

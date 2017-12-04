@@ -188,22 +188,13 @@
                         <var name="AskCoffee"/>
                         <int value="0"/>
                     </equals>
-                    <or>
-                        <gt>
-                            <const name="MaxBal"/>
-                            <plus>
-                                <var name="Balance"/>
-                                <int value="50"/>
-                            </plus>
-                        </gt>
-                        <equals>
-                            <const name="MaxBal"/>
-                            <plus>
-                                <var name="Balance"/>
-                                <int value="50"/>
-                            </plus>
-                        </equals>
-                    </or>
+                    <geq>
+                        <const name="MaxBal"/>
+                        <plus>
+                            <var name="Balance"/>
+                            <int value="50"/>
+                        </plus>
+                    </geq>
                 </and>
                 <var-assignment>
                     <var name="Balance"/>
@@ -230,22 +221,13 @@
                         <var name="AskCoffee"/>
                         <int value="0"/>
                     </equals>
-                    <or>
-                        <gt>
-                            <const name="MaxBal"/>
-                            <plus>
-                                <var name="Balance"/>
-                                <int value="100"/>
-                            </plus>
-                        </gt>
-                        <equals>
-                            <const name="MaxBal"/>
-                            <plus>
-                                <var name="Balance"/>
-                                <int value="100"/>
-                            </plus>
-                        </equals>
-                    </or>
+                    <geq>
+                        <const name="MaxBal"/>
+                        <plus>
+                            <var name="Balance"/>
+                            <int value="100"/>
+                        </plus>
+                    </geq>
                 </and>
                 <var-assignment>
                     <var name="Balance"/>
@@ -268,16 +250,10 @@
                         <var name="CoffeeLeft"/>
                         <int value="0"/>
                     </gt>
-                    <or>
-                        <gt>
-                            <const name="MaxPot"/>
-                            <var name="Pot"/>
-                        </gt>
-                        <equals>
-                            <const name="MaxPot"/>
-                            <var name="Pot"/>
-                        </equals>
-                    </or>
+                    <geq>
+                        <const name="MaxPot"/>
+                        <var name="Pot"/>
+                    </geq>
                 </and>
                 <assignments>
                     <var-assignment>
@@ -353,22 +329,13 @@
                         <var name="Status"/>
                         <enum-value name="off"/>
                     </equals>
-                    <or>
-                        <gt>
-                            <var name="Pot"/>
-                            <minus>
-                                <const name="MaxPot"/>
-                                <int value="50"/>
-                            </minus>
-                        </gt>
-                        <equals>
-                            <var name="Pot"/>
-                            <minus>
-                                <const name="MaxPot"/>
-                                <int value="50"/>
-                            </minus>
-                        </equals>
-                    </or>
+                    <geq>
+                        <var name="Pot"/>
+                        <minus>
+                            <const name="MaxPot"/>
+                            <int value="50"/>
+                        </minus>
+                    </geq>
                 </and>
                 <var-assignment>
                     <var name="Pot"/>
@@ -384,16 +351,10 @@
                         <var name="Status"/>
                         <enum-value name="on"/>
                     </equals>
-                    <or>
-                        <gt>
-                            <var name="Balance"/>
-                            <int value="50"/>
-                        </gt>
-                        <equals>
-                            <var name="Balance"/>
-                            <int value="50"/>
-                        </equals>
-                    </or>
+                    <geq>
+                        <var name="Balance"/>
+                        <int value="50"/>
+                    </geq>
                     <equals>
                         <var name="AskCoffee"/>
                         <int value="0"/>
@@ -447,22 +408,13 @@
                         </range>
                     </var-def>
                 </vars-defs>
-                <or>
-                    <gt>
-                        <const name="MaxCoffee"/>
-                        <plus>
-                            <var name="CoffeeLeft"/>
-                            <var name="x"/>
-                        </plus>
-                    </gt>
-                    <equals>
-                        <const name="MaxCoffee"/>
-                        <plus>
-                            <var name="CoffeeLeft"/>
-                            <var name="x"/>
-                        </plus>
-                    </equals>
-                </or>
+                <geq>
+                    <const name="MaxCoffee"/>
+                    <plus>
+                        <var name="CoffeeLeft"/>
+                        <var name="x"/>
+                    </plus>
+                </geq>
                 <select>
                     <and>
                         <equals>
@@ -492,16 +444,10 @@
                         <var name="Status"/>
                         <enum-value name="on"/>
                     </equals>
-                    <or>
-                        <gt>
-                            <var name="Balance"/>
-                            <int value="50"/>
-                        </gt>
-                        <equals>
-                            <var name="Balance"/>
-                            <int value="50"/>
-                        </equals>
-                    </or>
+                    <geq>
+                        <var name="Balance"/>
+                        <int value="50"/>
+                    </geq>
                     <equals>
                         <var name="AskCoffee"/>
                         <int value="1"/>

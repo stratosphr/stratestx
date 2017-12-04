@@ -2,6 +2,7 @@ package langs.eventb.substitutions;
 
 import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.Or;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.Arrays;
@@ -31,7 +32,7 @@ public final class Choice extends ASubstitution {
 
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
-        return null;
+        return new Or(substitutions.stream().map(substitution -> substitution.getPrd(assignables)).toArray(ABoolExpr[]::new));
     }
 
     @Override

@@ -2,6 +2,9 @@ package langs.eventb.substitutions;
 
 import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
+import langs.maths.generic.bool.operators.Implies;
+import langs.maths.generic.bool.operators.Not;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.LinkedHashSet;
@@ -41,7 +44,10 @@ public final class IfThenElse extends ASubstitution {
 
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
-        return null;
+        return new And(
+                new Implies(condition, thenPart.getPrd(assignables)),
+                new Implies(new Not(condition), elsePart.getPrd(assignables))
+        );
     }
 
     @Override

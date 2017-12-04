@@ -132,6 +132,12 @@ public class Main {
         StratestParser stratestParser = new StratestParser();
         Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
         System.out.println(machine.getInitialisation().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("Tic").getSubstitution().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("Commute").getSubstitution().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("Fail").getSubstitution().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("Repair").getSubstitution().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("Skip").getSubstitution().getPrd(machine.getAssignables()));
+        System.out.println(machine.getEvents().get("IfThenElse").getSubstitution().getPrd(machine.getAssignables()));
         Z3Result result = Z3.checkSAT(new And(
                 machine.getInvariant(),
                 machine.getInvariant().accept(new Primer(1)),

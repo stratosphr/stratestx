@@ -2,6 +2,7 @@ package langs.eventb.substitutions;
 
 import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.LinkedHashSet;
@@ -35,7 +36,10 @@ public final class Select extends ASubstitution {
 
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
-        return null;
+        return new And(
+                condition,
+                substitution.getPrd(assignables)
+        );
     }
 
     @Override

@@ -321,13 +321,58 @@
                         <enum-value name="ko"/>
                     </equals>
                 </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="bat">
+                            <var name="nb"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </fun-assignment>
+                    <fun-assignment>
+                        <fun name="bat">
+                            <var name="sw"/>
+                        </fun>
+                        <enum-value name="ok"/>
+                    </fun-assignment>
+                </assignments>
+            </any>
+        </event>
+
+        <event name="Skip">
+            <skip/>
+        </event>
+
+        <event name="IfThenElse">
+            <if-then-else>
+                <and>
+                    <equals>
+                        <var name="sw"/>
+                        <int value="1"/>
+                    </equals>
+                    <equals>
+                        <var name="h"/>
+                        <enum-value name="tic"/>
+                    </equals>
+                </and>
+                <assignments>
+                    <fun-assignment>
+                        <fun name="bat">
+                            <int value="1"/>
+                        </fun>
+                        <enum-value name="ko"/>
+                    </fun-assignment>
+                    <var-assignment>
+                        <var name="sw"/>
+                        <int value="2"/>
+                    </var-assignment>
+                </assignments>
                 <fun-assignment>
                     <fun name="bat">
-                        <var name="nb"/>
+                        <int value="2"/>
                     </fun>
-                    <enum-value name="ok"/>
+                    <enum-value name="ko"/>
                 </fun-assignment>
-            </any>
+            </if-then-else>
         </event>
 
     </events>

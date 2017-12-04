@@ -25,7 +25,7 @@ public final class FunAssignment extends AAssignment<Fun> {
 
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
-        return null;
+        return new Assignments(this).getPrd(assignables);
     }
 
     @Override

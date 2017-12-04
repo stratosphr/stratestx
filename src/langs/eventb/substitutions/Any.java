@@ -2,6 +2,8 @@ package langs.eventb.substitutions;
 
 import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.operators.And;
+import langs.maths.generic.bool.operators.Exists;
 import langs.maths.generic.bool.operators.VarInDomain;
 import visitors.interfaces.IObjectFormatter;
 
@@ -44,7 +46,10 @@ public final class Any extends ASubstitution {
 
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
-        return null;
+        return new Exists(
+                new And(condition, substitution.getPrd(assignables)),
+                quantifiedVarsDefs.toArray(new VarInDomain[0])
+        );
     }
 
     @Override

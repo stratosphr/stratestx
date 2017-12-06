@@ -14,7 +14,7 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
     private final Map<Object, Object> parameters;
     private String comment;
 
-    public ADotObject() {
+    ADotObject() {
         this.parameters = new LinkedHashMap<>();
         this.comment = "";
     }

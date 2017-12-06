@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * Created by gvoiron on 03/12/17.
  * Time : 23:10
  */
-public class Machine extends AObject {
+public final class Machine extends AObject {
 
     private final String name;
     private final DefsRegister defsRegister;

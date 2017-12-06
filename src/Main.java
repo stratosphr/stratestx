@@ -3,6 +3,7 @@ import com.microsoft.z3.Solver;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.formal.graphs.ConcreteTransition;
+import langs.formal.graphs.FSM;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
@@ -27,6 +28,7 @@ import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
@@ -158,6 +160,14 @@ public class Main {
                 c_.accept(new Primer(1))
         ), machine.getDefsRegister());
         System.out.println(result.isSAT());
+        FSM<ConcreteState, ConcreteTransition> fsm = new FSM<>(
+                new LinkedHashSet<>(Arrays.asList(c)),
+                new LinkedHashSet<>(Arrays.asList(c, c_)),
+                new LinkedHashSet<>(Arrays.asList(
+                        new ConcreteTransition(c, machine.getEvents().get("Tic"), c_)
+                ))
+        );
+        System.out.println(fsm);
     }
 
 }

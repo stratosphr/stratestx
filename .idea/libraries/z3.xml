@@ -6,7 +6,6 @@
     <JAVADOC />
     <NATIVE>
       <root url="file://$PROJECT_DIR$/libs/z3" />
-      <root url="file://$PROJECT_DIR$/libs/z3" />
     </NATIVE>
     <SOURCES />
   </library>

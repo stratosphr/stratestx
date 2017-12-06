@@ -3,8 +3,7 @@ package visitors;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
-import langs.formal.graphs.ConcreteState;
-import langs.formal.graphs.ConcreteTransition;
+import langs.formal.graphs.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -16,9 +15,14 @@ import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
+import visitors.dot.DOTEncoder;
+import visitors.dot.DotEdge;
+import visitors.dot.DotNode;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.stream.Collectors;
+
+import static visitors.dot.DOTEncoder.ERankDir.TB;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -103,7 +107,7 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(ConcreteState concreteState) {
-        return concreteState.getName() + " = " + concreteState.getExpr().accept(this);
+        return concreteState.getName() + " = " + fold(concreteState.getExpr().accept(this), 0);
     }
 
     @Override
@@ -128,7 +132,7 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(Equals equals) {
-        return equals.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" = "));
+        return equals.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining("="));
     }
 
     @Override
@@ -282,6 +286,21 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(ConcreteTransition concreteTransition) {
         return concreteTransition.getSource().accept(this) + " -[ " + concreteTransition.getEvent().getName() + " ]-> " + concreteTransition.getTarget().accept(this);
+    }
+
+    @Override
+    public <State extends AState, Transition extends ATransition<State>> String visit(FSM<State, Transition> fsm) {
+        return fsm.accept(new DOTEncoder<>(true, TB));
+    }
+
+    @Override
+    public String visit(DotNode dotNode) {
+        return dotNode.getName() + "[" + dotNode.getParameters().entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining(", ")) + "]" + (dotNode.getComment().isEmpty() ? "" : " // " + dotNode.getComment());
+    }
+
+    @Override
+    public String visit(DotEdge dotEdge) {
+        return dotEdge.getSource().getName() + " -> " + dotEdge.getTarget().getName() + "[" + dotEdge.getParameters().entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining(", ")) + "]";
     }
 
 }

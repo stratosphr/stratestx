@@ -6,39 +6,51 @@ import java.util.Collections;
  * Created by gvoiron on 16/11/17.
  * Time : 21:55
  */
-abstract class AFormatter {
+public abstract class AFormatter {
 
     private int indentation;
 
-    AFormatter() {
+    protected AFormatter() {
         this.indentation = 0;
     }
 
-    String indentLeft() {
+    protected String fold(String text, int foldThreshold) {
+        return fold(text, foldThreshold, "", ", ");
+    }
+
+    protected String fold(String text, int foldThreshold, String lineDelimiter, String tabDelimiter) {
+        if (text.length() < foldThreshold) {
+            return text;
+        } else {
+            return text.replaceAll("[(]\n*\t*", "(").replaceAll("\n", lineDelimiter).replaceAll("\t", tabDelimiter);
+        }
+    }
+
+    protected String indentLeft() {
         if (indentation > 0) {
             --indentation;
         }
         return "";
     }
 
-    String indentRight() {
+    protected String indentRight() {
         ++indentation;
         return "";
     }
 
-    String indent(String text) {
+    protected String indent(String text) {
         return String.join("", Collections.nCopies(indentation, "\t")) + text;
     }
 
-    String line() {
+    protected String line() {
         return line("");
     }
 
-    String line(String line) {
+    protected String line(String line) {
         return line + "\n";
     }
 
-    String indentLine(String line) {
+    protected String indentLine(String line) {
         return indent("") + line(line);
     }
 

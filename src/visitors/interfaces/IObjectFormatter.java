@@ -3,8 +3,7 @@ package visitors.interfaces;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
-import langs.formal.graphs.ConcreteState;
-import langs.formal.graphs.ConcreteTransition;
+import langs.formal.graphs.*;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -16,6 +15,8 @@ import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
+import visitors.dot.DotEdge;
+import visitors.dot.DotNode;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -122,5 +123,11 @@ public interface IObjectFormatter {
     String visit(Machine machine);
 
     String visit(ConcreteTransition concreteTransition);
+
+    <State extends AState, Transition extends ATransition<State>> String visit(FSM<State, Transition> fsm);
+
+    String visit(DotNode dotNode);
+
+    String visit(DotEdge dotEdge);
 
 }

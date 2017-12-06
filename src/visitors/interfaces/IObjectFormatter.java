@@ -15,8 +15,8 @@ import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
-import visitors.dot.DotEdge;
-import visitors.dot.DotNode;
+import visitors.dot.DOTEdge;
+import visitors.dot.DOTNode;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -126,8 +126,8 @@ public interface IObjectFormatter {
 
     <State extends AState, Transition extends ATransition<State>> String visit(FSM<State, Transition> fsm);
 
-    String visit(DotNode dotNode);
+    String visit(DOTNode dotNode);
 
-    String visit(DotEdge dotEdge);
+    String visit(DOTEdge dotEdge);
 
 }

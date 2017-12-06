@@ -6,18 +6,18 @@ import visitors.interfaces.IObjectFormatter;
  * Created by gvoiron on 06/12/17.
  * Time : 16:54
  */
-public final class DotEdge extends ADotObject<DotEdge> {
+public final class DOTEdge extends ADotObject<DOTEdge> {
 
-    private DotNode source;
-    private DotNode target;
+    private DOTNode source;
+    private DOTNode target;
 
-    public DotEdge(DotNode source, DotNode target) {
+    public DOTEdge(DOTNode source, DOTNode target) {
         this.source = source;
         this.target = target;
     }
 
     @Override
-    public DotEdge getThis() {
+    public DOTEdge getThis() {
         return this;
     }
 
@@ -26,17 +26,17 @@ public final class DotEdge extends ADotObject<DotEdge> {
         return formatter.visit(this);
     }
 
-    public DotNode getSource() {
+    public DOTNode getSource() {
         return source;
     }
 
-    public DotNode getTarget() {
+    public DOTNode getTarget() {
         return target;
     }
 
     @Override
-    public DotEdge clone() {
-        return new DotEdge(getSource().clone(), getTarget().clone());
+    public DOTEdge clone() {
+        return new DOTEdge(getSource().clone(), getTarget().clone());
     }
 
 }

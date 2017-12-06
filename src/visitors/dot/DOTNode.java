@@ -6,16 +6,16 @@ import visitors.interfaces.IObjectFormatter;
  * Created by gvoiron on 06/12/17.
  * Time : 16:53
  */
-public final class DotNode extends ADotObject<DotNode> {
+public final class DOTNode extends ADotObject<DOTNode> {
 
     private String name;
 
-    public DotNode(String name) {
+    public DOTNode(String name) {
         this.name = name;
     }
 
     @Override
-    public DotNode getThis() {
+    public DOTNode getThis() {
         return this;
     }
 
@@ -29,8 +29,8 @@ public final class DotNode extends ADotObject<DotNode> {
     }
 
     @Override
-    public DotNode clone() {
-        return new DotNode(name);
+    public DOTNode clone() {
+        return new DOTNode(name);
     }
 
 }

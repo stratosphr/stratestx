@@ -15,9 +15,9 @@ import langs.maths.set.literals.*;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
+import visitors.dot.DOTEdge;
 import visitors.dot.DOTEncoder;
-import visitors.dot.DotEdge;
-import visitors.dot.DotNode;
+import visitors.dot.DOTNode;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.stream.Collectors;
@@ -294,12 +294,12 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     }
 
     @Override
-    public String visit(DotNode dotNode) {
+    public String visit(DOTNode dotNode) {
         return dotNode.getName() + "[" + dotNode.getParameters().entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining(", ")) + "]" + (dotNode.getComment().isEmpty() ? "" : " // " + dotNode.getComment());
     }
 
     @Override
-    public String visit(DotEdge dotEdge) {
+    public String visit(DOTEdge dotEdge) {
         return dotEdge.getSource().getName() + " -> " + dotEdge.getTarget().getName() + "[" + dotEdge.getParameters().entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining(", ")) + "]";
     }
 

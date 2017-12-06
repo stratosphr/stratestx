@@ -19,8 +19,8 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
 
     private final boolean useFullLabels;
     private final ERankDir rankDir;
-    private final LinkedHashSet<DotNode> nodes;
-    private final List<DotEdge> edges;
+    private final LinkedHashSet<DOTNode> nodes;
+    private final List<DOTEdge> edges;
 
     public DOTEncoder(boolean useFullLabels, ERankDir rankDir) {
         this.useFullLabels = useFullLabels;
@@ -36,17 +36,17 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         return line("digraph g {") + line() + indentRight() + indentLine("rankdir=\"" + rankDir + "\"") + line() + nodes.stream().map(state -> indentLine(state.toString())).collect(Collectors.joining()) + line() + edges.stream().map(edge -> indentLine(edge.toString())).collect(Collectors.joining()) + line() + indentLeft() + indentLine("}");
     }
 
-    private DotNode encodeInitialNode(State state) {
+    private DOTNode encodeInitialNode(State state) {
         System.err.println(state.getName());
-        DotNode invisible = new DotNode("__invisible__").setShape("point").setColor("forestgreen");
-        DotNode initial = encodeReachedNode(state).setPenWidth(3).setComment("Initial");
+        DOTNode invisible = new DOTNode("__invisible__").setShape("point").setColor("forestgreen");
+        DOTNode initial = encodeReachedNode(state).setPenWidth(3).setComment("Initial");
         nodes.add(invisible);
-        edges.add(new DotEdge(invisible, initial).setColor("forestgreen"));
-        return new DotNode(state.getName());
+        edges.add(new DOTEdge(invisible, initial).setColor("forestgreen"));
+        return initial;
     }
 
-    private DotNode encodeReachedNode(State state) {
-        return new DotNode(state.getName()).setLabel(useFullLabels ? state : state.getName()).setShape("box").setStyle("rounded, filled").setColor("forestgreen").setFillColor("limegreen").setColor("forestgreen");
+    private DOTNode encodeReachedNode(State state) {
+        return new DOTNode(state.getName()).setLabel(useFullLabels ? state : state.getName()).setShape("box").setStyle("rounded, filled").setColor("forestgreen").setFillColor("limegreen").setColor("forestgreen");
     }
 
     public enum ERankDir {LR, TB}

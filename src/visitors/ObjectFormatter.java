@@ -3,6 +3,8 @@ package visitors;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
+import langs.formal.graphs.ConcreteState;
+import langs.formal.graphs.ConcreteTransition;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -97,6 +99,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     @Override
     public String visit(Invariant invariant) {
         return invariant.getExpr().accept(this);
+    }
+
+    @Override
+    public String visit(ConcreteState concreteState) {
+        return concreteState.getName() + " = " + concreteState.getExpr().accept(this);
     }
 
     @Override
@@ -270,6 +277,11 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
         formatted += line() + indentRight() + indentLine("INITIALISATION") + indentRight() + indentLine(machine.getInitialisation().accept(this)) + indentLeft() + indentLeft();
         formatted += line() + indentRight() + indentLine("EVENTS") + indentRight() + machine.getEvents().entrySet().stream().map(entry -> indentLine(entry.getValue().accept(this))).collect(Collectors.joining()) + indentLeft() + indentLeft();
         return formatted;
+    }
+
+    @Override
+    public String visit(ConcreteTransition concreteTransition) {
+        return concreteTransition.getSource().accept(this) + " -[ " + concreteTransition.getEvent().getName() + " ]-> " + concreteTransition.getTarget().accept(this);
     }
 
 }

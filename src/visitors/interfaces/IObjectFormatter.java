@@ -3,6 +3,8 @@ package visitors.interfaces;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
+import langs.formal.graphs.ConcreteState;
+import langs.formal.graphs.ConcreteTransition;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -50,6 +52,8 @@ public interface IObjectFormatter {
     String visit(True aTrue);
 
     String visit(Invariant invariant);
+
+    String visit(ConcreteState concreteState);
 
     String visit(Not not);
 
@@ -116,5 +120,7 @@ public interface IObjectFormatter {
     String visit(Event event);
 
     String visit(Machine machine);
+
+    String visit(ConcreteTransition concreteTransition);
 
 }

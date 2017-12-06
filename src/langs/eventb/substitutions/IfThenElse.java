@@ -51,7 +51,7 @@ public final class IfThenElse extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public IfThenElse clone() {
         return new IfThenElse(condition.clone(), thenPart.clone(), elsePart.clone());
     }
 

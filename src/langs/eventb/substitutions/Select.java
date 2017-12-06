@@ -43,7 +43,7 @@ public final class Select extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public Select clone() {
         return new Select(condition.clone(), substitution.clone());
     }
 

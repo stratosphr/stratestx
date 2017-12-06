@@ -29,7 +29,7 @@ public final class FunAssignment extends AAssignment<Fun> {
     }
 
     @Override
-    public ASubstitution clone() {
+    public FunAssignment clone() {
         return new FunAssignment(getAssignable().clone(), getValue().clone());
     }
 

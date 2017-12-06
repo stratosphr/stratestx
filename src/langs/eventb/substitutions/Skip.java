@@ -26,7 +26,7 @@ public final class Skip extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public Skip clone() {
         return new Skip();
     }
 

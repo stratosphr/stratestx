@@ -7,6 +7,7 @@ import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
 import langs.maths.generic.arith.literals.Var;
+import visitors.Primer;
 import visitors.interfaces.IModelVisitor;
 
 import java.util.Arrays;
@@ -35,7 +36,7 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
     @Override
     public void visit(Var var) {
         if (Arrays.stream(model.getConstDecls()).anyMatch(funcDecl -> funcDecl.getName().toString().equals(var.getName()))) {
-            put(var, new Int(Integer.parseInt(model.eval(context.mkIntConst(var.getName()), true).toString())));
+            put(var.accept(new Primer(0)), new Int(Integer.parseInt(model.eval(context.mkIntConst(var.getName()), true).toString())));
         } else {
             throw new Error("Error: Variable \"" + var + "\" is never used in checked expression.");
         }
@@ -44,7 +45,7 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
     @Override
     public void visit(Fun fun) {
         if (Arrays.stream(model.getFuncDecls()).anyMatch(funcDecl -> funcDecl.getName().toString().equals(fun.getName()))) {
-            put(fun, new Int(Integer.parseInt(model.eval(context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()).apply(context.mkInt(((Int) fun.getParameter()).getValue())), true).toString())));
+            put(fun.accept(new Primer(0)), new Int(Integer.parseInt(model.eval(context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()).apply(context.mkInt(((Int) fun.getParameter()).getValue())), true).toString())));
         } else {
             throw new Error("Error: Function \"" + fun + "\" is never used in checked expression.");
         }

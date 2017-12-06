@@ -47,7 +47,7 @@ public final class Assignments extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public Assignments clone() {
         return new Assignments(assignments.stream().map(ASubstitution::clone).toArray(AAssignment[]::new));
     }
 

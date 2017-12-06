@@ -1,5 +1,6 @@
 package visitors;
 
+import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
@@ -18,6 +19,8 @@ import visitors.interfaces.IPrimer;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * Created by gvoiron on 30/11/17.
@@ -124,6 +127,11 @@ public final class Primer implements IPrimer {
         Invariant primed = new Invariant(invariant.getExpr().accept(this));
         isVisitingInvariant = false;
         return primed;
+    }
+
+    @Override
+    public ConcreteState visit(ConcreteState concreteState) {
+        return new ConcreteState(concreteState.getName(), concreteState.getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().accept(this), o -> o.getValue().accept(this), (value1, value2) -> value1, TreeMap::new)));
     }
 
     @Override

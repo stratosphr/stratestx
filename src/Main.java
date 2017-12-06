@@ -1,6 +1,8 @@
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Solver;
 import langs.eventb.Machine;
+import langs.formal.graphs.ConcreteState;
+import langs.formal.graphs.ConcreteTransition;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.Const;
 import langs.maths.generic.arith.literals.Fun;
@@ -19,10 +21,14 @@ import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
 import parsers.stratest.StratestParser;
 import solvers.z3.Z3;
+import solvers.z3.Z3Result;
 import utilities.ResourcesManager;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
+
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 import static utilities.ResourcesManager.getModel;
 
@@ -126,16 +132,32 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.CA));
-        /*System.out.println(machine.getInitialisation().getPrd(machine.getAssignables()));
-        System.out.println();
-        machine.getEvents().forEach((key, value) -> System.out.println(key + "\n" + value.getSubstitution().getPrd(machine.getAssignables()) + "\n"));*/
-        System.out.println(machine);
-        System.out.println(Z3.checkSAT(new And(
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EL));
+        Z3Result result;
+        result = Z3.checkSAT(new And(
                 machine.getInvariant(),
                 machine.getInvariant().accept(new Primer(1)),
-                machine.getEvents().get("Increment_Chronometer").getSubstitution().getPrd(machine.getAssignables())
-        ), machine.getDefsRegister()).isSAT());
+                machine.getInitialisation().getPrd(machine.getAssignables())
+        ), machine.getDefsRegister());
+        ConcreteState c = new ConcreteState("c", result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
+        result = Z3.checkSAT(new And(
+                machine.getInvariant(),
+                machine.getInvariant().accept(new Primer(1)),
+                c,
+                machine.getEvents().get("Tic").getSubstitution().getPrd(machine.getAssignables())
+        ), machine.getDefsRegister());
+        ConcreteState c_ = new ConcreteState("c_", result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
+        System.out.println(c);
+        System.out.println(c_);
+        System.out.println(new ConcreteTransition(c, machine.getEvents().get("Tic"), c_));
+        result = Z3.checkSAT(new And(
+                machine.getInvariant(),
+                machine.getInvariant().accept(new Primer(1)),
+                c,
+                machine.getEvents().get("Tic").getSubstitution().getPrd(machine.getAssignables()),
+                c_.accept(new Primer(1))
+        ), machine.getDefsRegister());
+        System.out.println(result.isSAT());
     }
 
 }

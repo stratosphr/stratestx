@@ -1,5 +1,6 @@
 package visitors.interfaces;
 
+import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
@@ -47,6 +48,8 @@ public interface IPrimer {
     True visit(True aTrue);
 
     Invariant visit(Invariant invariant);
+
+    ConcreteState visit(ConcreteState concreteState);
 
     Not visit(Not not);
 

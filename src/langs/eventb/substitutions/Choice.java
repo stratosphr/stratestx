@@ -36,7 +36,7 @@ public final class Choice extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public Choice clone() {
         return new Choice(substitutions.stream().map(ASubstitution::clone).toArray(ASubstitution[]::new));
     }
 

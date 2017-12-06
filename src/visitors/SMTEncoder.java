@@ -1,6 +1,7 @@
 package visitors;
 
 import com.microsoft.z3.*;
+import langs.formal.graphs.ConcreteState;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
@@ -157,6 +158,11 @@ public final class SMTEncoder implements ISMTEncoder {
     @Override
     public BoolExpr visit(Invariant invariant) {
         return invariant.getExpr().accept(this);
+    }
+
+    @Override
+    public BoolExpr visit(ConcreteState concreteState) {
+        return concreteState.getExpr().accept(this);
     }
 
     @Override

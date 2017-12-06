@@ -51,7 +51,7 @@ public final class FunVar extends AArithExpr {
     }
 
     @Override
-    public AArithExpr clone() {
+    public FunVar clone() {
         return new FunVar(fun.clone());
     }
 

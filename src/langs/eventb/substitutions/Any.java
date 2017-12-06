@@ -53,7 +53,7 @@ public final class Any extends ASubstitution {
     }
 
     @Override
-    public ASubstitution clone() {
+    public Any clone() {
         return new Any(condition.clone(), substitution.clone(), quantifiedVarsDefs.stream().map(VarInDomain::clone).toArray(VarInDomain[]::new));
     }
 

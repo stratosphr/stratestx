@@ -29,7 +29,7 @@ public final class VarAssignment extends AAssignment<Var> {
     }
 
     @Override
-    public ASubstitution clone() {
+    public VarAssignment clone() {
         return new VarAssignment(getAssignable().clone(), getValue().clone());
     }
 

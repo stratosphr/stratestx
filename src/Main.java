@@ -4,7 +4,10 @@ import com.microsoft.z3.Solver;
 import langs.eventb.Machine;
 import langs.formal.graphs.AbstractState;
 import langs.maths.def.DefsRegister;
-import langs.maths.generic.arith.literals.*;
+import langs.maths.generic.arith.literals.Const;
+import langs.maths.generic.arith.literals.Fun;
+import langs.maths.generic.arith.literals.Int;
+import langs.maths.generic.arith.literals.Var;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
@@ -17,15 +20,20 @@ import langs.maths.set.literals.Z;
 import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
-import parsers.stratest.StratestParser;
-import utilities.ResourcesManager;
+import parsers.stratest.Parser;
+import solvers.z3.Z3;
+import solvers.z3.Z3Result;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
+import static utilities.ResourcesManager.EAbstractionPredicatesSet.AP0;
+import static utilities.ResourcesManager.EModel.EXAMPLE;
+import static utilities.ResourcesManager.getAbstractionPredicatesSet;
 import static utilities.ResourcesManager.getModel;
 
 public class Main {
@@ -127,15 +135,27 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
-        LinkedHashSet<Predicate> ap = new LinkedHashSet<>(Arrays.asList(
-                new Predicate("p0", new Equals(new Fun("bat", new Int(1)), new EnumValue("ko"))),
-                new Predicate("p1", new Equals(new Fun("bat", new Int(2)), new EnumValue("ko"))),
-                new Predicate("p2", new Equals(new Fun("bat", new Int(3)), new EnumValue("ko")))
-        ));
-        LinkedHashSet<AbstractState> as = new AbstractStatesComputer(machine, ap).compute().getResult();
-        System.out.println(as);
+        Parser parser = new Parser();
+        Machine machine = parser.parseModel(getModel(EXAMPLE));
+        LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(EXAMPLE, AP0));
+        for (Predicate predicate : ap) {
+            System.out.println(predicate);
+        }
+        ArrayList<AbstractState> as = new ArrayList<>(new AbstractStatesComputer(machine, ap).compute().getResult());
+        for (AbstractState a : as) {
+            System.out.println(a);
+        }
+        Z3Result result = Z3.checkSAT(new And(
+                machine.getInvariant(),
+                machine.getInvariant().accept(new Primer(1)),
+                machine.getInitialisation().getPrd(machine.getAssignables()),
+                as.get(1).accept(new Primer(1))
+        ), machine.getDefsRegister());
+        if (result.isSAT()) {
+            System.out.println(result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
+        } else {
+            System.out.println("UNSAT");
+        }
     }
 
 }

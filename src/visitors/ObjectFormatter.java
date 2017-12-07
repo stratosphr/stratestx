@@ -243,7 +243,7 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(Assignments assignments) {
-        return assignments.getAssignments().stream().map(aAssignment -> aAssignment.accept(this)).collect(Collectors.joining(" ||" + line() + indent("")));
+        return assignments.getAssignments().stream().map(assignment -> assignment.accept(this)).collect(Collectors.joining(" ||" + line() + indent("")));
     }
 
     @Override

@@ -10,6 +10,7 @@ import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.AFiniteSetExpr;
@@ -38,12 +39,12 @@ import static utilities.ResourcesManager.getXMLSchema;
  * Created by gvoiron on 01/12/17.
  * Time : 19:25
  */
-public final class StratestParser {
+public final class Parser {
 
-    private DefsRegister defsRegister;
-    private List<String> errors;
+    private final DefsRegister defsRegister;
+    private final List<String> errors;
 
-    public StratestParser() {
+    public Parser() {
         this.defsRegister = new DefsRegister();
         this.errors = new ArrayList<>();
     }
@@ -100,6 +101,13 @@ public final class StratestParser {
                 ).flatMap(Collection::stream).toArray(ABoolExpr[]::new)
         ));
         return new Machine(rootNode.getAttributes().get("name"), defsRegister, invariant, initialisation, events);
+    }
+
+    public LinkedHashSet<Predicate> parseAbstractionPredicatesSet(File file) {
+        XMLParser parser = new XMLParser(true);
+        XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.AP));
+        rootNode.assertConformsTo(new XMLNodeSchema("predicates"));
+        return rootNode.getChildren().stream().map(this::parsePredicate).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     private void handleException(XMLNode node, String message) {
@@ -356,7 +364,13 @@ public final class StratestParser {
     }
 
     private Invariant parseInvariant(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("invariant"));
         return new Invariant(parseBoolExpr(node.getChildren().get(0)));
+    }
+
+    private Predicate parsePredicate(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("predicate", new XMLAttributesSchema("name")));
+        return new Predicate(node.getAttributes().get("name"), parseBoolExpr(node.getChildren().get(0)));
     }
 
     private ASetExpr parseSetExpr(XMLNode node) {

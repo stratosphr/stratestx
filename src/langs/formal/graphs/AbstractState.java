@@ -21,7 +21,6 @@ public final class AbstractState extends AState<Predicate, Boolean> {
 
     public AbstractState(String name, TreeMap<Predicate, Boolean> mapping) {
         super(name, new And(mapping.entrySet().stream().map(entry -> mapping.get(entry.getKey()) ? entry.getKey() : new Not(entry.getKey())).toArray(ABoolExpr[]::new)), mapping);
-        System.out.println(new And(mapping.entrySet().stream().map(entry -> mapping.get(entry.getKey()) ? entry.getKey() : new Not(entry.getKey())).toArray(ABoolExpr[]::new)));
     }
 
     @Override

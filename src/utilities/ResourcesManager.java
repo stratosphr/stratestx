@@ -44,12 +44,40 @@ public final class ResourcesManager {
                 return new File(new File(examplesRoot, "L14_2"), "L14_2.ebm");
             case PH:
                 return new File(new File(examplesRoot, "PH"), "PH.ebm");
+            default:
+                throw new Error("Error: unknown model resource \"" + model + "\".");
         }
-        throw new Error("Error: unknown model resource \"" + model + "\".");
+    }
+
+    public static File getAbstractionPredicatesSet(EModel model, EAbstractionPredicatesSet abstractionPredicatesSet) {
+        switch (model) {
+            case CA:
+                return new File(new File(examplesRoot, "CA"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case CM:
+                return new File(new File(examplesRoot, "CM"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case EL:
+                return new File(new File(examplesRoot, "EL"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case EV:
+                return new File(new File(examplesRoot, "EV"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case EXAMPLE:
+                return new File(new File(examplesRoot, "EXAMPLE"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case GSM:
+                return new File(new File(examplesRoot, "GSM"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case L14:
+                return new File(new File(examplesRoot, "L14"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case L14_2:
+                return new File(new File(examplesRoot, "L14_2"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            case PH:
+                return new File(new File(examplesRoot, "PH"), abstractionPredicatesSet.toString().toLowerCase() + ".ap");
+            default:
+                throw new Error("Error: unknown model resource \"" + model + "\".");
+        }
     }
 
     public enum EXMLSchema {AP, EBM, RP}
 
     public enum EModel {CA, CM, EL, EV, EXAMPLE, GSM, L14, L14_2, PH}
+
+    public enum EAbstractionPredicatesSet {AP0, AP1, AP2, AP3, AP4}
 
 }

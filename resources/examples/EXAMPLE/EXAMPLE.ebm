@@ -46,7 +46,34 @@
     </invariant>
 
     <initialisation>
-        <skip/>
+        <assignments>
+            <var-assignment>
+                <var name="h"/>
+                <enum-value name="tac"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="sw"/>
+                <int value="1"/>
+            </var-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="1"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="2"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="3"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+        </assignments>
     </initialisation>
 
     <events>

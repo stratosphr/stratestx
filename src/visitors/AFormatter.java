@@ -22,7 +22,7 @@ public abstract class AFormatter {
         if (text.length() < foldThreshold) {
             return text;
         } else {
-            return text.replaceAll("[(]\n*\t*", "(").replaceAll("\n", lineDelimiter).replaceAll("\t", tabDelimiter);
+            return text.replaceAll("[(]\n*\t*", "(").replaceAll("[]]\n*", "]").replaceAll("\n", lineDelimiter).replaceAll("\t", tabDelimiter).replaceAll(tabDelimiter + tabDelimiter, tabDelimiter).replaceAll(tabDelimiter + "[)]", ")");
         }
     }
 

@@ -199,7 +199,7 @@ public final class SMTEncoder implements ISMTEncoder {
 
     @Override
     public BoolExpr visit(Equals equals) {
-        return equals.getOperands().size() == 2 ? context.mkEq(equals.getOperands().get(0).accept(this), equals.getOperands().get(1).accept(this)) : context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(aArithExpr -> context.mkEq(equals.getOperands().get(0).accept(this), aArithExpr.accept(this))).toArray(BoolExpr[]::new));
+        return equals.getOperands().size() == 2 ? context.mkEq(equals.getOperands().get(0).accept(this), equals.getOperands().get(1).accept(this)) : context.mkAnd(equals.getOperands().subList(1, equals.getOperands().size()).stream().map(operand -> context.mkEq(equals.getOperands().get(0).accept(this), operand.accept(this))).toArray(BoolExpr[]::new));
     }
 
     @Override

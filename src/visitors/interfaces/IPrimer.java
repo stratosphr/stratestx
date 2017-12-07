@@ -1,10 +1,12 @@
 package visitors.interfaces;
 
+import langs.formal.graphs.AbstractState;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Enum;
@@ -49,7 +51,11 @@ public interface IPrimer {
 
     Invariant visit(Invariant invariant);
 
+    Predicate visit(Predicate predicate);
+
     ConcreteState visit(ConcreteState concreteState);
+
+    AbstractState visit(AbstractState abstractState);
 
     Not visit(Not not);
 

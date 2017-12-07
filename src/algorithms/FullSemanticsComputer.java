@@ -53,7 +53,7 @@ public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, Co
         while (state.isPresent()) {
             ConcreteState c = state.get().getKey();
             states.put(c, true);
-            System.out.println(states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).count() * machine.getEvents().size());
+            //System.out.println(states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).count() * machine.getEvents().size());
             for (Event e : machine.getEvents().values()) {
                 while ((result = Z3.checkSAT(new And(
                         machine.getInvariant(),
@@ -93,7 +93,7 @@ public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, Co
         while (state.isPresent()) {
             ConcreteState c = state.get().getKey();
             states.put(c, true);
-            System.out.println(states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).count() * machine.getEvents().size());
+            //System.out.println(states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).count() * machine.getEvents().size());
             for (Event e : machine.getEvents().values()) {
                 while ((result = Z3.checkSAT(new And(
                         machine.getInvariant(),
@@ -112,7 +112,6 @@ public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, Co
             }
             state = states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).findFirst();
         }
-        System.out.println(transitions.size());
         return new FSM<>(initialStates, new LinkedHashSet<>(states.keySet()), transitions);
     }*/
 

@@ -35,4 +35,7 @@ public abstract class APredicate extends ABoolExpr {
         return expr;
     }
 
+    @Override
+    public abstract APredicate clone();
+
 }

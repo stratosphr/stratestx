@@ -2,11 +2,13 @@ package visitors.interfaces;
 
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.IntExpr;
+import langs.formal.graphs.AbstractState;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 
@@ -46,7 +48,11 @@ public interface ISMTEncoder {
 
     BoolExpr visit(Invariant invariant);
 
+    BoolExpr visit(Predicate predicate);
+
     BoolExpr visit(ConcreteState concreteState);
+
+    BoolExpr visit(AbstractState abstractState);
 
     BoolExpr visit(Not not);
 

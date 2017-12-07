@@ -1,5 +1,6 @@
 package visitors;
 
+import langs.formal.graphs.AbstractState;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.*;
@@ -7,6 +8,7 @@ import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.AFiniteSetExpr;
@@ -19,6 +21,7 @@ import visitors.interfaces.IPrimer;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -130,8 +133,18 @@ public final class Primer implements IPrimer {
     }
 
     @Override
+    public Predicate visit(Predicate predicate) {
+        return new Predicate(predicate.getName(), predicate.getExpr().accept(this));
+    }
+
+    @Override
     public ConcreteState visit(ConcreteState concreteState) {
         return new ConcreteState(concreteState.getName(), concreteState.getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().accept(this), o -> o.getValue().accept(this), (value1, value2) -> value1, TreeMap::new)));
+    }
+
+    @Override
+    public AbstractState visit(AbstractState abstractState) {
+        return new AbstractState(abstractState.getName(), abstractState.getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().accept(this), Map.Entry::getValue, (value1, value2) -> value1, TreeMap::new)));
     }
 
     @Override

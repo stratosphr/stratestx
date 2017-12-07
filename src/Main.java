@@ -1,20 +1,14 @@
-import algorithms.ComputerResult;
-import algorithms.FullSemanticsComputer;
-import algorithms.RchblPartComputer;
+import algorithms.AbstractStatesComputer;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Solver;
 import langs.eventb.Machine;
-import langs.formal.graphs.ConcreteState;
-import langs.formal.graphs.ConcreteTransition;
-import langs.formal.graphs.FSM;
+import langs.formal.graphs.AbstractState;
 import langs.maths.def.DefsRegister;
-import langs.maths.generic.arith.literals.Const;
-import langs.maths.generic.arith.literals.Fun;
-import langs.maths.generic.arith.literals.Int;
-import langs.maths.generic.arith.literals.Var;
+import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.literals.False;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Range;
@@ -29,7 +23,7 @@ import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 
 import static utilities.ResourcesManager.getModel;
@@ -134,15 +128,14 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.GSM));
-        ComputerResult<FSM<ConcreteState, ConcreteTransition>> full = new FullSemanticsComputer(machine).compute();
-        System.out.println(full.getResult());
-        System.out.println("full time = " + full.getTime() * 1.0E-9);
-        ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchbl = new RchblPartComputer<>(full.getResult()).compute();
-        //System.out.println(rchbl.getResult());
-        System.out.println("rchbl time = " + rchbl.getTime() * 1.0E-9);
-        System.out.println(full.getResult().getTransitions().size());
-        System.out.println(rchbl.getResult().getRight().size());
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
+        LinkedHashSet<Predicate> ap = new LinkedHashSet<>(Arrays.asList(
+                new Predicate("p0", new Equals(new Fun("bat", new Int(1)), new EnumValue("ko"))),
+                new Predicate("p1", new Equals(new Fun("bat", new Int(2)), new EnumValue("ko"))),
+                new Predicate("p2", new Equals(new Fun("bat", new Int(3)), new EnumValue("ko")))
+        ));
+        LinkedHashSet<AbstractState> as = new AbstractStatesComputer(machine, ap).compute().getResult();
+        System.out.println(as);
     }
 
 }

@@ -8,6 +8,7 @@ import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Enum;
@@ -106,13 +107,23 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     }
 
     @Override
+    public String visit(Predicate predicate) {
+        return "(" + predicate.getName() + " = " + fold(predicate.getExpr().accept(this), 0) + ")";
+    }
+
+    @Override
+    public String visit(AbstractState abstractState) {
+        return abstractState.getName() + " = " + abstractState.getMapping().entrySet().stream().map(entry -> entry.getValue() ? entry.getKey().accept(this) : new Not(entry.getKey()).accept(this)).collect(Collectors.joining(", "));
+    }
+
+    @Override
     public String visit(ConcreteState concreteState) {
         return concreteState.getName() + " = " + concreteState.getMapping().entrySet().stream().map(entry -> entry.getKey().accept(this) + "=" + entry.getValue().accept(this)).collect(Collectors.joining(", "));
     }
 
     @Override
     public String visit(Not not) {
-        return "¬(" + not.getOperand().accept(this) + ")";
+        return "¬" + not.getOperand().accept(this);
     }
 
     @Override

@@ -8,6 +8,7 @@ import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
+import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.generic.bool.literals.True;
 import langs.maths.generic.bool.operators.*;
 import langs.maths.set.literals.Enum;
@@ -53,6 +54,10 @@ public interface IObjectFormatter {
     String visit(True aTrue);
 
     String visit(Invariant invariant);
+
+    String visit(Predicate predicate);
+
+    String visit(AbstractState abstractState);
 
     String visit(ConcreteState concreteState);
 

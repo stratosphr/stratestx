@@ -4,7 +4,7 @@
 
     <consts-defs>
         <const-def name="n">
-            <int value="3"/>
+            <int value="5"/>
         </const-def>
     </consts-defs>
 
@@ -73,24 +73,24 @@
                 </fun>
                 <enum-value name="ok"/>
             </fun-assignment>
-            <!--<assignment>
+            <fun-assignment>
                 <fun name="bat">
                     <int value="4"/>
                 </fun>
                 <enum-value name="ok"/>
-            </assignment>
-            <assignment>
+            </fun-assignment>
+            <fun-assignment>
                 <fun name="bat">
                     <int value="5"/>
                 </fun>
                 <enum-value name="ok"/>
-            </assignment>
-            <assignment>
+            </fun-assignment>
+            <!--<fun-assignment>
                 <fun name="bat">
                     <int value="6"/>
                 </fun>
                 <enum-value name="ok"/>
-            </assignment>
+            </fun-assignment>
             <assignment>
                 <fun name="bat">
                     <int value="7"/>
@@ -321,58 +321,13 @@
                         <enum-value name="ko"/>
                     </equals>
                 </and>
-                <assignments>
-                    <fun-assignment>
-                        <fun name="bat">
-                            <var name="nb"/>
-                        </fun>
-                        <enum-value name="ok"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="bat">
-                            <var name="sw"/>
-                        </fun>
-                        <enum-value name="ok"/>
-                    </fun-assignment>
-                </assignments>
-            </any>
-        </event>
-
-        <event name="Skip">
-            <skip/>
-        </event>
-
-        <event name="IfThenElse">
-            <if-then-else>
-                <and>
-                    <equals>
-                        <var name="sw"/>
-                        <int value="1"/>
-                    </equals>
-                    <equals>
-                        <var name="h"/>
-                        <enum-value name="tic"/>
-                    </equals>
-                </and>
-                <assignments>
-                    <fun-assignment>
-                        <fun name="bat">
-                            <int value="1"/>
-                        </fun>
-                        <enum-value name="ko"/>
-                    </fun-assignment>
-                    <var-assignment>
-                        <var name="sw"/>
-                        <int value="2"/>
-                    </var-assignment>
-                </assignments>
                 <fun-assignment>
                     <fun name="bat">
-                        <int value="2"/>
+                        <var name="nb"/>
                     </fun>
-                    <enum-value name="ko"/>
+                    <enum-value name="ok"/>
                 </fun-assignment>
-            </if-then-else>
+            </any>
         </event>
 
     </events>

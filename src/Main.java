@@ -1,4 +1,5 @@
 import algorithms.ComputerResult;
+import algorithms.FullSemanticsComputer;
 import algorithms.RchblPartComputer;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Solver;
@@ -23,18 +24,13 @@ import langs.maths.set.operators.Difference;
 import langs.maths.set.operators.Intersection;
 import langs.maths.set.operators.Union;
 import parsers.stratest.StratestParser;
-import solvers.z3.Z3;
-import solvers.z3.Z3Result;
 import utilities.ResourcesManager;
 import utilities.Tuple;
 import visitors.Primer;
 import visitors.SMTEncoder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.stream.Collectors;
 
 import static utilities.ResourcesManager.getModel;
 
@@ -138,26 +134,13 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EL));
-        Z3Result result;
-        result = Z3.checkSAT(new And(machine.getInvariant(), machine.getInvariant().accept(new Primer(1)), machine.getInitialisation().getPrd(machine.getAssignables())), machine.getDefsRegister());
-        ConcreteState c = new ConcreteState("c", result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
-        result = Z3.checkSAT(new And(machine.getInvariant(), machine.getInvariant().accept(new Primer(1)), c, machine.getEvents().get("Tic").getSubstitution().getPrd(machine.getAssignables())), machine.getDefsRegister());
-        ConcreteState c_ = new ConcreteState("c_", result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
-        result = Z3.checkSAT(new And(machine.getInvariant(), machine.getInvariant().accept(new Primer(1)), c_, machine.getEvents().get("Commute").getSubstitution().getPrd(machine.getAssignables())), machine.getDefsRegister());
-        ConcreteState c__ = new ConcreteState("c__", result.getModel(machine.getAssignables().stream().map(aAssignable -> aAssignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
-        FSM<ConcreteState, ConcreteTransition> fsm = new FSM<>(
-                new LinkedHashSet<>(Collections.singletonList(c)),
-                new LinkedHashSet<>(Arrays.asList(c, c_, c__)),
-                new LinkedHashSet<>(Arrays.asList(
-                        new ConcreteTransition(c, machine.getEvents().get("Tic"), c),
-                        new ConcreteTransition(c_, machine.getEvents().get("Commute"), c__)
-                ))
-        );
-        ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchbl = new RchblPartComputer<>(fsm).compute();
-        System.out.println(rchbl.getResult().getLeft());
-        System.out.println(rchbl.getResult().getRight());
-        System.out.println(fsm);
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
+        ComputerResult<FSM<ConcreteState, ConcreteTransition>> full = new FullSemanticsComputer(machine).compute();
+        //System.out.println(full.getResult());
+        System.out.println("full time = " + full.getTime() * 1.0E-9);
+        ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchbl = new RchblPartComputer<>(full.getResult()).compute();
+        //System.out.println(rchbl.getResult());
+        System.out.println("rchbl time = " + rchbl.getTime() * 1.0E-9);
     }
 
 }

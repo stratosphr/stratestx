@@ -18,6 +18,7 @@ public final class RchblPartComputer<State extends AState, Transition extends AT
     private final AGraph<State, Transition> fsm;
     private final LinkedHashMap<State, ArrayList<Transition>> adjacency;
 
+    // TODO: Check if for loops are more efficient than stream operations (this is probably the case)
     public RchblPartComputer(AGraph<State, Transition> fsm) {
         this.fsm = fsm;
         this.adjacency = new LinkedHashMap<>();

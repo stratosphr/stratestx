@@ -1,7 +1,6 @@
 package solvers.z3;
 
 import com.microsoft.z3.Context;
-import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.arith.literals.Fun;
@@ -22,14 +21,10 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
 
     private final com.microsoft.z3.Model model;
     private final Context context;
-    private final DefsRegister defsRegister;
-    private final Set<AAssignable> assignables;
 
-    Model(com.microsoft.z3.Model model, Context context, DefsRegister defsRegister, Set<AAssignable> assignables) {
+    Model(com.microsoft.z3.Model model, Context context, Set<AAssignable> assignables) {
         this.model = model;
         this.context = context;
-        this.defsRegister = defsRegister;
-        this.assignables = assignables;
         assignables.forEach(assignable -> assignable.accept(this));
     }
 
@@ -45,7 +40,7 @@ public final class Model extends TreeMap<AAssignable, AValue> implements IModelV
     @Override
     public void visit(Fun fun) {
         if (Arrays.stream(model.getFuncDecls()).anyMatch(funcDecl -> funcDecl.getName().toString().equals(fun.getName()))) {
-            put(fun.accept(new Primer(0)), new Int(Integer.parseInt(model.eval(context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()).apply(context.mkInt(((Int) fun.getParameter()).getValue())), true).toString())));
+            put(fun.accept(new Primer(0)), new Int(Integer.parseInt(model.eval(context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()).apply(context.mkInt(((AValue) fun.getParameter()).getValue())), true).toString())));
         } else {
             throw new Error("Error: Function \"" + fun + "\" is never used in checked expression.");
         }

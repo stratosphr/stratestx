@@ -134,13 +134,15 @@ public class Main {
 
     public static void main(String[] args) {
         StratestParser stratestParser = new StratestParser();
-        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
+        Machine machine = stratestParser.parseModel(getModel(ResourcesManager.EModel.GSM));
         ComputerResult<FSM<ConcreteState, ConcreteTransition>> full = new FullSemanticsComputer(machine).compute();
-        //System.out.println(full.getResult());
+        System.out.println(full.getResult());
         System.out.println("full time = " + full.getTime() * 1.0E-9);
         ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchbl = new RchblPartComputer<>(full.getResult()).compute();
         //System.out.println(rchbl.getResult());
         System.out.println("rchbl time = " + rchbl.getTime() * 1.0E-9);
+        System.out.println(full.getResult().getTransitions().size());
+        System.out.println(rchbl.getResult().getRight().size());
     }
 
 }

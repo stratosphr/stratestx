@@ -46,7 +46,7 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         DOTNode invisible = new DOTNode("__invisible__").setShape("point").setColor("forestgreen");
         DOTNode initial = encodeReachedNode(state).setPenWidth(3).setComment("Initial");
         nodes.add(invisible);
-        edges.add(new DOTEdge(invisible, initial).setColor("forestgreen"));
+        edges.add(new DOTEdge(invisible, initial).setPenWidth(3).setColor("forestgreen"));
         return initial;
     }
 

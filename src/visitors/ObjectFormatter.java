@@ -107,7 +107,7 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
 
     @Override
     public String visit(ConcreteState concreteState) {
-        return concreteState.getName() + " = " + fold(concreteState.getExpr().accept(this), 0);
+        return concreteState.getName() + " = " + concreteState.getMapping().entrySet().stream().map(entry -> entry.getKey().accept(this) + "=" + entry.getValue().accept(this)).collect(Collectors.joining(", "));
     }
 
     @Override

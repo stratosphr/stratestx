@@ -4,13 +4,13 @@
 
     <consts-defs>
         <const-def name="MaxPot">
-            <int value="1000"/>
+            <int value="200"/>
         </const-def>
         <const-def name="MaxBal">
             <int value="200"/>
         </const-def>
         <const-def name="MaxCoffee">
-            <int value="15"/>
+            <int value="4"/>
         </const-def>
     </consts-defs>
 
@@ -23,22 +23,6 @@
                 <int value="150"/>
                 <int value="200"/>
                 <int value="250"/>
-                <int value="300"/>
-                <int value="350"/>
-                <int value="400"/>
-                <int value="450"/>
-                <int value="500"/>
-                <int value="550"/>
-                <int value="600"/>
-                <int value="650"/>
-                <int value="700"/>
-                <int value="750"/>
-                <int value="800"/>
-                <int value="850"/>
-                <int value="900"/>
-                <int value="950"/>
-                <int value="1000"/>
-                <int value="1050"/>
             </set>
         </var-def>
         <var-def name="Balance">

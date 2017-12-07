@@ -3,6 +3,7 @@ package langs.formal.graphs;
 import visitors.interfaces.IDOTEncoder;
 import visitors.interfaces.IObjectFormatter;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
  */
 public final class FSM<State extends AState, Transition extends ATransition<State>> extends AGraph<State, Transition> {
 
-    public FSM(LinkedHashSet<State> initialStates, LinkedHashSet<State> states, LinkedHashSet<Transition> transitions) {
+    public FSM(LinkedHashSet<State> initialStates, LinkedHashSet<State> states, ArrayList<Transition> transitions) {
         super(initialStates, states, transitions);
     }
 
@@ -32,7 +33,7 @@ public final class FSM<State extends AState, Transition extends ATransition<Stat
         return new FSM<>(
                 getInitialStates().stream().map(state -> (State) state.clone()).collect(Collectors.toCollection(LinkedHashSet::new)),
                 getStates().stream().map(state -> (State) state.clone()).collect(Collectors.toCollection(LinkedHashSet::new)),
-                getTransitions().stream().map(state -> (Transition) state.clone()).collect(Collectors.toCollection(LinkedHashSet::new))
+                getTransitions().stream().map(state -> (Transition) state.clone()).collect(Collectors.toCollection(ArrayList::new))
         );
     }
 

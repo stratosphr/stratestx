@@ -16,8 +16,8 @@ import static com.microsoft.z3.Status.SATISFIABLE;
  */
 public final class Z3 {
 
-    private static Context context = new Context();
-    private static Solver solver = context.mkSolver();
+    private static final Context context = new Context();
+    private static final Solver solver = context.mkSolver();
 
     private Z3() {
     }

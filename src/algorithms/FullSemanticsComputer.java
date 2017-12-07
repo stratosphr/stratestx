@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, ConcreteTransition>> {
 
-    private Machine machine;
+    private final Machine machine;
     private final LinkedHashSet<ConcreteState> initialStates;
     private final LinkedHashMap<ConcreteState, Boolean> states;
     private final ArrayList<ConcreteTransition> transitions;

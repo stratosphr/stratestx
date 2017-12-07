@@ -14,7 +14,7 @@ public abstract class AUnaryArithExpr<Operand extends AGenericTypeExpr> extends 
 
     private final Operand operand;
 
-    public AUnaryArithExpr(Operand operand) {
+    protected AUnaryArithExpr(Operand operand) {
         this.operand = operand;
     }
 

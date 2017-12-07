@@ -8,10 +8,10 @@ import visitors.interfaces.IObjectFormatter;
  */
 public final class DOTEdge extends ADotObject<DOTEdge> {
 
-    private DOTNode source;
-    private DOTNode target;
+    private final DOTNode source;
+    private final DOTNode target;
 
-    public DOTEdge(DOTNode source, DOTNode target) {
+    DOTEdge(DOTNode source, DOTNode target) {
         this.source = source;
         this.target = target;
     }

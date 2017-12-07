@@ -15,6 +15,7 @@ import java.util.Map;
  * Created by gvoiron on 01/12/17.
  * Time : 12:52
  */
+@SuppressWarnings({"WeakerAccess", "unused", "SameParameterValue"})
 public final class XMLNode implements IXMLFormattable {
 
     private XMLNode parent;

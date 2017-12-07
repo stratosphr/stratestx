@@ -4,6 +4,7 @@ package algorithms;
  * Created by gvoiron on 06/12/17.
  * Time : 20:59
  */
+@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 public abstract class AComputer<Result> {
 
     public final ComputerResult<Result> compute() {
@@ -15,12 +16,12 @@ public abstract class AComputer<Result> {
         return new ComputerResult<>(computed, end - start);
     }
 
-    private void preRun() {
+    protected void preRun() {
     }
 
     abstract Result run();
 
-    private void postRun() {
+    protected void postRun() {
     }
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
  * Created by gvoiron on 01/12/17.
  * Time : 13:02
  */
+@SuppressWarnings("WeakerAccess")
 public final class XMLAttributesSchema {
 
     private final List<String> requiredAttributes;

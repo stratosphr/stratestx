@@ -30,7 +30,7 @@ public abstract class AQuantifier extends ABoolExpr {
         return body.getFuns();
     }
 
-    public ABoolExpr getBody() {
+    ABoolExpr getBody() {
         return body;
     }
 

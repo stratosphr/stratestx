@@ -15,7 +15,7 @@ import java.util.LinkedHashSet;
  */
 public final class Invariant extends ABoolExpr {
 
-    private ABoolExpr expr;
+    private final ABoolExpr expr;
 
     public Invariant(ABoolExpr expr) {
         this.expr = expr;

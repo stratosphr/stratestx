@@ -9,9 +9,9 @@ import visitors.interfaces.IPrimer;
  */
 public abstract class AAssignable extends AArithExpr implements IModelVisitable {
 
-    private String name;
+    private final String name;
 
-    public AAssignable(String name) {
+    protected AAssignable(String name) {
         this.name = name;
     }
 

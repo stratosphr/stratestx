@@ -8,6 +8,7 @@ import langs.maths.AExpr;
  */
 public interface IPrimable {
 
+    @SuppressWarnings("unused")
     AExpr accept(IPrimer primer);
 
 }

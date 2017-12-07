@@ -6,6 +6,7 @@ import java.util.Collections;
  * Created by gvoiron on 16/11/17.
  * Time : 21:55
  */
+@SuppressWarnings({"WeakerAccess", "SameParameterValue", "SameReturnValue"})
 public abstract class AFormatter {
 
     private int indentation;

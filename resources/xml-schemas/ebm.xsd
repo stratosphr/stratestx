@@ -21,12 +21,12 @@
     <xs:element name="model">
         <xs:complexType>
             <xs:all>
-                <xs:element ref="consts-defs" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="sets-defs" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="vars-defs" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="funs-defs" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="invariant" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="initialisation" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="consts-defs" minOccurs="0"/>
+                <xs:element ref="sets-defs" minOccurs="0"/>
+                <xs:element ref="vars-defs" minOccurs="0"/>
+                <xs:element ref="funs-defs" minOccurs="0"/>
+                <xs:element ref="invariant" minOccurs="0"/>
+                <xs:element ref="initialisation" minOccurs="0"/>
                 <xs:element ref="events"/>
             </xs:all>
             <xs:attribute name="name" type="name" use="required"/>
@@ -36,7 +36,7 @@
     <xs:element name="consts-defs">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="const-def" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="const-def" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -52,7 +52,7 @@
     <xs:element name="sets-defs">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="set-def" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="set-def" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -68,7 +68,7 @@
     <xs:element name="vars-defs">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="var-def" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="var-def" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -84,7 +84,7 @@
     <xs:element name="funs-defs">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="fun-def" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="fun-def" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -117,7 +117,7 @@
     <xs:element name="events">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="event" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="event" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -239,14 +239,14 @@
     <xs:element name="and" substitutionGroup="bool-expr">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="bool-expr" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="or" substitutionGroup="bool-expr">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="bool-expr" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -363,7 +363,7 @@
     <xs:element name="assignments" substitutionGroup="substitution">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="assignment" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="assignment" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

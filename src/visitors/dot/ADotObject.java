@@ -9,6 +9,7 @@ import java.util.Map;
  * Created by gvoiron on 06/12/17.
  * Time : 16:53
  */
+@SuppressWarnings({"SameParameterValue", "WeakerAccess", "unused"})
 public abstract class ADotObject<This extends ADotObject<This>> extends AObject {
 
     private final Map<Object, Object> parameters;
@@ -19,7 +20,7 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
         this.comment = "";
     }
 
-    public abstract This getThis();
+    protected abstract This getThis();
 
     private This numberParameter(Object key, Object value) {
         parameters.put(key, value);

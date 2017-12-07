@@ -23,6 +23,7 @@ import visitors.dot.DOTNode;
  * Created by gvoiron on 26/11/17.
  * Time : 23:14
  */
+@SuppressWarnings({"SameReturnValue", "unused"})
 public interface IObjectFormatter {
 
     String visit(Int anInt);

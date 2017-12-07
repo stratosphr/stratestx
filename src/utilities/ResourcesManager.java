@@ -78,6 +78,7 @@ public final class ResourcesManager {
 
     public enum EModel {CA, CM, EL, EV, EXAMPLE, GSM, L14, L14_2, PH}
 
+    @SuppressWarnings("unused")
     public enum EAbstractionPredicatesSet {AP0, AP1, AP2, AP3, AP4}
 
 }

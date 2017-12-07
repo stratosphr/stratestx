@@ -14,7 +14,7 @@ import java.util.LinkedHashSet;
  */
 public final class EnumValue extends AValue {
 
-    private static LinkedHashMap<String, Integer> enumValuesRegister = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, Integer> enumValuesRegister = new LinkedHashMap<>();
     private final String name;
 
     public EnumValue(String name) {

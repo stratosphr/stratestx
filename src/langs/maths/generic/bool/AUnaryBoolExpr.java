@@ -12,9 +12,9 @@ import java.util.LinkedHashSet;
  */
 public abstract class AUnaryBoolExpr<Operand extends AGenericTypeExpr> extends ABoolExpr {
 
-    private Operand operand;
+    private final Operand operand;
 
-    public AUnaryBoolExpr(Operand operand) {
+    protected AUnaryBoolExpr(Operand operand) {
         this.operand = operand;
     }
 

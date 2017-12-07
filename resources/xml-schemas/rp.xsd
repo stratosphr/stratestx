@@ -21,7 +21,7 @@
     <xs:element name="relevance-predicate">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="atomic-predicate" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="atomic-predicate" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -55,7 +55,7 @@
     <xs:element name="conditions" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="condition" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="condition" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -87,7 +87,7 @@
     <xs:element name="enum" substitutionGroup="set-expr-non-named">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="enum-value" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="enum-value" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -177,14 +177,14 @@
     <xs:element name="and" substitutionGroup="bool-expr">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="bool-expr" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="or" substitutionGroup="bool-expr">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="bool-expr" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="bool-expr" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -280,7 +280,7 @@
     <xs:element name="vars-defs">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="var-def" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="var-def" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

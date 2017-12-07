@@ -16,6 +16,7 @@ import java.io.IOException;
  * Created by gvoiron on 16/11/17.
  * Time : 15:20
  */
+@SuppressWarnings("unused")
 public final class XMLParser extends DefaultHandler {
 
     private static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
@@ -38,7 +39,6 @@ public final class XMLParser extends DefaultHandler {
         return parse(file, null);
     }
 
-    @SuppressWarnings({"WeakerAccess", "SameParameterValue"})
     public XMLNode parse(File file, File xsd) {
         try {
             SAXParser parser = factory.newSAXParser();
@@ -61,7 +61,7 @@ public final class XMLParser extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String tagName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String tagName, Attributes attributes) {
         XMLNode node = new XMLNode(tagName, new File(locator.getSystemId()), locator.getLineNumber(), locator.getColumnNumber());
         for (int i = 0; i < attributes.getLength(); i++) {
             node.addAttribute(attributes.getLocalName(i), attributes.getValue(i));
@@ -75,27 +75,27 @@ public final class XMLParser extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         currentNode = currentNode.getParent();
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         currentNode.addText(new String(ch, start, length).trim());
     }
 
     @Override
-    public void warning(SAXParseException e) throws SAXException {
+    public void warning(SAXParseException e) {
         e.printStackTrace();
     }
 
     @Override
-    public void error(SAXParseException e) throws SAXException {
+    public void error(SAXParseException e) {
         e.printStackTrace();
     }
 
     @Override
-    public void fatalError(SAXParseException e) throws SAXException {
+    public void fatalError(SAXParseException e) {
         e.printStackTrace();
     }
 

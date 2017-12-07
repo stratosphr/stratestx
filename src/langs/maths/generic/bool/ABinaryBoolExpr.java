@@ -18,7 +18,7 @@ public abstract class ABinaryBoolExpr<Left extends AExpr, Right extends AExpr> e
     private final Left left;
     private final Right right;
 
-    public ABinaryBoolExpr(Left left, Right right) {
+    protected ABinaryBoolExpr(Left left, Right right) {
         this.left = left;
         this.right = right;
     }

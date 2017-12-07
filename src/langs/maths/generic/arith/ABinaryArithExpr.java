@@ -17,7 +17,7 @@ public abstract class ABinaryArithExpr<Left extends AGenericTypeExpr, Right exte
     private final Left left;
     private final Right right;
 
-    public ABinaryArithExpr(Left left, Right right) {
+    protected ABinaryArithExpr(Left left, Right right) {
         this.left = left;
         this.right = right;
     }

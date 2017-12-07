@@ -18,7 +18,7 @@ public abstract class ANarySetExpr extends AFiniteSetExpr {
 
     private final List<AFiniteSetExpr> operands;
 
-    public ANarySetExpr(AFiniteSetExpr[] operands) {
+    protected ANarySetExpr(AFiniteSetExpr[] operands) {
         this.operands = Arrays.asList(operands);
     }
 

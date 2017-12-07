@@ -19,7 +19,7 @@ public abstract class ANaryBoolExpr<Operand extends AGenericTypeExpr> extends AB
 
     private final List<Operand> operands;
 
-    public ANaryBoolExpr(Operand[] operands) {
+    protected ANaryBoolExpr(Operand[] operands) {
         this.operands = Arrays.asList(operands);
     }
 

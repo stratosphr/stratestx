@@ -14,7 +14,7 @@ public abstract class APredicate extends ABoolExpr {
     private final String name;
     private final ABoolExpr expr;
 
-    public APredicate(String name, ABoolExpr expr) {
+    protected APredicate(String name, ABoolExpr expr) {
         this.name = name;
         this.expr = expr;
     }

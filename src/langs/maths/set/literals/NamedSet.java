@@ -17,8 +17,8 @@ import java.util.LinkedHashSet;
  */
 public final class NamedSet extends AFiniteSetExpr {
 
-    private String name;
-    private AFiniteSetExpr set;
+    private final String name;
+    private final AFiniteSetExpr set;
 
     public NamedSet(String name, AFiniteSetExpr set) {
         this.name = name;

@@ -19,7 +19,7 @@ public abstract class ANaryArithExpr<Operand extends AGenericTypeExpr> extends A
 
     private final List<Operand> operands;
 
-    public ANaryArithExpr(Operand[] operands) {
+    protected ANaryArithExpr(Operand[] operands) {
         this.operands = Arrays.asList(operands);
     }
 

@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 public final class Primer implements IPrimer {
 
     private final static String suffix = "_";
-    private int primeLevel;
+    private final int primeLevel;
     private LinkedHashSet<Var> quantifiedVars;
     private boolean isVisitingInvariant;
 

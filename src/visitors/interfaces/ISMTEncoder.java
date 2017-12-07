@@ -16,6 +16,7 @@ import langs.maths.generic.bool.operators.*;
  * Created by gvoiron on 27/11/17.
  * Time : 03:46
  */
+@SuppressWarnings("unused")
 public interface ISMTEncoder {
 
     IntExpr visit(Int anInt);

@@ -23,7 +23,7 @@ import visitors.interfaces.IObjectFormatter;
 
 import java.util.stream.Collectors;
 
-import static visitors.dot.DOTEncoder.ERankDir.TB;
+import static visitors.dot.DOTEncoder.ERankDir.LR;
 
 /**
  * Created by gvoiron on 26/11/17.
@@ -295,13 +295,23 @@ public final class ObjectFormatter extends AFormatter implements IObjectFormatte
     }
 
     @Override
+    public String visit(AbstractTransition abstractTransition) {
+        return abstractTransition.getSource().accept(this) + " -[ " + abstractTransition.getEvent().getName() + " ]-> " + abstractTransition.getTarget().accept(this);
+    }
+
+    @Override
     public String visit(ConcreteTransition concreteTransition) {
         return concreteTransition.getSource().accept(this) + " -[ " + concreteTransition.getEvent().getName() + " ]-> " + concreteTransition.getTarget().accept(this);
     }
 
     @Override
-    public <State extends AState, Transition extends ATransition<State>> String visit(FSM<State, Transition> fsm) {
-        return fsm.accept(new DOTEncoder<>(true, TB));
+    public String visit(MTS mts) {
+        return mts.accept(new DOTEncoder<>(true, LR));
+    }
+
+    @Override
+    public String visit(CTS cts) {
+        return cts.accept(new DOTEncoder<>(true, LR));
     }
 
     @Override

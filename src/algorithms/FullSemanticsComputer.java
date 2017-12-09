@@ -2,9 +2,9 @@ package algorithms;
 
 import langs.eventb.Event;
 import langs.eventb.Machine;
+import langs.formal.graphs.CTS;
 import langs.formal.graphs.ConcreteState;
 import langs.formal.graphs.ConcreteTransition;
-import langs.formal.graphs.FSM;
 import langs.maths.generic.bool.ABoolExpr;
 import langs.maths.generic.bool.operators.And;
 import langs.maths.generic.bool.operators.Not;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * Created by gvoiron on 06/12/17.
  * Time : 21:45
  */
-public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, ConcreteTransition>> {
+public final class FullSemanticsComputer extends AComputer<CTS> {
 
     private final Machine machine;
     private final LinkedHashSet<ConcreteState> initialStates;
@@ -36,7 +36,7 @@ public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, Co
     }
 
     @Override
-    FSM<ConcreteState, ConcreteTransition> run() {
+    CTS run() {
         Z3Result result;
         while ((result = Z3.checkSAT(new And(
                 machine.getInvariant(),
@@ -72,7 +72,7 @@ public final class FullSemanticsComputer extends AComputer<FSM<ConcreteState, Co
             }
             state = states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).findFirst();
         }
-        return new FSM<>(initialStates, new LinkedHashSet<>(states.keySet()), transitions);
+        return new CTS(initialStates, new LinkedHashSet<>(states.keySet()), transitions);
     }
 
     private ConcreteState concreteState(Set<ConcreteState> states, Model model) {

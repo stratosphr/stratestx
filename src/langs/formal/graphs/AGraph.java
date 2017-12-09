@@ -4,8 +4,8 @@ import langs.AObject;
 import visitors.interfaces.IDOTEncodable;
 import visitors.interfaces.IDOTEncoder;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 /**
  * Created by gvoiron on 06/12/17.
@@ -15,9 +15,9 @@ public abstract class AGraph<State extends AState, Transition extends ATransitio
 
     private final LinkedHashSet<State> initialStates;
     private final LinkedHashSet<State> states;
-    private final ArrayList<Transition> transitions;
+    private final List<Transition> transitions;
 
-    AGraph(LinkedHashSet<State> initialStates, LinkedHashSet<State> states, ArrayList<Transition> transitions) {
+    AGraph(LinkedHashSet<State> initialStates, LinkedHashSet<State> states, List<Transition> transitions) {
         this.initialStates = initialStates;
         this.states = states;
         this.transitions = transitions;
@@ -34,7 +34,7 @@ public abstract class AGraph<State extends AState, Transition extends ATransitio
         return states;
     }
 
-    public ArrayList<Transition> getTransitions() {
+    public List<Transition> getTransitions() {
         return transitions;
     }
 

@@ -2,7 +2,8 @@ package visitors.interfaces;
 
 import langs.formal.graphs.AState;
 import langs.formal.graphs.ATransition;
-import langs.formal.graphs.FSM;
+import langs.formal.graphs.CTS;
+import langs.formal.graphs.MTS;
 
 /**
  * Created by gvoiron on 06/12/17.
@@ -10,6 +11,8 @@ import langs.formal.graphs.FSM;
  */
 public interface IDOTEncoder<State extends AState, Transition extends ATransition<State>> {
 
-    String visit(FSM<State, Transition> fsm);
+    String visit(MTS mts);
+
+    String visit(CTS cts);
 
 }

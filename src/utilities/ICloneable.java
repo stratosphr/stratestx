@@ -4,8 +4,8 @@ package utilities;
  * Created by gvoiron on 27/11/17.
  * Time : 17:00
  */
-public interface ICloneable<T> {
+public interface ICloneable<Clone> {
 
-    T clone();
+    Clone clone();
 
 }

@@ -1,20 +1,16 @@
 import algorithms.AbstractStatesComputer;
-import algorithms.FullSemanticsComputer;
+import algorithms.outputs.ATS;
 import langs.eventb.Machine;
 import langs.formal.graphs.AbstractState;
-import langs.formal.graphs.ConcreteState;
-import langs.formal.graphs.ConcreteTransition;
-import langs.formal.graphs.FSM;
+import langs.formal.graphs.AbstractTransition;
+import langs.formal.graphs.CTS;
+import langs.formal.graphs.MTS;
 import langs.maths.generic.bool.literals.Predicate;
-import langs.maths.generic.bool.operators.And;
 import parsers.stratest.Parser;
-import solvers.z3.Z3;
-import solvers.z3.Z3Result;
-import visitors.Primer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.stream.Collectors;
 
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.AP0;
 import static utilities.ResourcesManager.EModel.EXAMPLE;
@@ -27,26 +23,8 @@ class Main {
         Parser parser = new Parser();
         Machine machine = parser.parseModel(getModel(EXAMPLE));
         LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(EXAMPLE, AP0));
-        for (Predicate predicate : ap) {
-            System.out.println(predicate);
-        }
         ArrayList<AbstractState> as = new ArrayList<>(new AbstractStatesComputer(machine, ap).compute().getResult());
-        for (AbstractState a : as) {
-            System.out.println(a);
-        }
-        Z3Result result = Z3.checkSAT(new And(
-                machine.getInvariant(),
-                machine.getInvariant().accept(new Primer(1)),
-                machine.getInitialisation().getPrd(machine.getAssignables()),
-                as.get(1).accept(new Primer(1))
-        ), machine.getDefsRegister());
-        if (result.isSAT()) {
-            System.out.println(result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new))));
-        } else {
-            System.out.println("UNSAT");
-        }
-        FSM<ConcreteState, ConcreteTransition> result1 = new FullSemanticsComputer(machine).compute().getResult();
-        System.out.println(result1);
+        new ATS(machine, new MTS(null, null, Collections.singletonList(new AbstractTransition(null, null, null))), new CTS(null, null, null));
     }
 
 }

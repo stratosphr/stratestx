@@ -1,9 +1,7 @@
 package visitors.dot;
 
 import algorithms.RchblPartComputer;
-import langs.formal.graphs.AState;
-import langs.formal.graphs.ATransition;
-import langs.formal.graphs.FSM;
+import langs.formal.graphs.*;
 import utilities.Tuple;
 import visitors.AFormatter;
 import visitors.interfaces.IDOTEncoder;
@@ -32,17 +30,22 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
     }
 
     @Override
-    public String visit(FSM<State, Transition> fsm) {
-        fsm.getInitialStates().stream().map(this::encodeInitialNode).forEach(nodes::add);
-        Tuple<LinkedHashSet<State>, ArrayList<Transition>> rchblPart = new RchblPartComputer<>(fsm).compute().getResult();
-        rchblPart.getLeft().stream().filter(state -> !fsm.getInitialStates().contains(state)).map(this::encodeReachedNode).forEach(nodes::add);
-        fsm.getStates().stream().filter(state -> !rchblPart.getLeft().contains(state)).map(this::encodeUnreachedNode).forEach(nodes::add);
+    public String visit(MTS mts) {
+        return null;
+    }
+
+    @Override
+    public String visit(CTS cts) {
+        cts.getInitialStates().stream().map(this::encodeInitialNode).forEach(nodes::add);
+        Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>> rchblPart = new RchblPartComputer<>(cts).compute().getResult();
+        rchblPart.getLeft().stream().filter(state -> !cts.getInitialStates().contains(state)).map(this::encodeReachedNode).forEach(nodes::add);
+        cts.getStates().stream().filter(state -> !rchblPart.getLeft().contains(state)).map(this::encodeUnreachedNode).forEach(nodes::add);
         rchblPart.getRight().stream().map(this::encodeReachedTransition).forEach(edges::add);
-        fsm.getTransitions().stream().filter(transition -> !rchblPart.getRight().contains(transition)).map(this::encodeUnreachedTransition).forEach(edges::add);
+        cts.getTransitions().stream().filter(transition -> !rchblPart.getRight().contains(transition)).map(this::encodeUnreachedTransition).forEach(edges::add);
         return line("digraph g {") + line() + indentRight() + indentLine("rankdir=\"" + rankDir + "\"") + line() + nodes.stream().map(state -> indentLine(state.toString())).collect(Collectors.joining()) + line() + edges.stream().map(edge -> indentLine(edge.toString())).collect(Collectors.joining()) + line() + indentLeft() + indentLine("}");
     }
 
-    private DOTNode encodeInitialNode(State state) {
+    private DOTNode encodeInitialNode(AState state) {
         DOTNode invisible = new DOTNode("__invisible__").setShape("point").setColor("forestgreen");
         DOTNode initial = encodeReachedNode(state).setPenWidth(3).setComment("Initial");
         nodes.add(invisible);
@@ -50,19 +53,19 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         return initial;
     }
 
-    private DOTNode encodeReachedNode(State state) {
+    private DOTNode encodeReachedNode(AState state) {
         return new DOTNode(state.getName()).setLabel(useFullLabels ? state : state.getName()).setShape("box").setStyle("rounded, filled").setColor("forestgreen").setFillColor("limegreen").setColor("forestgreen");
     }
 
-    private DOTNode encodeUnreachedNode(State state) {
+    private DOTNode encodeUnreachedNode(AState state) {
         return encodeReachedNode(state).setFillColor("lightblue2").setColor("deepskyblue4");
     }
 
-    private DOTEdge encodeReachedTransition(Transition transition) {
+    private DOTEdge encodeReachedTransition(ATransition transition) {
         return new DOTEdge(new DOTNode(transition.getSource().getName()), new DOTNode(transition.getTarget().getName())).setLabel(transition.getEvent().getName()).setColor("forestgreen");
     }
 
-    private DOTEdge encodeUnreachedTransition(Transition transition) {
+    private DOTEdge encodeUnreachedTransition(ATransition transition) {
         return encodeReachedTransition(transition).setColor("black").setStyle("dashed");
     }
 

@@ -128,9 +128,13 @@ public interface IObjectFormatter {
 
     String visit(Machine machine);
 
+    String visit(AbstractTransition abstractTransition);
+
     String visit(ConcreteTransition concreteTransition);
 
-    <State extends AState, Transition extends ATransition<State>> String visit(FSM<State, Transition> fsm);
+    String visit(MTS mts);
+
+    String visit(CTS CTS);
 
     String visit(DOTNode dotNode);
 

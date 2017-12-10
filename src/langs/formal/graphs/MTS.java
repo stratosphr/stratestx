@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
  */
 public final class MTS extends AFSM<AbstractState, AbstractTransition> {
 
-    public MTS(LinkedHashSet<AbstractState> initialStates, LinkedHashSet<AbstractState> abstractStates, List<AbstractTransition> abstractTransitions) {
-        super(initialStates, abstractStates, abstractTransitions);
+    public MTS(LinkedHashSet<AbstractState> initialStates, LinkedHashSet<AbstractState> abstractStates, LinkedHashSet<AbstractTransition> abstractTransitions) {
+        super(initialStates, abstractStates, new ArrayList<>(abstractTransitions));
     }
 
     @Override
@@ -45,7 +45,7 @@ public final class MTS extends AFSM<AbstractState, AbstractTransition> {
 
     @Override
     public MTS clone() {
-        return new MTS(getInitialStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(AbstractTransition::clone).collect(Collectors.toCollection(ArrayList::new)));
+        return new MTS(getInitialStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(AbstractTransition::clone).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
 }

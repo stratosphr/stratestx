@@ -1,5 +1,7 @@
 package langs.formal.graphs;
 
+import visitors.interfaces.IDOTEncoder;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -11,6 +13,11 @@ public abstract class AFSM<State extends AState, Transition extends ATransition<
 
     AFSM(LinkedHashSet<State> initialStates, LinkedHashSet<State> states, List<Transition> transitions) {
         super(initialStates, states, transitions);
+    }
+
+    @Override
+    public String accept(IDOTEncoder<State, Transition> encoder) {
+        return encoder.visit(this);
     }
 
     @Override

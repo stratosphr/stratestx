@@ -22,7 +22,7 @@ public final class RchblPartComputer<State extends AState, Transition extends AT
     public RchblPartComputer(AGraph<State, Transition> fsm) {
         this.fsm = fsm;
         this.adjacency = new LinkedHashMap<>();
-        fsm.getStates().forEach(s -> adjacency.put(s, new ArrayList<>()));
+        fsm.getStates().forEach(state -> adjacency.put(state, new ArrayList<>()));
         fsm.getTransitions().forEach(transition -> adjacency.get(transition.getSource()).add(transition));
     }
 

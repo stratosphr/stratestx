@@ -1,0 +1,89 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <equals>
+            <var name="h"/>
+            <enum-value name="tic"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p1">
+        <exists>
+            <vars-defs>
+                <var-def name="i">
+                    <range>
+                        <int value="1"/>
+                        <const name="n"/>
+                    </range>
+                </var-def>
+                <var-def name="j">
+                    <range>
+                        <int value="1"/>
+                        <const name="n"/>
+                    </range>
+                </var-def>
+            </vars-defs>
+            <and>
+                <neq>
+                    <var name="i"/>
+                    <var name="j"/>
+                </neq>
+                <equals>
+                    <fun name="bat">
+                        <var name="i"/>
+                    </fun>
+                    <enum-value name="ok"/>
+                </equals>
+                <equals>
+                    <fun name="bat">
+                        <var name="j"/>
+                    </fun>
+                    <enum-value name="ok"/>
+                </equals>
+            </and>
+        </exists>
+    </predicate>
+
+    <predicate name="p2">
+        <equals>
+            <var name="sw"/>
+            <int value="1"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p3">
+        <equals>
+            <var name="sw"/>
+            <int value="2"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p4">
+        <equals>
+            <var name="sw"/>
+            <int value="3"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p5">
+        <equals>
+            <var name="sw"/>
+            <int value="4"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p6">
+        <equals>
+            <var name="sw"/>
+            <int value="5"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p7">
+        <equals>
+            <var name="sw"/>
+            <int value="6"/>
+        </equals>
+    </predicate>
+
+</predicates>

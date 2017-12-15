@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
  * Time : 17:35
  */
 @SuppressWarnings("WeakerAccess")
-public class Streams {
+public final class Streams {
 
     /**
      * Converts an {@link java.util.Iterator} to {@link java.util.stream.Stream}.

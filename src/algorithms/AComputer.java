@@ -1,5 +1,7 @@
 package algorithms;
 
+import utilities.Time;
+
 /**
  * Created by gvoiron on 06/12/17.
  * Time : 20:59
@@ -13,7 +15,7 @@ public abstract class AComputer<Result> {
         Result computed = run();
         long end = System.nanoTime();
         postRun();
-        return new ComputerResult<>(computed, end - start);
+        return new ComputerResult<>(computed, new Time(end - start));
     }
 
     protected void preRun() {

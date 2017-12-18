@@ -4,7 +4,7 @@
 
     <consts-defs>
         <const-def name="n">
-            <int value="10"/>
+            <int value="4"/>
         </const-def>
     </consts-defs>
 
@@ -79,7 +79,7 @@
                 </fun>
                 <enum-value name="ok"/>
             </fun-assignment>
-            <fun-assignment>
+            <!--<fun-assignment>
                 <fun name="bat">
                     <int value="5"/>
                 </fun>
@@ -114,7 +114,7 @@
                     <int value="10"/>
                 </fun>
                 <enum-value name="ok"/>
-            </fun-assignment>
+            </fun-assignment>-->
         </assignments>
     </initialisation>
 

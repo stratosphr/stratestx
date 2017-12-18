@@ -25,7 +25,7 @@ public abstract class AObject implements IObjectFormattable, ICloneable, Compara
 
     @Override
     public final boolean equals(Object o) {
-        return this == o || (getClass().equals(o.getClass()) && hashCode() == o.hashCode());
+        return this == o || (getClass().equals(o.getClass()) && hashCode() == o.hashCode() && toString().equals(o.toString()));
     }
 
     @Override

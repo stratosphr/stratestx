@@ -1,5 +1,7 @@
 package algorithms;
 
+import utilities.Time;
+
 /**
  * Created by gvoiron on 06/12/17.
  * Time : 21:03
@@ -7,9 +9,9 @@ package algorithms;
 public final class ComputerResult<Result> {
 
     private final Result computed;
-    private final long time;
+    private final Time time;
 
-    ComputerResult(Result computed, long time) {
+    ComputerResult(Result computed, Time time) {
         this.computed = computed;
         this.time = time;
     }
@@ -18,7 +20,7 @@ public final class ComputerResult<Result> {
         return computed;
     }
 
-    public long getTime() {
+    public Time getTime() {
         return time;
     }
 

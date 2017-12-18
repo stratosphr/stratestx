@@ -216,7 +216,6 @@ public final class CXPComputer extends AComputer<ATS> {
             _kappa.get(BLUE).remove(c_);
             _kappa.get(GREEN).add(c_);
             propagateGreenColor(c_);
-            throw new Error("Propagation");
         });
     }
 

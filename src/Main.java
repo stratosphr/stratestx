@@ -20,8 +20,8 @@ class Main {
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        Machine machine = parser.parseModel(getModel(ResourcesManager.EModel.EXAMPLE));
-        LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(ResourcesManager.EModel.EXAMPLE, ResourcesManager.EAbstractionPredicatesSet.AP0));
+        Machine machine = parser.parseModel(getModel(ResourcesManager.EModel.CM));
+        LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(ResourcesManager.EModel.CM, ResourcesManager.EAbstractionPredicatesSet.AP0));
         LinkedHashSet<AbstractState> as = new AbstractStatesComputer(machine, ap).compute().getResult();
         ComputerResult<ATS> cxp = new CXPComputer(machine, as).compute();
         System.out.println(cxp.getTime());

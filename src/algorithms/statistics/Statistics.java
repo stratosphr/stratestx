@@ -158,8 +158,8 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(getAbstractRchdPart().getLeft().size());
     }
 
-    private DoubleStatistic getTauAS() {
-        return new DoubleStatistic(getNbAS().getValue() == 0 ? 0 : 1d * getNbASRchd().getValue() / getNbAS().getValue());
+    private PercentageStatistic getTauAS() {
+        return new PercentageStatistic(getNbAS().getValue() == 0 ? 0 : 100d * getNbASRchd().getValue() / getNbAS().getValue());
     }
 
     private IntegerStatistic getNbAT() {
@@ -170,8 +170,8 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(getAbstractRchdPart().getRight().size());
     }
 
-    private DoubleStatistic getTauAT() {
-        return new DoubleStatistic(getNbAT().getValue() == 0 ? 0 : 1d * getNbATRchd().getValue() / getNbAT().getValue());
+    private PercentageStatistic getTauAT() {
+        return new PercentageStatistic(getNbAT().getValue() == 0 ? 0 : 100d * getNbATRchd().getValue() / getNbAT().getValue());
     }
 
     private IntegerStatistic getNbCS() {
@@ -190,12 +190,12 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(getConcreteRchdPart().getResult().getRight().size());
     }
 
-    private DoubleStatistic getRhoCS() {
-        return new DoubleStatistic(getNbCS().getValue() == 0 ? 0 : 1d * getNbCSRchd().getValue() / getNbCS().getValue());
+    private PercentageStatistic getRhoCS() {
+        return new PercentageStatistic(getNbCS().getValue() == 0 ? 0 : 100d * getNbCSRchd().getValue() / getNbCS().getValue());
     }
 
-    private DoubleStatistic getRhoCT() {
-        return new DoubleStatistic(getNbCT().getValue() == 0 ? 0 : 1d * getNbCTRchd().getValue() / getNbCT().getValue());
+    private PercentageStatistic getRhoCT() {
+        return new PercentageStatistic(getNbCT().getValue() == 0 ? 0 : 100d * getNbCTRchd().getValue() / getNbCT().getValue());
     }
 
     private IntegerStatistic getNbTests() {

@@ -99,7 +99,7 @@ public final class SMTEncoder implements ISMTEncoder {
             funsDecls.put(fun.getName(), context.mkFuncDecl(fun.getName(), context.getIntSort(), context.getIntSort()));
             solver.add(new And(
                     defsRegister.getFunsDefs().get(nonPrimedFun.getName()).getLeft().getElementsValues(defsRegister).stream().map(value ->
-                            new Equals(new Fun(fun.getName(), value), new FunVar(new Fun(fun.getName(), value)))
+                            new Equals(new Fun(fun.getName(), value), new FunVar(new Fun(fun.getName(), new Int(value.getValue()))))
                     ).toArray(ABoolExpr[]::new)
             ).accept(this));
             Var index = new Var("i!");

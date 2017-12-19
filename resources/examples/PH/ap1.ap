@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<predicates xmlns="ap">
+    <predicate name="p0">
+        <equals>
+            <var name="NbEssai"/>
+            <int value="1"/>
+        </equals>
+    </predicate>
+    <predicate name="p1">
+        <equals>
+            <var name="NbEssai"/>
+            <int value="0"/>
+        </equals>
+    </predicate>
+    <predicate name="p2">
+        <and>
+            <equals>
+                <var name="Etat"/>
+                <int value="4"/>
+            </equals>
+            <equals>
+                <var name="Combine"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="NbEssai"/>
+                <int value="0"/>
+            </equals>
+        </and>
+    </predicate>
+    <predicate name="p3">
+        <implies>
+            <equals>
+                <var name="Etat"/>
+                <int value="2"/>
+            </equals>
+            <equals>
+                <var name="Etat"/>
+                <int value="5"/>
+            </equals>
+        </implies>
+    </predicate>
+    <predicate name="p4">
+        <implies>
+            <and>
+                <not>
+                    <equals>
+                        <var name="Etat"/>
+                        <int value="2"/>
+                    </equals>
+                </not>
+                <equals>
+                    <var name="NbEssai"/>
+                    <int value="2"/>
+                </equals>
+            </and>
+            <equals>
+                <var name="Etat"/>
+                <int value="5"/>
+            </equals>
+        </implies>
+    </predicate>
+    <predicate name="p5">
+        <implies>
+            <and>
+                <not>
+                    <equals>
+                        <var name="Etat"/>
+                        <int value="2"/>
+                    </equals>
+                </not>
+                <not>
+                    <equals>
+                        <var name="NbEssai"/>
+                        <int value="2"/>
+                    </equals>
+                </not>
+            </and>
+            <or>
+                <equals>
+                    <var name="NbEssai"/>
+                    <int value="1"/>
+                </equals>
+                <equals>
+                    <var name="NbEssai"/>
+                    <int value="2"/>
+                </equals>
+            </or>
+        </implies>
+    </predicate>
+</predicates>
+

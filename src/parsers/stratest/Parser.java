@@ -25,7 +25,7 @@ import parsers.xml.XMLNode;
 import parsers.xml.XMLParser;
 import parsers.xml.schemas.XMLAttributesSchema;
 import parsers.xml.schemas.XMLNodeSchema;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 
 import java.io.File;
 import java.util.*;

@@ -10,7 +10,7 @@ import langs.maths.generic.arith.literals.Var;
 import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ASetExpr;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 import visitors.interfaces.IObjectFormatter;
 
 import java.util.LinkedHashMap;

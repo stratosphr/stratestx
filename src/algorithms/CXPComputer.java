@@ -13,7 +13,7 @@ import langs.maths.generic.bool.operators.Or;
 import solvers.z3.Model;
 import solvers.z3.Z3;
 import solvers.z3.Z3Result;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 import visitors.Primer;
 
 import java.util.ArrayList;

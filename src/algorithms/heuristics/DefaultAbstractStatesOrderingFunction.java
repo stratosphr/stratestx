@@ -1,7 +1,7 @@
 package algorithms.heuristics;
 
 import langs.formal.graphs.AbstractState;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 
 import java.util.Collection;
 import java.util.Collections;

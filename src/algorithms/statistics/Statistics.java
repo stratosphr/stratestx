@@ -9,7 +9,7 @@ import langs.formal.graphs.ConcreteState;
 import langs.formal.graphs.ConcreteTransition;
 import langs.maths.generic.bool.literals.Predicate;
 import utilities.Time;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

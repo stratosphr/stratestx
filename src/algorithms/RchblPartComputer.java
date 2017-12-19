@@ -3,7 +3,7 @@ package algorithms;
 import langs.formal.graphs.AGraph;
 import langs.formal.graphs.AState;
 import langs.formal.graphs.ATransition;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

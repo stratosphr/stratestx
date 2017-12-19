@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public final class CTS extends AFSM<ConcreteState, ConcreteTransition> {
 
-    public CTS(LinkedHashSet<ConcreteState> initialStates, LinkedHashSet<ConcreteState> states, ArrayList<ConcreteTransition> transitions) {
+    public CTS(LinkedHashSet<ConcreteState> initialStates, LinkedHashSet<ConcreteState> states, List<ConcreteTransition> transitions) {
         super(initialStates, states, transitions);
     }
 

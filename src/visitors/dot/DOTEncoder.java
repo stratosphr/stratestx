@@ -4,7 +4,7 @@ import algorithms.RchblPartComputer;
 import langs.formal.graphs.AFSM;
 import langs.formal.graphs.AState;
 import langs.formal.graphs.ATransition;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 import visitors.AFormatter;
 import visitors.interfaces.IDOTEncoder;
 

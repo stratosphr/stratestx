@@ -1,4 +1,4 @@
-package utilities;
+package utilities.tuples;
 
 /**
  * Created by gvoiron on 27/11/17.

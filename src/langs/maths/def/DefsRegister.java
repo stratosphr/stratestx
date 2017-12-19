@@ -3,7 +3,7 @@ package langs.maths.def;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.set.AFiniteSetExpr;
 import langs.maths.set.ASetExpr;
-import utilities.Tuple;
+import utilities.tuples.Tuple;
 
 import java.util.LinkedHashMap;
 

@@ -16,6 +16,10 @@ public final class Time {
         this.nanoseconds = nanoseconds;
     }
 
+    public long getNanoseconds() {
+        return nanoseconds;
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");

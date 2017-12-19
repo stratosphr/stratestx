@@ -2,19 +2,16 @@ package algorithms.statistics;
 
 import algorithms.ComputerResult;
 import algorithms.RchblPartComputer;
+import algorithms.SCConcreteGraphComputer;
+import algorithms.TestsComputer;
 import algorithms.outputs.ATS;
-import langs.formal.graphs.AbstractState;
-import langs.formal.graphs.AbstractTransition;
-import langs.formal.graphs.ConcreteState;
-import langs.formal.graphs.ConcreteTransition;
+import algorithms.outputs.Test;
+import langs.formal.graphs.*;
 import langs.maths.generic.bool.literals.Predicate;
 import utilities.Time;
 import utilities.tuples.Tuple;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +27,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     private final Time atsComputationTime;
     private ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchdConcretePart;
     private Tuple<LinkedHashSet<AbstractState>, ArrayList<AbstractTransition>> rchdAbstractPart;
+    private ComputerResult<List<Test>> tests;
 
     public Statistics(ATS ats, int abstractionPredicatesID, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime) {
         this(ats, abstractionPredicatesID, abstractionPredicates, atsComputationTime, EStatistic.values());
@@ -179,7 +177,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private IntegerStatistic getNbCSRchd() {
-        return new IntegerStatistic(getConcreteRchdPart().getResult().getLeft().size());
+        return new IntegerStatistic(getConcreteRchdPartComputation().getResult().getLeft().size());
     }
 
     private IntegerStatistic getNbCT() {
@@ -187,7 +185,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private IntegerStatistic getNbCTRchd() {
-        return new IntegerStatistic(getConcreteRchdPart().getResult().getRight().size());
+        return new IntegerStatistic(getConcreteRchdPartComputation().getResult().getRight().size());
     }
 
     private PercentageStatistic getRhoCS() {
@@ -207,7 +205,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private SetStatistic<List<ConcreteTransition>> getTests() {
-        return new SetStatistic<>(new LinkedHashSet<>());
+        return new SetStatistic<>(new LinkedHashSet<>(getTestsComputation().getResult()));
     }
 
     private TimeStatistic getTimeATS() {
@@ -215,10 +213,10 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private TimeStatistic getTimeTests() {
-        return new TimeStatistic(new Time(-1));
+        return new TimeStatistic(getTestsComputation().getTime());
     }
 
-    private ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> getConcreteRchdPart() {
+    private ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> getConcreteRchdPartComputation() {
         if (this.rchdConcretePart == null) {
             this.rchdConcretePart = new RchblPartComputer<>(ats.getCTS()).compute();
         }
@@ -226,11 +224,26 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private Tuple<LinkedHashSet<AbstractState>, ArrayList<AbstractTransition>> getAbstractRchdPart() {
-        Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>> concreteRchdPart = getConcreteRchdPart().getResult();
+        Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>> concreteRchdPart = getConcreteRchdPartComputation().getResult();
         if (this.rchdAbstractPart == null) {
             this.rchdAbstractPart = new Tuple<>(ats.getMTS().getStates().stream().filter(q -> concreteRchdPart.getLeft().stream().anyMatch(c -> ats.getAlpha().get(c).equals(q))).collect(Collectors.toCollection(LinkedHashSet::new)), ats.getMTS().getTransitions().stream().filter(at -> concreteRchdPart.getRight().stream().anyMatch(ct -> ats.getAlpha().get(ct.getSource()).equals(at.getSource()) && at.getEvent().equals(ct.getEvent()) && ats.getAlpha().get(ct.getTarget()).equals(at.getTarget()))).collect(Collectors.toCollection(ArrayList::new)));
         }
         return rchdAbstractPart;
+    }
+
+    private ComputerResult<List<Test>> getTestsComputation() {
+        if (this.tests == null) {
+            Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>> result = getConcreteRchdPartComputation().getResult();
+            ConcreteState ghostState = new ConcreteState("__ghost__", new TreeMap<>());
+            ComputerResult<AGraph<ConcreteState, ConcreteTransition>> scGraphComputation = new SCConcreteGraphComputer(new CTS(ats.getCTS().getInitialStates(), result.getLeft(), result.getRight()), ghostState, "__init__", "__reset__").compute();
+            AGraph<ConcreteState, ConcreteTransition> scGraph = scGraphComputation.getResult();
+            ComputerResult<List<Test>> testsComputation = new TestsComputer(ghostState, scGraph.getStates(), scGraph.getTransitions()).compute();
+            for (Test test : testsComputation.getResult()) {
+                test.removeIf(concreteTransition -> concreteTransition.getSource().equals(ghostState) || concreteTransition.getTarget().equals(ghostState));
+            }
+            this.tests = new ComputerResult<>(testsComputation.getResult(), new Time(scGraphComputation.getTime().getNanoseconds() + testsComputation.getTime().getNanoseconds()));
+        }
+        return tests;
     }
 
 }

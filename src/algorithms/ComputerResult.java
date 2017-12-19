@@ -11,7 +11,7 @@ public final class ComputerResult<Result> {
     private final Result computed;
     private final Time time;
 
-    ComputerResult(Result computed, Time time) {
+    public ComputerResult(Result computed, Time time) {
         this.computed = computed;
         this.time = time;
     }

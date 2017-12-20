@@ -1,4 +1,4 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics;
 
 /**
  * Created by gvoiron on 19/12/17.

@@ -1,5 +1,13 @@
 package algorithms.heuristics.relevance;
 
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.Conditions;
+import algorithms.heuristics.relevance.atomics.funs.FunChanges;
+import algorithms.heuristics.relevance.atomics.funs.FunDecreases;
+import algorithms.heuristics.relevance.atomics.funs.FunIncreases;
+import algorithms.heuristics.relevance.atomics.vars.VarChanges;
+import algorithms.heuristics.relevance.atomics.vars.VarDecreases;
+import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.def.DefsRegister;
@@ -8,6 +16,7 @@ import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.arith.literals.Int;
 import langs.maths.generic.arith.literals.Var;
 import langs.maths.generic.arith.operators.Minus;
+import langs.maths.generic.arith.operators.Times;
 import langs.maths.generic.bool.operators.And;
 import langs.maths.generic.bool.operators.Equals;
 import langs.maths.set.AFiniteSetExpr;
@@ -26,6 +35,8 @@ import java.util.LinkedHashSet;
  * Time : 13:53
  */
 public final class DefaultVariantComputer implements IVariantComputer {
+
+    // TODO: This variant computer should take into account the number of relevant events
 
     private <Variant extends AArithExpr> Variant registerVInit(Variant variant, AAtomicRelevancePredicate atomicPredicate, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
         DefsRegister tmpDefsRegister = new DefsRegister(machine.getDefsRegister());
@@ -68,12 +79,26 @@ public final class DefaultVariantComputer implements IVariantComputer {
     }
 
     @Override
-    public AArithExpr getVInit(Decreases decreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+    public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return registerVInit(new Times(new Int(2), new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        )), varDecreases, c, variantsMapping, machine);
+    }
+
+    @Override
+    public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
         throw new Error();
     }
 
     @Override
-    public AArithExpr getVInit(Increases increases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+    public AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return registerVInit(new Times(new Int(2), new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        )), varIncreases, c, variantsMapping, machine);
+    }
+
+    @Override
+    public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
         throw new Error();
     }
 
@@ -83,22 +108,32 @@ public final class DefaultVariantComputer implements IVariantComputer {
     }
 
     @Override
-    public AArithExpr getV(VarChanges changes, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+    public AArithExpr getV(VarChanges varChanges, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return registerV(new Minus(variantsMapping.get(c).get(varChanges), new Int(1)), varChanges, c, c_, variantsMapping, machine);
+    }
+
+    @Override
+    public AArithExpr getV(FunChanges funChanges, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return registerV(new Minus(variantsMapping.get(c).get(funChanges), new Int(1)), funChanges, c, c_, variantsMapping, machine);
+    }
+
+    @Override
+    public AArithExpr getV(VarDecreases varDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return new Minus(variantsMapping.get(c).get(varDecreases), new Int(1));
+    }
+
+    @Override
+    public AArithExpr getV(FunDecreases funDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
         throw new Error();
     }
 
     @Override
-    public AArithExpr getV(FunChanges changes, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerV(new Minus(variantsMapping.get(c).get(changes), new Int(1)), changes, c, c_, variantsMapping, machine);
+    public AArithExpr getV(VarIncreases varIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+        return new Minus(variantsMapping.get(c).get(varIncreases), new Int(1));
     }
 
     @Override
-    public AArithExpr getV(Decreases decreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
-    }
-
-    @Override
-    public AArithExpr getV(Increases increases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
+    public AArithExpr getV(FunIncreases funIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
         throw new Error();
     }
 

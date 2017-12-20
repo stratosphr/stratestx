@@ -1,12 +1,13 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics.funs;
 
+import algorithms.heuristics.relevance.IVariantComputer;
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.AIncreases;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
-import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.arith.literals.AValue;
-import langs.maths.generic.bool.operators.LT;
-import visitors.Primer;
+import langs.maths.generic.arith.literals.Fun;
 
 import java.util.LinkedHashMap;
 
@@ -15,13 +16,10 @@ import java.util.LinkedHashMap;
  * Time : 22:33
  */
 @SuppressWarnings("WeakerAccess")
-public final class Decreases extends AAtomicRelevancePredicate {
+public final class FunIncreases extends AIncreases<Fun> {
 
-    private AAssignable assignable;
-
-    public Decreases(AAssignable assignable) {
-        super(new LT(assignable.accept(new Primer(1)), assignable));
-        this.assignable = assignable;
+    public FunIncreases(Fun fun) {
+        super(fun);
     }
 
     @Override
@@ -35,8 +33,8 @@ public final class Decreases extends AAtomicRelevancePredicate {
     }
 
     @Override
-    public AAtomicRelevancePredicate clone() {
-        return new Decreases(assignable.clone());
+    public FunIncreases clone() {
+        return new FunIncreases(assignable.clone());
     }
 
 }

@@ -1,4 +1,4 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics;
 
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.AAssignable;

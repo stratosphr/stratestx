@@ -1,23 +1,25 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics.vars;
 
+import algorithms.heuristics.relevance.IVariantComputer;
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.AIncreases;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.AValue;
-import langs.maths.generic.bool.operators.And;
-import langs.maths.generic.bool.operators.Implies;
+import langs.maths.generic.arith.literals.Var;
 
 import java.util.LinkedHashMap;
 
 /**
  * Created by gvoiron on 19/12/17.
- * Time : 22:35
+ * Time : 22:33
  */
 @SuppressWarnings("WeakerAccess")
-public final class Conditions extends AAtomicRelevancePredicate {
+public final class VarIncreases extends AIncreases<Var> {
 
-    public Conditions(Implies... conditions) {
-        super(new And(conditions));
+    public VarIncreases(Var var) {
+        super(var);
     }
 
     @Override
@@ -31,8 +33,8 @@ public final class Conditions extends AAtomicRelevancePredicate {
     }
 
     @Override
-    public Conditions clone() {
-        return new Conditions();
+    public VarIncreases clone() {
+        return new VarIncreases(assignable.clone());
     }
 
 }

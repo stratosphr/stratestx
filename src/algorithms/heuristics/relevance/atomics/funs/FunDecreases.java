@@ -1,5 +1,8 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics.funs;
 
+import algorithms.heuristics.relevance.IVariantComputer;
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.ADecreases;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
@@ -9,13 +12,14 @@ import langs.maths.generic.arith.literals.Fun;
 import java.util.LinkedHashMap;
 
 /**
- * Created by gvoiron on 20/12/17.
- * Time : 14:17
+ * Created by gvoiron on 19/12/17.
+ * Time : 22:33
  */
-public final class FunChanges extends AChanges<Fun> {
+@SuppressWarnings("WeakerAccess")
+public final class FunDecreases extends ADecreases<Fun> {
 
-    public FunChanges(Fun fun, AArithExpr value, AArithExpr value_) {
-        super(fun, value, value_);
+    public FunDecreases(Fun assignable) {
+        super(assignable);
     }
 
     @Override
@@ -29,8 +33,8 @@ public final class FunChanges extends AChanges<Fun> {
     }
 
     @Override
-    public FunChanges clone() {
-        return new FunChanges(assignable.clone(), value.clone(), value_.clone());
+    public FunDecreases clone() {
+        return new FunDecreases(assignable.clone());
     }
 
 }

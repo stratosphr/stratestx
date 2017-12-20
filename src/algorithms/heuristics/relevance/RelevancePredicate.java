@@ -1,5 +1,6 @@
 package algorithms.heuristics.relevance;
 
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.def.DefsRegister;

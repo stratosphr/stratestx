@@ -1,27 +1,24 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics;
 
+import algorithms.heuristics.relevance.IVariantComputer;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
-import langs.maths.generic.arith.AAssignable;
 import langs.maths.generic.arith.literals.AValue;
-import langs.maths.generic.bool.operators.GT;
-import visitors.Primer;
+import langs.maths.generic.bool.operators.And;
+import langs.maths.generic.bool.operators.Implies;
 
 import java.util.LinkedHashMap;
 
 /**
  * Created by gvoiron on 19/12/17.
- * Time : 22:33
+ * Time : 22:35
  */
 @SuppressWarnings("WeakerAccess")
-public final class Increases extends AAtomicRelevancePredicate {
+public final class Conditions extends AAtomicRelevancePredicate {
 
-    private AAssignable assignable;
-
-    public Increases(AAssignable assignable) {
-        super(new GT(assignable.accept(new Primer(1)), assignable));
-        this.assignable = assignable;
+    public Conditions(Implies... conditions) {
+        super(new And(conditions));
     }
 
     @Override
@@ -35,8 +32,8 @@ public final class Increases extends AAtomicRelevancePredicate {
     }
 
     @Override
-    public AAtomicRelevancePredicate clone() {
-        return new Increases(assignable.clone());
+    public Conditions clone() {
+        return new Conditions();
     }
 
 }

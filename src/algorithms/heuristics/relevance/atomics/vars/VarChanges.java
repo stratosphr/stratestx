@@ -1,5 +1,8 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics.vars;
 
+import algorithms.heuristics.relevance.IVariantComputer;
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.AChanges;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;

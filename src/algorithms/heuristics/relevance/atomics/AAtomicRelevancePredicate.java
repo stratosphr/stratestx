@@ -1,5 +1,7 @@
-package algorithms.heuristics.relevance;
+package algorithms.heuristics.relevance.atomics;
 
+import algorithms.heuristics.relevance.ARelevancePredicate;
+import algorithms.heuristics.relevance.IVariantComputable;
 import langs.maths.generic.bool.ABoolExpr;
 
 /**

@@ -38,14 +38,14 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="increases" substitutionGroup="atomic-predicate">
+    <xs:element name="decreases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="assignable"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="decreases" substitutionGroup="atomic-predicate">
+    <xs:element name="increases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="assignable"/>

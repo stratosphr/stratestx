@@ -11,6 +11,7 @@ public final class ResourcesManager {
     private static final File resourcesRoot = new File("resources");
     private static final File xmlSchemasRoot = new File(resourcesRoot, "xml-schemas");
     private static final File examplesRoot = new File(resourcesRoot, "examples");
+    public static final File resultsRoot = new File(resourcesRoot, "results");
 
     public static File getXMLSchema(EXMLSchema xmlSchema) {
         switch (xmlSchema) {
@@ -72,6 +73,10 @@ public final class ResourcesManager {
             default:
                 throw new Error("Error: unknown model resource \"" + model + "\".");
         }
+    }
+
+    public static File getResultsFolder(EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, String name) {
+        return new File(new File(new File(resultsRoot, model.toString()), abstractionPredicatesSet.toString()), name);
     }
 
     public enum EXMLSchema {AP, EBM, RP}

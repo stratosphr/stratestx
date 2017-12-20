@@ -14,6 +14,8 @@ import utilities.tuples.Tuple;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static utilities.ResourcesManager.EAbstractionPredicatesSet;
+
 /**
  * Created by gvoiron on 18/12/17.
  * Time : 17:23
@@ -22,20 +24,20 @@ import java.util.stream.Collectors;
 public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
 
     private final ATS ats;
-    private final int abstractionPredicatesID;
+    private final EAbstractionPredicatesSet abstractionPredicatesSet;
     private final LinkedHashSet<Predicate> abstractionPredicates;
     private final Time atsComputationTime;
     private ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchdConcretePart;
     private Tuple<LinkedHashSet<AbstractState>, ArrayList<AbstractTransition>> rchdAbstractPart;
     private ComputerResult<List<Test>> tests;
 
-    public Statistics(ATS ats, int abstractionPredicatesID, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime) {
-        this(ats, abstractionPredicatesID, abstractionPredicates, atsComputationTime, EStatistic.values());
+    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime) {
+        this(ats, abstractionPredicatesSet, abstractionPredicates, atsComputationTime, EStatistic.values());
     }
 
-    public Statistics(ATS ats, int abstractionPredicatesID, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
+    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
         this.ats = ats;
-        this.abstractionPredicatesID = abstractionPredicatesID;
+        this.abstractionPredicatesSet = abstractionPredicatesSet;
         this.abstractionPredicates = abstractionPredicates;
         this.atsComputationTime = atsComputationTime;
         for (EStatistic statistic : statistics) {
@@ -124,8 +126,8 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(ats.getMachine().getEvents().size());
     }
 
-    public IntegerStatistic getAP() {
-        return new IntegerStatistic(abstractionPredicatesID);
+    public StringStatistic getAP() {
+        return new StringStatistic(abstractionPredicatesSet.toString());
     }
 
     private IntegerStatistic getNbAP() {

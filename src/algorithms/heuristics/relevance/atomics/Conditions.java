@@ -6,9 +6,10 @@ import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.bool.operators.And;
-import langs.maths.generic.bool.operators.Implies;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 
 /**
  * Created by gvoiron on 19/12/17.
@@ -17,8 +18,11 @@ import java.util.LinkedHashMap;
 @SuppressWarnings("WeakerAccess")
 public final class Conditions extends AAtomicRelevancePredicate {
 
-    public Conditions(Implies... conditions) {
+    private final LinkedHashSet<Condition> conditions;
+
+    public Conditions(Condition... conditions) {
         super(new And(conditions));
+        this.conditions = new LinkedHashSet<>(Arrays.asList(conditions));
     }
 
     @Override
@@ -31,9 +35,13 @@ public final class Conditions extends AAtomicRelevancePredicate {
         return computer.getV(this, c, c_, variantsMapping, machine);
     }
 
+    public LinkedHashSet<Condition> getConditions() {
+        return conditions;
+    }
+
     @Override
     public Conditions clone() {
-        return new Conditions();
+        return new Conditions(conditions.stream().map(Condition::clone).toArray(Condition[]::new));
     }
 
 }

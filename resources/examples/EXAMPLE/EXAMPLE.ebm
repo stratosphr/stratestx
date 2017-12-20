@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<model xmlns="ebm" name="EL">
+<model xmlns="ebm" name="EXAMPLE">
 
     <consts-defs>
         <const-def name="n">
-            <int value="7"/>
+            <int value="4"/>
         </const-def>
     </consts-defs>
 
@@ -79,7 +79,7 @@
                 </fun>
                 <enum-value name="ok"/>
             </fun-assignment>
-            <fun-assignment>
+            <!--<fun-assignment>
                 <fun name="bat">
                     <int value="5"/>
                 </fun>
@@ -97,7 +97,7 @@
                 </fun>
                 <enum-value name="ok"/>
             </fun-assignment>
-            <!--<fun-assignment>
+            <fun-assignment>
                 <fun name="bat">
                     <int value="8"/>
                 </fun>

@@ -91,7 +91,7 @@ public final class CXPASOComputer extends AComputer<ATS> {
         }
         C.addAll(C0);
         C.forEach(c -> CMappings.put(c.getMapping(), c));
-        LinkedHashSet<AbstractState> RQ = new LinkedHashSet<>(Q);
+        LinkedHashSet<AbstractState> RQ = new LinkedHashSet<>(Q0);
         while (!RQ.isEmpty()) {
             AbstractState q = RQ.iterator().next();
             RQ.remove(q);
@@ -162,7 +162,7 @@ public final class CXPASOComputer extends AComputer<ATS> {
                             kappa.put(c_, kappa.get(c));
                         }
                         if (!Q.contains(q_)) {
-                            Q.add(q_);
+                            Q.add(q);
                             RQ.add(q_);
                         }
                     } else if (result.isUNKNOWN()) {

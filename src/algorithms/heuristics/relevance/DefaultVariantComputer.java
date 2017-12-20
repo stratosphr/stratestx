@@ -1,6 +1,7 @@
 package algorithms.heuristics.relevance;
 
 import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.Condition;
 import algorithms.heuristics.relevance.atomics.Conditions;
 import algorithms.heuristics.relevance.atomics.funs.FunChanges;
 import algorithms.heuristics.relevance.atomics.funs.FunDecreases;
@@ -80,14 +81,16 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerVInit(new Times(new Int(2), new Int(
+        return registerVInit(new Times(new Int(2), new Int(5), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         )), varDecreases, c, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        return registerVInit(new Times(new Int(2), new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        )), funDecreases, c, variantsMapping, machine);
     }
 
     @Override
@@ -99,12 +102,23 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        return registerVInit(new Times(new Int(2), new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        )), funIncreases, c, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getVInit(Conditions conditions, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        for (Condition condition : conditions.getConditions()) {
+            if (Z3.checkSAT(new And(
+                    machine.getInvariant(),
+                    c,
+                    condition.getCondition()
+            ), machine.getDefsRegister()).isSAT()) {
+                return registerVInit(condition.getThenPart().getVInit(this, c, variantsMapping, machine), conditions, c, variantsMapping, machine);
+            }
+        }
+        throw new Error("At least one implication condition should be satisfiable with regards to \"" + c + "\" in the following conditional relevance predicate:\n" + conditions + "");
     }
 
     @Override
@@ -124,7 +138,7 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getV(FunDecreases funDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        return new Minus(variantsMapping.get(c).get(funDecreases), new Int(1));
     }
 
     @Override
@@ -134,12 +148,12 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getV(FunIncreases funIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        return new Minus(variantsMapping.get(c).get(funIncreases), new Int(1));
     }
 
     @Override
     public AArithExpr getV(Conditions conditions, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        throw new Error();
+        return new Minus(variantsMapping.get(c).get(conditions), new Int(1));
     }
 
 }

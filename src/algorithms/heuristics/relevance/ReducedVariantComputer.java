@@ -35,7 +35,7 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 20/12/17.
  * Time : 13:53
  */
-public final class DefaultVariantComputer implements IVariantComputer {
+public final class ReducedVariantComputer implements IVariantComputer {
 
     // TODO: This variant computer should take into account the number of relevant events
 
@@ -81,28 +81,28 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerVInit(new Times(new Int(2), new Int(5), new Int(
+        return registerVInit(new Times(new Int(2), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         )), varDecreases, c, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerVInit(new Times(new Int(2), new Int(5), new Int(
+        return registerVInit(new Times(new Int(2), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         )), funDecreases, c, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerVInit(new Times(new Int(2), new Int(5), new Int(
+        return registerVInit(new Times(new Int(2), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         )), varIncreases, c, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerVInit(new Times(new Int(2), new Int(5), new Int(
+        return registerVInit(new Times(new Int(2), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         )), funIncreases, c, variantsMapping, machine);
     }
@@ -133,22 +133,22 @@ public final class DefaultVariantComputer implements IVariantComputer {
 
     @Override
     public AArithExpr getV(VarDecreases varDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerV(new Minus(variantsMapping.get(c).get(varDecreases), new Int(1)), varDecreases, c, c_, variantsMapping, machine);
+        return registerV(new Minus(variantsMapping.get(c).get(varDecreases), new Minus(new Int(c.getMapping().get(varDecreases.getAssignable()).getValue()), new Int(c_.getMapping().get(varDecreases.getAssignable()).getValue()))), varDecreases, c, c_, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getV(FunDecreases funDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerV(new Minus(variantsMapping.get(c).get(funDecreases), new Int(1)), funDecreases, c, c_, variantsMapping, machine);
+        return registerV(new Minus(variantsMapping.get(c).get(funDecreases), new Minus(new Int(c.getMapping().get(funDecreases.getAssignable()).getValue()), new Int(c_.getMapping().get(funDecreases.getAssignable()).getValue()))), funDecreases, c, c_, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getV(VarIncreases varIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerV(new Minus(variantsMapping.get(c).get(varIncreases), new Int(1)), varIncreases, c, c_, variantsMapping, machine);
+        return registerV(new Minus(variantsMapping.get(c).get(varIncreases), new Minus(new Int(c_.getMapping().get(varIncreases.getAssignable()).getValue()), new Int(c.getMapping().get(varIncreases.getAssignable()).getValue()))), varIncreases, c, c_, variantsMapping, machine);
     }
 
     @Override
     public AArithExpr getV(FunIncreases funIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return registerV(new Minus(variantsMapping.get(c).get(funIncreases), new Int(1)), funIncreases, c, c_, variantsMapping, machine);
+        return registerV(new Minus(variantsMapping.get(c).get(funIncreases), new Minus(new Int(c_.getMapping().get(funIncreases.getAssignable()).getValue()), new Int(c.getMapping().get(funIncreases.getAssignable()).getValue()))), funIncreases, c, c_, variantsMapping, machine);
     }
 
     @Override

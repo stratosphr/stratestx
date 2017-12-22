@@ -28,6 +28,10 @@ public enum EStatistic {
     NB_TESTS,
     NB_STEPS,
     TESTS,
+    SET_RCHD_AS,
+    SET_RCHD_AT,
+    SET_UNRCHD_AS,
+    SET_UNRCHD_AT,
     TIME_ATS,
     TIME_TESTS
 

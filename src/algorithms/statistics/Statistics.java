@@ -36,6 +36,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
+        System.out.println(ats.getCTS().getInitialStates().size());
         this.ats = ats;
         this.abstractionPredicatesSet = abstractionPredicatesSet;
         this.abstractionPredicates = abstractionPredicates;
@@ -108,6 +109,18 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
                     break;
                 case TESTS:
                     value = getTests();
+                    break;
+                case SET_RCHD_AS:
+                    value = getRchdAS();
+                    break;
+                case SET_RCHD_AT:
+                    value = getRchdAT();
+                    break;
+                case SET_UNRCHD_AS:
+                    value = getUnrchdAS();
+                    break;
+                case SET_UNRCHD_AT:
+                    value = getUnrchdAT();
                     break;
                 case TIME_ATS:
                     value = getTimeATS();
@@ -202,12 +215,28 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(getTests().getValue().size());
     }
 
-    private IntegerStatistic getNbSteps() {
-        return new IntegerStatistic(-1);
+    private LongStatistic getNbSteps() {
+        return new LongStatistic(getTests().getValue().stream().mapToLong(Collection::size).sum());
     }
 
-    private SetStatistic<List<ConcreteTransition>> getTests() {
+    private SetStatistic<Test> getTests() {
         return new SetStatistic<>(new LinkedHashSet<>(getTestsComputation().getResult()));
+    }
+
+    public SetStatistic<AbstractState> getRchdAS() {
+        return new SetStatistic<>(getAbstractRchdPart().getLeft());
+    }
+
+    public SetStatistic<AbstractTransition> getRchdAT() {
+        return new SetStatistic<>(new LinkedHashSet<>(getAbstractRchdPart().getRight()));
+    }
+
+    public SetStatistic<AbstractState> getUnrchdAS() {
+        return new SetStatistic<>(ats.getMTS().getStates().stream().filter(q -> !getRchdAS().getValue().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    public SetStatistic<AbstractTransition> getUnrchdAT() {
+        return new SetStatistic<>(ats.getMTS().getTransitions().stream().filter(t -> !getRchdAT().getValue().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
     private TimeStatistic getTimeATS() {
@@ -243,6 +272,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
             for (Test test : testsComputation.getResult()) {
                 test.removeIf(concreteTransition -> concreteTransition.getSource().equals(ghostState) || concreteTransition.getTarget().equals(ghostState));
             }
+            testsComputation.getResult().removeIf(ArrayList::isEmpty);
             this.tests = new ComputerResult<>(testsComputation.getResult(), new Time(scGraphComputation.getTime().getNanoseconds() + testsComputation.getTime().getNanoseconds()));
         }
         return tests;

@@ -162,7 +162,7 @@ public final class CXPASOComputer extends AComputer<ATS> {
                             kappa.put(c_, kappa.get(c));
                         }
                         if (!Q.contains(q_)) {
-                            Q.add(q);
+                            Q.add(q_);
                             RQ.add(q_);
                         }
                     } else if (result.isUNKNOWN()) {

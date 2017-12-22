@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<predicates xmlns="ap">
+    <predicate name="p0">
+        <and>
+            <equals>
+                <var name="Status"/>
+                <enum-value name="off"/>
+            </equals>
+            <or>
+                <gt>
+                    <var name="Pot"/>
+                    <minus>
+                        <const name="MaxPot"/>
+                        <int value="50"/>
+                    </minus>
+                </gt>
+                <equals>
+                    <var name="Pot"/>
+                    <minus>
+                        <const name="MaxPot"/>
+                        <int value="50"/>
+                    </minus>
+                </equals>
+            </or>
+        </and>
+    </predicate>
+    <predicate name="p1">
+        <equals>
+            <var name="Status"/>
+            <enum-value name="on"/>
+        </equals>
+    </predicate>
+    <predicate name="p2">
+        <and>
+            <equals>
+                <var name="Status"/>
+                <enum-value name="off"/>
+            </equals>
+            <gt>
+                <var name="CoffeeLeft"/>
+                <int value="0"/>
+            </gt>
+            <or>
+                <gt>
+                    <const name="MaxPot"/>
+                    <var name="Pot"/>
+                </gt>
+                <equals>
+                    <const name="MaxPot"/>
+                    <var name="Pot"/>
+                </equals>
+            </or>
+        </and>
+    </predicate>
+</predicates>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<predicates xmlns="ap">
+    <predicate name="p0">
+        <equals>
+            <var name="CS"/>
+            <int value="0"/>
+        </equals>
+    </predicate>
+    <predicate name="p1">
+        <and>
+            <equals>
+                <var name="Tr"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Mv"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Do"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Us"/>
+                <int value="1"/>
+            </equals>
+            <equals>
+                <var name="Lo"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Gl"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="AC"/>
+                <int value="0"/>
+            </equals>
+        </and>
+    </predicate>
+    <predicate name="p2">
+        <and>
+            <equals>
+                <var name="Tr"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Lo"/>
+                <int value="1"/>
+            </equals>
+            <equals>
+                <var name="Do"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="Us"/>
+                <int value="1"/>
+            </equals>
+        </and>
+    </predicate>
+</predicates>

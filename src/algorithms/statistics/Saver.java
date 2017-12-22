@@ -70,20 +70,26 @@ public final class Saver {
                     }
                     break;
                 case CXPASO:
-                    cxpasoResult = cxpasoComputer.compute();
-                    mts = cxpasoResult.getResult().getMTS();
+                    if (cxpasoResult == null) {
+                        cxpasoResult = cxpasoComputer.compute();
+                        mts = cxpasoResult.getResult().getMTS();
+                    }
                     break;
                 case RCXP:
-                    if (cxpResult == null || rcxpResult == null) {
+                    if (cxpResult == null) {
                         cxpResult = cxpComputer.compute();
                         mts = cxpResult.getResult().getMTS();
+                    }
+                    if (rcxpResult == null) {
                         rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), relevancePredicate).compute();
                     }
                     break;
                 case RCXPASO:
-                    if (cxpasoResult == null || rcxpasoResult == null) {
+                    if (cxpasoResult == null) {
                         cxpasoResult = cxpasoComputer.compute();
                         mts = cxpasoResult.getResult().getMTS();
+                    }
+                    if (rcxpasoResult == null) {
                         rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), relevancePredicate).compute();
                     }
                     break;
@@ -128,6 +134,9 @@ public final class Saver {
                 Files.write(new File(statsFolder, "rcxpaso.stat").toPath(), ("Results for RCXPASO (in " + rcxpasoResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxpaso_small.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
+            }
+            if (fullResult != null) {
+                System.out.println(fullResult.getTime());
             }
         } catch (IOException e) {
             e.printStackTrace();

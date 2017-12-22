@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<predicates xmlns="ap">
+    <predicate name="p0">
+        <and>
+            <equals>
+                <var name="Status"/>
+                <enum-value name="on"/>
+            </equals>
+            <or>
+                <gt>
+                    <var name="Balance"/>
+                    <int value="50"/>
+                </gt>
+                <equals>
+                    <var name="Balance"/>
+                    <int value="50"/>
+                </equals>
+            </or>
+            <equals>
+                <var name="AskCoffee"/>
+                <int value="1"/>
+            </equals>
+            <gt>
+                <var name="CoffeeLeft"/>
+                <int value="0"/>
+            </gt>
+        </and>
+    </predicate>
+    <predicate name="p1">
+        <equals>
+            <var name="Balance"/>
+            <int value="0"/>
+        </equals>
+    </predicate>
+    <predicate name="p2">
+        <lt>
+            <var name="Balance"/>
+            <int value="60"/>
+        </lt>
+    </predicate>
+</predicates>

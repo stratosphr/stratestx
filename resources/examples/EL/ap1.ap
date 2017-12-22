@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <predicates xmlns="ap">
-
     <predicate name="p0">
-        <equals>
-            <var name="h"/>
-            <enum-value name="tic"/>
-        </equals>
-    </predicate>
-
-    <predicate name="p1">
         <exists>
             <vars-defs>
                 <var-def name="i">
@@ -42,8 +34,17 @@
                     </fun>
                     <enum-value name="ok"/>
                 </equals>
+                <equals>
+                    <var name="h"/>
+                    <enum-value name="tic"/>
+                </equals>
             </and>
         </exists>
     </predicate>
-
+    <predicate name="p1">
+        <equals>
+            <var name="h"/>
+            <enum-value name="tac"/>
+        </equals>
+    </predicate>
 </predicates>

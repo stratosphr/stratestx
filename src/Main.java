@@ -1,4 +1,3 @@
-import algorithms.EAlgorithm;
 import algorithms.heuristics.relevance.ReducedVariantComputer;
 import algorithms.heuristics.relevance.RelevancePredicate;
 import algorithms.heuristics.relevance.atomics.Condition;
@@ -17,14 +16,15 @@ import langs.maths.generic.arith.operators.Minus;
 import langs.maths.generic.arith.operators.Plus;
 import langs.maths.generic.bool.operators.Equals;
 
+import static algorithms.EAlgorithm.FULL;
 import static algorithms.statistics.Saver.save;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.AP0;
-import static utilities.ResourcesManager.EModel.CM;
+import static utilities.ResourcesManager.EModel.EL;
 
 class Main {
 
     public static void main(String[] args) {
-        save("old", CM, AP0, cm(), EAlgorithm.CXP, EAlgorithm.RCXP);
+        save("old", EL, AP0, el(), FULL);
         /*long start = System.nanoTime();
         save("default", CA, AP0, ca(), CXP, CXPASO, RCXP, RCXPASO);
         System.out.println("1");

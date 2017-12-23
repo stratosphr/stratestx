@@ -6,7 +6,6 @@ import algorithms.outputs.ATS;
 import langs.eventb.Machine;
 import langs.formal.graphs.AState;
 import langs.formal.graphs.AbstractState;
-import langs.formal.graphs.CTS;
 import langs.formal.graphs.MTS;
 import langs.maths.AExpr;
 import langs.maths.generic.bool.literals.Predicate;
@@ -54,12 +53,12 @@ public final class Saver {
         }
         CXPComputer cxpComputer = new CXPComputer(machine, as);
         CXPASOComputer cxpasoComputer = new CXPASOComputer(machine, as);
-        FullSemanticsComputer fullSemanticsComputer = new FullSemanticsComputer(machine);
+        FullSemanticsComputer fullSemanticsComputer = new FullSemanticsComputer(machine, as);
         ComputerResult<ATS> cxpResult = null;
         ComputerResult<ATS> cxpasoResult = null;
         ComputerResult<ATS> rcxpResult = null;
         ComputerResult<ATS> rcxpasoResult = null;
-        ComputerResult<CTS> fullResult = null;
+        ComputerResult<ATS> fullResult = null;
         MTS mts = null;
         for (EAlgorithm algorithm : algorithms) {
             switch (algorithm) {
@@ -96,6 +95,7 @@ public final class Saver {
                 case FULL:
                     if (fullResult == null) {
                         fullResult = fullSemanticsComputer.compute();
+                        mts = fullResult.getResult().getMTS();
                     }
                     break;
                 default:
@@ -136,7 +136,9 @@ public final class Saver {
                 Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (fullResult != null) {
-                System.out.println(fullResult.getTime());
+                Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, fullResult.getTime());
+                Files.write(new File(statsFolder, "full.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "full.stat").toPath(), ("Results for FULL (in " + fullResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
         } catch (IOException e) {
             e.printStackTrace();

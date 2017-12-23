@@ -36,7 +36,6 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
-        System.out.println(ats.getCTS().getInitialStates().size());
         this.ats = ats;
         this.abstractionPredicatesSet = abstractionPredicatesSet;
         this.abstractionPredicates = abstractionPredicates;

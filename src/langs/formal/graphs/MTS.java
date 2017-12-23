@@ -5,7 +5,6 @@ import visitors.interfaces.IObjectFormatter;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -26,21 +25,6 @@ public final class MTS extends AFSM<AbstractState, AbstractTransition> {
     @Override
     public String accept(IObjectFormatter formatter) {
         return formatter.visit(this);
-    }
-
-    @Override
-    public LinkedHashSet<AbstractState> getInitialStates() {
-        return super.getInitialStates();
-    }
-
-    @Override
-    public LinkedHashSet<AbstractState> getStates() {
-        return super.getStates();
-    }
-
-    @Override
-    public List<AbstractTransition> getTransitions() {
-        return super.getTransitions();
     }
 
     @Override

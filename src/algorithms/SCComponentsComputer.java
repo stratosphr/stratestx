@@ -13,7 +13,7 @@ import java.util.Stack;
  * Created by gvoiron on 19/12/17.
  * Time : 12:25
  */
-public final class SCComponentsComputer<State extends AState, Transition extends ATransition<State>> extends AComputer<ArrayList<LinkedHashSet<State>>> {
+final class SCComponentsComputer<State extends AState, Transition extends ATransition<State>> extends AComputer<ArrayList<LinkedHashSet<State>>> {
 
     private final AGraph<State, Transition> graph;
     private int num;
@@ -24,7 +24,7 @@ public final class SCComponentsComputer<State extends AState, Transition extends
     private final ArrayList<LinkedHashSet<State>> components;
     private final LinkedHashMap<State, ArrayList<Transition>> adjacency;
 
-    public SCComponentsComputer(AGraph<State, Transition> graph) {
+    SCComponentsComputer(AGraph<State, Transition> graph) {
         this.graph = graph;
         this.verticesNums = new LinkedHashMap<>();
         this.verticesNumReachable = new LinkedHashMap<>();

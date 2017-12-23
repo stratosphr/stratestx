@@ -17,8 +17,8 @@ import java.util.LinkedHashSet;
 @SuppressWarnings("WeakerAccess")
 public final class Condition extends ABoolExpr {
 
-    private ABoolExpr condition;
-    private AAtomicRelevancePredicate thenPart;
+    private final ABoolExpr condition;
+    private final AAtomicRelevancePredicate thenPart;
     private final Implies expr;
 
     public Condition(ABoolExpr condition, AAtomicRelevancePredicate thenPart) {

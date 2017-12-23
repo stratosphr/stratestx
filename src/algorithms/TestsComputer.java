@@ -23,7 +23,7 @@ public final class TestsComputer extends AComputer<List<Test>> {
     private final int initialVertexIndex;
     private final List<ConcreteTransition> edges;
     private int[] neg;
-    private int N;
+    private final int N;
     private int delta[];
     private int pos[];
     private int arcs[][];

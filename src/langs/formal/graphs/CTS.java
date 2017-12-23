@@ -28,21 +28,6 @@ public final class CTS extends AFSM<ConcreteState, ConcreteTransition> {
         return formatter.visit(this);
     }
 
-    @Override
-    public LinkedHashSet<ConcreteState> getInitialStates() {
-        return super.getInitialStates();
-    }
-
-    @Override
-    public LinkedHashSet<ConcreteState> getStates() {
-        return super.getStates();
-    }
-
-    @Override
-    public List<ConcreteTransition> getTransitions() {
-        return super.getTransitions();
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public CTS clone() {

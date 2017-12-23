@@ -10,7 +10,7 @@ import langs.maths.generic.bool.ABoolExpr;
  */
 public abstract class AAtomicRelevancePredicate extends ARelevancePredicate implements IVariantComputable {
 
-    public AAtomicRelevancePredicate(ABoolExpr expr) {
+    AAtomicRelevancePredicate(ABoolExpr expr) {
         super(expr);
     }
 

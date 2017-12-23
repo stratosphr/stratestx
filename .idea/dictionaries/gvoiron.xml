@@ -1,12 +1,23 @@
 <component name="ProjectDictionaryState">
   <dictionary name="gvoiron">
     <words>
+      <w>blockedstatus</w>
       <w>cxpaso</w>
       <w>decl</w>
       <w>decls</w>
+      <w>dfgsm</w>
+      <w>efad</w>
+      <w>eficcid</w>
+      <w>efimsi</w>
+      <w>efkc</w>
+      <w>eflp</w>
+      <w>enabledstatus</w>
       <w>encodable</w>
       <w>fillcolor</w>
       <w>kunset</w>
+      <w>multidigraphs</w>
+      <w>nodata</w>
+      <w>nofiles</w>
       <w>noninfringement</w>
       <w>nums</w>
       <w>prcs</w>
@@ -15,6 +26,8 @@
       <w>sccts</w>
       <w>scgraph</w>
       <w>statisticable</w>
+      <w>statusword</w>
+      <w>warshall</w>
     </words>
   </dictionary>
 </component>

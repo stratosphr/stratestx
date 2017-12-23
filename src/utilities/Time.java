@@ -10,7 +10,7 @@ import java.util.TimeZone;
  */
 public final class Time {
 
-    private long nanoseconds;
+    private final long nanoseconds;
 
     public Time(long nanoseconds) {
         this.nanoseconds = nanoseconds;

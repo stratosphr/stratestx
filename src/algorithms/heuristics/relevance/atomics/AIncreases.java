@@ -12,7 +12,7 @@ public abstract class AIncreases<Assignable extends AAssignable> extends AAtomic
 
     protected final Assignable assignable;
 
-    public AIncreases(Assignable assignable) {
+    protected AIncreases(Assignable assignable) {
         super(new GT(assignable.accept(new Primer(1)), assignable));
         this.assignable = assignable;
     }

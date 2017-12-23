@@ -37,6 +37,7 @@ public final class Assignments extends ASubstitution {
         return formatter.visit(this);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
         return new And(Stream.of(

@@ -41,8 +41,9 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
     private final LinkedHashSet<ConcreteState> initialStates;
     private final LinkedHashMap<ConcreteState, Boolean> states;
     private final ArrayList<ConcreteTransition> transitions;
-    private final Var qIndex;
+    private final Var q_Index;
     private final DefsRegister defsRegisterWithIndex;
+    private final ABoolExpr q_Constraint;
 
     public FullSemanticsComputer(Machine machine, LinkedHashSet<AbstractState> A) {
         this.machine = machine;
@@ -55,9 +56,10 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
         this.transitions = new ArrayList<>();
         this.alpha = new LinkedHashMap<>();
         this.kappa = new LinkedHashMap<>();
-        this.qIndex = new Var("i!");
+        this.q_Index = new Var("i!");
         this.defsRegisterWithIndex = new DefsRegister(machine.getDefsRegister());
-        defsRegisterWithIndex.getVarsDefs().put(qIndex.getName(), new Z());
+        defsRegisterWithIndex.getVarsDefs().put(q_Index.getName(), new Z());
+        this.q_Constraint = new Or(Streams.mapWithIndex(A.stream(), ((index, q) -> new And(new Equals(q_Index, new Int(index)), q.accept(new Primer(1))))).toArray(ABoolExpr[]::new));
     }
 
     @Override
@@ -68,11 +70,11 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
                 machine.getInvariant().accept(new Primer(1)),
                 machine.getInitialisation().getPrd(machine.getAssignables()),
                 new Not(new Or(initialStates.toArray(new ABoolExpr[initialStates.size()]))).accept(new Primer(1)),
-                new Or(Streams.mapWithIndex(A.stream(), ((index, q) -> new And(new Equals(qIndex, new Int(index)), q.accept(new Primer(1))))).toArray(ABoolExpr[]::new))
+                q_Constraint
         ), defsRegisterWithIndex)).isSAT()) {
-            Model q0Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(qIndex)));
+            Model q0Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(q_Index)));
             Model c0Model = result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new)));
-            AbstractState q0 = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q0Model.get(qIndex).getValue())).findFirst().get().getValue();
+            AbstractState q0 = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q0Model.get(q_Index).getValue())).findFirst().get().getValue();
             ConcreteState c0 = concreteState(initialStates, c0Model);
             Q0.add(q0);
             Q.add(q0);
@@ -92,11 +94,11 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
                         c,
                         e.getSubstitution().getPrd(machine.getAssignables()),
                         new Not(new Or(transitions.stream().filter(transition -> transition.getSource().equals(c) && transition.getEvent().equals(e)).map(aTransition -> aTransition.getTarget().accept(new Primer(1))).toArray(ABoolExpr[]::new))),
-                        new Or(Streams.mapWithIndex(A.stream(), ((index, q_) -> new And(new Equals(qIndex, new Int(index)), q_.accept(new Primer(1))))).toArray(ABoolExpr[]::new))
+                        q_Constraint
                 ), defsRegisterWithIndex)).isSAT()) {
-                    Model q_Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(qIndex)));
+                    Model q_Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(q_Index)));
                     Model c_Model = result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new)));
-                    AbstractState q_ = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q_Model.get(qIndex).getValue())).findFirst().get().getValue();
+                    AbstractState q_ = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q_Model.get(q_Index).getValue())).findFirst().get().getValue();
                     ConcreteState c_ = concreteState(states.keySet(), c_Model);
                     Q.add(q_);
                     Delta.add(new AbstractTransition(alpha.get(c), e, q_));

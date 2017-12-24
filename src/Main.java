@@ -24,7 +24,7 @@ import static utilities.ResourcesManager.EModel.EL;
 class Main {
 
     public static void main(String[] args) {
-        save("old", EL, AP0, el(), FULL);
+        save("old", EL, AP0, cm(), FULL);
         /*long start = System.nanoTime();
         save("default", CA, AP0, ca(), CXP, CXPASO, RCXP, RCXPASO);
         System.out.println("1");

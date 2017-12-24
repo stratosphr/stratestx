@@ -18,28 +18,33 @@ public final class RchblPartComputer<State extends AState, Transition extends AT
     private final AGraph<State, Transition> fsm;
     private final LinkedHashMap<State, ArrayList<Transition>> adjacency;
 
-    // TODO: Check if for loops are more efficient than stream operations (this is probably the case)
     public RchblPartComputer(AGraph<State, Transition> fsm) {
         this.fsm = fsm;
         this.adjacency = new LinkedHashMap<>();
-        fsm.getStates().forEach(state -> adjacency.put(state, new ArrayList<>()));
-        fsm.getTransitions().forEach(transition -> adjacency.get(transition.getSource()).add(transition));
+        for (State state : fsm.getStates()) {
+            adjacency.put(state, new ArrayList<>());
+        }
+        for (Transition transition : fsm.getTransitions()) {
+            adjacency.get(transition.getSource()).add(transition);
+        }
     }
 
     @Override
     protected Tuple<LinkedHashSet<State>, ArrayList<Transition>> run() {
         LinkedHashSet<State> reachableStates = new LinkedHashSet<>();
         ArrayList<Transition> reachableTransitions = new ArrayList<>();
-        fsm.getInitialStates().forEach(initialState -> run_(initialState, reachableStates, reachableTransitions));
+        for (State initialState : fsm.getInitialStates()) {
+            run_(initialState, reachableStates, reachableTransitions);
+        }
         return new Tuple<>(reachableStates, reachableTransitions);
     }
 
     private void run_(State startState, LinkedHashSet<State> reachableStates, ArrayList<Transition> reachableTransitions) {
         if (reachableStates.add(startState)) {
-            adjacency.get(startState).forEach(transition -> {
+            for (Transition transition : adjacency.get(startState)) {
                 reachableTransitions.add(transition);
                 run_(transition.getTarget(), reachableStates, reachableTransitions);
-            });
+            }
         }
     }
 

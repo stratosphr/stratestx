@@ -53,8 +53,6 @@ public final class RCXPComputer extends AComputer<ATS> {
             ), machine.getDefsRegister());
             if (result.isSAT()) {
                 RCS.add(c);
-            } else {
-                throw new Error("The green concrete state \"" + c + "\" does not satisfy the relevance predicate. This is probably not a problem and this error should be deleted.");
             }
         }
         LinkedHashSet<ConcreteState> PRCS = new LinkedHashSet<>();
@@ -62,10 +60,6 @@ public final class RCXPComputer extends AComputer<ATS> {
             ConcreteState c = RCS.peek();
             RCS.pop();
             PRCS.add(c);
-//
-            if (relevancePredicate.getVariantsMapping().get(c) == null) {
-                throw new Error("No variant mapping found for state \"" + c.toString() + "\".");
-            }
             AbstractState q = ats.getAlpha().get(c);
             for (Event e : machine.getEvents().values()) {
                 for (AbstractState q_ : ats.getMTS().getStates()) {
@@ -90,24 +84,6 @@ public final class RCXPComputer extends AComputer<ATS> {
                                         new GEQ(relevancePredicate.getV(c, c_, machine), new Int(0))
                                 ), machine.getDefsRegister());
                                 if (result.isSAT()) {
-                                    /*relevancePredicate.getVariantsMapping().put(c_, new LinkedHashMap<>());
-                                    Iterator<AAtomicRelevancePredicate> apIterator = relevancePredicate.getAtomicPredicates().iterator();
-                                    Iterator<AArithExpr> opIterator = ((Plus) relevancePredicate.getV(c, c_, machine)).getOperands().iterator();
-                                    while (apIterator.hasNext()) {
-                                        Var variant = new Var("variant!");
-                                        AAtomicRelevancePredicate ap = apIterator.next();
-                                        AArithExpr op = opIterator.next();
-                                        DefsRegister tmpDefsRegister = new DefsRegister(machine.getDefsRegister());
-                                        tmpDefsRegister.getVarsDefs().put(variant.getName(), new Z());
-                                        Z3Result result1 = Z3.checkSAT(new And(machine.getInvariant(), machine.getInvariant().accept(new Primer(1)), c, c_.accept(new Primer(1)), new Equals(variant, op)), tmpDefsRegister);
-                                        relevancePredicate.getVariantsMapping().get(c_).put(ap, result1.getModel(new LinkedHashSet<>(Collections.singletonList(variant))).get(variant));
-                                        if (ap instanceof AtomicPredicateMultiImplies) {
-                                            ((AtomicPredicateMultiImplies) ap).getImplies().forEach(imply -> {
-                                                Z3.checkSAT(new And(Machine.getInvariant(), c_, new Equals(variant, imply.getThenPart().getVariantC_(c, c_, variantsMapping))));
-                                                variantsMapping.get(c_).put(imply.getThenPart(), Z3.getModel(new LinkedHashSet<>(Collections.singletonList(variant))).get(variant));
-                                            });
-                                        }
-                                    }*/
                                     RCS.push(c_);
                                 }
                             }

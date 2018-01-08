@@ -41,14 +41,28 @@
     <xs:element name="varDecreases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="assignable"/>
+                <xs:element ref="var"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="varIncreases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="assignable"/>
+                <xs:element ref="var"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="funDecreases" substitutionGroup="atomic-predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fun"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="funIncreases" substitutionGroup="atomic-predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fun"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

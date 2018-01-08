@@ -1,6 +1,7 @@
 package algorithms.statistics;
 
 import algorithms.*;
+import algorithms.heuristics.relevance.DefaultVariantComputer;
 import algorithms.heuristics.relevance.RelevancePredicate;
 import algorithms.outputs.ATS;
 import langs.eventb.Machine;
@@ -81,7 +82,7 @@ public final class Saver {
                         mts = cxpResult.getResult().getMTS();
                     }
                     if (rcxpResult == null) {
-                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), relevancePredicate).compute();
+                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new DefaultVariantComputer(machine, relevancePredicate)).compute();
                     }
                     break;
                 case RCXPASO:
@@ -90,7 +91,7 @@ public final class Saver {
                         mts = cxpasoResult.getResult().getMTS();
                     }
                     if (rcxpasoResult == null) {
-                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), relevancePredicate).compute();
+                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new DefaultVariantComputer(machine, relevancePredicate)).compute();
                     }
                     break;
                 case FULL:
@@ -137,7 +138,6 @@ public final class Saver {
                 Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (fullResult != null) {
-                System.out.println(fullResult.getTime());
                 Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, fullResult.getTime());
                 Files.write(new File(statsFolder, "full.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "full.stat").toPath(), ("Results for FULL (in " + fullResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);

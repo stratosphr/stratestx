@@ -1,6 +1,6 @@
 package algorithms;
 
-import algorithms.heuristics.relevance.RelevancePredicate;
+import algorithms.heuristics.relevance.AVariantComputer;
 import algorithms.outputs.ATS;
 import langs.eventb.Event;
 import langs.eventb.Machine;
@@ -28,18 +28,19 @@ public final class RCXPComputer extends AComputer<ATS> {
 
     private final Machine machine;
     private final ATS ats;
-    private final RelevancePredicate relevancePredicate;
-    private final LinkedHashSet<AAssignable> primedAssignables;
     private final LinkedHashMap<Map<AAssignable, AValue>, ConcreteState> CMappings;
+    private final AVariantComputer variantComputer;
+    private final LinkedHashSet<AAssignable> primedAssignables;
 
-    public RCXPComputer(Machine machine, ATS ats, RelevancePredicate relevancePredicate) {
+    public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer) {
         this.machine = machine;
         this.ats = ats.clone();
         this.CMappings = new LinkedHashMap<>();
-        this.relevancePredicate = relevancePredicate;
+        this.variantComputer = variantComputer;
         this.primedAssignables = machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
+    // TODO: This method should call a method "getRelevantEvents" from "variantComputer" and only use these relevant events for optimization purpose
     @Override
     ATS run() {
         Z3Result result;
@@ -49,7 +50,7 @@ public final class RCXPComputer extends AComputer<ATS> {
             result = Z3.checkSAT(new And(
                     machine.getInvariant(),
                     c,
-                    new GEQ(relevancePredicate.getVInit(c, machine), new Int(0))
+                    new GEQ(variantComputer.computeVInit(c), new Int(0))
             ), machine.getDefsRegister());
             if (result.isSAT()) {
                 RCS.add(c);
@@ -70,7 +71,7 @@ public final class RCXPComputer extends AComputer<ATS> {
                                 c,
                                 e.getSubstitution().getPrd(machine.getAssignables()),
                                 q_.accept(new Primer(1)),
-                                relevancePredicate
+                                variantComputer.getRelevancePredicate()
                         ), machine.getDefsRegister());
                         if (result.isSAT()) {
                             Model c_Model = result.getModel(primedAssignables);
@@ -81,7 +82,7 @@ public final class RCXPComputer extends AComputer<ATS> {
                                         machine.getInvariant().accept(new Primer(1)),
                                         c,
                                         c_.accept(new Primer(1)),
-                                        new GEQ(relevancePredicate.getV(c, c_, machine), new Int(0))
+                                        new GEQ(variantComputer.computeV(c, c_), new Int(0))
                                 ), machine.getDefsRegister());
                                 if (result.isSAT()) {
                                     RCS.push(c_);

@@ -1,15 +1,10 @@
 package algorithms.heuristics.relevance.atomics.vars;
 
-import algorithms.heuristics.relevance.IVariantComputer;
-import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.AVariantComputer;
 import algorithms.heuristics.relevance.atomics.ADecreases;
-import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.generic.arith.AArithExpr;
-import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.arith.literals.Var;
-
-import java.util.LinkedHashMap;
 
 /**
  * Created by gvoiron on 19/12/17.
@@ -23,13 +18,13 @@ public final class VarDecreases extends ADecreases<Var> {
     }
 
     @Override
-    public AArithExpr getVInit(IVariantComputer computer, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return computer.getVInit(this, c, variantsMapping, machine);
+    public AArithExpr getVInit(AVariantComputer computer, ConcreteState c) {
+        return computer.getVInit(this, c);
     }
 
     @Override
-    public AArithExpr getV(IVariantComputer computer, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine) {
-        return computer.getV(this, c, c_, variantsMapping, machine);
+    public AArithExpr getV(AVariantComputer computer, ConcreteState c, ConcreteState c_) {
+        return computer.getV(this, c, c_);
     }
 
     @Override

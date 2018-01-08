@@ -1,4 +1,3 @@
-import algorithms.heuristics.relevance.ReducedVariantComputer;
 import algorithms.heuristics.relevance.RelevancePredicate;
 import algorithms.heuristics.relevance.atomics.Condition;
 import algorithms.heuristics.relevance.atomics.Conditions;
@@ -16,16 +15,15 @@ import langs.maths.generic.arith.operators.Minus;
 import langs.maths.generic.arith.operators.Plus;
 import langs.maths.generic.bool.operators.Equals;
 
-import static algorithms.EAlgorithm.FULL;
+import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.Saver.save;
-import static utilities.ResourcesManager.EAbstractionPredicatesSet.AP0;
-import static utilities.ResourcesManager.EModel.EL;
+import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
+import static utilities.ResourcesManager.EModel.*;
 
 class Main {
 
     public static void main(String[] args) {
-        save("old", EL, AP0, cm(), FULL);
-        /*long start = System.nanoTime();
+        long start = System.nanoTime();
         save("default", CA, AP0, ca(), CXP, CXPASO, RCXP, RCXPASO);
         System.out.println("1");
         save("default", CA, AP1, ca(), CXP, CXPASO, RCXP, RCXPASO);
@@ -66,12 +64,11 @@ class Main {
         System.out.println("19");
         save("default", EV, AP2, ev(), CXP, CXPASO, RCXP, RCXPASO);
         System.out.println("20");
-        System.out.println((System.nanoTime() - start) * 1.0E-9);*/
+        System.out.println((System.nanoTime() - start) * 1.0E-9);
     }
 
     private static RelevancePredicate el() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new FunChanges(new Fun("bat", new Int(1)), new EnumValue("ok"), new EnumValue("ko")),
                 new FunChanges(new Fun("bat", new Int(2)), new EnumValue("ok"), new EnumValue("ko")),
                 new FunChanges(new Fun("bat", new Int(3)), new EnumValue("ok"), new EnumValue("ko")),
@@ -85,7 +82,6 @@ class Main {
 
     private static RelevancePredicate ev() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new FunChanges(new Fun("PE", new Var("Pos")), new EnumValue("ouvertes"), new EnumValue("fermees")),
                 new FunChanges(new Fun("PE", new Var("Pos")), new EnumValue("fermees"), new EnumValue("ouvertes")),
                 new VarChanges(new Var("PC"), new EnumValue("fermees"), new EnumValue("ouvertes")),
@@ -102,7 +98,6 @@ class Main {
 
     private static RelevancePredicate cm() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new VarIncreases(new Var("Balance")),
                 new VarDecreases(new Var("CoffeeLeft")),
                 new VarChanges(new Var("AskCoffee"), new Int(0), new Int(1)),
@@ -114,7 +109,6 @@ class Main {
 
     private static RelevancePredicate l14_1Rrel() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new FunChanges(new Fun("Mvt", new Int(1)), new Int(0), new Int(1)),
                 new FunChanges(new Fun("Dir", new Int(1)), new Int(-1), new Int(1)),
                 new FunChanges(new Fun("Dir", new Int(1)), new Int(1), new Int(-1)),
@@ -129,7 +123,6 @@ class Main {
 
     private static RelevancePredicate l14_3Rrel() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new FunChanges(new Fun("Mvt", new Int(1)), new Int(0), new Int(1)),
                 new FunChanges(new Fun("Dir", new Int(1)), new Int(-1), new Int(1)),
                 new FunChanges(new Fun("Dir", new Int(1)), new Int(1), new Int(-1)),
@@ -162,7 +155,6 @@ class Main {
 
     private static RelevancePredicate ca() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new VarIncreases(new Var("De")),
                 new VarDecreases(new Var("Us")),
                 new VarIncreases(new Var("Do")),
@@ -174,7 +166,6 @@ class Main {
 
     private static RelevancePredicate ph() {
         return new RelevancePredicate(
-                new ReducedVariantComputer(),
                 new VarIncreases(new Var("Etat"))
         );
     }

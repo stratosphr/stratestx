@@ -30,15 +30,21 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 23/12/17.
  * Time : 15:49
  */
-public abstract class AVariantComputer implements IVariantComputer {
+public abstract class AVariantComputer {
 
-    private Machine machine;
+    final Machine machine;
+    final RelevancePredicate relevancePredicate;
+    final LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping;
+    private boolean preComputed;
 
-    public AVariantComputer(Machine machine) {
+    AVariantComputer(Machine machine, RelevancePredicate relevancePredicate) {
         this.machine = machine;
+        this.relevancePredicate = relevancePredicate;
+        this.variantsMapping = new LinkedHashMap<>();
+        this.preComputed = false;
     }
 
-    <Variant extends AArithExpr> Variant registerVInit(Variant variant, AAtomicRelevancePredicate atomicPredicate, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping) {
+    private <Variant extends AArithExpr> Variant registerVInit(Variant variant, AAtomicRelevancePredicate atomicPredicate, ConcreteState c) {
         DefsRegister tmpDefsRegister = new DefsRegister(machine.getDefsRegister());
         Var variantVar = new Var("variant!");
         tmpDefsRegister.getVarsDefs().put(variantVar.getName(), new Z());
@@ -52,7 +58,7 @@ public abstract class AVariantComputer implements IVariantComputer {
         return variant;
     }
 
-    <Variant extends AArithExpr> Variant registerV(Variant variant, AAtomicRelevancePredicate atomicPredicate, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping) {
+    private <Variant extends AArithExpr> Variant registerV(Variant variant, AAtomicRelevancePredicate atomicPredicate, ConcreteState c, ConcreteState c_) {
         DefsRegister tmpDefsRegister = new DefsRegister(machine.getDefsRegister());
         Var variantVar = new Var("variant!");
         tmpDefsRegister.getVarsDefs().put(variantVar.getName(), new Z());
@@ -68,32 +74,71 @@ public abstract class AVariantComputer implements IVariantComputer {
         return variant;
     }
 
-    public abstract AArithExpr getVInit(VarChanges varChanges, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    void preCompute() {
+    }
 
-    public abstract AArithExpr getVInit(FunChanges funChanges, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public AArithExpr computeVInit(ConcreteState c) {
+        if (!preComputed) {
+            preCompute();
+            preComputed = true;
+        }
+        return relevancePredicate.getVInit(this, c, machine);
+    }
 
-    public abstract AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public AArithExpr computeV(ConcreteState c, ConcreteState c_) {
+        if (!preComputed) {
+            preCompute();
+            preComputed = true;
+        }
+        return relevancePredicate.getV(this, c, c_, machine);
+    }
 
-    public abstract AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public final AArithExpr computeVInit(AAtomicRelevancePredicate atomicPredicate, ConcreteState c) {
+        return registerVInit(atomicPredicate.getVInit(this, c), atomicPredicate, c);
+    }
 
-    public abstract AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public final AArithExpr computeV(AAtomicRelevancePredicate atomicPredicate, ConcreteState c, ConcreteState c_) {
+        return registerV(atomicPredicate.getV(this, c, c_), atomicPredicate, c, c_);
+    }
 
-    public abstract AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getVInit(VarChanges varChanges, ConcreteState c);
 
-    public abstract AArithExpr getVInit(Conditions conditions, ConcreteState c, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getV(VarChanges varChanges, ConcreteState c, ConcreteState c_);
 
-    public abstract AArithExpr getV(VarChanges varChanges, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getVInit(FunChanges funChanges, ConcreteState c);
 
-    public abstract AArithExpr getV(FunChanges funChanges, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getV(FunChanges funChanges, ConcreteState c, ConcreteState c_);
 
-    public abstract AArithExpr getV(VarDecreases varDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c);
 
-    public abstract AArithExpr getV(FunDecreases funDecreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getV(VarDecreases varDecreases, ConcreteState c, ConcreteState c_);
 
-    public abstract AArithExpr getV(VarIncreases varIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c);
 
-    public abstract AArithExpr getV(FunIncreases funIncreases, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getV(VarIncreases varIncreases, ConcreteState c, ConcreteState c_);
 
-    public abstract AArithExpr getV(Conditions conditions, ConcreteState c, ConcreteState c_, LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping, Machine machine);
+    public abstract AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c);
+
+    public abstract AArithExpr getV(FunDecreases funDecreases, ConcreteState c, ConcreteState c_);
+
+    public abstract AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c);
+
+    public abstract AArithExpr getV(FunIncreases funIncreases, ConcreteState c, ConcreteState c_);
+
+    public abstract AArithExpr getVInit(Conditions conditions, ConcreteState c);
+
+    public abstract AArithExpr getV(Conditions conditions, ConcreteState c, ConcreteState c_);
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public RelevancePredicate getRelevancePredicate() {
+        return relevancePredicate;
+    }
+
+    public LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> getVariantsMapping() {
+        return variantsMapping;
+    }
 
 }

@@ -29,37 +29,46 @@
 
     <!-- ATOMIC **************************************************** -->
     <xs:element name="atomic-predicate" abstract="true"/>
-    <xs:element name="changes" substitutionGroup="atomic-predicate">
+    <xs:element name="var-changes" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="assignable"/>
+                <xs:element ref="var"/>
                 <xs:element ref="arith-expr"/>
                 <xs:element ref="arith-expr"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="varDecreases" substitutionGroup="atomic-predicate">
+    <xs:element name="fun-changes" substitutionGroup="atomic-predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fun"/>
+                <xs:element ref="arith-expr"/>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="var-decreases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="var"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="varIncreases" substitutionGroup="atomic-predicate">
+    <xs:element name="var-increases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="var"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="funDecreases" substitutionGroup="atomic-predicate">
+    <xs:element name="fun-decreases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="fun"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="funIncreases" substitutionGroup="atomic-predicate">
+    <xs:element name="fun-increases" substitutionGroup="atomic-predicate">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="fun"/>

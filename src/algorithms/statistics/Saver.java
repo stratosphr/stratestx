@@ -11,7 +11,7 @@ import langs.formal.graphs.MTS;
 import langs.maths.AExpr;
 import langs.maths.generic.bool.literals.Predicate;
 import parsers.stratest.Parser;
-import utilities.ResourcesManager;
+import utilities.ResourcesManager.*;
 import visitors.dot.DOTEncoder;
 
 import java.io.File;
@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
+import static utilities.ResourcesManager.*;
 import static visitors.dot.DOTEncoder.ERankDir.LR;
 
 /**
@@ -32,25 +33,26 @@ public final class Saver {
 
 
     @SuppressWarnings("ConstantConditions")
-    public static void save(String identifier, ResourcesManager.EModel model, ResourcesManager.EAbstractionPredicatesSet abstractionPredicatesSet, RelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
+    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
         Parser parser = new Parser();
-        Machine machine = parser.parseModel(ResourcesManager.getModel(model));
-        LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(ResourcesManager.getAbstractionPredicatesSet(model, abstractionPredicatesSet));
+        Machine machine = parser.parseModel(getModel(model));
+        LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(model, abstractionPredicatesSet));
+        RelevancePredicate rp = parser.parseRelevancePredicate(getRelevancePredicate(model, relevancePredicate));
         ComputerResult<LinkedHashSet<AbstractState>> asResult = new AbstractStatesComputer(machine, ap).compute();
         LinkedHashSet<AbstractState> as = asResult.getResult();
-        File resultsFolder = ResourcesManager.getResultsFolder(model, abstractionPredicatesSet, identifier);
+        File resultsFolder = getResultsFolder(model, abstractionPredicatesSet, identifier);
         File statsFolder = new File(resultsFolder, "stats");
         File dotFolder = new File(resultsFolder, "dot");
         File pdfFolder = new File(resultsFolder, "pdf");
         boolean createResultsFolders = (resultsFolder.exists() || resultsFolder.mkdirs()) && (statsFolder.exists() || statsFolder.mkdirs()) && (dotFolder.exists() || dotFolder.mkdirs()) && (pdfFolder.exists() || pdfFolder.mkdirs());
         if (!createResultsFolders) {
-            throw new Error("Unable to create results folders \"" + ResourcesManager.resultsRoot + "\".");
+            throw new Error("Unable to create results folders \"" + resultsRoot + "\".");
         }
         try {
             Files.write(new File(resultsFolder, machine.getName() + ".mch").toPath(), machine.toString().getBytes(), CREATE, TRUNCATE_EXISTING);
             Files.write(new File(statsFolder, identifier + ".ap_stat").toPath(), ("Abstraction Predicates (" + ap.size() + "):" + "\n" + "\n" + ap.stream().map(AExpr::toString).collect(Collectors.joining("\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
             Files.write(new File(statsFolder, identifier + ".as_stat").toPath(), ("Abstract States (" + as.size() + " in " + asResult.getTime() + "):" + "\n" + "\n" + as.stream().map(AState::toString).collect(Collectors.joining("\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
-            Files.write(new File(statsFolder, identifier + ".rel_stat").toPath(), ("Relevance Predicate:" + "\n" + "\n" + relevancePredicate).getBytes(), CREATE, TRUNCATE_EXISTING);
+            Files.write(new File(statsFolder, identifier + ".rel_stat").toPath(), ("Relevance Predicate:" + "\n" + "\n" + rp).getBytes(), CREATE, TRUNCATE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +85,7 @@ public final class Saver {
                         mts = cxpResult.getResult().getMTS();
                     }
                     if (rcxpResult == null) {
-                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new DefaultVariantComputer(machine, relevancePredicate)).compute();
+                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new DefaultVariantComputer(machine, rp)).compute();
                     }
                     break;
                 case RCXPASO:
@@ -92,7 +94,7 @@ public final class Saver {
                         mts = cxpasoResult.getResult().getMTS();
                     }
                     if (rcxpasoResult == null) {
-                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new DefaultVariantComputer(machine, relevancePredicate)).compute();
+                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new DefaultVariantComputer(machine, rp)).compute();
                     }
                     break;
                 case FULL:

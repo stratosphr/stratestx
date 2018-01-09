@@ -1,5 +1,15 @@
 package parsers.stratest;
 
+import algorithms.heuristics.relevance.RelevancePredicate;
+import algorithms.heuristics.relevance.atomics.AAtomicRelevancePredicate;
+import algorithms.heuristics.relevance.atomics.Condition;
+import algorithms.heuristics.relevance.atomics.Conditions;
+import algorithms.heuristics.relevance.atomics.funs.FunChanges;
+import algorithms.heuristics.relevance.atomics.funs.FunDecreases;
+import algorithms.heuristics.relevance.atomics.funs.FunIncreases;
+import algorithms.heuristics.relevance.atomics.vars.VarChanges;
+import algorithms.heuristics.relevance.atomics.vars.VarDecreases;
+import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
@@ -108,6 +118,13 @@ public final class Parser {
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.AP));
         rootNode.assertConformsTo(new XMLNodeSchema("predicates"));
         return rootNode.getChildren().stream().map(this::parsePredicate).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    public RelevancePredicate parseRelevancePredicate(File file) {
+        XMLParser parser = new XMLParser(true);
+        XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.RP));
+        rootNode.assertConformsTo(new XMLNodeSchema("relevance-predicate"));
+        return new RelevancePredicate(rootNode.getChildren().stream().map(this::parseAtomicRelevancePredicate).toArray(AAtomicRelevancePredicate[]::new));
     }
 
     private void handleException(XMLNode node, String message) {
@@ -549,6 +566,68 @@ public final class Parser {
     private Event parseEvent(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("event", new XMLAttributesSchema("name")));
         return new Event(node.getAttributes().get("name"), parseSubstitution(node.getChildren().get(0)));
+    }
+
+    private AAtomicRelevancePredicate parseAtomicRelevancePredicate(XMLNode node) {
+        switch (node.getName()) {
+            case "var-changes":
+                return parseVarChanges(node);
+            case "fun-changes":
+                return parseFunChanges(node);
+            case "var-decreases":
+                return parseVarDecreases(node);
+            case "var-increases":
+                return parseVarIncreases(node);
+            case "fun-decreases":
+                return parseFunDecreases(node);
+            case "fun-increases":
+                return parseFunIncreases(node);
+            case "conditions":
+                return parseConditions(node);
+            default:
+                handleException(node, "The following node was found but an atomic relevance predicate was expected:\n" + node);
+        }
+        return null;
+    }
+
+    private VarChanges parseVarChanges(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("var-changes"));
+        return new VarChanges(parseVar(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)), parseArithExpr(node.getChildren().get(2)));
+    }
+
+    private FunChanges parseFunChanges(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("fun-changes"));
+        return new FunChanges(parseFun(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)), parseArithExpr(node.getChildren().get(2)));
+    }
+
+    private VarDecreases parseVarDecreases(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("var-decreases"));
+        return new VarDecreases(parseVar(node.getChildren().get(0)));
+    }
+
+    private VarIncreases parseVarIncreases(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("var-increases"));
+        return new VarIncreases(parseVar(node.getChildren().get(0)));
+    }
+
+    private FunDecreases parseFunDecreases(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("fun-decreases"));
+        return new FunDecreases(parseFun(node.getChildren().get(0)));
+    }
+
+    private FunIncreases parseFunIncreases(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("fun-increases"));
+        return new FunIncreases(parseFun(node.getChildren().get(0)));
+    }
+
+    private Conditions parseConditions(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("conditions"));
+        return new Conditions(node.getChildren().stream().map(this::parseCondition).toArray(Condition[]::new));
+    }
+
+    private Condition parseCondition(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("condition"));
+        return new Condition(parseBoolExpr(node.getChildren().get(0)), parseAtomicRelevancePredicate(node.getChildren().get(1)));
     }
 
 }

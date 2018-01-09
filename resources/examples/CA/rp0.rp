@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance-predicate xmlns="rp">
+
+    <var-increases>
+        <var name="De"/>
+    </var-increases>
+
+    <var-decreases>
+        <var name="Us"/>
+    </var-decreases>
+
+    <var-increases>
+        <var name="Do"/>
+    </var-increases>
+
+    <var-increases>
+        <var name="Be"/>
+    </var-increases>
+
+    <var-increases>
+        <var name="Lo"/>
+    </var-increases>
+
+    <var-increases>
+        <var name="AC"/>
+    </var-increases>
+
+</relevance-predicate>

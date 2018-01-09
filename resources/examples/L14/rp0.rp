@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance-predicate xmlns="rp">
+
+    <fun-changes>
+        <fun name="Mvt">
+            <int value="1"/>
+        </fun>
+        <int value="0"/>
+        <int value="1"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="Dir">
+            <int value="1"/>
+        </fun>
+        <int value="-1"/>
+        <int value="1"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="Dir">
+            <int value="1"/>
+        </fun>
+        <int value="1"/>
+        <int value="-1"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="Portes">
+            <int value="1"/>
+        </fun>
+        <enum-value name="fermees"/>
+        <enum-value name="ouvertes"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="Portes">
+            <int value="1"/>
+        </fun>
+        <enum-value name="ouvertes"/>
+        <enum-value name="refermees"/>
+    </fun-changes>
+
+    <conditions>
+        <condition>
+            <equals>
+                <fun name="Dir">
+                    <int value="1"/>
+                </fun>
+                <int value="1"/>
+            </equals>
+            <fun-increases>
+                <fun name="Pos">
+                    <int value="1"/>
+                </fun>
+            </fun-increases>
+        </condition>
+        <condition>
+            <equals>
+                <fun name="Dir">
+                    <int value="1"/>
+                </fun>
+                <int value="-1"/>
+            </equals>
+            <fun-decreases>
+                <fun name="Pos">
+                    <int value="1"/>
+                </fun>
+            </fun-decreases>
+        </condition>
+    </conditions>
+
+</relevance-predicate>

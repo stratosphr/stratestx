@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance-predicate xmlns="rp">
+
+    <var-increases>
+        <var name="Balance"/>
+    </var-increases>
+
+    <var-decreases>
+        <var name="CoffeeLeft"/>
+    </var-decreases>
+
+    <var-changes>
+        <var name="AskCoffee"/>
+        <int value="0"/>
+        <int value="1"/>
+    </var-changes>
+
+    <var-decreases>
+        <var name="Pot"/>
+    </var-decreases>
+
+    <var-changes>
+        <var name="Status"/>
+        <enum-value name="on"/>
+        <enum-value name="off"/>
+    </var-changes>
+
+    <var-changes>
+        <var name="Status"/>
+        <enum-value name="error"/>
+        <enum-value name="off"/>
+    </var-changes>
+
+</relevance-predicate>

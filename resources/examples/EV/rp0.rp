@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance-predicate xmlns="rp">
+
+    <fun-changes>
+        <fun name="PE">
+            <var name="Pos"/>
+        </fun>
+        <enum-value name="ouvertes"/>
+        <enum-value name="fermees"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="PE">
+            <var name="Pos"/>
+        </fun>
+        <enum-value name="fermees"/>
+        <enum-value name="ouvertes"/>
+    </fun-changes>
+
+    <var-changes>
+        <var name="PC"/>
+        <enum-value name="fermees"/>
+        <enum-value name="ouvertes"/>
+    </var-changes>
+
+    <var-changes>
+        <var name="PC"/>
+        <enum-value name="ouvertes"/>
+        <enum-value name="refermees"/>
+    </var-changes>
+
+    <var-changes>
+        <var name="Dir"/>
+        <int value="1"/>
+        <int value="-1"/>
+    </var-changes>
+
+    <conditions>
+        <condition>
+            <equals>
+                <var name="Dir"/>
+                <int value="1"/>
+            </equals>
+            <var-increases>
+                <var name="Pos"/>
+            </var-increases>
+        </condition>
+        <condition>
+            <equals>
+                <var name="Dir"/>
+                <int value="-1"/>
+            </equals>
+            <var-decreases>
+                <var name="Pos"/>
+            </var-decreases>
+        </condition>
+    </conditions>
+
+    <fun-changes>
+        <fun name="BM">
+            <plus>
+                <var name="Pos"/>
+                <int value="1"/>
+            </plus>
+        </fun>
+        <int value="0"/>
+        <int value="1"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="BD">
+            <minus>
+                <var name="Pos"/>
+                <int value="1"/>
+            </minus>
+        </fun>
+        <int value="0"/>
+        <int value="1"/>
+    </fun-changes>
+
+</relevance-predicate>

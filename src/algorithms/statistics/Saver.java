@@ -9,6 +9,7 @@ import langs.formal.graphs.AState;
 import langs.formal.graphs.AbstractState;
 import langs.formal.graphs.MTS;
 import langs.maths.AExpr;
+import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.bool.literals.Predicate;
 import parsers.stratest.Parser;
 import utilities.ResourcesManager.*;
@@ -17,6 +18,7 @@ import visitors.dot.DOTEncoder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
@@ -31,11 +33,14 @@ import static visitors.dot.DOTEncoder.ERankDir.LR;
  */
 public final class Saver {
 
+    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
+        save(identifier, model, abstractionPredicatesSet, relevancePredicate, new LinkedHashMap<>(), algorithms);
+    }
 
     @SuppressWarnings("ConstantConditions")
-    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
+    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, LinkedHashMap<String, AArithExpr> parameters, EAlgorithm... algorithms) {
         Parser parser = new Parser();
-        Machine machine = parser.parseModel(getModel(model));
+        Machine machine = parser.parseModel(getModel(model), parameters);
         LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(model, abstractionPredicatesSet));
         RelevancePredicate rp = parser.parseRelevancePredicate(getRelevancePredicate(model, relevancePredicate));
         ComputerResult<LinkedHashSet<AbstractState>> asResult = new AbstractStatesComputer(machine, ap).compute();
@@ -141,6 +146,7 @@ public final class Saver {
                 Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (fullResult != null) {
+                System.out.println(fullResult.getTime());
                 Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, fullResult.getTime());
                 Files.write(new File(statsFolder, "full.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "full.stat").toPath(), ("Results for FULL (in " + fullResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);

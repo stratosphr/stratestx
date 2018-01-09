@@ -102,6 +102,18 @@
                     <int value="8"/>
                 </fun>
                 <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="9"/>
+                </fun>
+                <enum-value name="ok"/>
+            </fun-assignment>
+            <fun-assignment>
+                <fun name="bat">
+                    <int value="10"/>
+                </fun>
+                <enum-value name="ok"/>
             </fun-assignment>-->
         </assignments>
     </initialisation>

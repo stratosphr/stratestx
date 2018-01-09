@@ -8,6 +8,7 @@ import algorithms.heuristics.relevance.atomics.funs.FunIncreases;
 import algorithms.heuristics.relevance.atomics.vars.VarChanges;
 import algorithms.heuristics.relevance.atomics.vars.VarDecreases;
 import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
+import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.EnumValue;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
@@ -16,17 +17,20 @@ import langs.maths.generic.arith.operators.Minus;
 import langs.maths.generic.arith.operators.Plus;
 import langs.maths.generic.bool.operators.Equals;
 
+import java.util.LinkedHashMap;
+
 import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.Saver.save;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
 import static utilities.ResourcesManager.EModel.*;
 import static utilities.ResourcesManager.ERelevancePredicate.RP0;
-import static utilities.ResourcesManager.ERelevancePredicate.RP1;
 
 class Main {
 
     public static void main(String[] args) {
-        all(false);
+        LinkedHashMap<String, AArithExpr> parameters = new LinkedHashMap<>();
+        parameters.put("ni", new Int(9));
+        save("default-" + 9, EXAMPLE, AP0, RP0, parameters, CXP, CXPASO, RCXP, RCXPASO, FULL);
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -67,14 +71,14 @@ class Main {
         System.out.println("16");
         save("1rel", L14_2, AP3, RP0, algorithms);
         System.out.println("17");
-        save("3rel", L14_2, AP0, RP1, algorithms);
+        /*save("3rel", L14_2, AP0, RP1, algorithms);
         System.out.println("18");
         save("3rel", L14_2, AP1, RP1, algorithms);
         System.out.println("19");
         save("3rel", L14_2, AP2, RP1, algorithms);
         System.out.println("20");
         save("3rel", L14_2, AP3, RP1, algorithms);
-        System.out.println("21");
+        System.out.println("21");*/
         save("default", EV, AP0, RP0, algorithms);
         System.out.println("18");
         save("default", EV, AP1, RP0, algorithms);

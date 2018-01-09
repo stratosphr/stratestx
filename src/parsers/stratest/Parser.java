@@ -60,6 +60,10 @@ public final class Parser {
     }
 
     public Machine parseModel(File file) {
+        return parseModel(file, new LinkedHashMap<>());
+    }
+
+    public Machine parseModel(File file, LinkedHashMap<String, AArithExpr> parameters) {
         XMLParser parser = new XMLParser(true);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.EBM));
         rootNode.assertConformsTo(new XMLNodeSchema("model", new XMLAttributesSchema("name")));
@@ -76,6 +80,13 @@ public final class Parser {
         try {
             if (constsDefsNode != null) {
                 parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
+                for (String name : parameters.keySet()) {
+                    if (defsRegister.getConstsDefs().containsKey(name)) {
+                        defsRegister.getConstsDefs().put(name, parameters.get(name));
+                    } else {
+                        throw new Error("Error: Unable to set value \"" + parameters.get(name) + "\" for unknown parameter \"" + name + "\".");
+                    }
+                }
             }
             if (setsDefsNode != null) {
                 parseSetsDefs(setsDefsNode).forEach(setDef -> defsRegister.getNamedSetsDefs().put(setDef.getLeft(), setDef.getRight()));

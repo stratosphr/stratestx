@@ -33,8 +33,8 @@ public final class LT extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public LT clone() {
-        return new LT(getLeft().clone(), getRight().clone());
+    public LT cloned() {
+        return new LT(getLeft().cloned(), getRight().cloned());
     }
 
 }

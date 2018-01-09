@@ -14,7 +14,7 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 19/12/17.
  * Time : 22:38
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class Condition extends ABoolExpr {
 
     private final ABoolExpr condition;
@@ -56,8 +56,8 @@ public final class Condition extends ABoolExpr {
     }
 
     @Override
-    public Condition clone() {
-        return new Condition(condition.clone(), thenPart.clone());
+    public Condition cloned() {
+        return new Condition(condition.cloned(), thenPart.cloned());
     }
 
 }

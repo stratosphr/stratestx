@@ -6,6 +6,6 @@ package utilities;
  */
 public interface ICloneable<Clone> {
 
-    Clone clone();
+    Clone cloned();
 
 }

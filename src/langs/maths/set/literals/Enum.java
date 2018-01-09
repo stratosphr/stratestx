@@ -57,8 +57,8 @@ public final class Enum extends AFiniteSetExpr {
     }
 
     @Override
-    public Enum clone() {
-        return new Enum(enumValues.stream().map(EnumValue::clone).toArray(EnumValue[]::new));
+    public Enum cloned() {
+        return new Enum(enumValues.stream().map(EnumValue::cloned).toArray(EnumValue[]::new));
     }
 
 }

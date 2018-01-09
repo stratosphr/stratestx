@@ -76,8 +76,8 @@ public final class RelevancePredicate extends ARelevancePredicate {
     }
 
     @Override
-    public RelevancePredicate clone() {
-        return new RelevancePredicate(atomicPredicates.stream().map(AAtomicRelevancePredicate::clone).toArray(AAtomicRelevancePredicate[]::new));
+    public RelevancePredicate cloned() {
+        return new RelevancePredicate(atomicPredicates.stream().map(AAtomicRelevancePredicate::cloned).toArray(AAtomicRelevancePredicate[]::new));
     }
 
 }

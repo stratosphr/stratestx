@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by gvoiron on 06/12/17.
  * Time : 16:53
  */
-@SuppressWarnings({"SameParameterValue", "WeakerAccess", "unused"})
+
 public abstract class ADotObject<This extends ADotObject<This>> extends AObject {
 
     private final Map<Object, Object> parameters;
@@ -32,6 +32,7 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
         return getThis();
     }
 
+    @SuppressWarnings("SameParameterValue")
     private This htmlParameter(Object key, Object value) {
         parameters.put(key, "<" + value + ">");
         return getThis();
@@ -41,6 +42,7 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
         return setLabel(label, false);
     }
 
+    @SuppressWarnings("WeakerAccess")
     public final This setLabel(Object label, boolean isHTML) {
         return isHTML ? htmlParameter("label", label) : quoteParameter("label", label);
     }
@@ -83,6 +85,6 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
     }
 
     @Override
-    public abstract ADotObject clone();
+    public abstract ADotObject cloned();
 
 }

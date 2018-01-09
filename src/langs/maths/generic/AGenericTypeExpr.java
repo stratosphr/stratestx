@@ -14,6 +14,6 @@ public abstract class AGenericTypeExpr extends AExpr implements ISMTEncodable {
     public abstract AGenericTypeExpr accept(IPrimer primer);
 
     @Override
-    public abstract AGenericTypeExpr clone();
+    public abstract AGenericTypeExpr cloned();
 
 }

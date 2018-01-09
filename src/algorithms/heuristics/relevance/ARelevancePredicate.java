@@ -13,12 +13,12 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 19/12/17.
  * Time : 22:09
  */
-@SuppressWarnings("WeakerAccess")
+
 public abstract class ARelevancePredicate extends ABoolExpr {
 
     private final ABoolExpr expr;
 
-    public ARelevancePredicate(ABoolExpr expr) {
+    protected ARelevancePredicate(ABoolExpr expr) {
         this.expr = expr;
     }
 
@@ -43,6 +43,6 @@ public abstract class ARelevancePredicate extends ABoolExpr {
     }
 
     @Override
-    public abstract ARelevancePredicate clone();
+    public abstract ARelevancePredicate cloned();
 
 }

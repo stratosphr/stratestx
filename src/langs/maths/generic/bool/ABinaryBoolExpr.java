@@ -40,6 +40,6 @@ public abstract class ABinaryBoolExpr<Left extends AExpr, Right extends AExpr> e
     }
 
     @Override
-    public abstract ABinaryBoolExpr<Left, Right> clone();
+    public abstract ABinaryBoolExpr<Left, Right> cloned();
 
 }

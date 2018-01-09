@@ -48,7 +48,7 @@ public final class EnumValue extends AValue {
     }
 
     @Override
-    public EnumValue clone() {
+    public EnumValue cloned() {
         return new EnumValue(name);
     }
 

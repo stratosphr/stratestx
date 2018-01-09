@@ -34,6 +34,6 @@ public abstract class AAssignment<Assignable extends AAssignable> extends ASubst
     }
 
     @Override
-    public abstract AAssignment<Assignable> clone();
+    public abstract AAssignment<Assignable> cloned();
 
 }

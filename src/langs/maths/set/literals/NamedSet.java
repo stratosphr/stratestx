@@ -59,8 +59,8 @@ public final class NamedSet extends AFiniteSetExpr {
     }
 
     @Override
-    public NamedSet clone() {
-        return new NamedSet(name, set.clone());
+    public NamedSet cloned() {
+        return new NamedSet(name, set.cloned());
     }
 
 }

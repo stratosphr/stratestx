@@ -66,7 +66,6 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         return encodeReachedTransition(transition).setColor("black").setStyle("dashed");
     }
 
-    @SuppressWarnings("unused")
     public enum ERankDir {
         LR, TB
     }

@@ -33,8 +33,8 @@ public final class Equals extends ANaryBoolExpr<AArithExpr> {
     }
 
     @Override
-    public Equals clone() {
-        return new Equals(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    public Equals cloned() {
+        return new Equals(getOperands().stream().map(AArithExpr::cloned).toArray(AArithExpr[]::new));
     }
 
 }

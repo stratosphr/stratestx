@@ -35,6 +35,6 @@ public abstract class ANarySetExpr extends AFiniteSetExpr {
     }
 
     @Override
-    public abstract ANarySetExpr clone();
+    public abstract ANarySetExpr cloned();
 
 }

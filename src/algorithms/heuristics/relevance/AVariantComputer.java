@@ -8,6 +8,7 @@ import algorithms.heuristics.relevance.atomics.funs.FunIncreases;
 import algorithms.heuristics.relevance.atomics.vars.VarChanges;
 import algorithms.heuristics.relevance.atomics.vars.VarDecreases;
 import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
+import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.formal.graphs.ConcreteState;
 import langs.maths.def.DefsRegister;
@@ -25,6 +26,7 @@ import visitors.Primer;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 /**
  * Created by gvoiron on 23/12/17.
@@ -33,14 +35,17 @@ import java.util.LinkedHashSet;
 public abstract class AVariantComputer {
 
     final Machine machine;
-    final RelevancePredicate relevancePredicate;
+    private final RelevancePredicate relevancePredicate;
     final LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> variantsMapping;
+    private LinkedHashSet<Event> relevantEvents;
     private boolean preComputed;
+
 
     AVariantComputer(Machine machine, RelevancePredicate relevancePredicate) {
         this.machine = machine;
         this.relevancePredicate = relevancePredicate;
         this.variantsMapping = new LinkedHashMap<>();
+        this.relevantEvents = null;
         this.preComputed = false;
     }
 
@@ -74,7 +79,9 @@ public abstract class AVariantComputer {
         return variant;
     }
 
-    void preCompute() {
+
+    @SuppressWarnings({"EmptyMethod", "WeakerAccess"})
+    protected void preCompute() {
     }
 
     public AArithExpr computeVInit(ConcreteState c) {
@@ -139,6 +146,18 @@ public abstract class AVariantComputer {
 
     public LinkedHashMap<ConcreteState, LinkedHashMap<AAtomicRelevancePredicate, AValue>> getVariantsMapping() {
         return variantsMapping;
+    }
+
+    public LinkedHashSet<Event> getRelevantEvents() {
+        if (this.relevantEvents == null) {
+            this.relevantEvents = machine.getEvents().values().stream().filter(event -> Z3.checkSAT(new And(
+                    machine.getInvariant(),
+                    machine.getInvariant().accept(new Primer(1)),
+                    event.getSubstitution().getPrd(machine.getAssignables()),
+                    relevancePredicate
+            ), machine.getDefsRegister()).isSAT()).collect(Collectors.toCollection(LinkedHashSet::new));
+        }
+        return relevantEvents;
     }
 
 }

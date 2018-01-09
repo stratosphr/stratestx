@@ -27,6 +27,6 @@ public abstract class AState<Key extends Comparable, Value> extends APredicate {
     }
 
     @Override
-    public abstract AState<Key, Value> clone();
+    public abstract AState<Key, Value> cloned();
 
 }

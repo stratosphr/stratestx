@@ -33,8 +33,8 @@ public final class Not extends AUnaryBoolExpr<ABoolExpr> {
     }
 
     @Override
-    public Not clone() {
-        return new Not(getOperand().clone());
+    public Not cloned() {
+        return new Not(getOperand().cloned());
     }
 
 }

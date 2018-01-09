@@ -39,6 +39,6 @@ public abstract class AGraph<State extends AState, Transition extends ATransitio
     }
 
     @Override
-    public abstract AGraph<State, Transition> clone();
+    public abstract AGraph<State, Transition> cloned();
 
 }

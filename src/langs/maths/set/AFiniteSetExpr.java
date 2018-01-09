@@ -22,6 +22,6 @@ public abstract class AFiniteSetExpr extends ASetExpr {
     protected abstract LinkedHashSet<AValue> computeElementsValues(DefsRegister defsRegister);
 
     @Override
-    public abstract AFiniteSetExpr clone();
+    public abstract AFiniteSetExpr cloned();
 
 }

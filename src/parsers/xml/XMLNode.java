@@ -15,7 +15,6 @@ import java.util.Map;
  * Created by gvoiron on 01/12/17.
  * Time : 12:52
  */
-@SuppressWarnings({"WeakerAccess", "unused", "SameParameterValue"})
 public final class XMLNode implements IXMLFormattable {
 
     private XMLNode parent;
@@ -39,6 +38,8 @@ public final class XMLNode implements IXMLFormattable {
         this(name, attributes, null, -1, -1);
     }
 
+
+    @SuppressWarnings({"SameParameterValue", "WeakerAccess"})
     XMLNode(String name, Map<String, String> attributes, File file, int line, int column) {
         this(name, attributes, new ArrayList<>(), file, line, column);
     }
@@ -55,6 +56,8 @@ public final class XMLNode implements IXMLFormattable {
         this(name, attributes, children, null, -1, -1);
     }
 
+
+    @SuppressWarnings("WeakerAccess")
     XMLNode(String name, Map<String, String> attributes, List<XMLNode> children, File file, int line, int column) {
         this.parent = null;
         this.name = name;

@@ -30,6 +30,7 @@ import static visitors.dot.DOTEncoder.ERankDir.LR;
  */
 public final class Saver {
 
+
     @SuppressWarnings("ConstantConditions")
     public static void save(String identifier, ResourcesManager.EModel model, ResourcesManager.EAbstractionPredicatesSet abstractionPredicatesSet, RelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
         Parser parser = new Parser();

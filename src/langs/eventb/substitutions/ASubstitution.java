@@ -15,6 +15,6 @@ public abstract class ASubstitution extends AObject {
     public abstract ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables);
 
     @Override
-    public abstract ASubstitution clone();
+    public abstract ASubstitution cloned();
 
 }

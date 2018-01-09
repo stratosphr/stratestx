@@ -21,6 +21,6 @@ public abstract class AFSM<State extends AState, Transition extends ATransition<
     }
 
     @Override
-    public abstract AFSM<State, Transition> clone();
+    public abstract AFSM<State, Transition> cloned();
 
 }

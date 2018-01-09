@@ -33,8 +33,8 @@ public final class Minus extends ANaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public Minus clone() {
-        return new Minus(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    public Minus cloned() {
+        return new Minus(getOperands().stream().map(AArithExpr::cloned).toArray(AArithExpr[]::new));
     }
 
 }

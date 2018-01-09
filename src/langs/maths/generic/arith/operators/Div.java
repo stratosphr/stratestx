@@ -33,8 +33,8 @@ public final class Div extends ANaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public Div clone() {
-        return new Div(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    public Div cloned() {
+        return new Div(getOperands().stream().map(AArithExpr::cloned).toArray(AArithExpr[]::new));
     }
 
 }

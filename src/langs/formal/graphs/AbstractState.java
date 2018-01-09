@@ -39,8 +39,8 @@ public final class AbstractState extends AState<Predicate, Boolean> {
     }
 
     @Override
-    public AbstractState clone() {
-        return new AbstractState(getName(), getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().clone(), Map.Entry::getValue, (value1, value2) -> value1, TreeMap::new)));
+    public AbstractState cloned() {
+        return new AbstractState(getName(), getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().cloned(), Map.Entry::getValue, (value1, value2) -> value1, TreeMap::new)));
     }
 
 }

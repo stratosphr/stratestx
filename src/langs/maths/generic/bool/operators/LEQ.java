@@ -33,8 +33,8 @@ public final class LEQ extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public LEQ clone() {
-        return new LEQ(getLeft().clone(), getRight().clone());
+    public LEQ cloned() {
+        return new LEQ(getLeft().cloned(), getRight().cloned());
     }
 
 }

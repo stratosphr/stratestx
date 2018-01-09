@@ -33,8 +33,8 @@ public final class Implies extends ABinaryBoolExpr<ABoolExpr, ABoolExpr> {
     }
 
     @Override
-    public Implies clone() {
-        return new Implies(getLeft().clone(), getRight().clone());
+    public Implies cloned() {
+        return new Implies(getLeft().cloned(), getRight().cloned());
     }
 
 }

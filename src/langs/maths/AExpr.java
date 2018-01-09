@@ -19,6 +19,6 @@ public abstract class AExpr extends AObject implements IPrimable {
     public abstract LinkedHashSet<Fun> getFuns();
 
     @Override
-    public abstract AExpr clone();
+    public abstract AExpr cloned();
 
 }

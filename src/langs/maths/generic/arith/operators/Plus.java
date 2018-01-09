@@ -33,8 +33,8 @@ public final class Plus extends ANaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public Plus clone() {
-        return new Plus(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    public Plus cloned() {
+        return new Plus(getOperands().stream().map(AArithExpr::cloned).toArray(AArithExpr[]::new));
     }
 
 }

@@ -39,7 +39,7 @@ public final class Int extends AValue {
     }
 
     @Override
-    public Int clone() {
+    public Int cloned() {
         return new Int(getValue());
     }
 

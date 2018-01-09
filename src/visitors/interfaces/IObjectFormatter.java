@@ -23,7 +23,6 @@ import visitors.dot.DOTNode;
  * Created by gvoiron on 26/11/17.
  * Time : 23:14
  */
-@SuppressWarnings({"SameReturnValue", "unused"})
 public interface IObjectFormatter {
 
     String visit(Int anInt);
@@ -50,8 +49,10 @@ public interface IObjectFormatter {
 
     String visit(Mod mod);
 
+    @SuppressWarnings("SameReturnValue")
     String visit(False aFalse);
 
+    @SuppressWarnings("SameReturnValue")
     String visit(True aTrue);
 
     String visit(Invariant invariant);
@@ -92,6 +93,7 @@ public interface IObjectFormatter {
 
     String visit(InDomain inDomain);
 
+    @SuppressWarnings("SameReturnValue")
     String visit(Z z);
 
     String visit(Set set);
@@ -108,6 +110,7 @@ public interface IObjectFormatter {
 
     String visit(Difference difference);
 
+    @SuppressWarnings("SameReturnValue")
     String visit(Skip skip);
 
     String visit(Assignments assignments);

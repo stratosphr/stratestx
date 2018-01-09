@@ -29,8 +29,8 @@ public final class VarAssignment extends AAssignment<Var> {
     }
 
     @Override
-    public VarAssignment clone() {
-        return new VarAssignment(getAssignable().clone(), getValue().clone());
+    public VarAssignment cloned() {
+        return new VarAssignment(getAssignable().cloned(), getValue().cloned());
     }
 
 }

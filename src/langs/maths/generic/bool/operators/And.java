@@ -33,8 +33,8 @@ public final class And extends ANaryBoolExpr<ABoolExpr> {
     }
 
     @Override
-    public And clone() {
-        return new And(getOperands().stream().map(ABoolExpr::clone).toArray(ABoolExpr[]::new));
+    public And cloned() {
+        return new And(getOperands().stream().map(ABoolExpr::cloned).toArray(ABoolExpr[]::new));
     }
 
 }

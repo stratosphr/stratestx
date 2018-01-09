@@ -23,6 +23,10 @@ import static utilities.ResourcesManager.EModel.*;
 class Main {
 
     public static void main(String[] args) {
+        all();
+    }
+
+    private static void all() {
         long start = System.nanoTime();
         save("default", CA, AP0, ca(), CXP, CXPASO, RCXP, RCXPASO);
         System.out.println("1");

@@ -33,8 +33,8 @@ public final class Times extends ANaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public Times clone() {
-        return new Times(getOperands().stream().map(AArithExpr::clone).toArray(AArithExpr[]::new));
+    public Times cloned() {
+        return new Times(getOperands().stream().map(AArithExpr::cloned).toArray(AArithExpr[]::new));
     }
 
 }

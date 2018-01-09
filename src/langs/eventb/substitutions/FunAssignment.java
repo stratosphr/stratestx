@@ -29,8 +29,8 @@ public final class FunAssignment extends AAssignment<Fun> {
     }
 
     @Override
-    public FunAssignment clone() {
-        return new FunAssignment(getAssignable().clone(), getValue().clone());
+    public FunAssignment cloned() {
+        return new FunAssignment(getAssignable().cloned(), getValue().cloned());
     }
 
 }

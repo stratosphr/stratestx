@@ -33,8 +33,8 @@ public final class NotEquals extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public NotEquals clone() {
-        return new NotEquals(getLeft().clone(), getRight().clone());
+    public NotEquals cloned() {
+        return new NotEquals(getLeft().cloned(), getRight().cloned());
     }
 
 }

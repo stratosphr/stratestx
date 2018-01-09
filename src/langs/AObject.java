@@ -13,7 +13,7 @@ public abstract class AObject implements IObjectFormattable, ICloneable, Compara
     private Integer hashCode;
 
     @Override
-    public abstract AObject clone();
+    public abstract AObject cloned();
 
     @Override
     public final int hashCode() {

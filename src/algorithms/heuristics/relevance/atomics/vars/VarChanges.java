@@ -10,7 +10,7 @@ import langs.maths.generic.arith.literals.Var;
  * Created by gvoiron on 20/12/17.
  * Time : 14:23
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class VarChanges extends AChanges<Var> {
 
     public VarChanges(Var var, AArithExpr value, AArithExpr value_) {
@@ -28,8 +28,8 @@ public final class VarChanges extends AChanges<Var> {
     }
 
     @Override
-    public VarChanges clone() {
-        return new VarChanges(assignable.clone(), value.clone(), value_.clone());
+    public VarChanges cloned() {
+        return new VarChanges(assignable.cloned(), value.cloned(), value_.cloned());
     }
 
 }

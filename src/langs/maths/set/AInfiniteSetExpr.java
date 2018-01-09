@@ -20,6 +20,6 @@ public abstract class AInfiniteSetExpr extends ASetExpr {
     }
 
     @Override
-    public abstract AInfiniteSetExpr clone();
+    public abstract AInfiniteSetExpr cloned();
 
 }

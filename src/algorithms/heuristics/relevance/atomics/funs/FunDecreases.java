@@ -10,7 +10,7 @@ import langs.maths.generic.arith.literals.Fun;
  * Created by gvoiron on 19/12/17.
  * Time : 22:33
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class FunDecreases extends ADecreases<Fun> {
 
     public FunDecreases(Fun assignable) {
@@ -28,8 +28,8 @@ public final class FunDecreases extends ADecreases<Fun> {
     }
 
     @Override
-    public FunDecreases clone() {
-        return new FunDecreases(assignable.clone());
+    public FunDecreases cloned() {
+        return new FunDecreases(assignable.cloned());
     }
 
 }

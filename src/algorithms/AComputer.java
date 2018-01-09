@@ -6,7 +6,6 @@ import utilities.Time;
  * Created by gvoiron on 06/12/17.
  * Time : 20:59
  */
-@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 public abstract class AComputer<Result> {
 
     public final ComputerResult<Result> compute() {
@@ -18,11 +17,15 @@ public abstract class AComputer<Result> {
         return new ComputerResult<>(computed, new Time(end - start));
     }
 
+
+    @SuppressWarnings({"WeakerAccess", "EmptyMethod"})
     protected void preRun() {
     }
 
     abstract Result run();
 
+
+    @SuppressWarnings({"WeakerAccess", "EmptyMethod"})
     protected void postRun() {
     }
 

@@ -35,8 +35,8 @@ public final class DOTEdge extends ADotObject<DOTEdge> {
     }
 
     @Override
-    public DOTEdge clone() {
-        return new DOTEdge(getSource().clone(), getTarget().clone());
+    public DOTEdge cloned() {
+        return new DOTEdge(getSource().cloned(), getTarget().cloned());
     }
 
 }

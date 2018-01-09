@@ -38,8 +38,8 @@ public final class ForAll extends AQuantifier {
     }
 
     @Override
-    public ForAll clone() {
-        return new ForAll(getBody().getRight().clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
+    public ForAll cloned() {
+        return new ForAll(getBody().getRight().cloned(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::cloned).toArray(VarInDomain[]::new));
     }
 
 }

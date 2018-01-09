@@ -29,7 +29,7 @@ import static algorithms.heuristics.EColor.GREEN;
  * Created by gvoiron on 15/12/17.
  * Time : 09:03
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class CXPComputer extends AComputer<ATS> {
 
     private final Machine machine;
@@ -61,6 +61,7 @@ public final class CXPComputer extends AComputer<ATS> {
         this(machine, A, new DefaultEventsOrderingFunction(), abstractStatesOrderingFunction);
     }
 
+    @SuppressWarnings("WeakerAccess")
     public CXPComputer(Machine machine, LinkedHashSet<AbstractState> A, IEventsOrderingFunction eventsOrderingFunction, IAbstractStatesOrderingFunction abstractStatesOrderingFunction) {
         this.machine = machine;
         this.A = A;

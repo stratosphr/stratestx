@@ -90,7 +90,7 @@ public final class Range extends AFiniteSetExpr {
     }
 
     @Override
-    public Range clone() {
+    public Range cloned() {
         return new Range(lowerBound, upperBound);
     }
 

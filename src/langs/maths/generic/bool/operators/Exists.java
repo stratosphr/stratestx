@@ -38,8 +38,8 @@ public final class Exists extends AQuantifier {
     }
 
     @Override
-    public Exists clone() {
-        return new Exists(getBody().getOperands().get(1).clone(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::clone).toArray(VarInDomain[]::new));
+    public Exists cloned() {
+        return new Exists(getBody().getOperands().get(1).cloned(), getQuantifiedVarsDefs().stream().map(ABinaryBoolExpr::cloned).toArray(VarInDomain[]::new));
     }
 
 }

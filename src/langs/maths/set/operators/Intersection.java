@@ -46,8 +46,8 @@ public final class Intersection extends ANarySetExpr {
     }
 
     @Override
-    public Intersection clone() {
-        return new Intersection(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+    public Intersection cloned() {
+        return new Intersection(getOperands().stream().map(ASetExpr::cloned).toArray(AFiniteSetExpr[]::new));
     }
 
 }

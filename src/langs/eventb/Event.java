@@ -32,8 +32,8 @@ public final class Event extends AObject {
     }
 
     @Override
-    public Event clone() {
-        return new Event(name, substitution.clone());
+    public Event cloned() {
+        return new Event(name, substitution.cloned());
     }
 
 }

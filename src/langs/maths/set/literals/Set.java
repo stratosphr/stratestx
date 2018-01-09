@@ -77,7 +77,7 @@ public final class Set extends AFiniteSetExpr {
     }
 
     @Override
-    public Set clone() {
+    public Set cloned() {
         return new Set(elements.toArray(new AArithExpr[0]));
     }
 

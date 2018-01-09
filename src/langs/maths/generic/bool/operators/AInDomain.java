@@ -19,6 +19,6 @@ public abstract class AInDomain<Left extends AArithExpr> extends ABinaryBoolExpr
     public abstract AInDomain<Left> accept(IPrimer primer);
 
     @Override
-    public abstract AInDomain<Left> clone();
+    public abstract AInDomain<Left> cloned();
 
 }

@@ -33,8 +33,8 @@ public final class UMinus extends AUnaryArithExpr<AArithExpr> {
     }
 
     @Override
-    public UMinus clone() {
-        return new UMinus(getOperand().clone());
+    public UMinus cloned() {
+        return new UMinus(getOperand().cloned());
     }
 
 }

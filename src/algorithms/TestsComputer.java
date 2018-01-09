@@ -79,7 +79,8 @@ public final class TestsComputer extends AComputer<List<Test>> {
         }
     }
 
-    @SuppressWarnings({"unchecked", "SameParameterValue"})
+
+    @SuppressWarnings("unchecked")
     private void addArc(String lab, int u, int v, float cost) {
         if (!defined[u][v]) label[u][v] = new Vector();
         label[u][v].addElement(lab);

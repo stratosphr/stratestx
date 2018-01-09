@@ -33,8 +33,8 @@ public final class VarInDomain extends AInDomain<Var> {
     }
 
     @Override
-    public VarInDomain clone() {
-        return new VarInDomain(getLeft().clone(), getRight().clone());
+    public VarInDomain cloned() {
+        return new VarInDomain(getLeft().cloned(), getRight().cloned());
     }
 
 }

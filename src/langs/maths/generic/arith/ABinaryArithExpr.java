@@ -36,6 +36,6 @@ public abstract class ABinaryArithExpr<Left extends AGenericTypeExpr, Right exte
     }
 
     @Override
-    public abstract ABinaryArithExpr<Left, Right> clone();
+    public abstract ABinaryArithExpr<Left, Right> cloned();
 
 }

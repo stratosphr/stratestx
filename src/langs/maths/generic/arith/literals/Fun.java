@@ -54,8 +54,8 @@ public final class Fun extends AAssignable {
     }
 
     @Override
-    public Fun clone() {
-        return new Fun(getName(), parameter.clone());
+    public Fun cloned() {
+        return new Fun(getName(), parameter.cloned());
     }
 
 }

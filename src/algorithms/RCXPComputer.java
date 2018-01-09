@@ -34,7 +34,7 @@ public final class RCXPComputer extends AComputer<ATS> {
 
     public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer) {
         this.machine = machine;
-        this.ats = ats.clone();
+        this.ats = ats.cloned();
         this.CMappings = new LinkedHashMap<>();
         this.variantComputer = variantComputer;
         this.primedAssignables = machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new));
@@ -62,7 +62,7 @@ public final class RCXPComputer extends AComputer<ATS> {
             RCS.pop();
             PRCS.add(c);
             AbstractState q = ats.getAlpha().get(c);
-            for (Event e : machine.getEvents().values()) {
+            for (Event e : variantComputer.getRelevantEvents()) {
                 for (AbstractState q_ : ats.getMTS().getStates()) {
                     if (ats.getMTS().getTransitions().contains(new AbstractTransition(q, e, q_))) {
                         result = Z3.checkSAT(new And(
@@ -98,7 +98,7 @@ public final class RCXPComputer extends AComputer<ATS> {
                 }
             }
         }
-        return new ATS(machine.clone(), ats.getMTS(), new CTS(ats.getCTS().getInitialStates(), ats.getCTS().getStates(), new ArrayList<>(new LinkedHashSet<>(ats.getCTS().getTransitions()))), ats.getAlpha(), ats.getKappa());
+        return new ATS(machine.cloned(), ats.getMTS(), new CTS(ats.getCTS().getInitialStates(), ats.getCTS().getStates(), new ArrayList<>(new LinkedHashSet<>(ats.getCTS().getTransitions()))), ats.getAlpha(), ats.getKappa());
     }
 
 }

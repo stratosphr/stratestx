@@ -33,8 +33,8 @@ public final class Predicate extends APredicate {
     }
 
     @Override
-    public Predicate clone() {
-        return new Predicate(getName(), getExpr().clone());
+    public Predicate cloned() {
+        return new Predicate(getName(), getExpr().cloned());
     }
 
 }

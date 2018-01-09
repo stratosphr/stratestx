@@ -36,7 +36,7 @@ public final class True extends ABoolExpr {
     }
 
     @Override
-    public True clone() {
+    public True cloned() {
         return new True();
     }
 

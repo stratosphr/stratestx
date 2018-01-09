@@ -19,7 +19,7 @@ public abstract class AAssignable extends AArithExpr implements IModelVisitable 
     public abstract AAssignable accept(IPrimer primer);
 
     @Override
-    public abstract AAssignable clone();
+    public abstract AAssignable cloned();
 
     public String getName() {
         return name;

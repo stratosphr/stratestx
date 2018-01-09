@@ -4,12 +4,12 @@ package algorithms.statistics;
  * Created by gvoiron on 18/12/17.
  * Time : 20:13
  */
-@SuppressWarnings("WeakerAccess")
-public abstract class AStatistic<Value> {
 
-    protected final Value value;
+abstract class AStatistic<Value> {
 
-    public AStatistic(Value value) {
+    final Value value;
+
+    AStatistic(Value value) {
         this.value = value;
     }
 

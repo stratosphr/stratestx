@@ -33,8 +33,8 @@ public final class Or extends ANaryBoolExpr<ABoolExpr> {
     }
 
     @Override
-    public Or clone() {
-        return new Or(getOperands().stream().map(ABoolExpr::clone).toArray(ABoolExpr[]::new));
+    public Or cloned() {
+        return new Or(getOperands().stream().map(ABoolExpr::cloned).toArray(ABoolExpr[]::new));
     }
 
 }

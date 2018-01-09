@@ -45,7 +45,7 @@ public final class Const extends AArithExpr {
     }
 
     @Override
-    public Const clone() {
+    public Const cloned() {
         return new Const(name);
     }
 

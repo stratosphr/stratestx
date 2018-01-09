@@ -47,8 +47,8 @@ public final class Union extends ANarySetExpr {
     }
 
     @Override
-    public Union clone() {
-        return new Union(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+    public Union cloned() {
+        return new Union(getOperands().stream().map(ASetExpr::cloned).toArray(AFiniteSetExpr[]::new));
     }
 
 }

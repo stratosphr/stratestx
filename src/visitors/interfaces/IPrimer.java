@@ -19,7 +19,7 @@ import langs.maths.set.operators.Union;
  * Created by gvoiron on 30/11/17.
  * Time : 14:34
  */
-@SuppressWarnings("unused")
+
 public interface IPrimer {
 
     Int visit(Int anInt);

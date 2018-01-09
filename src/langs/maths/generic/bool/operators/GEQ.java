@@ -33,8 +33,8 @@ public final class GEQ extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public GEQ clone() {
-        return new GEQ(getLeft().clone(), getRight().clone());
+    public GEQ cloned() {
+        return new GEQ(getLeft().cloned(), getRight().cloned());
     }
 
 }

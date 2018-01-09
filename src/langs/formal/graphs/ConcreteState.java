@@ -39,8 +39,8 @@ public final class ConcreteState extends AState<AAssignable, AValue> {
     }
 
     @Override
-    public ConcreteState clone() {
-        return new ConcreteState(getName(), getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().clone(), o -> o.getValue().clone(), (value1, value2) -> value1, TreeMap::new)));
+    public ConcreteState cloned() {
+        return new ConcreteState(getName(), getMapping().entrySet().stream().collect(Collectors.toMap(o -> o.getKey().cloned(), o -> o.getValue().cloned(), (value1, value2) -> value1, TreeMap::new)));
     }
 
 }

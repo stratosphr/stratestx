@@ -20,8 +20,8 @@ import static utilities.ResourcesManager.EAbstractionPredicatesSet;
  * Created by gvoiron on 18/12/17.
  * Time : 17:23
  */
-@SuppressWarnings("WeakerAccess")
-public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
+
+final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
 
     private final ATS ats;
     private final EAbstractionPredicatesSet abstractionPredicatesSet;
@@ -31,10 +31,12 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     private Tuple<LinkedHashSet<AbstractState>, ArrayList<AbstractTransition>> rchdAbstractPart;
     private ComputerResult<List<Test>> tests;
 
+    @SuppressWarnings("WeakerAccess")
     public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime) {
         this(ats, abstractionPredicatesSet, abstractionPredicates, atsComputationTime, EStatistic.values());
     }
 
+    @SuppressWarnings("WeakerAccess")
     public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
         this.ats = ats;
         this.abstractionPredicatesSet = abstractionPredicatesSet;
@@ -138,7 +140,7 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new IntegerStatistic(ats.getMachine().getEvents().size());
     }
 
-    public StringStatistic getAP() {
+    private StringStatistic getAP() {
         return new StringStatistic(abstractionPredicatesSet.toString());
     }
 
@@ -222,19 +224,19 @@ public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new SetStatistic<>(new LinkedHashSet<>(getTestsComputation().getResult()));
     }
 
-    public SetStatistic<AbstractState> getRchdAS() {
+    private SetStatistic<AbstractState> getRchdAS() {
         return new SetStatistic<>(getAbstractRchdPart().getLeft());
     }
 
-    public SetStatistic<AbstractTransition> getRchdAT() {
+    private SetStatistic<AbstractTransition> getRchdAT() {
         return new SetStatistic<>(new LinkedHashSet<>(getAbstractRchdPart().getRight()));
     }
 
-    public SetStatistic<AbstractState> getUnrchdAS() {
+    private SetStatistic<AbstractState> getUnrchdAS() {
         return new SetStatistic<>(ats.getMTS().getStates().stream().filter(q -> !getRchdAS().getValue().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
-    public SetStatistic<AbstractTransition> getUnrchdAT() {
+    private SetStatistic<AbstractTransition> getUnrchdAT() {
         return new SetStatistic<>(ats.getMTS().getTransitions().stream().filter(t -> !getRchdAT().getValue().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 

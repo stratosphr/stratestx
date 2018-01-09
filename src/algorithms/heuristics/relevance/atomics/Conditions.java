@@ -12,7 +12,7 @@ import java.util.LinkedHashSet;
  * Created by gvoiron on 19/12/17.
  * Time : 22:35
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class Conditions extends AAtomicRelevancePredicate {
 
     private final LinkedHashSet<Condition> conditions;
@@ -37,8 +37,8 @@ public final class Conditions extends AAtomicRelevancePredicate {
     }
 
     @Override
-    public Conditions clone() {
-        return new Conditions(conditions.stream().map(Condition::clone).toArray(Condition[]::new));
+    public Conditions cloned() {
+        return new Conditions(conditions.stream().map(Condition::cloned).toArray(Condition[]::new));
     }
 
 }

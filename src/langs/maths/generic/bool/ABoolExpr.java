@@ -18,6 +18,6 @@ public abstract class ABoolExpr extends AGenericTypeExpr {
     public abstract ABoolExpr accept(IPrimer primer);
 
     @Override
-    public abstract ABoolExpr clone();
+    public abstract ABoolExpr cloned();
 
 }

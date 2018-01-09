@@ -13,7 +13,7 @@ import static com.microsoft.z3.Status.*;
  * Created by gvoiron on 27/11/17.
  * Time : 22:14
  */
-@SuppressWarnings({"unused", "SameParameterValue"})
+
 public final class Z3Result {
 
     private final ABoolExpr expr;
@@ -21,6 +21,7 @@ public final class Z3Result {
     private final com.microsoft.z3.Model model;
     private final Context context;
 
+    @SuppressWarnings("SameParameterValue")
     Z3Result(ABoolExpr expr, Status status, com.microsoft.z3.Model model, Context context) {
         this.expr = expr;
         this.status = status;

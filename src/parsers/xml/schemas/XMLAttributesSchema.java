@@ -7,7 +7,7 @@ import java.util.List;
  * Created by gvoiron on 01/12/17.
  * Time : 13:02
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class XMLAttributesSchema {
 
     private final List<String> requiredAttributes;
@@ -17,6 +17,7 @@ public final class XMLAttributesSchema {
         this(required, new String[]{});
     }
 
+    @SuppressWarnings("WeakerAccess")
     public XMLAttributesSchema(String[] requiredAttributes, String[] optionalAttributes) {
         this.requiredAttributes = Arrays.asList(requiredAttributes);
         this.optionalAttributes = Arrays.asList(optionalAttributes);

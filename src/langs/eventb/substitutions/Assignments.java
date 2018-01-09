@@ -37,6 +37,7 @@ public final class Assignments extends ASubstitution {
         return formatter.visit(this);
     }
 
+
     @SuppressWarnings("ConstantConditions")
     @Override
     public ABoolExpr getPrd(LinkedHashSet<AAssignable> assignables) {
@@ -48,8 +49,8 @@ public final class Assignments extends ASubstitution {
     }
 
     @Override
-    public Assignments clone() {
-        return new Assignments(assignments.stream().map(ASubstitution::clone).toArray(AAssignment[]::new));
+    public Assignments cloned() {
+        return new Assignments(assignments.stream().map(ASubstitution::cloned).toArray(AAssignment[]::new));
     }
 
 }

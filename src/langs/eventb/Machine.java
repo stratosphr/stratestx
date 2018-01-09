@@ -90,8 +90,8 @@ public final class Machine extends AObject {
     }
 
     @Override
-    public Machine clone() {
-        return new Machine(name, new DefsRegister(defsRegister), invariant.clone(), initialisation.clone(), events.values().stream().map(Event::clone).collect(Collectors.toCollection(LinkedHashSet::new)));
+    public Machine cloned() {
+        return new Machine(name, new DefsRegister(defsRegister), invariant.cloned(), initialisation.cloned(), events.values().stream().map(Event::cloned).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
 }

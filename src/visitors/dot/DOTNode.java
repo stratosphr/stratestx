@@ -29,7 +29,7 @@ public final class DOTNode extends ADotObject<DOTNode> {
     }
 
     @Override
-    public DOTNode clone() {
+    public DOTNode cloned() {
         return new DOTNode(name);
     }
 

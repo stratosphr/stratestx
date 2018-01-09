@@ -10,14 +10,14 @@ import visitors.Primer;
  * Created by gvoiron on 19/12/17.
  * Time : 22:17
  */
-@SuppressWarnings("WeakerAccess")
+
 public abstract class AChanges<Assignable extends AAssignable> extends AAtomicRelevancePredicate {
 
     protected final Assignable assignable;
     protected final AArithExpr value;
     protected final AArithExpr value_;
 
-    public AChanges(Assignable assignable, AArithExpr value, AArithExpr value_) {
+    protected AChanges(Assignable assignable, AArithExpr value, AArithExpr value_) {
         super(new And(new Equals(assignable, value), new Equals(assignable.accept(new Primer(1)), value_)));
         this.assignable = assignable;
         this.value = value;
@@ -37,6 +37,6 @@ public abstract class AChanges<Assignable extends AAssignable> extends AAtomicRe
     }
 
     @Override
-    public abstract AChanges<Assignable> clone();
+    public abstract AChanges<Assignable> cloned();
 
 }

@@ -31,6 +31,6 @@ public abstract class AUnaryBoolExpr<Operand extends AGenericTypeExpr> extends A
     }
 
     @Override
-    public abstract AUnaryBoolExpr<Operand> clone();
+    public abstract AUnaryBoolExpr<Operand> cloned();
 
 }

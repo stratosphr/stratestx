@@ -52,10 +52,10 @@ public final class ATS implements ICloneable<ATS> {
         return kappa;
     }
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
+
     @Override
-    public ATS clone() {
-        return new ATS(machine.clone(), mts.clone(), cts.clone(), alpha.entrySet().stream().collect(Collectors.toMap(o -> o.getKey().clone(), o -> o.getValue().clone(), (o1, o2) -> o1.clone(), LinkedHashMap::new)), kappa.entrySet().stream().collect(Collectors.toMap(o -> o.getKey().clone(), Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new)));
+    public ATS cloned() {
+        return new ATS(machine.cloned(), mts.cloned(), cts.cloned(), alpha.entrySet().stream().collect(Collectors.toMap(o -> o.getKey().cloned(), o -> o.getValue().cloned(), (o1, o2) -> o1.cloned(), LinkedHashMap::new)), kappa.entrySet().stream().collect(Collectors.toMap(o -> o.getKey().cloned(), Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new)));
     }
 
 }

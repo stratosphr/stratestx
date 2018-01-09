@@ -6,7 +6,7 @@ package visitors.interfaces;
  */
 public interface IXMLFormattable {
 
-    @SuppressWarnings("unused")
+
     String accept(IXMLFormatter formatter);
 
 }

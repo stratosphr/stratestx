@@ -36,6 +36,6 @@ public abstract class ANaryArithExpr<Operand extends AGenericTypeExpr> extends A
     }
 
     @Override
-    public abstract ANaryArithExpr<Operand> clone();
+    public abstract ANaryArithExpr<Operand> cloned();
 
 }

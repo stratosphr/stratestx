@@ -33,8 +33,8 @@ public final class InDomain extends AInDomain<AArithExpr> {
     }
 
     @Override
-    public InDomain clone() {
-        return new InDomain(getLeft().clone(), getRight().clone());
+    public InDomain cloned() {
+        return new InDomain(getLeft().cloned(), getRight().cloned());
     }
 
 }

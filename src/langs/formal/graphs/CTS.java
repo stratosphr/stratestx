@@ -28,10 +28,9 @@ public final class CTS extends AFSM<ConcreteState, ConcreteTransition> {
         return formatter.visit(this);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public CTS clone() {
-        return new CTS(getInitialStates().stream().map(ConcreteState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(ConcreteState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(ConcreteTransition::clone).collect(Collectors.toCollection(ArrayList::new)));
+    public CTS cloned() {
+        return new CTS(getInitialStates().stream().map(ConcreteState::cloned).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(ConcreteState::cloned).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(ConcreteTransition::cloned).collect(Collectors.toCollection(ArrayList::new)));
     }
 
 }

@@ -10,13 +10,13 @@ import java.util.stream.StreamSupport;
  * Created by gvoiron on 10/12/17.
  * Time : 17:35
  */
-@SuppressWarnings("WeakerAccess")
+
 public final class Streams {
 
     /**
      * Converts an {@link java.util.Iterator} to {@link java.util.stream.Stream}.
      */
-    public static <T> Stream<T> iterate(Iterator<T> iterator) {
+    private static <T> Stream<T> iterate(Iterator<T> iterator) {
         int characteristics = Spliterator.ORDERED | Spliterator.IMMUTABLE;
         return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, characteristics), false);
     }
@@ -24,7 +24,7 @@ public final class Streams {
     /**
      * Zips the specified stream with its indices.
      */
-    public static <T> Stream<Map.Entry<Integer, T>> zipWithIndex(Stream<T> stream) {
+    private static <T> Stream<Map.Entry<Integer, T>> zipWithIndex(Stream<T> stream) {
         return iterate(new Iterator<Map.Entry<Integer, T>>() {
             private final Iterator<? extends T> streamIterator = stream.iterator();
             private int index = 0;

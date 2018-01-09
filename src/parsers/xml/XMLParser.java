@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by gvoiron on 16/11/17.
  * Time : 15:20
  */
-@SuppressWarnings("unused")
+
 public final class XMLParser extends DefaultHandler {
 
     private static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";

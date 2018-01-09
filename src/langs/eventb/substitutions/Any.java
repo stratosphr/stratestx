@@ -53,8 +53,8 @@ public final class Any extends ASubstitution {
     }
 
     @Override
-    public Any clone() {
-        return new Any(condition.clone(), substitution.clone(), quantifiedVarsDefs.stream().map(VarInDomain::clone).toArray(VarInDomain[]::new));
+    public Any cloned() {
+        return new Any(condition.cloned(), substitution.cloned(), quantifiedVarsDefs.stream().map(VarInDomain::cloned).toArray(VarInDomain[]::new));
     }
 
 }

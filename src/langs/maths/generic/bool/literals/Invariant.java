@@ -46,8 +46,8 @@ public final class Invariant extends ABoolExpr {
     }
 
     @Override
-    public Invariant clone() {
-        return new Invariant(expr.clone());
+    public Invariant cloned() {
+        return new Invariant(expr.cloned());
     }
 
 }

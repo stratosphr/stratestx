@@ -28,7 +28,7 @@ public final class SCConcreteGraphComputer extends AComputer<AGraph<ConcreteStat
 
     public SCConcreteGraphComputer(AGraph<ConcreteState, ConcreteTransition> graph, ConcreteState initialState, String initialTransitionLabel, String finalTransitionLabel) {
         this.graph = graph;
-        this.scgraph = graph.clone();
+        this.scgraph = graph.cloned();
         this.initialState = initialState;
         this.initialTransitionLabel = initialTransitionLabel;
         this.finalTransitionLabel = finalTransitionLabel;

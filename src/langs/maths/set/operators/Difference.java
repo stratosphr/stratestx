@@ -47,8 +47,8 @@ public final class Difference extends ANarySetExpr {
     }
 
     @Override
-    public Difference clone() {
-        return new Difference(getOperands().stream().map(ASetExpr::clone).toArray(AFiniteSetExpr[]::new));
+    public Difference cloned() {
+        return new Difference(getOperands().stream().map(ASetExpr::cloned).toArray(AFiniteSetExpr[]::new));
     }
 
 }

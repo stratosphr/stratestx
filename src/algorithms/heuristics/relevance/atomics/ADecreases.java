@@ -22,6 +22,6 @@ public abstract class ADecreases<Assignable extends AAssignable> extends AAtomic
     }
 
     @Override
-    public abstract ADecreases<Assignable> clone();
+    public abstract ADecreases<Assignable> cloned();
 
 }

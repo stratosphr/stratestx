@@ -28,8 +28,8 @@ public final class MTS extends AFSM<AbstractState, AbstractTransition> {
     }
 
     @Override
-    public MTS clone() {
-        return new MTS(getInitialStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(AbstractState::clone).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(AbstractTransition::clone).collect(Collectors.toCollection(LinkedHashSet::new)));
+    public MTS cloned() {
+        return new MTS(getInitialStates().stream().map(AbstractState::cloned).collect(Collectors.toCollection(LinkedHashSet::new)), getStates().stream().map(AbstractState::cloned).collect(Collectors.toCollection(LinkedHashSet::new)), getTransitions().stream().map(AbstractTransition::cloned).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
 }

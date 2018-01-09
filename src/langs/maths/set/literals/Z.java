@@ -29,7 +29,7 @@ public final class Z extends AInfiniteSetExpr {
     }
 
     @Override
-    public Z clone() {
+    public Z cloned() {
         return new Z();
     }
 

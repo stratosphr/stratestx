@@ -33,8 +33,8 @@ public final class Mod extends ABinaryArithExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public Mod clone() {
-        return new Mod(getLeft().clone(), getRight().clone());
+    public Mod cloned() {
+        return new Mod(getLeft().cloned(), getRight().cloned());
     }
 
 }

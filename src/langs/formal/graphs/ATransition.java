@@ -32,6 +32,6 @@ public abstract class ATransition<State extends AState> extends AObject {
     }
 
     @Override
-    public abstract ATransition<State> clone();
+    public abstract ATransition<State> cloned();
 
 }

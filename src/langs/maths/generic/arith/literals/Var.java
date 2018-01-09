@@ -45,7 +45,7 @@ public final class Var extends AAssignable {
     }
 
     @Override
-    public Var clone() {
+    public Var cloned() {
         return new Var(getName());
     }
 

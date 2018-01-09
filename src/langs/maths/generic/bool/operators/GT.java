@@ -33,8 +33,8 @@ public final class GT extends ABinaryBoolExpr<AArithExpr, AArithExpr> {
     }
 
     @Override
-    public GT clone() {
-        return new GT(getLeft().clone(), getRight().clone());
+    public GT cloned() {
+        return new GT(getLeft().cloned(), getRight().cloned());
     }
 
 }

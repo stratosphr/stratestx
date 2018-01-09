@@ -33,8 +33,8 @@ public final class Equiv extends ABinaryBoolExpr<ABoolExpr, ABoolExpr> {
     }
 
     @Override
-    public Equiv clone() {
-        return new Equiv(getLeft().clone(), getRight().clone());
+    public Equiv cloned() {
+        return new Equiv(getLeft().cloned(), getRight().cloned());
     }
 
 }

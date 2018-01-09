@@ -36,7 +36,7 @@ public final class False extends ABoolExpr {
     }
 
     @Override
-    public False clone() {
+    public False cloned() {
         return new False();
     }
 

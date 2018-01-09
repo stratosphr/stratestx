@@ -6,7 +6,7 @@ import java.util.Collections;
  * Created by gvoiron on 16/11/17.
  * Time : 21:55
  */
-@SuppressWarnings({"WeakerAccess", "SameParameterValue", "SameReturnValue"})
+
 public abstract class AFormatter {
 
     private int indentation;
@@ -15,10 +15,12 @@ public abstract class AFormatter {
         this.indentation = 0;
     }
 
+    @SuppressWarnings({"SameParameterValue", "WeakerAccess"})
     protected String fold(String text, int foldThreshold) {
         return fold(text, foldThreshold, "", ", ");
     }
 
+    @SuppressWarnings({"SameParameterValue", "WeakerAccess"})
     protected String fold(String text, int foldThreshold, String lineDelimiter, String tabDelimiter) {
         if (text.length() < foldThreshold) {
             return text;
@@ -27,6 +29,7 @@ public abstract class AFormatter {
         }
     }
 
+    @SuppressWarnings("SameReturnValue")
     protected String indentLeft() {
         if (indentation > 0) {
             --indentation;
@@ -34,11 +37,13 @@ public abstract class AFormatter {
         return "";
     }
 
+    @SuppressWarnings("SameReturnValue")
     protected String indentRight() {
         ++indentation;
         return "";
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected String indent(String text) {
         return String.join("", Collections.nCopies(indentation, "\t")) + text;
     }

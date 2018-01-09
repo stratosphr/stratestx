@@ -19,8 +19,8 @@ public final class ConcreteTransition extends ATransition<ConcreteState> {
     }
 
     @Override
-    public ConcreteTransition clone() {
-        return new ConcreteTransition(getSource().clone(), getEvent().clone(), getTarget().clone());
+    public ConcreteTransition cloned() {
+        return new ConcreteTransition(getSource().cloned(), getEvent().cloned(), getTarget().cloned());
     }
 
 }

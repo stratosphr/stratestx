@@ -15,6 +15,6 @@ public abstract class AAtomicRelevancePredicate extends ARelevancePredicate impl
     }
 
     @Override
-    public abstract AAtomicRelevancePredicate clone();
+    public abstract AAtomicRelevancePredicate cloned();
 
 }

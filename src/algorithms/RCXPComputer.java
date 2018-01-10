@@ -1,5 +1,9 @@
 package algorithms;
 
+import algorithms.heuristics.DefaultAbstractStatesOrderingFunction;
+import algorithms.heuristics.DefaultEventsOrderingFunction;
+import algorithms.heuristics.IAbstractStatesOrderingFunction;
+import algorithms.heuristics.IEventsOrderingFunction;
 import algorithms.heuristics.relevance.AVariantComputer;
 import algorithms.outputs.ATS;
 import langs.eventb.Event;
@@ -13,6 +17,7 @@ import langs.maths.generic.bool.operators.GEQ;
 import solvers.z3.Model;
 import solvers.z3.Z3;
 import solvers.z3.Z3Result;
+import utilities.tuples.Tuple;
 import visitors.Primer;
 
 import java.util.*;
@@ -30,17 +35,33 @@ public final class RCXPComputer extends AComputer<ATS> {
     private final ATS ats;
     private final LinkedHashMap<Map<AAssignable, AValue>, ConcreteState> CMappings;
     private final AVariantComputer variantComputer;
+    private final IEventsOrderingFunction eventsOrderingFunction;
+    private final IAbstractStatesOrderingFunction abstractStatesOrderingFunction;
     private final LinkedHashSet<AAssignable> primedAssignables;
 
     public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer) {
+        this(machine, ats, variantComputer, new DefaultEventsOrderingFunction(), new DefaultAbstractStatesOrderingFunction());
+    }
+
+    public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer, IEventsOrderingFunction eventsOrderingFunction) {
+        this(machine, ats, variantComputer, eventsOrderingFunction, new DefaultAbstractStatesOrderingFunction());
+    }
+
+    public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer, IAbstractStatesOrderingFunction abstractStatesOrderingFunction) {
+        this(machine, ats, variantComputer, new DefaultEventsOrderingFunction(), abstractStatesOrderingFunction);
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public RCXPComputer(Machine machine, ATS ats, AVariantComputer variantComputer, IEventsOrderingFunction eventsOrderingFunction, IAbstractStatesOrderingFunction abstractStatesOrderingFunction) {
         this.machine = machine;
         this.ats = ats.cloned();
-        this.CMappings = new LinkedHashMap<>();
         this.variantComputer = variantComputer;
+        this.eventsOrderingFunction = eventsOrderingFunction;
+        this.abstractStatesOrderingFunction = abstractStatesOrderingFunction;
+        this.CMappings = new LinkedHashMap<>();
         this.primedAssignables = machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    // TODO: This method should call a method "getRelevantEvents" from "variantComputer" and only use these relevant events for optimization purpose
     @Override
     ATS run() {
         Z3Result result;
@@ -57,13 +78,14 @@ public final class RCXPComputer extends AComputer<ATS> {
             }
         }
         LinkedHashSet<ConcreteState> PRCS = new LinkedHashSet<>();
+        LinkedHashSet<Event> oEv = eventsOrderingFunction.apply(variantComputer.getRelevantEvents());
         while (!RCS.isEmpty()) {
             ConcreteState c = RCS.peek();
             RCS.pop();
             PRCS.add(c);
             AbstractState q = ats.getAlpha().get(c);
-            for (Event e : variantComputer.getRelevantEvents()) {
-                for (AbstractState q_ : ats.getMTS().getStates()) {
+            for (Event e : oEv) {
+                for (AbstractState q_ : abstractStatesOrderingFunction.apply(new Tuple<>(ats.getMTS().getStates(), q))) {
                     if (ats.getMTS().getTransitions().contains(new AbstractTransition(q, e, q_))) {
                         result = Z3.checkSAT(new And(
                                 machine.getInvariant(),

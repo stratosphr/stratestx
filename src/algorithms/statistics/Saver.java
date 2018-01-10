@@ -12,7 +12,6 @@ import langs.maths.AExpr;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.bool.literals.Predicate;
 import parsers.stratest.Parser;
-import utilities.ResourcesManager.*;
 import visitors.dot.DOTEncoder;
 
 import java.io.File;

@@ -1,6 +1,6 @@
 package algorithms;
 
-import algorithms.heuristics.EColor;
+import algorithms.heuristics.*;
 import algorithms.outputs.ATS;
 import langs.eventb.Event;
 import langs.eventb.Machine;
@@ -19,6 +19,7 @@ import solvers.z3.Model;
 import solvers.z3.Z3;
 import solvers.z3.Z3Result;
 import utilities.Streams;
+import utilities.tuples.Tuple;
 import visitors.Primer;
 
 import java.util.*;
@@ -35,6 +36,8 @@ public final class CXPASOComputer extends AComputer<ATS> {
 
     private final Machine machine;
     private final LinkedHashSet<AbstractState> A;
+    private final IAbstractStatesOrderingFunction abstractStatesOrderingFunction;
+    private final LinkedHashSet<Event> oEv;
     private final LinkedHashSet<AbstractState> Q0;
     private final LinkedHashSet<AbstractState> Q;
     private final LinkedHashSet<AbstractTransition> Delta;
@@ -50,8 +53,23 @@ public final class CXPASOComputer extends AComputer<ATS> {
     private final DefsRegister defsRegisterWithIndex;
 
     public CXPASOComputer(Machine machine, LinkedHashSet<AbstractState> A) {
+        this(machine, A, new DefaultEventsOrderingFunction(), new DefaultAbstractStatesOrderingFunction());
+    }
+
+    public CXPASOComputer(Machine machine, LinkedHashSet<AbstractState> A, IEventsOrderingFunction eventsOrderingFunction) {
+        this(machine, A, eventsOrderingFunction, new DefaultAbstractStatesOrderingFunction());
+    }
+
+    public CXPASOComputer(Machine machine, LinkedHashSet<AbstractState> A, IAbstractStatesOrderingFunction abstractStatesOrderingFunction) {
+        this(machine, A, new DefaultEventsOrderingFunction(), abstractStatesOrderingFunction);
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public CXPASOComputer(Machine machine, LinkedHashSet<AbstractState> A, IEventsOrderingFunction eventsOrderingFunction, IAbstractStatesOrderingFunction abstractStatesOrderingFunction) {
         this.machine = machine;
         this.A = A;
+        this.oEv = eventsOrderingFunction.apply(new LinkedHashSet<>(machine.getEvents().values()));
+        this.abstractStatesOrderingFunction = abstractStatesOrderingFunction;
         this.Q0 = new LinkedHashSet<>();
         this.Q = new LinkedHashSet<>();
         this.Delta = new LinkedHashSet<>();
@@ -96,7 +114,7 @@ public final class CXPASOComputer extends AComputer<ATS> {
             AbstractState q = RQ.iterator().next();
             RQ.remove(q);
             Q.add(q);
-            for (Event e : machine.getEvents().values()) {
+            for (Event e : oEv) {
                 LinkedHashSet<AbstractState> RQ_ = A.stream().filter(q_ -> !Delta.contains(new AbstractTransition(q, e, q_))).collect(Collectors.toCollection(LinkedHashSet::new));
                 do {
                     LinkedHashSet<ConcreteState> RCS = _alpha.get(q);
@@ -132,8 +150,8 @@ public final class CXPASOComputer extends AComputer<ATS> {
         while (!RQ.isEmpty()) {
             AbstractState q = RQ.iterator().next();
             RQ.remove(q);
-            for (Event e : machine.getEvents().values()) {
-                for (AbstractState q_ : A.stream().filter(q_ -> !Delta.contains(new AbstractTransition(q, e, q_))).collect(Collectors.toList())) {
+            for (Event e : oEv) {
+                for (AbstractState q_ : abstractStatesOrderingFunction.apply(new Tuple<>(A.stream().filter(q_ -> !Delta.contains(new AbstractTransition(q, e, q_))).collect(Collectors.toCollection(LinkedHashSet::new)), q))) {
                     result = Z3.checkSAT(new And(
                             machine.getInvariant(),
                             machine.getInvariant().accept(new Primer(1)),

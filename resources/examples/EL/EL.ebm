@@ -8,19 +8,6 @@
         </const-def>
     </consts-defs>
 
-    <funs-defs>
-        <fun-def name="bat">
-            <range>
-                <int value="1"/>
-                <const name="n"/>
-            </range>
-            <enum>
-                <enum-value name="ko"/>
-                <enum-value name="ok"/>
-            </enum>
-        </fun-def>
-    </funs-defs>
-
     <vars-defs>
         <var-def name="sw">
             <range>
@@ -35,6 +22,19 @@
             </enum>
         </var-def>
     </vars-defs>
+
+    <funs-defs>
+        <fun-def name="bat">
+            <range>
+                <int value="1"/>
+                <const name="n"/>
+            </range>
+            <enum>
+                <enum-value name="ko"/>
+                <enum-value name="ok"/>
+            </enum>
+        </fun-def>
+    </funs-defs>
 
     <invariant>
         <equals>
@@ -55,66 +55,9 @@
                 <var name="sw"/>
                 <int value="1"/>
             </var-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="1"/>
-                </fun>
+            <total-fun-assignment name="bat">
                 <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="2"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="3"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="4"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="5"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="6"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <!--<fun-assignment>
-                <fun name="bat">
-                    <int value="7"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="8"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="9"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="bat">
-                    <int value="10"/>
-                </fun>
-                <enum-value name="ok"/>
-            </fun-assignment>-->
+            </total-fun-assignment>
         </assignments>
     </initialisation>
 

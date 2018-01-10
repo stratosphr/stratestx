@@ -107,11 +107,12 @@ public final class Parser {
                 events = parseEvents(eventsNode);
             }
         } catch (Exception e) {
-            if (!errors.isEmpty()) {
-                throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\" as EBM model:\n" + errors.stream().collect(Collectors.joining("\n")));
-            } else {
+            if (errors.isEmpty()) {
                 e.printStackTrace();
             }
+        }
+        if (!errors.isEmpty()) {
+            throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\" as EBM model:\n" + errors.stream().collect(Collectors.joining("\n")));
         }
         invariant = new Invariant(new And(
                 Stream.of(
@@ -524,7 +525,15 @@ public final class Parser {
 
     private Assignments parseAssignments(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("assignments"));
-        return new Assignments(node.getChildren().stream().map(this::parseAssignment).toArray(AAssignment[]::new));
+        LinkedHashSet<AAssignment> assignments = new LinkedHashSet<>();
+        for (XMLNode child : node.getChildren()) {
+            if (child.getName().equals("total-fun-assignment")) {
+                assignments.addAll(parseTotalFunAssignment(child));
+            } else {
+                assignments.add(parseAssignment(child));
+            }
+        }
+        return new Assignments(assignments.toArray(new AAssignment[0]));
     }
 
     private AAssignment parseAssignment(XMLNode node) {
@@ -547,6 +556,11 @@ public final class Parser {
     private FunAssignment parseFunAssignment(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("fun-assignment"));
         return new FunAssignment(parseFun(node.getChildren().get(0)), parseArithExpr(node.getChildren().get(1)));
+    }
+
+    private LinkedHashSet<FunAssignment> parseTotalFunAssignment(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("total-fun-assignment", new XMLAttributesSchema("name")));
+        return defsRegister.getFunsDefs().get(node.getAttributes().get("name")).getLeft().getElementsValues(defsRegister).stream().map(value -> new FunAssignment(new Fun(node.getAttributes().get("name"), value), parseArithExpr(node.getChildren().get(0)))).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     private Select parseSelect(XMLNode node) {

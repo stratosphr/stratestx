@@ -360,6 +360,14 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:element name="total-fun-assignment" substitutionGroup="assignment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="arith-expr"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="identifier" use="required"/>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="assignments" substitutionGroup="substitution">
         <xs:complexType>
             <xs:sequence>

@@ -82,4 +82,84 @@
         <enum-value name="ko"/>
     </fun-changes>
 
+    <fun-changes>
+        <fun name="bat">
+            <int value="11"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="12"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="13"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="14"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="15"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="16"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="17"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="18"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="19"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
+    <fun-changes>
+        <fun name="bat">
+            <int value="20"/>
+        </fun>
+        <enum-value name="ok"/>
+        <enum-value name="ko"/>
+    </fun-changes>
+
 </relevance-predicate>

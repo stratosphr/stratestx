@@ -29,8 +29,9 @@ class Main {
 
     public static void main(String[] args) {
         LinkedHashMap<String, AArithExpr> parameters = new LinkedHashMap<>();
-        parameters.put("ni", new Int(9));
-        save("default-" + 9, EXAMPLE, AP0, RP0, parameters, CXP, CXPASO, RCXP, RCXPASO, FULL);
+        int n = 10;
+        parameters.put("n", new Int(n));
+        save("default-" + n, EL, AP0, RP0, parameters, CXP, CXPASO, RCXP, RCXPASO);
     }
 
     @SuppressWarnings("SameParameterValue")

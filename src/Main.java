@@ -21,11 +21,12 @@ import static algorithms.statistics.Saver.save;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
 import static utilities.ResourcesManager.EModel.*;
 import static utilities.ResourcesManager.ERelevancePredicate.REL0;
+import static utilities.ResourcesManager.ERelevancePredicate.REL1;
 
 class Main {
 
     public static void main(String[] args) {
-        save("default", EL, AP0, REL0, CXP, CXPASO, RCXP, RCXPASO);
+        save("3rel", L14_2, AP0, REL1, CXP, RCXP, FULL);
     }
 
     @SuppressWarnings("SameParameterValue")

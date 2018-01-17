@@ -12,7 +12,7 @@ compile () {
             do
                 cd ${subfolder};
                 cd stats
-                for rowFile in cxp.row cxpaso.row rcxp.row rcxpaso.row;
+                for rowFile in cxp.row cxpaso.row rcxp.row rcxpaso.row full.row;
                 do
                     echo ${folder} ${rowFile} $(cat ${rowFile})
                 done

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+        <var-increases>
+            <var name="Etat"/>
+        </var-increases>
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <all-transitions/>
+    </expected-transitions>
+
+</relevance>

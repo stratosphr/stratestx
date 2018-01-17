@@ -26,21 +26,24 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     private final ATS ats;
     private final EAbstractionPredicatesSet abstractionPredicatesSet;
     private final LinkedHashSet<Predicate> abstractionPredicates;
+    private final Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>> expectedPart;
     private final Time atsComputationTime;
     private ComputerResult<Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>>> rchdConcretePart;
     private Tuple<LinkedHashSet<AbstractState>, ArrayList<AbstractTransition>> rchdAbstractPart;
     private ComputerResult<List<Test>> tests;
+    private Integer expectedRchdPart;
 
     @SuppressWarnings("WeakerAccess")
-    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime) {
-        this(ats, abstractionPredicatesSet, abstractionPredicates, atsComputationTime, EStatistic.values());
+    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>> expectedPart, Time atsComputationTime) {
+        this(ats, abstractionPredicatesSet, abstractionPredicates, expectedPart, atsComputationTime, EStatistic.values());
     }
 
     @SuppressWarnings("WeakerAccess")
-    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Time atsComputationTime, EStatistic... statistics) {
+    public Statistics(ATS ats, EAbstractionPredicatesSet abstractionPredicatesSet, LinkedHashSet<Predicate> abstractionPredicates, Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>> expectedPart, Time atsComputationTime, EStatistic... statistics) {
         this.ats = ats;
         this.abstractionPredicatesSet = abstractionPredicatesSet;
         this.abstractionPredicates = abstractionPredicates;
+        this.expectedPart = expectedPart;
         this.atsComputationTime = atsComputationTime;
         for (EStatistic statistic : statistics) {
             AStatistic value;
@@ -84,6 +87,24 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
                 case TAU_AT:
                     value = getTauAT();
                     break;
+                case NB_EXPECTED_AS:
+                    value = getNbExpectedAS();
+                    break;
+                case NB_EXPECTED_AS_RCHD:
+                    value = getNbExpectedASRchd();
+                    break;
+                case TAU_EXPECTED_AS:
+                    value = getTauExpectedAS();
+                    break;
+                case NB_EXPECTED_AT:
+                    value = getNbExpectedAT();
+                    break;
+                case NB_EXPECTED_AT_RCHD:
+                    value = getNbExpectedATRchd();
+                    break;
+                case TAU_EXPECTED_AT:
+                    value = getTauExpectedAT();
+                    break;
                 case NB_CS:
                     value = getNbCS();
                     break;
@@ -111,17 +132,35 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
                 case TESTS:
                     value = getTests();
                     break;
+                case SET_EXPECTED_AS:
+                    value = getSetExpectedAS();
+                    break;
                 case SET_RCHD_AS:
-                    value = getRchdAS();
+                    value = getSetRchdAS();
+                    break;
+                case SET_RCHD_EXPECTED_AS:
+                    value = getSetRchdExpectedAS();
+                    break;
+                case SET_EXPECTED_AT:
+                    value = getSetExpectedAT();
                     break;
                 case SET_RCHD_AT:
-                    value = getRchdAT();
+                    value = getSetRchdAT();
+                    break;
+                case SET_RCHD_EXPECTED_AT:
+                    value = getSetRchdExpectedAT();
                     break;
                 case SET_UNRCHD_AS:
-                    value = getUnrchdAS();
+                    value = getSetUnrchdAS();
+                    break;
+                case SET_UNRCHD_EXPECTED_AS:
+                    value = getSetUnrchdExpectedAS();
                     break;
                 case SET_UNRCHD_AT:
-                    value = getUnrchdAT();
+                    value = getSetUnrchdAT();
+                    break;
+                case SET_UNRCHD_EXPECTED_AT:
+                    value = getSetUnrchdExpectedAT();
                     break;
                 case TIME_ATS:
                     value = getTimeATS();
@@ -188,6 +227,30 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         return new PercentageStatistic(getNbAT().getValue() == 0 ? 0 : 100d * getNbATRchd().getValue() / getNbAT().getValue());
     }
 
+    private IntegerStatistic getNbExpectedAS() {
+        return new IntegerStatistic(getSetExpectedAS().getValue().size());
+    }
+
+    private IntegerStatistic getNbExpectedASRchd() {
+        return new IntegerStatistic(getExpectedRchdPart().getLeft().size());
+    }
+
+    private PercentageStatistic getTauExpectedAS() {
+        return new PercentageStatistic(getNbExpectedAS().getValue() == 0 ? 0 : 100d * getNbExpectedASRchd().getValue() / getNbExpectedAS().getValue());
+    }
+
+    private IntegerStatistic getNbExpectedAT() {
+        return new IntegerStatistic(getSetExpectedAT().getValue().size());
+    }
+
+    private IntegerStatistic getNbExpectedATRchd() {
+        return new IntegerStatistic(getExpectedRchdPart().getRight().size());
+    }
+
+    private PercentageStatistic getTauExpectedAT() {
+        return new PercentageStatistic(getNbExpectedAT().getValue() == 0 ? 0 : 100d * getNbExpectedATRchd().getValue() / getNbExpectedAT().getValue());
+    }
+
     private IntegerStatistic getNbCS() {
         return new IntegerStatistic(ats.getCTS().getStates().size());
     }
@@ -221,23 +284,47 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     }
 
     private SetStatistic<Test> getTests() {
-        return new SetStatistic<>(new LinkedHashSet<>(getTestsComputation().getResult()));
+        return new SetStatistic<>(new LinkedHashSet<>(getTestsComputation().getResult()), false);
     }
 
-    private SetStatistic<AbstractState> getRchdAS() {
+    private SetStatistic<AbstractState> getSetExpectedAS() {
+        return new SetStatistic<>(expectedPart.getLeft().stream().filter(q -> ats.getMTS().getStates().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    private SetStatistic<AbstractState> getSetRchdAS() {
         return new SetStatistic<>(getAbstractRchdPart().getLeft());
     }
 
-    private SetStatistic<AbstractTransition> getRchdAT() {
+    private SetStatistic<AbstractState> getSetRchdExpectedAS() {
+        return new SetStatistic<>(getExpectedRchdPart().getLeft());
+    }
+
+    private SetStatistic<AbstractTransition> getSetExpectedAT() {
+        return new SetStatistic<>(expectedPart.getRight().stream().filter(t -> ats.getMTS().getTransitions().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    private SetStatistic<AbstractTransition> getSetRchdAT() {
         return new SetStatistic<>(new LinkedHashSet<>(getAbstractRchdPart().getRight()));
     }
 
-    private SetStatistic<AbstractState> getUnrchdAS() {
-        return new SetStatistic<>(ats.getMTS().getStates().stream().filter(q -> !getRchdAS().getValue().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    private SetStatistic<AbstractTransition> getSetRchdExpectedAT() {
+        return new SetStatistic<>(getExpectedRchdPart().getRight());
     }
 
-    private SetStatistic<AbstractTransition> getUnrchdAT() {
-        return new SetStatistic<>(ats.getMTS().getTransitions().stream().filter(t -> !getRchdAT().getValue().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    private SetStatistic<AbstractState> getSetUnrchdAS() {
+        return new SetStatistic<>(ats.getMTS().getStates().stream().filter(q -> !getSetRchdAS().getValue().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    private SetStatistic<AbstractState> getSetUnrchdExpectedAS() {
+        return new SetStatistic<>(getSetExpectedAS().getValue().stream().filter(q -> !getSetRchdExpectedAS().getValue().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    private SetStatistic<AbstractTransition> getSetUnrchdAT() {
+        return new SetStatistic<>(ats.getMTS().getTransitions().stream().filter(t -> !getSetRchdAT().getValue().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    private SetStatistic<AbstractTransition> getSetUnrchdExpectedAT() {
+        return new SetStatistic<>(getSetExpectedAT().getValue().stream().filter(t -> !getSetRchdExpectedAT().getValue().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
     private TimeStatistic getTimeATS() {
@@ -261,6 +348,10 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
             this.rchdAbstractPart = new Tuple<>(ats.getMTS().getStates().stream().filter(q -> concreteRchdPart.getLeft().stream().anyMatch(c -> ats.getAlpha().get(c).equals(q))).collect(Collectors.toCollection(LinkedHashSet::new)), ats.getMTS().getTransitions().stream().filter(at -> concreteRchdPart.getRight().stream().anyMatch(ct -> ats.getAlpha().get(ct.getSource()).equals(at.getSource()) && at.getEvent().equals(ct.getEvent()) && ats.getAlpha().get(ct.getTarget()).equals(at.getTarget()))).collect(Collectors.toCollection(ArrayList::new)));
         }
         return rchdAbstractPart;
+    }
+
+    private Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>> getExpectedRchdPart() {
+        return new Tuple<>(expectedPart.getLeft().stream().filter(q -> getAbstractRchdPart().getLeft().contains(q)).collect(Collectors.toCollection(LinkedHashSet::new)), expectedPart.getRight().stream().filter(t -> getAbstractRchdPart().getRight().contains(t)).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
     private ComputerResult<List<Test>> getTestsComputation() {

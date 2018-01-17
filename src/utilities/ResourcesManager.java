@@ -21,7 +21,7 @@ public final class ResourcesManager {
             case EBM:
                 return new File(xmlSchemasRoot, "ebm.xsd");
             case RP:
-                return new File(xmlSchemasRoot, "rp.xsd");
+                return new File(xmlSchemasRoot, "rel.xsd");
         }
         throw new Error("Error: unknown xml schema resource \"" + xmlSchema + "\".");
     }
@@ -79,23 +79,23 @@ public final class ResourcesManager {
     public static File getRelevancePredicate(EModel model, ERelevancePredicate relevancePredicate) {
         switch (model) {
             case CA:
-                return new File(new File(examplesRoot, "CA"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "CA"), relevancePredicate.toString().toLowerCase() + ".rel");
             case CM:
-                return new File(new File(examplesRoot, "CM"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "CM"), relevancePredicate.toString().toLowerCase() + ".rel");
             case EL:
-                return new File(new File(examplesRoot, "EL"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "EL"), relevancePredicate.toString().toLowerCase() + ".rel");
             case EV:
-                return new File(new File(examplesRoot, "EV"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "EV"), relevancePredicate.toString().toLowerCase() + ".rel");
             case EXAMPLE:
-                return new File(new File(examplesRoot, "EXAMPLE"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "EXAMPLE"), relevancePredicate.toString().toLowerCase() + ".rel");
             case GSM:
-                return new File(new File(examplesRoot, "GSM"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "GSM"), relevancePredicate.toString().toLowerCase() + ".rel");
             case L14:
-                return new File(new File(examplesRoot, "L14"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "L14"), relevancePredicate.toString().toLowerCase() + ".rel");
             case L14_2:
-                return new File(new File(examplesRoot, "L14_2"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "L14_2"), relevancePredicate.toString().toLowerCase() + ".rel");
             case PH:
-                return new File(new File(examplesRoot, "PH"), relevancePredicate.toString().toLowerCase() + ".rp");
+                return new File(new File(examplesRoot, "PH"), relevancePredicate.toString().toLowerCase() + ".rel");
             default:
                 throw new Error("Error: unknown model resource \"" + model + "\".");
         }
@@ -111,6 +111,6 @@ public final class ResourcesManager {
 
     public enum EAbstractionPredicatesSet {AP0, AP1, AP2, AP3, AP4}
 
-    public enum ERelevancePredicate {RP0, RP1, RP2, RP3, RP4}
+    public enum ERelevancePredicate {REL0, REL1, REL2, REL3, REL4}
 
 }

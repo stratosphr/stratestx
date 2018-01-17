@@ -1,13 +1,19 @@
 <?xml version="1.0"?>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="rp"
-           xmlns="rp"
+           targetNamespace="rel"
+           xmlns="rel"
            elementFormDefault="qualified">
 
     <xs:simpleType name="name">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9a-zA-Z_]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="state-name">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="q[0-9]+"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -18,6 +24,18 @@
     </xs:simpleType>
 
     <!-- SCHEMA **************************************************** -->
+    <xs:element name="relevance">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="relevance-predicate"/>
+                <xs:element ref="expected-states"/>
+                <xs:element ref="expected-transitions"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- *********************************************************** -->
+
+    <!-- ROOTS **************************************************** -->
     <xs:element name="relevance-predicate">
         <xs:complexType>
             <xs:sequence>
@@ -25,7 +43,47 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <!-- *********************************************************** -->
+    <xs:element name="expected-states">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="all-states"/>
+                <xs:element ref="state" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="expected-transitions">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="all-transitions"/>
+                <xs:element ref="transition" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <!-- ********************************************************** -->
+
+    <!-- EXPECTED ************************************************* -->
+    <xs:element name="all-states"/>
+    <xs:element name="state">
+        <xs:complexType>
+            <xs:attribute name="name" type="state-name" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="all-transitions"/>
+    <xs:element name="transition">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="state"/>
+                <xs:element ref="event"/>
+                <xs:element ref="state"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="event">
+        <xs:complexType>
+            <xs:attribute name="name" type="name" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- ********************************************************** -->
 
     <!-- ATOMIC **************************************************** -->
     <xs:element name="atomic-predicate" abstract="true"/>

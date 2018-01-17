@@ -1,5 +1,6 @@
 package algorithms.statistics;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -10,7 +11,12 @@ import java.util.stream.Collectors;
 public final class SetStatistic<Element> extends AStatistic<Set<Element>> {
 
     SetStatistic(Set<Element> elements) {
-        super(elements);
+        this(elements, true);
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    SetStatistic(Set<Element> elements, boolean sorted) {
+        super(sorted ? elements.stream().sorted().collect(Collectors.toCollection(LinkedHashSet::new)) : elements);
     }
 
     @Override

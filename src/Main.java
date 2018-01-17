@@ -20,65 +20,65 @@ import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.Saver.save;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
 import static utilities.ResourcesManager.EModel.*;
-import static utilities.ResourcesManager.ERelevancePredicate.RP0;
+import static utilities.ResourcesManager.ERelevancePredicate.REL0;
 
 class Main {
 
     public static void main(String[] args) {
-        save("default", CM, AP0, RP0, CXP, CXPASO, RCXP, RCXPASO, FULL);
+        save("default", EL, AP0, REL0, CXP, CXPASO, RCXP, RCXPASO);
     }
 
     @SuppressWarnings("SameParameterValue")
     private static void all(boolean computeFull) {
         EAlgorithm[] algorithms = computeFull ? new EAlgorithm[]{CXP, CXPASO, RCXP, RCXPASO, FULL} : new EAlgorithm[]{CXP, CXPASO, RCXP, RCXPASO};
         long start = System.nanoTime();
-        save("default", CA, AP0, RP0, algorithms);
+        save("default", CA, AP0, REL0, algorithms);
         System.out.println("1");
-        save("default", CA, AP1, RP0, algorithms);
+        save("default", CA, AP1, REL0, algorithms);
         System.out.println("2");
-        save("default", CM, AP0, RP0, algorithms);
+        save("default", CM, AP0, REL0, algorithms);
         System.out.println("3");
-        save("default", CM, AP1, RP0, algorithms);
+        save("default", CM, AP1, REL0, algorithms);
         System.out.println("4");
-        save("default", CM, AP2, RP0, algorithms);
+        save("default", CM, AP2, REL0, algorithms);
         System.out.println("5");
-        save("default", EL, AP0, RP0, algorithms);
+        save("default", EL, AP0, REL0, algorithms);
         System.out.println("6");
-        save("default", EL, AP1, RP0, algorithms);
+        save("default", EL, AP1, REL0, algorithms);
         System.out.println("7");
-        save("default", EL, AP2, RP0, algorithms);
+        save("default", EL, AP2, REL0, algorithms);
         System.out.println("8");
-        save("default", EL, AP3, RP0, algorithms);
+        save("default", EL, AP3, REL0, algorithms);
         System.out.println("9");
-        save("default", PH, AP0, RP0, algorithms);
+        save("default", PH, AP0, REL0, algorithms);
         System.out.println("10");
-        save("default", PH, AP1, RP0, algorithms);
+        save("default", PH, AP1, REL0, algorithms);
         System.out.println("11");
-        save("default", PH, AP2, RP0, algorithms);
+        save("default", PH, AP2, REL0, algorithms);
         System.out.println("12");
-        save("default", PH, AP3, RP0, algorithms);
+        save("default", PH, AP3, REL0, algorithms);
         System.out.println("13");
-        save("1rel", L14_2, AP0, RP0, algorithms);
+        save("1rel", L14_2, AP0, REL0, algorithms);
         System.out.println("14");
-        save("1rel", L14_2, AP1, RP0, algorithms);
+        save("1rel", L14_2, AP1, REL0, algorithms);
         System.out.println("15");
-        save("1rel", L14_2, AP2, RP0, algorithms);
+        save("1rel", L14_2, AP2, REL0, algorithms);
         System.out.println("16");
-        save("1rel", L14_2, AP3, RP0, algorithms);
+        save("1rel", L14_2, AP3, REL0, algorithms);
         System.out.println("17");
-        /*save("3rel", L14_2, AP0, RP1, algorithms);
+        /*save("3rel", L14_2, AP0, REL1, algorithms);
         System.out.println("18");
-        save("3rel", L14_2, AP1, RP1, algorithms);
+        save("3rel", L14_2, AP1, REL1, algorithms);
         System.out.println("19");
-        save("3rel", L14_2, AP2, RP1, algorithms);
+        save("3rel", L14_2, AP2, REL1, algorithms);
         System.out.println("20");
-        save("3rel", L14_2, AP3, RP1, algorithms);
+        save("3rel", L14_2, AP3, REL1, algorithms);
         System.out.println("21");*/
-        save("default", EV, AP0, RP0, algorithms);
+        save("default", EV, AP0, REL0, algorithms);
         System.out.println("18");
-        save("default", EV, AP1, RP0, algorithms);
+        save("default", EV, AP1, REL0, algorithms);
         System.out.println("19");
-        save("default", EV, AP2, RP0, algorithms);
+        save("default", EV, AP2, REL0, algorithms);
         System.out.println("20");
         System.out.println((System.nanoTime() - start) * 1.0E-9);
     }

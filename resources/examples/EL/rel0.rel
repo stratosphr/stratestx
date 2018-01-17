@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="1"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="2"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="3"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <!--<fun-changes>
+            <fun name="bat">
+                <int value="4"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="5"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="6"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="7"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="8"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="9"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="bat">
+                <int value="10"/>
+            </fun>
+            <enum-value name="ok"/>
+            <enum-value name="ko"/>
+        </fun-changes>-->
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <all-transitions/>
+    </expected-transitions>
+
+</relevance>

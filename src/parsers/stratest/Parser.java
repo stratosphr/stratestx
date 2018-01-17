@@ -13,11 +13,14 @@ import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
 import langs.eventb.Event;
 import langs.eventb.Machine;
 import langs.eventb.substitutions.*;
+import langs.formal.graphs.AbstractState;
+import langs.formal.graphs.AbstractTransition;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.*;
 import langs.maths.generic.arith.operators.*;
 import langs.maths.generic.bool.ABoolExpr;
+import langs.maths.generic.bool.APredicate;
 import langs.maths.generic.bool.literals.False;
 import langs.maths.generic.bool.literals.Invariant;
 import langs.maths.generic.bool.literals.Predicate;
@@ -77,42 +80,33 @@ public final class Parser {
         XMLNode invariantNode = rootNode.getFirstChildWithName("invariant");
         XMLNode initialisationNode = rootNode.getFirstChildWithName("initialisation");
         XMLNode eventsNode = rootNode.getFirstChildWithName("events");
-        try {
-            if (constsDefsNode != null) {
-                parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
-                for (String name : parameters.keySet()) {
-                    if (defsRegister.getConstsDefs().containsKey(name)) {
-                        defsRegister.getConstsDefs().put(name, parameters.get(name));
-                    } else {
-                        throw new Error("Error: Unable to set value \"" + parameters.get(name) + "\" for unknown parameter \"" + name + "\".");
-                    }
+        if (constsDefsNode != null) {
+            parseConstsDefs(constsDefsNode).forEach(constDef -> defsRegister.getConstsDefs().put(constDef.getLeft(), constDef.getRight()));
+            for (String name : parameters.keySet()) {
+                if (defsRegister.getConstsDefs().containsKey(name)) {
+                    defsRegister.getConstsDefs().put(name, parameters.get(name));
+                } else {
+                    throw new Error("Error: Unable to set value \"" + parameters.get(name) + "\" for unknown parameter \"" + name + "\".");
                 }
             }
-            if (setsDefsNode != null) {
-                parseSetsDefs(setsDefsNode).forEach(setDef -> defsRegister.getNamedSetsDefs().put(setDef.getLeft(), setDef.getRight()));
-            }
-            if (varsDefsNode != null) {
-                parseVarsDefs(varsDefsNode).forEach(varDef -> defsRegister.getVarsDefs().put(varDef.getLeft(), varDef.getRight()));
-            }
-            if (funsDefsNode != null) {
-                parseFunsDefs(funsDefsNode).forEach(funDef -> defsRegister.getFunsDefs().put(funDef.getLeft(), funDef.getRight()));
-            }
-            if (invariantNode != null) {
-                invariant = parseInvariant(invariantNode);
-            }
-            if (initialisationNode != null) {
-                initialisation = parseInitialisation(initialisationNode);
-            }
-            if (eventsNode != null) {
-                events = parseEvents(eventsNode);
-            }
-        } catch (Exception e) {
-            if (errors.isEmpty()) {
-                e.printStackTrace();
-            }
         }
-        if (!errors.isEmpty()) {
-            throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\" as EBM model:\n" + errors.stream().collect(Collectors.joining("\n")));
+        if (setsDefsNode != null) {
+            parseSetsDefs(setsDefsNode).forEach(setDef -> defsRegister.getNamedSetsDefs().put(setDef.getLeft(), setDef.getRight()));
+        }
+        if (varsDefsNode != null) {
+            parseVarsDefs(varsDefsNode).forEach(varDef -> defsRegister.getVarsDefs().put(varDef.getLeft(), varDef.getRight()));
+        }
+        if (funsDefsNode != null) {
+            parseFunsDefs(funsDefsNode).forEach(funDef -> defsRegister.getFunsDefs().put(funDef.getLeft(), funDef.getRight()));
+        }
+        if (invariantNode != null) {
+            invariant = parseInvariant(invariantNode);
+        }
+        if (initialisationNode != null) {
+            initialisation = parseInitialisation(initialisationNode);
+        }
+        if (eventsNode != null) {
+            events = parseEvents(eventsNode);
         }
         invariant = new Invariant(new And(
                 Stream.of(
@@ -122,21 +116,33 @@ public final class Parser {
                         Collections.singletonList(invariant)
                 ).flatMap(Collection::stream).toArray(ABoolExpr[]::new)
         ));
-        return new Machine(rootNode.getAttributes().get("name"), defsRegister, invariant, initialisation, events);
+        Machine machine = new Machine(rootNode.getAttributes().get("name"), defsRegister, invariant, initialisation, events);
+        if (!errors.isEmpty()) {
+            throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\".");
+        }
+        return machine;
     }
 
     public LinkedHashSet<Predicate> parseAbstractionPredicatesSet(File file) {
         XMLParser parser = new XMLParser(true);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.AP));
         rootNode.assertConformsTo(new XMLNodeSchema("predicates"));
-        return rootNode.getChildren().stream().map(this::parsePredicate).collect(Collectors.toCollection(LinkedHashSet::new));
+        LinkedHashSet<Predicate> abstractionPredicateSet = rootNode.getChildren().stream().map(this::parsePredicate).collect(Collectors.toCollection(LinkedHashSet::new));
+        if (!errors.isEmpty()) {
+            throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\".");
+        }
+        return abstractionPredicateSet;
     }
 
-    public RelevancePredicate parseRelevancePredicate(File file) {
+    public Tuple<RelevancePredicate, Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>>> parseRelevance(File file, LinkedHashSet<AbstractState> abstractStates, LinkedHashMap<String, Event> events) {
         XMLParser parser = new XMLParser(true);
         XMLNode rootNode = parser.parse(file, getXMLSchema(EXMLSchema.RP));
-        rootNode.assertConformsTo(new XMLNodeSchema("relevance-predicate"));
-        return new RelevancePredicate(rootNode.getChildren().stream().map(this::parseAtomicRelevancePredicate).toArray(AAtomicRelevancePredicate[]::new));
+        rootNode.assertConformsTo(new XMLNodeSchema("relevance"));
+        Tuple<RelevancePredicate, Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>>> relevance = new Tuple<>(parseRelevancePredicate(rootNode.getChildren().get(0)), new Tuple<>(parseExpectedStates(rootNode.getChildren().get(1), abstractStates), parseExpectedTransitions(rootNode.getChildren().get(2), abstractStates, events)));
+        if (!errors.isEmpty()) {
+            throw new Error("Errors encountered while parsing file \"" + file.getAbsolutePath() + "\".");
+        }
+        return relevance;
     }
 
     private void handleException(XMLNode node, String message) {
@@ -145,6 +151,7 @@ public final class Parser {
         try {
             throw new Exception(fullMessage);
         } catch (Exception ignored) {
+            ignored.printStackTrace();
         }
     }
 
@@ -593,6 +600,11 @@ public final class Parser {
         return new Event(node.getAttributes().get("name"), parseSubstitution(node.getChildren().get(0)));
     }
 
+    private RelevancePredicate parseRelevancePredicate(XMLNode node) {
+        node.assertConformsTo(new XMLNodeSchema("relevance-predicate"));
+        return new RelevancePredicate(node.getChildren().stream().map(this::parseAtomicRelevancePredicate).toArray(AAtomicRelevancePredicate[]::new));
+    }
+
     private AAtomicRelevancePredicate parseAtomicRelevancePredicate(XMLNode node) {
         switch (node.getName()) {
             case "var-changes":
@@ -653,6 +665,72 @@ public final class Parser {
     private Condition parseCondition(XMLNode node) {
         node.assertConformsTo(new XMLNodeSchema("condition"));
         return new Condition(parseBoolExpr(node.getChildren().get(0)), parseAtomicRelevancePredicate(node.getChildren().get(1)));
+    }
+
+    private LinkedHashSet<AbstractState> parseExpectedStates(XMLNode node, LinkedHashSet<AbstractState> abstractStates) {
+        node.assertConformsTo(new XMLNodeSchema("expected-states"));
+        switch (node.getChildren().get(0).getName()) {
+            case "all-states":
+                return parseAllStates(node.getChildren().get(0), abstractStates);
+            case "state":
+                return node.getChildren().stream().map(child -> parseState(child, abstractStates)).collect(Collectors.toCollection(LinkedHashSet::new));
+            default:
+                handleException(node, "The following node was found but states were expected:\n" + node);
+                return null;
+        }
+    }
+
+    private LinkedHashSet<AbstractState> parseAllStates(XMLNode node, LinkedHashSet<AbstractState> abstractStates) {
+        node.assertConformsTo(new XMLNodeSchema("all-states"));
+        return abstractStates;
+    }
+
+    private AbstractState parseState(XMLNode node, LinkedHashSet<AbstractState> abstractStates) {
+        node.assertConformsTo(new XMLNodeSchema("state", new XMLAttributesSchema("name")));
+        Optional<AbstractState> q = abstractStates.stream().filter(abstractState -> abstractState.getName().equals(node.getAttributes().get("name"))).findFirst();
+        if (q.isPresent()) {
+            return q.get();
+        } else {
+            handleException(node, "State \"" + node.getAttributes().get("name") + "\" does not exist in the set of abstract states " + abstractStates.stream().map(APredicate::getName).collect(Collectors.toList()) + ".");
+            return null;
+        }
+    }
+
+    private LinkedHashSet<AbstractTransition> parseExpectedTransitions(XMLNode node, LinkedHashSet<AbstractState> abstractStates, LinkedHashMap<String, Event> events) {
+        node.assertConformsTo(new XMLNodeSchema("expected-transitions"));
+        switch (node.getChildren().get(0).getName()) {
+            case "all-transitions":
+                return parseAllTransitions(node.getChildren().get(0), abstractStates, events);
+            case "state":
+                return node.getChildren().stream().map(child -> parseTransition(child, abstractStates, events)).collect(Collectors.toCollection(LinkedHashSet::new));
+            default:
+                handleException(node, "The following node was found but transitions were expected:\n" + node);
+                return null;
+        }
+    }
+
+    private LinkedHashSet<AbstractTransition> parseAllTransitions(XMLNode node, LinkedHashSet<AbstractState> abstractStates, LinkedHashMap<String, Event> events) {
+        node.assertConformsTo(new XMLNodeSchema("all-transitions"));
+        LinkedHashSet<AbstractTransition> allTransitions = new LinkedHashSet<>();
+        for (AbstractState q : abstractStates) {
+            for (Event e : events.values()) {
+                for (AbstractState q_ : abstractStates) {
+                    allTransitions.add(new AbstractTransition(q, e, q_));
+                }
+            }
+        }
+        return allTransitions;
+    }
+
+    private AbstractTransition parseTransition(XMLNode node, LinkedHashSet<AbstractState> abstractStates, LinkedHashMap<String, Event> events) {
+        node.assertConformsTo(new XMLNodeSchema("transition"));
+        String eventName = node.getChildren().get(1).getAttributes().get("name");
+        if (events.containsKey(eventName)) {
+            return new AbstractTransition(parseState(node.getChildren().get(0), abstractStates), events.get(eventName), parseState(node.getChildren().get(2), abstractStates));
+        } else {
+            handleException(node, "Event \"" + eventName + "\" does not exist in the set of events " + events.keySet() + ".");
+            return null;
+        }
     }
 
 }

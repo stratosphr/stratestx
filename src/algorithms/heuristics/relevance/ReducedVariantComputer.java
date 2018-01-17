@@ -29,8 +29,6 @@ public final class ReducedVariantComputer extends AVariantComputer {
         super(machine, relevancePredicate);
     }
 
-    // TODO: This variant computer should take into account the number of relevant events
-
     @Override
     public AArithExpr getVInit(VarChanges varChanges, ConcreteState c) {
         return new Int(((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varChanges.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).size());
@@ -43,28 +41,28 @@ public final class ReducedVariantComputer extends AVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(
+        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         ));
     }
 
     @Override
     public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(
+        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         ));
     }
 
     @Override
     public AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(
+        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         ));
     }
 
     @Override
     public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(
+        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
         ));
     }

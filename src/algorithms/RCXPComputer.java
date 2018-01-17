@@ -78,13 +78,17 @@ public final class RCXPComputer extends AComputer<ATS> {
             }
         }
         LinkedHashSet<ConcreteState> PRCS = new LinkedHashSet<>();
-        LinkedHashSet<Event> oEv = eventsOrderingFunction.apply(variantComputer.getRelevantEvents());
+        LinkedHashSet<ConcreteState> GCS = new LinkedHashSet<>();
+        LinkedHashSet<Event> orderedEvents = eventsOrderingFunction.apply(new LinkedHashSet<>(machine.getEvents().values()));
+        LinkedHashSet<Event> orderedRelevantEvents = eventsOrderingFunction.apply(variantComputer.getRelevantEvents());
+        boolean cIsSink;
         while (!RCS.isEmpty()) {
             ConcreteState c = RCS.peek();
             RCS.pop();
             PRCS.add(c);
             AbstractState q = ats.getAlpha().get(c);
-            for (Event e : oEv) {
+            cIsSink = true;
+            for (Event e : orderedRelevantEvents) {
                 for (AbstractState q_ : abstractStatesOrderingFunction.apply(new Tuple<>(ats.getMTS().getStates(), q))) {
                     if (ats.getMTS().getTransitions().contains(new AbstractTransition(q, e, q_))) {
                         result = Z3.checkSAT(new And(
@@ -108,8 +112,39 @@ public final class RCXPComputer extends AComputer<ATS> {
                                 ), machine.getDefsRegister());
                                 if (result.isSAT()) {
                                     RCS.push(c_);
+                                } else {
+                                    GCS.add(c_);
                                 }
                             }
+                            ats.getCTS().getStates().add(c_);
+                            CMappings.put(c_Model, c_);
+                            ats.getCTS().getTransitions().add(new ConcreteTransition(c, e, c_));
+                            ats.getAlpha().put(c_, q_);
+                            ats.getKappa().put(c_, GREEN);
+                            cIsSink = false;
+                        }
+                    }
+                }
+            }
+            if (cIsSink) {
+                GCS.add(c);
+            }
+        }
+        for (ConcreteState c : GCS) {
+            AbstractState q = ats.getAlpha().get(c);
+            for (Event e : orderedEvents) {
+                for (AbstractState q_ : abstractStatesOrderingFunction.apply(new Tuple<>(ats.getMTS().getStates(), q))) {
+                    if (ats.getMTS().getTransitions().contains(new AbstractTransition(ats.getAlpha().get(c), e, q_))) {
+                        result = Z3.checkSAT(new And(
+                                machine.getInvariant(),
+                                machine.getInvariant().accept(new Primer(1)),
+                                c,
+                                e.getSubstitution().getPrd(machine.getAssignables()),
+                                q_.accept(new Primer(1))
+                        ), machine.getDefsRegister());
+                        if (result.isSAT()) {
+                            Model c_Model = result.getModel(primedAssignables);
+                            ConcreteState c_ = CMappings.getOrDefault(c_Model, new ConcreteState("c" + ats.getCTS().getStates().size() + q_.getName(), c_Model));
                             ats.getCTS().getStates().add(c_);
                             CMappings.put(c_Model, c_);
                             ats.getCTS().getTransitions().add(new ConcreteTransition(c, e, c_));

@@ -8,7 +8,6 @@ import algorithms.heuristics.relevance.atomics.funs.FunIncreases;
 import algorithms.heuristics.relevance.atomics.vars.VarChanges;
 import algorithms.heuristics.relevance.atomics.vars.VarDecreases;
 import algorithms.heuristics.relevance.atomics.vars.VarIncreases;
-import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.EnumValue;
 import langs.maths.generic.arith.literals.Fun;
 import langs.maths.generic.arith.literals.Int;
@@ -16,8 +15,6 @@ import langs.maths.generic.arith.literals.Var;
 import langs.maths.generic.arith.operators.Minus;
 import langs.maths.generic.arith.operators.Plus;
 import langs.maths.generic.bool.operators.Equals;
-
-import java.util.LinkedHashMap;
 
 import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.Saver.save;
@@ -28,10 +25,7 @@ import static utilities.ResourcesManager.ERelevancePredicate.RP0;
 class Main {
 
     public static void main(String[] args) {
-        LinkedHashMap<String, AArithExpr> parameters = new LinkedHashMap<>();
-        int n = 10;
-        parameters.put("n", new Int(n));
-        save("default-" + n, EL, AP0, RP0, parameters, CXP, CXPASO, RCXP, RCXPASO);
+        save("default", CM, AP0, RP0, CXP, CXPASO, RCXP, RCXPASO, FULL);
     }
 
     @SuppressWarnings("SameParameterValue")

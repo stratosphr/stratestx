@@ -1,7 +1,7 @@
 package algorithms.statistics;
 
 import algorithms.*;
-import algorithms.heuristics.relevance.DefaultVariantComputer;
+import algorithms.heuristics.relevance.ReducedVariantComputer;
 import algorithms.heuristics.relevance.RelevancePredicate;
 import algorithms.outputs.ATS;
 import langs.eventb.Machine;
@@ -17,10 +17,13 @@ import visitors.dot.DOTEncoder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import static algorithms.statistics.EStatistic.*;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static utilities.ResourcesManager.*;
@@ -36,7 +39,7 @@ public final class Saver {
         save(identifier, model, abstractionPredicatesSet, relevancePredicate, new LinkedHashMap<>(), algorithms);
     }
 
-    @SuppressWarnings("ConstantConditions")
+    @SuppressWarnings({"ConstantConditions", "WeakerAccess"})
     public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, LinkedHashMap<String, AArithExpr> parameters, EAlgorithm... algorithms) {
         Parser parser = new Parser();
         Machine machine = parser.parseModel(getModel(model), parameters);
@@ -89,7 +92,7 @@ public final class Saver {
                         mts = cxpResult.getResult().getMTS();
                     }
                     if (rcxpResult == null) {
-                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new DefaultVariantComputer(machine, rp)).compute();
+                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
                     }
                     break;
                 case RCXPASO:
@@ -98,7 +101,7 @@ public final class Saver {
                         mts = cxpasoResult.getResult().getMTS();
                     }
                     if (rcxpasoResult == null) {
-                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new DefaultVariantComputer(machine, rp)).compute();
+                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
                     }
                     break;
                 case FULL:
@@ -112,42 +115,46 @@ public final class Saver {
             }
         }
         try {
+            List<EStatistic> statisticsFilter = Arrays.asList(NB_MAY, NB_MUST_MINUS, NB_MUST_PLUS, NB_MUST_SHARP, TESTS, SET_RCHD_AS, SET_RCHD_AT, SET_UNRCHD_AS, SET_UNRCHD_AT);
             if (mts != null) {
                 Files.write(new File(dotFolder, "mts_small.dot").toPath(), mts.accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "mts_full.dot").toPath(), mts.accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (cxpResult != null) {
                 Statistics statistics = new Statistics(cxpResult.getResult(), abstractionPredicatesSet, ap, cxpResult.getTime());
-                Files.write(new File(statsFolder, "cxp.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "cxp.row").toPath(), statistics.entrySet().stream().filter(entry -> !statisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "cxp.stat").toPath(), ("Results for CXP (in " + cxpResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "cxp_small.dot").toPath(), cxpResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "cxp_full.dot").toPath(), cxpResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (cxpasoResult != null) {
                 Statistics statistics = new Statistics(cxpasoResult.getResult(), abstractionPredicatesSet, ap, cxpasoResult.getTime());
-                Files.write(new File(statsFolder, "cxpaso.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "cxpaso.row").toPath(), statistics.entrySet().stream().filter(entry -> !statisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "cxpaso.stat").toPath(), ("Results for CXPASO (in " + cxpasoResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "cxpaso_small.dot").toPath(), cxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "cxpaso_full.dot").toPath(), cxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (rcxpResult != null) {
                 Statistics statistics = new Statistics(rcxpResult.getResult(), abstractionPredicatesSet, ap, rcxpResult.getTime());
-                Files.write(new File(statsFolder, "rcxp.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "rcxp.row").toPath(), statistics.entrySet().stream().filter(entry -> !statisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "rcxp.stat").toPath(), ("Results for RCXP (in " + rcxpResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxp_small.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxp_full.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (rcxpasoResult != null) {
                 Statistics statistics = new Statistics(rcxpasoResult.getResult(), abstractionPredicatesSet, ap, rcxpasoResult.getTime());
-                Files.write(new File(statsFolder, "rcxpaso.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "rcxpaso.row").toPath(), statistics.entrySet().stream().filter(entry -> !statisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "rcxpaso.stat").toPath(), ("Results for RCXPASO (in " + rcxpasoResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxpaso_small.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (fullResult != null) {
                 System.out.println(fullResult.getTime());
+                /*List<EStatistic> fullStatisticsFilter = new ArrayList<>(Arrays.asList(EStatistic.values()));
+                fullStatisticsFilter.remove(TESTS);
+                Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, fullResult.getTime(), fullStatisticsFilter.toArray(new EStatistic[0]));*/
                 Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, fullResult.getTime());
-                Files.write(new File(statsFolder, "full.row").toPath(), "".getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(statsFolder, "full.row").toPath(), statistics.entrySet().stream().filter(entry -> !statisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "full.stat").toPath(), ("Results for FULL (in " + fullResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
         } catch (IOException e) {

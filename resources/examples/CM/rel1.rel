@@ -26,9 +26,9 @@
 
     <expected-transitions>
         <transition>
-            <state name="q2"/>
+            <state name="q4"/>
             <event name="serveCoffee"/>
-            <state name="q1"/>
+            <state name="q0"/>
         </transition>
     </expected-transitions>
 

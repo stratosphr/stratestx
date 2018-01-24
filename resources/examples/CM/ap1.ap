@@ -36,7 +36,7 @@
     <predicate name="p2">
         <lt>
             <var name="Balance"/>
-            <int value="60"/>
+            <int value="50"/>
         </lt>
     </predicate>
 </predicates>

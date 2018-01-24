@@ -35,11 +35,15 @@ import static visitors.dot.DOTEncoder.ERankDir.LR;
 public final class Saver {
 
     public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, EAlgorithm... algorithms) {
-        save(identifier, model, abstractionPredicatesSet, relevancePredicate, new LinkedHashMap<>(), algorithms);
+        save(identifier, model, abstractionPredicatesSet, relevancePredicate, false, algorithms);
+    }
+
+    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, boolean saveFullDOT, EAlgorithm... algorithms) {
+        save(identifier, model, abstractionPredicatesSet, relevancePredicate, new LinkedHashMap<>(), saveFullDOT, algorithms);
     }
 
     @SuppressWarnings({"ConstantConditions", "WeakerAccess"})
-    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, LinkedHashMap<String, AArithExpr> parameters, EAlgorithm... algorithms) {
+    public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, LinkedHashMap<String, AArithExpr> parameters, boolean saveFullDOT, EAlgorithm... algorithms) {
         Parser parser = new Parser();
         Machine machine = parser.parseModel(getModel(model), parameters);
         LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(model, abstractionPredicatesSet));
@@ -76,38 +80,52 @@ public final class Saver {
             switch (algorithm) {
                 case CXP:
                     if (cxpResult == null) {
+                        System.out.print("CXP... ");
                         cxpResult = cxpComputer.compute();
                         mts = cxpResult.getResult().getMTS();
+                        System.out.println("Done.");
                     }
                     break;
                 case CXPASO:
                     if (cxpasoResult == null) {
+                        System.out.print("CXPASO... ");
                         cxpasoResult = cxpasoComputer.compute();
                         mts = cxpasoResult.getResult().getMTS();
+                        System.out.println("Done.");
                     }
                     break;
                 case RCXP:
                     if (cxpResult == null) {
+                        System.out.print("CXP... ");
                         cxpResult = cxpComputer.compute();
                         mts = cxpResult.getResult().getMTS();
+                        System.out.println("Done.");
                     }
                     if (rcxpResult == null) {
+                        System.out.print("RCXP... ");
                         rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                        System.out.println("Done.");
                     }
                     break;
                 case RCXPASO:
                     if (cxpasoResult == null) {
+                        System.out.print("CXPASO... ");
                         cxpasoResult = cxpasoComputer.compute();
                         mts = cxpasoResult.getResult().getMTS();
+                        System.out.println("Done.");
                     }
                     if (rcxpasoResult == null) {
+                        System.out.print("RCXPASO... ");
                         rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                        System.out.println("Done.");
                     }
                     break;
                 case FULL:
                     if (fullResult == null) {
+                        System.out.print("FULL... ");
                         fullResult = fullSemanticsComputer.compute();
                         mts = fullResult.getResult().getMTS();
+                        System.out.println("Done.");
                     }
                     break;
                 default:
@@ -156,6 +174,10 @@ public final class Saver {
                 //Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), fullResult.getTime());
                 Files.write(new File(statsFolder, "full.row").toPath(), statistics.entrySet().stream().filter(entry -> !rowStatisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "full.stat").toPath(), ("Results for FULL (in " + fullResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
+                if (saveFullDOT) {
+                    Files.write(new File(dotFolder, "full_small.dot").toPath(), fullResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
+                    Files.write(new File(dotFolder, "full_full.dot").toPath(), fullResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

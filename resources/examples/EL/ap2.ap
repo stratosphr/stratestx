@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <predicates xmlns="ap">
+
     <predicate name="p0">
         <exists>
             <vars-defs>
@@ -16,11 +17,12 @@
                     <fun name="bat">
                         <var name="nb"/>
                     </fun>
-                    <enum-value name="ok"/>
+                    <enum-value name="ko"/>
                 </equals>
             </and>
         </exists>
     </predicate>
+
     <predicate name="p1">
         <exists>
             <vars-defs>
@@ -57,4 +59,5 @@
             </and>
         </exists>
     </predicate>
+
 </predicates>

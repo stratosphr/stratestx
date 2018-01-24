@@ -701,7 +701,7 @@ public final class Parser {
         switch (node.getChildren().get(0).getName()) {
             case "all-transitions":
                 return parseAllTransitions(node.getChildren().get(0), abstractStates, events);
-            case "state":
+            case "transition":
                 return node.getChildren().stream().map(child -> parseTransition(child, abstractStates, events)).collect(Collectors.toCollection(LinkedHashSet::new));
             default:
                 handleException(node, "The following node was found but transitions were expected:\n" + node);

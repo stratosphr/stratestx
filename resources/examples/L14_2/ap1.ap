@@ -24,6 +24,69 @@
                     <int value="1"/>
                 </equals>
                 <equals>
+                    <fun name="Mvt">
+                        <var name="R"/>
+                    </fun>
+                    <int value="1"/>
+                </equals>
+                <forall>
+                    <vars-defs>
+                        <var-def name="R1">
+                            <range>
+                                <int value="1"/>
+                                <const name="NR"/>
+                            </range>
+                        </var-def>
+                    </vars-defs>
+                    <implies>
+                        <and>
+                            <neq>
+                                <var name="R1"/>
+                                <var name="R"/>
+                            </neq>
+                        </and>
+                        <or>
+                            <neq>
+                                <fun name="Pos">
+                                    <var name="R1"/>
+                                </fun>
+                                <plus>
+                                    <fun name="Pos">
+                                        <var name="R"/>
+                                    </fun>
+                                    <fun name="Dir">
+                                        <var name="R"/>
+                                    </fun>
+                                </plus>
+                            </neq>
+                            <neq>
+                                <fun name="Dir">
+                                    <var name="R1"/>
+                                </fun>
+                                <fun name="Dir">
+                                    <var name="R"/>
+                                </fun>
+                            </neq>
+                        </or>
+                    </implies>
+                </forall>
+            </and>
+        </exists>
+    </predicate>
+
+    <predicate name="p2">
+        <exists>
+            <vars-defs>
+                <var-def name="R">
+                    <named-set name="Rames"/>
+                </var-def>
+            </vars-defs>
+            <and>
+                <equals>
+                    <var name="R"/>
+                    <int value="1"/>
+                </equals>
+                <equals>
                     <fun name="Portes">
                         <var name="R"/>
                     </fun>
@@ -82,69 +145,6 @@
                                 <fun name="Pos">
                                     <var name="R"/>
                                 </fun>
-                            </neq>
-                            <neq>
-                                <fun name="Dir">
-                                    <var name="R1"/>
-                                </fun>
-                                <fun name="Dir">
-                                    <var name="R"/>
-                                </fun>
-                            </neq>
-                        </or>
-                    </implies>
-                </forall>
-            </and>
-        </exists>
-    </predicate>
-
-    <predicate name="p2">
-        <exists>
-            <vars-defs>
-                <var-def name="R">
-                    <named-set name="Rames"/>
-                </var-def>
-            </vars-defs>
-            <and>
-                <equals>
-                    <var name="R"/>
-                    <int value="1"/>
-                </equals>
-                <equals>
-                    <fun name="Mvt">
-                        <var name="R"/>
-                    </fun>
-                    <int value="1"/>
-                </equals>
-                <forall>
-                    <vars-defs>
-                        <var-def name="R1">
-                            <range>
-                                <int value="1"/>
-                                <const name="NR"/>
-                            </range>
-                        </var-def>
-                    </vars-defs>
-                    <implies>
-                        <and>
-                            <neq>
-                                <var name="R1"/>
-                                <var name="R"/>
-                            </neq>
-                        </and>
-                        <or>
-                            <neq>
-                                <fun name="Pos">
-                                    <var name="R1"/>
-                                </fun>
-                                <plus>
-                                    <fun name="Pos">
-                                        <var name="R"/>
-                                    </fun>
-                                    <fun name="Dir">
-                                        <var name="R"/>
-                                    </fun>
-                                </plus>
                             </neq>
                             <neq>
                                 <fun name="Dir">

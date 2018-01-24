@@ -3,6 +3,7 @@
 <relevance xmlns="rel">
 
     <relevance-predicate>
+
         <fun-changes>
             <fun name="Mvt">
                 <int value="1"/>
@@ -78,7 +79,11 @@
     </expected-states>
 
     <expected-transitions>
-        <all-transitions/>
+        <transition>
+            <state name="q1"/>
+            <event name="CD1"/>
+            <state name="q1"/>
+        </transition>
     </expected-transitions>
 
 </relevance>

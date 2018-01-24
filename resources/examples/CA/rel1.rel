@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+        <var-increases>
+            <var name="De"/>
+        </var-increases>
+
+        <var-decreases>
+            <var name="Us"/>
+        </var-decreases>
+
+        <var-increases>
+            <var name="Do"/>
+        </var-increases>
+
+        <var-increases>
+            <var name="Lo"/>
+        </var-increases>
+
+        <var-decreases>
+            <var name="Lo"/>
+        </var-decreases>
+
+        <var-increases>
+            <var name="AC"/>
+        </var-increases>
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <transition>
+            <state name="q0"/>
+            <event name="Alarm_Activation"/>
+            <state name="q1"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Be_Activation"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Car_Moving"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Car_Stopping"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Car_Stopping"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Ch_Sec_Deactivation"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Doors_Closing"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Doors_Closing"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Doors_Opening"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Glasses_Closing"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Glasses_Closing"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Glasses_Opening"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Increment_Chronometer"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Light_Activation"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="Light_Deactivation"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="User_Authorized"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q1"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="Doors_Unlocking"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="Doors_Unlocking"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="User_Unauthorized"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Car_Moving"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Doors_Locking"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Doors_Opening"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Glasses_Opening"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Light_Activation"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Light_Deactivation"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Alarm_Activation"/>
+            <state name="q5"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Be_Activation"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Car_Moving"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Car_Stopping"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Car_Stopping"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Ch_Sec_Activation"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Doors_Closing"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Doors_Closing"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Doors_Opening"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Glasses_Closing"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Glasses_Closing"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Glasses_Opening"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Increment_Chronometer"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Light_Activation"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="Light_Deactivation"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="User_Authorized"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q5"/>
+            <event name="Alarm_Deactivation"/>
+            <state name="q5"/>
+        </transition>
+        <transition>
+            <state name="q5"/>
+            <event name="Doors_Unlocking"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q5"/>
+            <event name="Doors_Unlocking"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q5"/>
+            <event name="User_Unauthorized"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Car_Moving"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Doors_Locking"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Doors_Opening"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Glasses_Opening"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Light_Activation"/>
+            <state name="q6"/>
+        </transition>
+        <transition>
+            <state name="q6"/>
+            <event name="Light_Deactivation"/>
+            <state name="q6"/>
+        </transition>
+    </expected-transitions>
+
+</relevance>

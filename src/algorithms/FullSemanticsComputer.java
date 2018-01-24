@@ -75,7 +75,7 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
             Model q0Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(q_Index)));
             Model c0Model = result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new)));
             AbstractState q0 = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q0Model.get(q_Index).getValue())).findFirst().get().getValue();
-            ConcreteState c0 = concreteState(initialStates, c0Model);
+            ConcreteState c0 = concreteState(initialStates, c0Model, q0);
             Q0.add(q0);
             Q.add(q0);
             initialStates.add(c0);
@@ -99,7 +99,7 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
                     Model q_Model = result.getModel(new LinkedHashSet<>(Collections.singletonList(q_Index)));
                     Model c_Model = result.getModel(machine.getAssignables().stream().map(assignable -> assignable.accept(new Primer(1))).collect(Collectors.toCollection(LinkedHashSet::new)));
                     AbstractState q_ = Streams.filterWithIndex(A.stream(), entry -> entry.getKey().equals(q_Model.get(q_Index).getValue())).findFirst().get().getValue();
-                    ConcreteState c_ = concreteState(states.keySet(), c_Model);
+                    ConcreteState c_ = concreteState(states.keySet(), c_Model, q_);
                     Q.add(q_);
                     Delta.add(new AbstractTransition(alpha.get(c), e, q_));
                     if (!states.containsKey(c_)) {
@@ -115,8 +115,8 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
         return new ATS(machine, new MTS(Q0, Q, Delta), new CTS(initialStates, new LinkedHashSet<>(states.keySet()), transitions), alpha, kappa);
     }
 
-    private ConcreteState concreteState(Set<ConcreteState> states, Model model) {
-        return states.stream().filter(concreteState -> concreteState.getMapping().equals(model)).findFirst().orElse(new ConcreteState("c_" + states.size(), model));
+    private ConcreteState concreteState(Set<ConcreteState> states, Model model, AbstractState q) {
+        return states.stream().filter(concreteState -> concreteState.getMapping().equals(model)).findFirst().orElse(new ConcreteState("c" + states.size() + q.getName(), model));
     }
 
 }

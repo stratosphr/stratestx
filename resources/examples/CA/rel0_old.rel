@@ -16,12 +16,12 @@
         </var-increases>
 
         <var-increases>
-            <var name="Lo"/>
+            <var name="Be"/>
         </var-increases>
 
-        <var-decreases>
+        <var-increases>
             <var name="Lo"/>
-        </var-decreases>
+        </var-increases>
 
         <var-increases>
             <var name="AC"/>

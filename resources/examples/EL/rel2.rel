@@ -92,14 +92,14 @@
 
     <expected-transitions>
         <transition>
-            <state name="q1"/>
-            <event name="Fail"/>
-            <state name="q0"/>
-        </transition>
-        <transition>
             <state name="q3"/>
             <event name="Fail"/>
             <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="Repair"/>
+            <state name="q3"/>
         </transition>
     </expected-transitions>
 

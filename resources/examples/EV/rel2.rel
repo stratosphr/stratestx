@@ -84,21 +84,7 @@
     </expected-states>
 
     <expected-transitions>
-        <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
-            <state name="q0"/>
-        </transition>
-        <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
-            <state name="q2"/>
-        </transition>
-        <transition>
-            <state name="q2"/>
-            <event name="Montee_Cabine"/>
-            <state name="q1"/>
-        </transition>
+        <all-transitions/>
     </expected-transitions>
 
 </relevance>

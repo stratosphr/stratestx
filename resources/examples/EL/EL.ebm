@@ -4,7 +4,7 @@
 
     <consts-defs>
         <const-def name="n">
-            <int value="8"/>
+            <int value="7"/>
         </const-def>
     </consts-defs>
 

@@ -38,12 +38,6 @@
             <int value="-1"/>
         </var-changes>
 
-        <var-changes>
-            <var name="Dir"/>
-            <int value="-1"/>
-            <int value="1"/>
-        </var-changes>
-
         <conditions>
             <condition>
                 <equals>
@@ -65,18 +59,27 @@
             </condition>
         </conditions>
 
-        <fun-increases>
-            <fun name="BD">
-                <int value="2"/>
-            </fun>
-        </fun-increases>
-
-        <fun-increases>
+        <fun-changes>
             <fun name="BM">
-                <int value="0"/>
+                <plus>
+                    <var name="Pos"/>
+                    <int value="1"/>
+                </plus>
             </fun>
-        </fun-increases>
+            <int value="0"/>
+            <int value="1"/>
+        </fun-changes>
 
+        <fun-changes>
+            <fun name="BD">
+                <minus>
+                    <var name="Pos"/>
+                    <int value="1"/>
+                </minus>
+            </fun>
+            <int value="0"/>
+            <int value="1"/>
+        </fun-changes>
     </relevance-predicate>
 
     <expected-states>
@@ -84,21 +87,7 @@
     </expected-states>
 
     <expected-transitions>
-        <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
-            <state name="q0"/>
-        </transition>
-        <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
-            <state name="q2"/>
-        </transition>
-        <transition>
-            <state name="q2"/>
-            <event name="Montee_Cabine"/>
-            <state name="q1"/>
-        </transition>
+        <all-transitions/>
     </expected-transitions>
 
 </relevance>

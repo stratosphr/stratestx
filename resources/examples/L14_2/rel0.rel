@@ -80,9 +80,29 @@
 
     <expected-transitions>
         <transition>
-            <state name="q1"/>
+            <state name="q0"/>
             <event name="CD1"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
             <state name="q1"/>
+            <event name="AS1"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="DS1"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q2"/>
+            <event name="DS1"/>
+            <state name="q1"/>
+        </transition>
+        <transition>
+            <state name="q4"/>
+            <event name="FP1"/>
+            <state name="q2"/>
         </transition>
     </expected-transitions>
 

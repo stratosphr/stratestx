@@ -54,7 +54,7 @@ public final class Set extends AFiniteSetExpr {
         LinkedHashSet<AAssignable> elementsVars = new LinkedHashSet<>();
         List<AArithExpr> elementsList = new ArrayList<>(elements);
         for (int i = 0; i < elements.size(); i++) {
-            Var var = new Var("e" + i + "!");
+            Var var = new Var("e" + (elements.size() + i) + "!");
             tmpDefsRegister.getVarsDefs().put(var.getName(), new Z());
             elementsVars.add(var);
             elementsBindings[i] = new Equals(var, elementsList.get(i));

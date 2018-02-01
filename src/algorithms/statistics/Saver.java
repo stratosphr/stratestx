@@ -10,8 +10,10 @@ import langs.formal.graphs.AbstractState;
 import langs.formal.graphs.AbstractTransition;
 import langs.formal.graphs.MTS;
 import langs.maths.AExpr;
+import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.bool.literals.Predicate;
+import langs.maths.set.AFiniteSetExpr;
 import parsers.stratest.Parser;
 import utilities.tuples.Tuple;
 import visitors.dot.DOTEncoder;
@@ -76,6 +78,7 @@ public final class Saver {
         ComputerResult<ATS> rcxpasoResult = null;
         ComputerResult<ATS> fullResult = null;
         MTS mts = null;
+        System.out.println("System: " + machine.getName());
         for (EAlgorithm algorithm : algorithms) {
             switch (algorithm) {
                 case CXP:
@@ -181,6 +184,151 @@ public final class Saver {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public static void savePlot(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, List<Tuple<String, AFiniteSetExpr>> x, List<EStatistic> y, EAlgorithm... algorithms) {
+        Parser parser = new Parser();
+        DefsRegister defsRegister = parser.parseModel(getModel(model), new LinkedHashMap<>()).getDefsRegister();
+        int nbValues = -1;
+        for (Tuple<String, AFiniteSetExpr> tuple : x) {
+            if (nbValues == -1) {
+                nbValues = tuple.getRight().getElementsValues(defsRegister).size();
+            } else {
+                if (tuple.getRight().getElementsValues(defsRegister).size() != nbValues) {
+                    throw new Error("Error: the number of values for parameter \"" + tuple.getLeft() + "\" must be equal to " + nbValues + " (was " + tuple.getRight().getElementsValues(defsRegister).size() + ") since the domain of the first parameter \"" + x.get(0).getLeft() + "\" is " + nbValues + ".");
+                }
+            }
+        }
+        File resultsFolder = getResultsFolder(model, abstractionPredicatesSet, identifier);
+        File statsFolder = new File(resultsFolder, "stats");
+        File pdfFolder = new File(resultsFolder, "pdf");
+        boolean createResultsFolders = (resultsFolder.exists() || resultsFolder.mkdirs()) && (statsFolder.exists() || statsFolder.mkdirs()) && (pdfFolder.exists() || pdfFolder.mkdirs());
+        if (!createResultsFolders) {
+            throw new Error("Unable to create results folders \"" + resultsRoot + "\".");
+        }
+        try {
+            Files.delete(new File(statsFolder, identifier + ".plot").toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < nbValues; i++) {
+            LinkedHashMap<String, AArithExpr> parameters = new LinkedHashMap<>();
+            for (Tuple<String, AFiniteSetExpr> tuple : x) {
+                System.out.println(tuple);
+                System.out.println(tuple.getRight().getElementsValues(defsRegister));
+                parameters.put(tuple.getLeft(), new ArrayList<>(tuple.getRight().getElementsValues(defsRegister)).get(i));
+            }
+            System.out.println(parameters);
+            /*Machine machine = parser.parseModel(getModel(model), parameters);
+            LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(model, abstractionPredicatesSet));
+            ComputerResult<LinkedHashSet<AbstractState>> asResult = new AbstractStatesComputer(machine, ap).compute();
+            LinkedHashSet<AbstractState> as = asResult.getResult();
+            Tuple<RelevancePredicate, Tuple<LinkedHashSet<AbstractState>, LinkedHashSet<AbstractTransition>>> relevance = parser.parseRelevance(getRelevancePredicate(model, relevancePredicate), as, machine.getEvents());
+            RelevancePredicate rp = relevance.getLeft();
+            CXPComputer cxpComputer = new CXPComputer(machine, as);
+            CXPASOComputer cxpasoComputer = new CXPASOComputer(machine, as);
+            FullSemanticsComputer fullSemanticsComputer = new FullSemanticsComputer(machine, as);
+            ComputerResult<ATS> cxpResult = null;
+            ComputerResult<ATS> cxpasoResult = null;
+            ComputerResult<ATS> rcxpResult = null;
+            ComputerResult<ATS> rcxpasoResult = null;
+            ComputerResult<ATS> fullResult = null;
+            System.out.println("System: " + machine.getName());
+            StringBuilder row = new StringBuilder();
+            if (i == 0) {
+                parameters.forEach((key, value) -> row.append(key).append(" "));
+                Arrays.asList(algorithms).forEach(algorithm -> {
+                    row.append(algorithm).append("[ ");
+                    y.forEach(statistic -> row.append(statistic.toString()).append(" "));
+                    row.append("] ");
+                });
+                row.append("\n");
+            }
+            for (EAlgorithm algorithm : algorithms) {
+                switch (algorithm) {
+                    case CXP:
+                        if (cxpResult == null) {
+                            System.out.print("CXP... ");
+                            cxpResult = cxpComputer.compute();
+                            System.out.println("Done.");
+                        }
+                        break;
+                    case CXPASO:
+                        if (cxpasoResult == null) {
+                            System.out.print("CXPASO... ");
+                            cxpasoResult = cxpasoComputer.compute();
+                            System.out.println("Done.");
+                        }
+                        break;
+                    case RCXP:
+                        if (cxpResult == null) {
+                            System.out.print("CXP... ");
+                            cxpResult = cxpComputer.compute();
+                            System.out.println("Done.");
+                        }
+                        if (rcxpResult == null) {
+                            System.out.print("RCXP... ");
+                            rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                            System.out.println("Done.");
+                        }
+                        break;
+                    case RCXPASO:
+                        if (cxpasoResult == null) {
+                            System.out.print("CXPASO... ");
+                            cxpasoResult = cxpasoComputer.compute();
+                            System.out.println("Done.");
+                        }
+                        if (rcxpasoResult == null) {
+                            System.out.print("RCXPASO... ");
+                            rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                            System.out.println("Done.");
+                        }
+                        break;
+                    case FULL:
+                        if (fullResult == null) {
+                            System.out.print("FULL... ");
+                            fullResult = fullSemanticsComputer.compute();
+                            System.out.println("Done.");
+                        }
+                        break;
+                    default:
+                        throw new Error("Unable to compute unknown algorithm \"" + algorithm + "\".");
+                }
+            }
+            parameters.forEach((key, value) -> row.append(value).append(" "));
+            if (Arrays.asList(algorithms).contains(CXP) && cxpResult != null) {
+                Statistics statistics = new Statistics(cxpResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), cxpResult.getTime(), y.toArray(new EStatistic[0]));
+                row.append(statistics.entrySet().stream().map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")));
+                row.append(" ");
+            }
+            if (Arrays.asList(algorithms).contains(CXPASO) && cxpasoResult != null) {
+                Statistics statistics = new Statistics(cxpasoResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), cxpasoResult.getTime(), y.toArray(new EStatistic[0]));
+                row.append(statistics.entrySet().stream().map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")));
+                row.append(" ");
+            }
+            if (Arrays.asList(algorithms).contains(RCXP) && rcxpResult != null) {
+                Statistics statistics = new Statistics(rcxpResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), rcxpResult.getTime(), y.toArray(new EStatistic[0]));
+                row.append(statistics.entrySet().stream().map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")));
+                row.append(" ");
+            }
+            if (Arrays.asList(algorithms).contains(RCXPASO) && rcxpasoResult != null) {
+                Statistics statistics = new Statistics(rcxpasoResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), rcxpasoResult.getTime(), y.toArray(new EStatistic[0]));
+                row.append(statistics.entrySet().stream().map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")));
+                row.append(" ");
+            }
+            if (Arrays.asList(algorithms).contains(FULL) && fullResult != null) {
+                Statistics statistics = new Statistics(fullResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), fullResult.getTime(), y.toArray(new EStatistic[0]));
+                row.append(statistics.entrySet().stream().map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")));
+                row.append(" ");
+            }
+            row.append("\n");
+            try {
+                Files.write(new File(statsFolder, identifier + ".plot").toPath(), row.toString().getBytes(), CREATE, APPEND);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
         }
     }
 

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <predicates xmlns="ap">
-    <predicate name="montee_cabine">
+
+    <predicate name="p0">
+        <equals>
+            <var name="PC"/>
+            <enum-value name="ouvertes"/>
+        </equals>
+    </predicate>
+
+    <predicate name="Montee_Cabine">
         <and>
             <lt>
                 <var name="Pos"/>
@@ -67,73 +75,8 @@
             </or>
         </and>
     </predicate>
-    <predicate name="p1">
-        <and>
-            <lt>
-                <var name="Pos"/>
-                <const name="LF"/>
-            </lt>
-            <geq>
-                <var name="Pos"/>
-                <int value="0"/>
-            </geq>
-            <equals>
-                <var name="PC"/>
-                <enum-value name="refermees"/>
-            </equals>
-            <equals>
-                <fun name="PE">
-                    <var name="Pos"/>
-                </fun>
-                <enum-value name="fermees"/>
-            </equals>
-            <equals>
-                <var name="Dir"/>
-                <int value="1"/>
-            </equals>
-            <or>
-                <exists>
-                    <vars-defs>
-                        <var-def name="etage">
-                            <range>
-                                <plus>
-                                    <var name="Pos"/>
-                                    <int value="1"/>
-                                </plus>
-                                <const name="LF"/>
-                            </range>
-                        </var-def>
-                    </vars-defs>
-                    <equals>
-                        <fun name="BM">
-                            <var name="etage"/>
-                        </fun>
-                        <int value="1"/>
-                    </equals>
-                </exists>
-                <exists>
-                    <vars-defs>
-                        <var-def name="etage">
-                            <range>
-                                <plus>
-                                    <var name="Pos"/>
-                                    <int value="1"/>
-                                </plus>
-                                <const name="LF"/>
-                            </range>
-                        </var-def>
-                    </vars-defs>
-                    <equals>
-                        <fun name="BC">
-                            <var name="etage"/>
-                        </fun>
-                        <int value="1"/>
-                    </equals>
-                </exists>
-            </or>
-        </and>
-    </predicate>
-    <predicate name="p2">
+
+    <predicate name="Ouverture_Portes_Etage">
         <and>
             <equals>
                 <fun name="PE">
@@ -147,4 +90,5 @@
             </equals>
         </and>
     </predicate>
+
 </predicates>

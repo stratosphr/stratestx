@@ -24,9 +24,9 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.EStatistic.*;
-import static java.nio.file.StandardOpenOption.CREATE;
-import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
+import static java.nio.file.StandardOpenOption.*;
 import static utilities.ResourcesManager.*;
 import static visitors.dot.DOTEncoder.ERankDir.LR;
 
@@ -209,19 +209,16 @@ public final class Saver {
             throw new Error("Unable to create results folders \"" + resultsRoot + "\".");
         }
         try {
-            Files.delete(new File(statsFolder, identifier + ".plot").toPath());
+            Files.deleteIfExists(new File(statsFolder, identifier + ".plot").toPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
         for (int i = 0; i < nbValues; i++) {
             LinkedHashMap<String, AArithExpr> parameters = new LinkedHashMap<>();
             for (Tuple<String, AFiniteSetExpr> tuple : x) {
-                System.out.println(tuple);
-                System.out.println(tuple.getRight().getElementsValues(defsRegister));
                 parameters.put(tuple.getLeft(), new ArrayList<>(tuple.getRight().getElementsValues(defsRegister)).get(i));
             }
-            System.out.println(parameters);
-            /*Machine machine = parser.parseModel(getModel(model), parameters);
+            Machine machine = parser.parseModel(getModel(model), parameters);
             LinkedHashSet<Predicate> ap = parser.parseAbstractionPredicatesSet(getAbstractionPredicatesSet(model, abstractionPredicatesSet));
             ComputerResult<LinkedHashSet<AbstractState>> asResult = new AbstractStatesComputer(machine, ap).compute();
             LinkedHashSet<AbstractState> as = asResult.getResult();
@@ -328,7 +325,7 @@ public final class Saver {
                 Files.write(new File(statsFolder, identifier + ".plot").toPath(), row.toString().getBytes(), CREATE, APPEND);
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
         }
     }
 

@@ -38,6 +38,7 @@ public final class Saver {
         save(identifier, model, abstractionPredicatesSet, relevancePredicate, false, algorithms);
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static void save(String identifier, EModel model, EAbstractionPredicatesSet abstractionPredicatesSet, ERelevancePredicate relevancePredicate, boolean saveFullDOT, EAlgorithm... algorithms) {
         save(identifier, model, abstractionPredicatesSet, relevancePredicate, new LinkedHashMap<>(), saveFullDOT, algorithms);
     }

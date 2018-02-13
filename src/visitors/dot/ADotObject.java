@@ -42,7 +42,6 @@ public abstract class ADotObject<This extends ADotObject<This>> extends AObject 
         return setLabel(label, false);
     }
 
-    @SuppressWarnings("WeakerAccess")
     public final This setLabel(Object label, boolean isHTML) {
         return isHTML ? htmlParameter("label", label) : quoteParameter("label", label);
     }

@@ -56,7 +56,7 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
 
     private DOTNode encodeReachedNode(State state) {
         String properties = statesProperties.stream().filter(tuple -> tuple.getRight().containsKey(state)).map(tuple -> "<i>" + tuple.getLeft() + "=" + tuple.getRight().get(state) + "</i>").collect(Collectors.joining("<br/>"));
-        return new DOTNode(state.getName()).setLabel("<b>" + (useFullLabels ? state : state.getName()) + "</b>" + (properties.isEmpty() ? "" : "<br/><br/>" + properties), true).setShape("box").setStyle("rounded, filled").setFillColor("limegreen").setColor("forestgreen");
+        return new DOTNode(state.getName()).setLabel("<b>" + (useFullLabels ? state : state.getName()).toString().replaceAll("<", "&lt;").replaceAll(">", "&gt;") + "</b>" + (properties.isEmpty() ? "" : "<br/><br/>" + properties), true).setShape("box").setStyle("rounded, filled").setFillColor("limegreen").setColor("forestgreen");
     }
 
     private DOTNode encodeUnreachedNode(State state) {

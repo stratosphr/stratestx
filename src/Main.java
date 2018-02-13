@@ -15,16 +15,9 @@ import langs.maths.generic.arith.literals.Var;
 import langs.maths.generic.arith.operators.Minus;
 import langs.maths.generic.arith.operators.Plus;
 import langs.maths.generic.bool.operators.Equals;
-import langs.maths.set.literals.Range;
-import langs.maths.set.literals.Set;
-import utilities.tuples.Tuple;
-
-import java.util.Arrays;
 
 import static algorithms.EAlgorithm.*;
-import static algorithms.statistics.EStatistic.*;
 import static algorithms.statistics.Saver.save;
-import static algorithms.statistics.Saver.savePlot;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
 import static utilities.ResourcesManager.EModel.*;
 import static utilities.ResourcesManager.ERelevancePredicate.*;
@@ -32,14 +25,15 @@ import static utilities.ResourcesManager.ERelevancePredicate.*;
 class Main {
 
     public static void main(String[] args) {
-        savePlot("plot", CM, AP0, REL0, Arrays.asList(
-                new Tuple<>("MaxCoffee", new Range(new Int(5), new Int(15))),
-                new Tuple<>("MaxPot", new Set(new Int(250), new Int(300), new Int(350), new Int(400), new Int(450), new Int(500), new Int(550), new Int(600), new Int(650), new Int(700), new Int(750)))
+        /*savePlot("plot2", CM, AP0, REL0, Arrays.asList(
+                new Tuple<>("MaxCoffee", new Set(new Int(25), new Int(35), new Int(50))),
+                new Tuple<>("MaxPot", new Set(new Int(1250), new Int(1750), new Int(2500)))
         ), Arrays.asList(
                 NB_CT,
                 NB_CT_RCHD,
                 TIME_ATS
-        ), RCXP, FULL);
+        ), RCXP);*/
+        save("newOrder", CM, AP0, REL0, CXP, RCXP);
     }
 
     @SuppressWarnings("SameParameterValue")

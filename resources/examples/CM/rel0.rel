@@ -30,6 +30,11 @@
             <event name="serveCoffee"/>
             <state name="q1"/>
         </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="powerDown"/>
+            <state name="q4"/>
+        </transition>
     </expected-transitions>
 
 </relevance>

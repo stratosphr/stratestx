@@ -19,7 +19,8 @@ import langs.maths.generic.bool.operators.Equals;
 import static algorithms.EAlgorithm.*;
 import static algorithms.statistics.Saver.save;
 import static utilities.ResourcesManager.EAbstractionPredicatesSet.*;
-import static utilities.ResourcesManager.EModel.*;
+import static utilities.ResourcesManager.EModel.EL;
+import static utilities.ResourcesManager.EModel.L14_2;
 import static utilities.ResourcesManager.ERelevancePredicate.*;
 
 class Main {
@@ -33,7 +34,7 @@ class Main {
                 NB_CT_RCHD,
                 TIME_ATS
         ), RCXP);*/
-        save("newOrder", CM, AP0, REL0, CXP, RCXP);
+        save("newOrder", EL, AP0, REL0, CXP, RCXP);
     }
 
     @SuppressWarnings("SameParameterValue")

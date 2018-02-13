@@ -8,9 +8,7 @@ import utilities.tuples.Tuple;
 import visitors.AFormatter;
 import visitors.interfaces.IDOTEncoder;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -23,12 +21,18 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
     private final ERankDir rankDir;
     private final LinkedHashSet<DOTNode> nodes;
     private final List<DOTEdge> edges;
+    private final List<Tuple<String, LinkedHashMap<State, ?>>> statesProperties;
 
     public DOTEncoder(boolean useFullLabels, ERankDir rankDir) {
+        this(useFullLabels, rankDir, Collections.emptyList());
+    }
+
+    public DOTEncoder(boolean useFullLabels, ERankDir rankDir, List<Tuple<String, LinkedHashMap<State, ?>>> statesProperties) {
         this.useFullLabels = useFullLabels;
         this.rankDir = rankDir;
         this.nodes = new LinkedHashSet<>();
         this.edges = new ArrayList<>();
+        this.statesProperties = statesProperties;
     }
 
     @Override
@@ -42,7 +46,7 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         return line("digraph g {") + line() + indentRight() + indentLine("rankdir=\"" + rankDir + "\"") + line() + nodes.stream().map(state -> indentLine(state.toString())).collect(Collectors.joining()) + line() + edges.stream().map(edge -> indentLine(edge.toString())).collect(Collectors.joining()) + line() + indentLeft() + indentLine("}");
     }
 
-    private DOTNode encodeInitialNode(AState state) {
+    private DOTNode encodeInitialNode(State state) {
         DOTNode invisible = new DOTNode("__invisible__").setShape("point").setColor("forestgreen");
         DOTNode initial = encodeReachedNode(state).setPenWidth(3).setComment("Initial");
         nodes.add(invisible);
@@ -50,19 +54,20 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
         return initial;
     }
 
-    private DOTNode encodeReachedNode(AState state) {
-        return new DOTNode(state.getName()).setLabel(useFullLabels ? state : state.getName()).setShape("box").setStyle("rounded, filled").setColor("forestgreen").setFillColor("limegreen").setColor("forestgreen");
+    private DOTNode encodeReachedNode(State state) {
+        String properties = statesProperties.stream().filter(tuple -> tuple.getRight().containsKey(state)).map(tuple -> "<i>" + tuple.getLeft() + "=" + tuple.getRight().get(state) + "</i>").collect(Collectors.joining("<br/>"));
+        return new DOTNode(state.getName()).setLabel("<b>" + (useFullLabels ? state : state.getName()) + "</b>" + (properties.isEmpty() ? "" : "<br/><br/>" + properties), true).setShape("box").setStyle("rounded, filled").setFillColor("limegreen").setColor("forestgreen");
     }
 
-    private DOTNode encodeUnreachedNode(AState state) {
+    private DOTNode encodeUnreachedNode(State state) {
         return encodeReachedNode(state).setFillColor("lightblue2").setColor("deepskyblue4");
     }
 
-    private DOTEdge encodeReachedTransition(ATransition transition) {
-        return new DOTEdge(new DOTNode(transition.getSource().getName()), new DOTNode(transition.getTarget().getName())).setLabel(transition.getEvent().getName()).setColor("forestgreen");
+    private DOTEdge encodeReachedTransition(Transition transition) {
+        return new DOTEdge(new DOTNode(transition.getSource().getName()), new DOTNode(transition.getTarget().getName())).setLabel(transition.getEvent().getName(), true).setColor("forestgreen");
     }
 
-    private DOTEdge encodeUnreachedTransition(ATransition transition) {
+    private DOTEdge encodeUnreachedTransition(Transition transition) {
         return encodeReachedTransition(transition).setColor("black").setStyle("dashed");
     }
 

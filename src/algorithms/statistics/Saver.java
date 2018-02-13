@@ -5,13 +5,11 @@ import algorithms.heuristics.relevance.ReducedVariantComputer;
 import algorithms.heuristics.relevance.RelevancePredicate;
 import algorithms.outputs.ATS;
 import langs.eventb.Machine;
-import langs.formal.graphs.AState;
-import langs.formal.graphs.AbstractState;
-import langs.formal.graphs.AbstractTransition;
-import langs.formal.graphs.MTS;
+import langs.formal.graphs.*;
 import langs.maths.AExpr;
 import langs.maths.def.DefsRegister;
 import langs.maths.generic.arith.AArithExpr;
+import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.bool.literals.Predicate;
 import langs.maths.set.AFiniteSetExpr;
 import parsers.stratest.Parser;
@@ -71,6 +69,8 @@ public final class Saver {
         }
         CXPComputer cxpComputer = new CXPComputer(machine, as);
         CXPASOComputer cxpasoComputer = new CXPASOComputer(machine, as);
+        ReducedVariantComputer rcxpVariantComputer = new ReducedVariantComputer(machine, rp);
+        ReducedVariantComputer rcxpasoVariantComputer = new ReducedVariantComputer(machine, rp);
         FullSemanticsComputer fullSemanticsComputer = new FullSemanticsComputer(machine, as);
         ComputerResult<ATS> cxpResult = null;
         ComputerResult<ATS> cxpasoResult = null;
@@ -106,7 +106,7 @@ public final class Saver {
                     }
                     if (rcxpResult == null) {
                         System.out.print("RCXP... ");
-                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                        rcxpResult = new RCXPComputer(machine, cxpResult.getResult(), rcxpVariantComputer).compute();
                         System.out.println("Done.");
                     }
                     break;
@@ -119,7 +119,7 @@ public final class Saver {
                     }
                     if (rcxpasoResult == null) {
                         System.out.print("RCXPASO... ");
-                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), new ReducedVariantComputer(machine, rp)).compute();
+                        rcxpasoResult = new RCXPComputer(machine, cxpasoResult.getResult(), rcxpVariantComputer).compute();
                         System.out.println("Done.");
                     }
                     break;
@@ -157,17 +157,29 @@ public final class Saver {
             }
             if (rcxpResult != null) {
                 Statistics statistics = new Statistics(rcxpResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), rcxpResult.getTime());
+                LinkedHashMap<ConcreteState, Integer> variants = rcxpVariantComputer.getVariantsMapping().entrySet().stream().collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        o -> o.getValue().values().stream().mapToInt(AValue::getValue).sum(),
+                        (o1, o2) -> o1,
+                        LinkedHashMap::new
+                ));
                 Files.write(new File(statsFolder, "rcxp.row").toPath(), statistics.entrySet().stream().filter(entry -> !rowStatisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "rcxp.stat").toPath(), ("Results for RCXP (in " + rcxpResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
-                Files.write(new File(dotFolder, "rcxp_small.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
-                Files.write(new File(dotFolder, "rcxp_full.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(dotFolder, "rcxp_small.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR, Collections.singletonList(new Tuple<>("v", variants)))).getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(dotFolder, "rcxp_full.dot").toPath(), rcxpResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR, Collections.singletonList(new Tuple<>("v", variants)))).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (rcxpasoResult != null) {
+                LinkedHashMap<ConcreteState, Integer> variants = rcxpasoVariantComputer.getVariantsMapping().entrySet().stream().collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        o -> o.getValue().values().stream().mapToInt(AValue::getValue).sum(),
+                        (o1, o2) -> o1,
+                        LinkedHashMap::new
+                ));
                 Statistics statistics = new Statistics(rcxpasoResult.getResult(), abstractionPredicatesSet, ap, relevance.getRight(), rcxpasoResult.getTime());
                 Files.write(new File(statsFolder, "rcxpaso.row").toPath(), statistics.entrySet().stream().filter(entry -> !rowStatisticsFilter.contains(entry.getKey())).map(entry -> entry.getValue().toString()).collect(Collectors.joining(" ")).getBytes(), CREATE, TRUNCATE_EXISTING);
                 Files.write(new File(statsFolder, "rcxpaso.stat").toPath(), ("Results for RCXPASO (in " + rcxpasoResult.getTime() + "):" + "\n" + "\n" + statistics.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining("\n\n"))).getBytes(), CREATE, TRUNCATE_EXISTING);
-                Files.write(new File(dotFolder, "rcxpaso_small.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
-                Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR)).getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(dotFolder, "rcxpaso_small.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(false, LR, Collections.singletonList(new Tuple<>("v", variants)))).getBytes(), CREATE, TRUNCATE_EXISTING);
+                Files.write(new File(dotFolder, "rcxpaso_full.dot").toPath(), rcxpasoResult.getResult().getCTS().accept(new DOTEncoder<>(true, LR, Collections.singletonList(new Tuple<>("v", variants)))).getBytes(), CREATE, TRUNCATE_EXISTING);
             }
             if (fullResult != null) {
                 System.out.println(fullResult.getTime());

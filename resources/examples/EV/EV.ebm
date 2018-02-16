@@ -490,37 +490,83 @@
                         </exists>
                     </or>
                 </and>
-                <assignments>
-                    <var-assignment>
-                        <var name="Pos"/>
+                <if-then-else>
+                    <equals>
                         <plus>
                             <var name="Pos"/>
                             <var name="Dir"/>
                         </plus>
-                    </var-assignment>
-                    <fun-assignment>
-                        <fun name="BC">
+                        <const name="LF"/>
+                    </equals>
+                    <assignments>
+                        <var-assignment>
+                            <var name="Pos"/>
                             <plus>
                                 <var name="Pos"/>
                                 <var name="Dir"/>
                             </plus>
-                        </fun>
-                        <int value="0"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="BM">
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BC">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <fun-assignment>
+                            <fun name="BM">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <var-assignment>
+                            <var name="PC"/>
+                            <enum-value name="fermees"/>
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BD">
+                                <const name="LF"/>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                    </assignments>
+                    <assignments>
+                        <var-assignment>
+                            <var name="Pos"/>
                             <plus>
                                 <var name="Pos"/>
                                 <var name="Dir"/>
                             </plus>
-                        </fun>
-                        <int value="0"/>
-                    </fun-assignment>
-                    <var-assignment>
-                        <var name="PC"/>
-                        <enum-value name="fermees"/>
-                    </var-assignment>
-                </assignments>
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BC">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <fun-assignment>
+                            <fun name="BM">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <var-assignment>
+                            <var name="PC"/>
+                            <enum-value name="fermees"/>
+                        </var-assignment>
+                    </assignments>
+                </if-then-else>
             </select>
         </event>
 
@@ -590,37 +636,83 @@
                         </exists>
                     </or>
                 </and>
-                <assignments>
-                    <var-assignment>
-                        <var name="Pos"/>
+                <if-then-else>
+                    <equals>
                         <plus>
                             <var name="Pos"/>
                             <var name="Dir"/>
                         </plus>
-                    </var-assignment>
-                    <fun-assignment>
-                        <fun name="BC">
+                        <int value="0"/>
+                    </equals>
+                    <assignments>
+                        <var-assignment>
+                            <var name="Pos"/>
                             <plus>
                                 <var name="Pos"/>
                                 <var name="Dir"/>
                             </plus>
-                        </fun>
-                        <int value="0"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="BD">
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BC">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <fun-assignment>
+                            <fun name="BD">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <var-assignment>
+                            <var name="PC"/>
+                            <enum-value name="fermees"/>
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BM">
+                                <int value="0"/>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                    </assignments>
+                    <assignments>
+                        <var-assignment>
+                            <var name="Pos"/>
                             <plus>
                                 <var name="Pos"/>
                                 <var name="Dir"/>
                             </plus>
-                        </fun>
-                        <int value="0"/>
-                    </fun-assignment>
-                    <var-assignment>
-                        <var name="PC"/>
-                        <enum-value name="fermees"/>
-                    </var-assignment>
-                </assignments>
+                        </var-assignment>
+                        <fun-assignment>
+                            <fun name="BC">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <fun-assignment>
+                            <fun name="BD">
+                                <plus>
+                                    <var name="Pos"/>
+                                    <var name="Dir"/>
+                                </plus>
+                            </fun>
+                            <int value="0"/>
+                        </fun-assignment>
+                        <var-assignment>
+                            <var name="PC"/>
+                            <enum-value name="fermees"/>
+                        </var-assignment>
+                    </assignments>
+                </if-then-else>
             </select>
         </event>
 

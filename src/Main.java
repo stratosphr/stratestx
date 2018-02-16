@@ -33,7 +33,7 @@ class Main {
                 NB_CT_RCHD,
                 TIME_ATS
         ), RCXP);*/
-        save("newOrder", EV, AP0, REL0, CXP, RCXP);
+        save("b", EV, AP0, REL0, CXP, RCXP, FULL);
     }
 
     @SuppressWarnings("SameParameterValue")

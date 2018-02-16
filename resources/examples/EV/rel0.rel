@@ -66,13 +66,13 @@
         </conditions>
 
         <fun-increases>
-            <fun name="BD">
+            <fun name="BC">
                 <int value="2"/>
             </fun>
         </fun-increases>
 
         <fun-increases>
-            <fun name="BM">
+            <fun name="BC">
                 <int value="0"/>
             </fun>
         </fun-increases>

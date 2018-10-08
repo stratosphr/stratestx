@@ -1,6 +1,0 @@
-Abstract States (4 in 00:00:00.119):
-
-q0 = ¬(p0 = Portes(1)=ouvertes[3]), ¬(p1 = Portes(1)=refermees[5]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
-q1 = ¬(p0 = Portes(1)=ouvertes[3]), ¬(p1 = Portes(1)=refermees[5]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
-q2 = ¬(p0 = Portes(1)=ouvertes[3]), (p1 = Portes(1)=refermees[5]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
-q4 = (p0 = Portes(1)=ouvertes[3]), ¬(p1 = Portes(1)=refermees[5]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))

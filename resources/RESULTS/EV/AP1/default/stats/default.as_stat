@@ -1,6 +1,0 @@
-Abstract States (4 in 00:00:00.060):
-
-q0 = ¬(Appel_Montee_Cabine = BC(3)=0), ¬(p0 = PE(3)=ouvertes[0])
-q1 = (Appel_Montee_Cabine = BC(3)=0), ¬(p0 = PE(3)=ouvertes[0])
-q2 = ¬(Appel_Montee_Cabine = BC(3)=0), (p0 = PE(3)=ouvertes[0])
-q3 = (Appel_Montee_Cabine = BC(3)=0), (p0 = PE(3)=ouvertes[0])

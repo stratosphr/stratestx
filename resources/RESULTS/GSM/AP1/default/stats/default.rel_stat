@@ -1,6 +1,0 @@
-Relevance Predicate:
-
-or(
-	counterCHV_ < counterCHV
-	counterUnblockCHV_ < counterUnblockCHV
-)

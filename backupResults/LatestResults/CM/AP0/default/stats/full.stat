@@ -1,0 +1,127 @@
+Results for FULL (in 00:00:45.711):
+
+NB_EV: 11
+
+AP: AP0
+
+NB_AP: 3
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 5
+
+NB_AS_RCHD: 5
+
+TAU_AS: 100.00
+
+NB_AT: 21
+
+NB_AT_RCHD: 21
+
+TAU_AT: 100.00
+
+NB_EXPECTED_AS: 5
+
+NB_EXPECTED_AS_RCHD: 5
+
+TAU_EXPECTED_AS: 100.00
+
+NB_EXPECTED_AT: 2
+
+NB_EXPECTED_AT_RCHD: 2
+
+TAU_EXPECTED_AT: 100.00
+
+NB_CS: 1690
+
+NB_CS_RCHD: 1690
+
+NB_CT: 4343
+
+NB_CT_RCHD: 4343
+
+RHO_CS: 100.00
+
+RHO_CT: 100.00
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ addCof ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerUp ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ autoOut ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ backBalance ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ changeReq ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ cofReq ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert100 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert50 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ autoOut ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert100 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert50 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ addCof ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerUp ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ takePot ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_EXPECTED_AT: 
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_UNRCHD_AS: 
+
+
+
+SET_UNRCHD_EXPECTED_AS: 
+
+
+
+SET_UNRCHD_AT: 
+
+
+
+SET_UNRCHD_EXPECTED_AT: 
+
+
+
+TIME_ATS: 00:00:45.711

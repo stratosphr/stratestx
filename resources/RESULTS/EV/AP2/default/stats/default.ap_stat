@@ -1,5 +1,0 @@
-Abstraction Predicates (3):
-
-(p0 = PE(3)=ouvertes[0])
-(Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1]))
-(Montee_Cabine = and(Pos < LF, Pos >= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1)))))

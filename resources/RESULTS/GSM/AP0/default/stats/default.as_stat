@@ -1,4 +1,0 @@
-Abstract States (2 in 00:00:00.182):
-
-q0 = ¬(p0 = counterCHV=0)
-q1 = (p0 = counterCHV=0)

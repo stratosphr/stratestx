@@ -1,5 +1,0 @@
-Abstraction Predicates (3):
-
-(p0 = and(Status=on[1], Balance >= 50, AskCof=1, CofLeft > 0))
-(p1 = and(Status=on[1], Balance > 0, AskChange=1))
-(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))

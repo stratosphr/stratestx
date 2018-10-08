@@ -1,0 +1,10 @@
+Abstract States (8 in 00:00:00.092):
+
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q5 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 => Etat=5), ¬(p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q7 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q19 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q22 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), ¬(p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q30 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), ¬(p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q35 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))
+q39 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 => Etat=5), (p4 = and(¬Etat=2, NbEssai=2) => Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) => or(NbEssai=1, NbEssai=2))

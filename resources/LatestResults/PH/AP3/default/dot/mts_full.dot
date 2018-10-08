@@ -1,0 +1,22 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q6[label=<<b>q<sub>6</sub> = (p0 = NbEssai=0), (p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q4[label=<<b>q<sub>4</sub> = (p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub> = ¬(p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q1[label=<<b>q<sub>1</sub> = ¬(p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), (p2 = and(Combine=1, Etat=5))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q6[penwidth=3, color="forestgreen"]
+	q6 -> q4[label=<Appel_Qui_Donc>, color="forestgreen"]
+	q4 -> q4[label=<Start>, color="forestgreen"]
+	q4 -> q0[label=<Timeout>, color="forestgreen"]
+	q0 -> q0[label=<Start>, color="forestgreen"]
+	q0 -> q0[label=<Timeout>, color="forestgreen"]
+	q0 -> q6[label=<HangUp>, color="forestgreen"]
+	q0 -> q1[label=<Timeout>, color="forestgreen"]
+	q1 -> q6[label=<HangUp>, color="forestgreen"]
+	q4 -> q6[label=<HangUp>, color="forestgreen"]
+
+}

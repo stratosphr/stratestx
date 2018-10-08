@@ -2,6 +2,8 @@
   <dictionary name="gvoiron">
     <words>
       <w>blockedstatus</w>
+      <w>counterchv</w>
+      <w>counterunblockchv</w>
       <w>cxpaso</w>
       <w>decl</w>
       <w>decls</w>

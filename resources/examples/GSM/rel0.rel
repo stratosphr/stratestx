@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <var-decreases>
+            <var name="counterCHV"/>
+        </var-decreases>
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <transition>
+            <state name="q0"/>
+            <event name="Verify_CHV"/>
+            <state name="q1"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="Verify_CHV"/>
+            <state name="q1"/>
+        </transition>
+    </expected-transitions>
+
+</relevance>

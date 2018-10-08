@@ -32,50 +32,17 @@
             <enum-value name="refermees"/>
         </var-changes>
 
-        <var-changes>
-            <var name="Dir"/>
-            <int value="1"/>
-            <int value="-1"/>
-        </var-changes>
-
-        <var-changes>
-            <var name="Dir"/>
-            <int value="-1"/>
-            <int value="1"/>
-        </var-changes>
-
-        <conditions>
-            <condition>
-                <equals>
-                    <var name="Dir"/>
-                    <int value="1"/>
-                </equals>
-                <var-increases>
-                    <var name="Pos"/>
-                </var-increases>
-            </condition>
-            <condition>
-                <equals>
-                    <var name="Dir"/>
-                    <int value="-1"/>
-                </equals>
-                <var-decreases>
-                    <var name="Pos"/>
-                </var-decreases>
-            </condition>
-        </conditions>
-
-        <fun-increases>
+        <fun-changes>
             <fun name="BC">
-                <int value="2"/>
+                <int value="3"/>
             </fun>
-        </fun-increases>
+            <int value="0"/>
+            <int value="1"/>
+        </fun-changes>
 
-        <fun-increases>
-            <fun name="BC">
-                <int value="0"/>
-            </fun>
-        </fun-increases>
+        <var-increases>
+            <var name="Pos"/>
+        </var-increases>
 
     </relevance-predicate>
 
@@ -85,18 +52,8 @@
 
     <expected-transitions>
         <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
-            <state name="q0"/>
-        </transition>
-        <transition>
-            <state name="q0"/>
-            <event name="Changement_Direction"/>
             <state name="q2"/>
-        </transition>
-        <transition>
-            <state name="q2"/>
-            <event name="Montee_Cabine"/>
+            <event name="iMontee_Cabine"/>
             <state name="q1"/>
         </transition>
     </expected-transitions>

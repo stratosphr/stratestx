@@ -1,0 +1,33 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q6[label=<<b>c<sub>0</sub>q<sub>6</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c1q4[label=<<b>c<sub>1</sub>q<sub>4</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c2q4[label=<<b>c<sub>2</sub>q<sub>4</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c3q0[label=<<b>c<sub>3</sub>q<sub>0</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c4q0[label=<<b>c<sub>4</sub>q<sub>0</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c5q0[label=<<b>c<sub>5</sub>q<sub>0</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c6q1[label=<<b>c<sub>6</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c7q4[label=<<b>c<sub>7</sub>q<sub>4</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c8q4[label=<<b>c<sub>8</sub>q<sub>4</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c9q5[label=<<b>c<sub>9</sub>q<sub>5</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c10q0[label=<<b>c<sub>10</sub>q<sub>0</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+
+	__invisible__ -> c0q6[penwidth=3, color="forestgreen"]
+	c0q6 -> c1q4[label=<Appel_Qui_Donc>, color="forestgreen"]
+	c1q4 -> c0q6[label=<HangUp>, color="forestgreen"]
+	c1q4 -> c2q4[label=<Start>, color="forestgreen"]
+	c1q4 -> c3q0[label=<Timeout>, color="forestgreen"]
+	c3q0 -> c0q6[label=<HangUp>, color="forestgreen"]
+	c3q0 -> c4q0[label=<Start>, color="forestgreen"]
+	c3q0 -> c5q0[label=<Timeout>, color="forestgreen"]
+	c5q0 -> c6q1[label=<Timeout>, color="forestgreen"]
+	c6q1 -> c0q6[label=<HangUp>, color="forestgreen"]
+	c7q4 -> c2q4[label=<Start>, color="deepskyblue4", style="dashed"]
+	c8q4 -> c9q5[label=<Timeout>, color="deepskyblue4", style="dashed"]
+	c10q0 -> c4q0[label=<Start>, color="deepskyblue4", style="dashed"]
+	c9q5 -> c0q6[label=<HangUp>, color="deepskyblue4", style="dashed"]
+
+}

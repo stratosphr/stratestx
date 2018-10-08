@@ -1,0 +1,10 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <equals>
+            <var name="currentFile"/>
+            <enum-value name="nofiles"/>
+        </equals>
+    </predicate>
+
+</predicates>

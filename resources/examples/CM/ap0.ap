@@ -37,7 +37,7 @@
                     <int value="0"/>
                 </equals>
                 <equals>
-                    <var name="AskCoffee"/>
+                    <var name="AskCof"/>
                     <int value="0"/>
                 </equals>
                 <equals>

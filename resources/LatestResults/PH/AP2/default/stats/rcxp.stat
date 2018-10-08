@@ -1,0 +1,224 @@
+Results for RCXP (in 00:00:00.091):
+
+NB_EV: 4
+
+AP: AP2
+
+NB_AP: 4
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 7
+
+NB_AS_RCHD: 5
+
+TAU_AS: 71.43
+
+NB_AT: 15
+
+NB_AT_RCHD: 11
+
+TAU_AT: 73.33
+
+NB_EXPECTED_AS: 7
+
+NB_EXPECTED_AS_RCHD: 5
+
+TAU_EXPECTED_AS: 71.43
+
+NB_EXPECTED_AT: 15
+
+NB_EXPECTED_AT_RCHD: 11
+
+TAU_EXPECTED_AT: 73.33
+
+NB_CS: 15
+
+NB_CS_RCHD: 11
+
+NB_CT: 30
+
+NB_CT_RCHD: 26
+
+RHO_CS: 73.33
+
+RHO_CT: 86.67
+
+NB_TESTS: 1
+
+NB_STEPS: 65
+
+TESTS: 
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Start ]-> c2q7 = Combine=1, Etat=1, NbEssai=0
+c2q7 = Combine=1, Etat=1, NbEssai=0 -[ Timeout ]-> c6q11 = Combine=1, Etat=1, NbEssai=1
+c6q11 = Combine=1, Etat=1, NbEssai=1 -[ Start ]-> c8q11 = Combine=1, Etat=3, NbEssai=1
+c8q11 = Combine=1, Etat=3, NbEssai=1 -[ Start ]-> c6q11 = Combine=1, Etat=1, NbEssai=1
+c6q11 = Combine=1, Etat=1, NbEssai=1 -[ Start ]-> c8q11 = Combine=1, Etat=3, NbEssai=1
+c8q11 = Combine=1, Etat=3, NbEssai=1 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Start ]-> c2q7 = Combine=1, Etat=1, NbEssai=0
+c2q7 = Combine=1, Etat=1, NbEssai=0 -[ Start ]-> c3q7 = Combine=1, Etat=3, NbEssai=0
+c3q7 = Combine=1, Etat=3, NbEssai=0 -[ Start ]-> c2q7 = Combine=1, Etat=1, NbEssai=0
+c2q7 = Combine=1, Etat=1, NbEssai=0 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Start ]-> c2q7 = Combine=1, Etat=1, NbEssai=0
+c2q7 = Combine=1, Etat=1, NbEssai=0 -[ Start ]-> c3q7 = Combine=1, Etat=3, NbEssai=0
+c3q7 = Combine=1, Etat=3, NbEssai=0 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Start ]-> c6q11 = Combine=1, Etat=1, NbEssai=1
+c6q11 = Combine=1, Etat=1, NbEssai=1 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Timeout ]-> c14q2 = Combine=1, Etat=5, NbEssai=2
+c14q2 = Combine=1, Etat=5, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ Start ]-> c13q3 = Combine=1, Etat=3, NbEssai=2
+c13q3 = Combine=1, Etat=3, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ Start ]-> c13q3 = Combine=1, Etat=3, NbEssai=2
+c13q3 = Combine=1, Etat=3, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ Timeout ]-> c14q2 = Combine=1, Etat=5, NbEssai=2
+c14q2 = Combine=1, Etat=5, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ Start ]-> c13q3 = Combine=1, Etat=3, NbEssai=2
+c13q3 = Combine=1, Etat=3, NbEssai=2 -[ Timeout ]-> c14q2 = Combine=1, Etat=5, NbEssai=2
+c14q2 = Combine=1, Etat=5, NbEssai=2 -[ HangUp ]-> c0q4 = Combine=0, Etat=4, NbEssai=0
+c0q4 = Combine=0, Etat=4, NbEssai=0 -[ Appel_Qui_Donc ]-> c1q7 = Combine=1, Etat=0, NbEssai=0
+c1q7 = Combine=1, Etat=0, NbEssai=0 -[ Timeout ]-> c7q11 = Combine=1, Etat=0, NbEssai=1
+c7q11 = Combine=1, Etat=0, NbEssai=1 -[ Timeout ]-> c9q3 = Combine=1, Etat=0, NbEssai=2
+c9q3 = Combine=1, Etat=0, NbEssai=2 -[ Start ]-> c12q3 = Combine=1, Etat=1, NbEssai=2
+c12q3 = Combine=1, Etat=1, NbEssai=2 -[ Start ]-> c13q3 = Combine=1, Etat=3, NbEssai=2
+############################################
+
+
+SET_EXPECTED_AS: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_RCHD_AS: 
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_RCHD_EXPECTED_AS: 
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_EXPECTED_AT: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ Appel_Qui_Donc ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_RCHD_AT: 
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ Appel_Qui_Donc ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_RCHD_EXPECTED_AT: 
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ Appel_Qui_Donc ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Start ]-> q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_UNRCHD_AS: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_UNRCHD_EXPECTED_AS: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_UNRCHD_AT: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+
+
+SET_UNRCHD_EXPECTED_AT: 
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5)) -[ HangUp ]-> q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5)) -[ Timeout ]-> q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+
+
+TIME_ATS: 00:00:00.091
+
+TIME_TESTS: 00:00:00.000

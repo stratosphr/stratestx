@@ -1,0 +1,46 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q1[label=<<b>c<sub>0</sub>q<sub>1</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=1</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c1q1[label=<<b>c<sub>1</sub>q<sub>1</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=8, h=7, sw=1</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c8q2[label=<<b>c<sub>8</sub>q<sub>2</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c13q1[label=<<b>c<sub>13</sub>q<sub>1</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=8, h=7, sw=6</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c15q2[label=<<b>c<sub>15</sub>q<sub>2</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=8, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c19q2[label=<<b>c<sub>19</sub>q<sub>2</sub> = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=6, sw=1</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c2q1[label=<<b>c<sub>2</sub>q<sub>1</sub> = bat(1)=8, bat(2)=9, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=7, sw=3</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c3q1[label=<<b>c<sub>3</sub>q<sub>1</sub> = bat(1)=8, bat(2)=8, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=7, sw=3</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c4q1[label=<<b>c<sub>4</sub>q<sub>1</sub> = bat(1)=8, bat(2)=8, bat(3)=8, bat(4)=9, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=7, sw=4</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c5q1[label=<<b>c<sub>5</sub>q<sub>1</sub> = bat(1)=8, bat(2)=9, bat(3)=8, bat(4)=9, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=7, sw=4</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c6q1[label=<<b>c<sub>6</sub>q<sub>1</sub> = bat(1)=9, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=7, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c7q0[label=<<b>c<sub>7</sub>q<sub>0</sub> = bat(1)=9, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c9q1[label=<<b>c<sub>9</sub>q<sub>1</sub> = bat(1)=9, bat(2)=8, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=9, bat(8)=8, h=7, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c10q2[label=<<b>c<sub>10</sub>q<sub>2</sub> = bat(1)=9, bat(2)=8, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=9, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c11q0[label=<<b>c<sub>11</sub>q<sub>0</sub> = bat(1)=8, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=9, h=6, sw=8</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c12q2[label=<<b>c<sub>12</sub>q<sub>2</sub> = bat(1)=8, bat(2)=8, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=9, h=6, sw=8</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c14q1[label=<<b>c<sub>14</sub>q<sub>1</sub> = bat(1)=8, bat(2)=8, bat(3)=9, bat(4)=8, bat(5)=8, bat(6)=8, bat(7)=8, bat(8)=9, h=7, sw=3</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c16q2[label=<<b>c<sub>16</sub>q<sub>2</sub> = bat(1)=9, bat(2)=9, bat(3)=8, bat(4)=8, bat(5)=9, bat(6)=8, bat(7)=8, bat(8)=8, h=6, sw=5</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c17q2[label=<<b>c<sub>17</sub>q<sub>2</sub> = bat(1)=8, bat(2)=9, bat(3)=8, bat(4)=8, bat(5)=9, bat(6)=8, bat(7)=8, bat(8)=8, h=6, sw=5</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c18q2[label=<<b>c<sub>18</sub>q<sub>2</sub> = bat(1)=8, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=9, bat(7)=8, bat(8)=9, h=6, sw=8</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c20q2[label=<<b>c<sub>20</sub>q<sub>2</sub> = bat(1)=9, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=9, bat(7)=8, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c21q2[label=<<b>c<sub>21</sub>q<sub>2</sub> = bat(1)=9, bat(2)=8, bat(3)=8, bat(4)=8, bat(5)=8, bat(6)=9, bat(7)=9, bat(8)=8, h=6, sw=1</b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+
+	__invisible__ -> c0q1[penwidth=3, color="forestgreen"]
+	c0q1 -> c1q1[label=<Fail>, color="forestgreen"]
+	c1q1 -> c0q1[label=<Repair>, color="forestgreen"]
+	c1q1 -> c8q2[label=<Tic>, color="forestgreen"]
+	c8q2 -> c13q1[label=<Commute>, color="forestgreen"]
+	c8q2 -> c15q2[label=<Fail>, color="forestgreen"]
+	c8q2 -> c19q2[label=<Repair>, color="forestgreen"]
+	c2q1 -> c3q1[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c4q1 -> c5q1[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c6q1 -> c7q0[label=<Tic>, color="deepskyblue4", style="dashed"]
+	c9q1 -> c10q2[label=<Tic>, color="deepskyblue4", style="dashed"]
+	c11q0 -> c12q2[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c12q2 -> c14q1[label=<Commute>, color="deepskyblue4", style="dashed"]
+	c16q2 -> c17q2[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c18q2 -> c11q0[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c20q2 -> c21q2[label=<Repair>, color="deepskyblue4", style="dashed"]
+
+}

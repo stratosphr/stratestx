@@ -1,0 +1,47 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub> = ¬(Montee_Cabine = and(Pos &lt; LF, Pos &gt;= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1])), ¬(p0 = PE(3)=ouvertes[0])</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q2[label=<<b>q<sub>2</sub> = ¬(Montee_Cabine = and(Pos &lt; LF, Pos &gt;= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), (Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1])), ¬(p0 = PE(3)=ouvertes[0])</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q1[label=<<b>q<sub>1</sub> = (Montee_Cabine = and(Pos &lt; LF, Pos &gt;= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1])), ¬(p0 = PE(3)=ouvertes[0])</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q6[label=<<b>q<sub>6</sub> = ¬(Montee_Cabine = and(Pos &lt; LF, Pos &gt;= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), (Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1])), (p0 = PE(3)=ouvertes[0])</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q4[label=<<b>q<sub>4</sub> = ¬(Montee_Cabine = and(Pos &lt; LF, Pos &gt;= 0, PC=refermees[2], PE(Pos)=fermees[1], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Cabine = and(PE(Pos)=ouvertes[0], PC=fermees[1])), (p0 = PE(3)=ouvertes[0])</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q0[penwidth=3, color="forestgreen"]
+	q0 -> q2[label=<aOuverture_Portes_Etage>, color="forestgreen"]
+	q2 -> q0[label=<bOuverture_Portes_Cabine>, color="forestgreen"]
+	q2 -> q2[label=<eAppel_Montee_Cabine>, color="forestgreen"]
+	q2 -> q2[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q2 -> q2[label=<hAppel_Descente_Etage>, color="forestgreen"]
+	q2 -> q2[label=<fAppel_Descente_Cabine>, color="forestgreen"]
+	q0 -> q0[label=<eAppel_Montee_Cabine>, color="forestgreen"]
+	q0 -> q0[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q0 -> q0[label=<hAppel_Descente_Etage>, color="forestgreen"]
+	q0 -> q0[label=<cFermeture_Portes_Cabine>, color="forestgreen"]
+	q0 -> q0[label=<dFermeture_Portes_Etage>, color="forestgreen"]
+	q0 -> q1[label=<eAppel_Montee_Cabine>, color="forestgreen"]
+	q1 -> q1[label=<eAppel_Montee_Cabine>, color="forestgreen"]
+	q1 -> q1[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q1 -> q1[label=<hAppel_Descente_Etage>, color="forestgreen"]
+	q1 -> q0[label=<iMontee_Cabine>, color="forestgreen"]
+	q1 -> q1[label=<fAppel_Descente_Cabine>, color="forestgreen"]
+	q0 -> q1[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q0 -> q0[label=<fAppel_Descente_Cabine>, color="forestgreen"]
+	q0 -> q6[label=<aOuverture_Portes_Etage>, color="forestgreen"]
+	q6 -> q4[label=<bOuverture_Portes_Cabine>, color="forestgreen"]
+	q4 -> q4[label=<cFermeture_Portes_Cabine>, color="forestgreen"]
+	q4 -> q0[label=<dFermeture_Portes_Etage>, color="forestgreen"]
+	q4 -> q4[label=<fAppel_Descente_Cabine>, color="forestgreen"]
+	q4 -> q4[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q4 -> q4[label=<hAppel_Descente_Etage>, color="forestgreen"]
+	q6 -> q6[label=<fAppel_Descente_Cabine>, color="forestgreen"]
+	q6 -> q6[label=<gAppel_Montee_Etage>, color="forestgreen"]
+	q6 -> q6[label=<hAppel_Descente_Etage>, color="forestgreen"]
+	q0 -> q1[label=<dFermeture_Portes_Etage>, color="forestgreen"]
+	q0 -> q0[label=<jChangement_Direction>, color="forestgreen"]
+	q0 -> q1[label=<jChangement_Direction>, color="forestgreen"]
+	q0 -> q0[label=<kDescente_Cabine>, color="forestgreen"]
+
+}

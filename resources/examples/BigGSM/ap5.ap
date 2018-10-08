@@ -1,0 +1,21 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <equals>
+            <fun name="counterChv">
+                <enum-value name="chv1"/>
+            </fun>
+            <int value="0"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p1">
+        <equals>
+            <fun name="counterUnblock">
+                <enum-value name="chv1"/>
+            </fun>
+            <int value="0"/>
+        </equals>
+    </predicate>
+
+</predicates>

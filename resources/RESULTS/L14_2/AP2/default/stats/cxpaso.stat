@@ -1,0 +1,180 @@
+Results for CXPASO (in 00:00:07.825):
+
+NB_EV: 15
+
+AP: AP2
+
+NB_AP: 3
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 4
+
+NB_AS_RCHD: 3
+
+TAU_AS: 75.00
+
+NB_AT: 50
+
+NB_AT_RCHD: 12
+
+TAU_AT: 24.00
+
+NB_EXPECTED_AS: 4
+
+NB_EXPECTED_AS_RCHD: 3
+
+TAU_EXPECTED_AS: 75.00
+
+NB_EXPECTED_AT: 3
+
+NB_EXPECTED_AT_RCHD: 0
+
+TAU_EXPECTED_AT: 0.00
+
+NB_CS: 98
+
+NB_CS_RCHD: 13
+
+NB_CT: 59
+
+NB_CT_RCHD: 12
+
+RHO_CS: 13.27
+
+RHO_CT: 20.34
+
+NB_TESTS: 4
+
+NB_STEPS: 15
+
+TESTS: 
+c0q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP1 ]-> c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ FP1 ]-> c3q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c3q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ CD1 ]-> c6q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c6q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ AS2 ]-> c9q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=0, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=0, Pos(3)=1
+c9q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=0, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=0, Pos(3)=1 -[ OP2 ]-> c10q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=0, Mvt(3)=0, Portes(1)=1, Portes(2)=0, Portes(3)=1, Pos(1)=0, Pos(2)=0, Pos(3)=1
+c10q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=0, Mvt(3)=0, Portes(1)=1, Portes(2)=0, Portes(3)=1, Pos(1)=0, Pos(2)=0, Pos(3)=1 -[ FP2 ]-> c12q0 = Dir(1)=1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=0, Mvt(3)=0, Portes(1)=1, Portes(2)=2, Portes(3)=1, Pos(1)=0, Pos(2)=0, Pos(3)=1
+############################################
+c0q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP1 ]-> c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP3 ]-> c4q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c4q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ FP3 ]-> c8q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=2, Pos(1)=0, Pos(2)=1, Pos(3)=1
+############################################
+c0q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP1 ]-> c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c1q4 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=0, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ FP1 ]-> c3q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c3q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP3 ]-> c7q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c7q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ FP3 ]-> c11q2 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=2, Portes(2)=1, Portes(3)=2, Pos(1)=0, Pos(2)=1, Pos(3)=1
+############################################
+c0q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=1, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ OP3 ]-> c2q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1
+c2q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=0, Pos(1)=0, Pos(2)=1, Pos(3)=1 -[ FP3 ]-> c5q0 = Dir(1)=-1, Dir(2)=-1, Dir(3)=-1, Mvt(1)=0, Mvt(2)=1, Mvt(3)=0, Portes(1)=1, Portes(2)=1, Portes(3)=2, Pos(1)=0, Pos(2)=1, Pos(3)=1
+############################################
+
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS2 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP2 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP3 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP1 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP2 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP3 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP3 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP3 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP1 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP3 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP3 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_RCHD_EXPECTED_AT: 
+
+
+
+SET_UNRCHD_AS: 
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_UNRCHD_EXPECTED_AS: 
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_UNRCHD_AT: 
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS3 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD2 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD3 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS2 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS3 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP2 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP3 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS2 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS3 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD2 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD3 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS2 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS3 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP2 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP2 ]-> q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS2 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS3 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD2 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ CD3 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS2 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS3 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ FP2 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ OP2 ]-> q4 = (p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+SET_UNRCHD_EXPECTED_AT: 
+q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ AS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q0 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+q2 = ¬(p0 = Portes(1)=ouvertes[0]), (p1 = Portes(1)=refermees[2]), ¬(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R))))))) -[ DS1 ]-> q1 = ¬(p0 = Portes(1)=ouvertes[0]), ¬(p1 = Portes(1)=refermees[2]), (p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))
+
+
+TIME_ATS: 00:00:07.825
+
+TIME_TESTS: 00:00:00.000

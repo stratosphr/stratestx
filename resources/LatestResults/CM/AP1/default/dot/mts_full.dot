@@ -1,0 +1,34 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub> = ¬(p0 = and(Status=on[1], Balance &gt;= 50, AskCof=1, CofLeft &gt; 0)), ¬(p1 = and(Status=on[1], Balance &gt; 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal &gt;= (Balance + 50)))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q1[label=<<b>q<sub>1</sub> = ¬(p0 = and(Status=on[1], Balance &gt;= 50, AskCof=1, CofLeft &gt; 0)), ¬(p1 = and(Status=on[1], Balance &gt; 0, AskChange=1)), (p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal &gt;= (Balance + 50)))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q4[label=<<b>q<sub>4</sub> = (p0 = and(Status=on[1], Balance &gt;= 50, AskCof=1, CofLeft &gt; 0)), ¬(p1 = and(Status=on[1], Balance &gt; 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal &gt;= (Balance + 50)))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q2[label=<<b>q<sub>2</sub> = ¬(p0 = and(Status=on[1], Balance &gt;= 50, AskCof=1, CofLeft &gt; 0)), (p1 = and(Status=on[1], Balance &gt; 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal &gt;= (Balance + 50)))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q0[penwidth=3, color="forestgreen"]
+	q0 -> q1[label=<powerUp>, color="forestgreen"]
+	q1 -> q1[label=<insert50>, color="forestgreen"]
+	q1 -> q1[label=<insert100>, color="forestgreen"]
+	q1 -> q0[label=<powerDown>, color="forestgreen"]
+	q1 -> q0[label=<autoOut>, color="forestgreen"]
+	q1 -> q4[label=<cofReq>, color="forestgreen"]
+	q4 -> q0[label=<autoOut>, color="forestgreen"]
+	q4 -> q1[label=<serveCof>, color="forestgreen"]
+	q4 -> q2[label=<serveCof>, color="forestgreen"]
+	q2 -> q0[label=<autoOut>, color="forestgreen"]
+	q2 -> q1[label=<backBalance>, color="forestgreen"]
+	q4 -> q0[label=<serveCof>, color="forestgreen"]
+	q1 -> q2[label=<changeReq>, color="forestgreen"]
+	q1 -> q0[label=<insert100>, color="forestgreen"]
+	q1 -> q0[label=<insert50>, color="forestgreen"]
+	q0 -> q0[label=<powerDown>, color="forestgreen"]
+	q0 -> q0[label=<autoOut>, color="forestgreen"]
+	q0 -> q4[label=<cofReq>, color="forestgreen"]
+	q0 -> q2[label=<changeReq>, color="forestgreen"]
+	q0 -> q0[label=<addCof>, color="forestgreen"]
+	q0 -> q0[label=<takePot>, color="forestgreen"]
+
+}

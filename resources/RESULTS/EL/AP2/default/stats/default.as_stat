@@ -1,0 +1,5 @@
+Abstract States (3 in 00:00:00.167):
+
+q1 = ¬(p0 = ∃(nb).(and(and(nb ∈ [1..n]), and(bat(nb)=ko[2])))), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q2 = (p0 = ∃(nb).(and(and(nb ∈ [1..n]), and(bat(nb)=ko[2])))), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = ∃(nb).(and(and(nb ∈ [1..n]), and(bat(nb)=ko[2])))), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))

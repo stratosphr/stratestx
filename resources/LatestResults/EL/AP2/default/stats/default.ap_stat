@@ -1,0 +1,4 @@
+Abstraction Predicates (2):
+
+(p0 = ∃(nb).(and(and(nb ∈ [1..n]), and(bat(nb)=ko[8]))))
+(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))

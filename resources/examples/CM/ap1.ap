@@ -13,28 +13,55 @@
                 <int value="50"/>
             </geq>
             <equals>
-                <var name="AskCoffee"/>
+                <var name="AskCof"/>
                 <int value="1"/>
             </equals>
             <gt>
-                <var name="CoffeeLeft"/>
+                <var name="CofLeft"/>
                 <int value="0"/>
             </gt>
         </and>
     </predicate>
 
     <predicate name="p1">
-        <equals>
-            <var name="Balance"/>
-            <int value="0"/>
-        </equals>
+        <and>
+            <equals>
+                <var name="Status"/>
+                <enum-value name="on"/>
+            </equals>
+            <gt>
+                <var name="Balance"/>
+                <int value="0"/>
+            </gt>
+            <equals>
+                <var name="AskChange"/>
+                <int value="1"/>
+            </equals>
+        </and>
     </predicate>
 
     <predicate name="p2">
-        <lt>
-            <var name="Balance"/>
-            <int value="50"/>
-        </lt>
+        <and>
+            <equals>
+                <var name="Status"/>
+                <enum-value name="on"/>
+            </equals>
+            <equals>
+                <var name="AskChange"/>
+                <int value="0"/>
+            </equals>
+            <equals>
+                <var name="AskCof"/>
+                <int value="0"/>
+            </equals>
+            <geq>
+                <const name="MaxBal"/>
+                <plus>
+                    <var name="Balance"/>
+                    <int value="50"/>
+                </plus>
+            </geq>
+        </and>
     </predicate>
 
 </predicates>

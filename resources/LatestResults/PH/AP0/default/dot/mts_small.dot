@@ -1,0 +1,19 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q5[label=<<b>q<sub>5</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q6[label=<<b>q<sub>6</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q2[label=<<b>q<sub>2</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q5[penwidth=3, color="forestgreen"]
+	q5 -> q6[label=<Appel_Qui_Donc>, color="forestgreen"]
+	q6 -> q6[label=<Start>, color="forestgreen"]
+	q6 -> q2[label=<Timeout>, color="forestgreen"]
+	q2 -> q2[label=<Start>, color="forestgreen"]
+	q2 -> q2[label=<Timeout>, color="forestgreen"]
+	q2 -> q5[label=<HangUp>, color="forestgreen"]
+	q6 -> q5[label=<HangUp>, color="forestgreen"]
+
+}

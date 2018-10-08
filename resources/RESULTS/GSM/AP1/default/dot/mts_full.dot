@@ -1,0 +1,38 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub> = ¬(p0 = counterCHV=0), ¬(p1 = counterUnblockCHV=0)</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q1[label=<<b>q<sub>1</sub> = ¬(p0 = counterCHV=0), (p1 = counterUnblockCHV=0)</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q3[label=<<b>q<sub>3</sub> = (p0 = counterCHV=0), (p1 = counterUnblockCHV=0)</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q2[label=<<b>q<sub>2</sub> = (p0 = counterCHV=0), ¬(p1 = counterUnblockCHV=0)</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q0[penwidth=3, color="forestgreen"]
+	q0 -> q0[label=<Read_Binary>, color="forestgreen"]
+	q0 -> q0[label=<Reset>, color="forestgreen"]
+	q0 -> q0[label=<Select_File>, color="forestgreen"]
+	q0 -> q0[label=<Unblock_CHV>, color="forestgreen"]
+	q0 -> q0[label=<Verify_CHV>, color="forestgreen"]
+	q0 -> q1[label=<Unblock_CHV>, color="forestgreen"]
+	q1 -> q1[label=<Read_Binary>, color="forestgreen"]
+	q1 -> q1[label=<Reset>, color="forestgreen"]
+	q1 -> q1[label=<Select_File>, color="forestgreen"]
+	q1 -> q1[label=<Unblock_CHV>, color="forestgreen"]
+	q1 -> q1[label=<Verify_CHV>, color="forestgreen"]
+	q1 -> q3[label=<Verify_CHV>, color="forestgreen"]
+	q3 -> q3[label=<Read_Binary>, color="forestgreen"]
+	q3 -> q3[label=<Reset>, color="forestgreen"]
+	q3 -> q3[label=<Select_File>, color="forestgreen"]
+	q3 -> q3[label=<Unblock_CHV>, color="forestgreen"]
+	q3 -> q3[label=<Verify_CHV>, color="forestgreen"]
+	q0 -> q2[label=<Verify_CHV>, color="forestgreen"]
+	q2 -> q2[label=<Read_Binary>, color="forestgreen"]
+	q2 -> q2[label=<Reset>, color="forestgreen"]
+	q2 -> q2[label=<Select_File>, color="forestgreen"]
+	q2 -> q2[label=<Unblock_CHV>, color="forestgreen"]
+	q2 -> q0[label=<Unblock_CHV>, color="forestgreen"]
+	q2 -> q3[label=<Unblock_CHV>, color="forestgreen"]
+	q2 -> q2[label=<Verify_CHV>, color="forestgreen"]
+
+}

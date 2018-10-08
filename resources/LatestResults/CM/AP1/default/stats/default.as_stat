@@ -1,0 +1,6 @@
+Abstract States (4 in 00:00:00.020):
+
+q0 = ¬(p0 = and(Status=on[1], Balance >= 50, AskCof=1, CofLeft > 0)), ¬(p1 = and(Status=on[1], Balance > 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))
+q1 = ¬(p0 = and(Status=on[1], Balance >= 50, AskCof=1, CofLeft > 0)), ¬(p1 = and(Status=on[1], Balance > 0, AskChange=1)), (p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))
+q2 = ¬(p0 = and(Status=on[1], Balance >= 50, AskCof=1, CofLeft > 0)), (p1 = and(Status=on[1], Balance > 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))
+q4 = (p0 = and(Status=on[1], Balance >= 50, AskCof=1, CofLeft > 0)), ¬(p1 = and(Status=on[1], Balance > 0, AskChange=1)), ¬(p2 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))

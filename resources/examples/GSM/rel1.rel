@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <var-decreases>
+            <var name="counterCHV"/>
+        </var-decreases>
+
+        <var-decreases>
+            <var name="counterUnblockCHV"/>
+        </var-decreases>
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <all-transitions/>
+    </expected-transitions>
+
+</relevance>

@@ -5,7 +5,7 @@ package algorithms.statistics;
  * Time : 20:13
  */
 
-abstract class AStatistic<Value> {
+public abstract class AStatistic<Value> {
 
     final Value value;
 

@@ -14,7 +14,6 @@ import langs.maths.generic.arith.AArithExpr;
 import langs.maths.generic.arith.literals.AValue;
 import langs.maths.generic.arith.literals.Int;
 import langs.maths.generic.arith.operators.Minus;
-import langs.maths.generic.arith.operators.Times;
 import langs.maths.generic.bool.operators.And;
 import langs.maths.set.AFiniteSetExpr;
 import solvers.z3.Z3;
@@ -41,30 +40,42 @@ public final class ReducedVariantComputer extends AVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
+        /*return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
-        ));
+        ));*/
+        return new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        );
     }
 
     @Override
     public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
+        /*return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
-        ));
+        ));*/
+        return new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        );
     }
 
     @Override
     public AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
+        /*return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
-        ));
+        ));*/
+        return new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        );
     }
 
     @Override
     public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
+        /*return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
                 ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
-        ));
+        ));*/
+        return new Int(
+                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        );
     }
 
     @Override

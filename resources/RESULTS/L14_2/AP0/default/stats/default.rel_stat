@@ -1,0 +1,76 @@
+Relevance Predicate:
+
+or(
+	and(
+		Mvt(1)=0
+		Mvt_(1)=1
+	)
+	and(
+		Dir(1)=-1
+		Dir_(1)=1
+	)
+	and(
+		Dir(1)=1
+		Dir_(1)=-1
+	)
+	and(
+		Portes(1)=fermees[1]
+		Portes_(1)=ouvertes[0]
+	)
+	and(
+		Portes(1)=ouvertes[0]
+		Portes_(1)=refermees[2]
+	)
+	and(
+		Dir(1)=1 => Pos_(1) > Pos(1)
+		Dir(1)=-1 => Pos_(1) < Pos(1)
+	)
+	and(
+		Mvt(2)=0
+		Mvt_(2)=1
+	)
+	and(
+		Dir(2)=-1
+		Dir_(2)=1
+	)
+	and(
+		Dir(2)=1
+		Dir_(2)=-1
+	)
+	and(
+		Portes(2)=fermees[1]
+		Portes_(2)=ouvertes[0]
+	)
+	and(
+		Portes(2)=ouvertes[0]
+		Portes_(2)=refermees[2]
+	)
+	and(
+		Dir(2)=1 => Pos_(2) > Pos(2)
+		Dir(2)=-1 => Pos_(2) < Pos(2)
+	)
+	and(
+		Mvt(3)=0
+		Mvt_(3)=1
+	)
+	and(
+		Dir(3)=-1
+		Dir_(3)=1
+	)
+	and(
+		Dir(3)=1
+		Dir_(3)=-1
+	)
+	and(
+		Portes(3)=fermees[1]
+		Portes_(3)=ouvertes[0]
+	)
+	and(
+		Portes(3)=ouvertes[0]
+		Portes_(3)=refermees[2]
+	)
+	and(
+		Dir(3)=1 => Pos_(3) > Pos(3)
+		Dir(3)=-1 => Pos_(3) < Pos(3)
+	)
+)

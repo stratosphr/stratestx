@@ -1,0 +1,47 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q1[label=<<b>c<sub>0</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c1q3[label=<<b>c<sub>1</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c3q3[label=<<b>c<sub>3</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c4q3[label=<<b>c<sub>4</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c6q3[label=<<b>c<sub>6</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c2q1[label=<<b>c<sub>2</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c5q1[label=<<b>c<sub>5</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c7q1[label=<<b>c<sub>7</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c8q3[label=<<b>c<sub>8</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c9q3[label=<<b>c<sub>9</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c10q3[label=<<b>c<sub>10</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c11q3[label=<<b>c<sub>11</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c12q3[label=<<b>c<sub>12</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c13q2[label=<<b>c<sub>13</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c14q3[label=<<b>c<sub>14</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c15q3[label=<<b>c<sub>15</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c16q3[label=<<b>c<sub>16</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c17q3[label=<<b>c<sub>17</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c18q2[label=<<b>c<sub>18</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c19q3[label=<<b>c<sub>19</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c20q2[label=<<b>c<sub>20</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c21q2[label=<<b>c<sub>21</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+
+	__invisible__ -> c0q1[penwidth=3, color="forestgreen"]
+	c0q1 -> c1q3[label=<Fail>, color="forestgreen"]
+	c1q3 -> c3q3[label=<Fail>, color="forestgreen"]
+	c3q3 -> c1q3[label=<Repair>, color="forestgreen"]
+	c3q3 -> c4q3[label=<Tic>, color="forestgreen"]
+	c4q3 -> c6q3[label=<Commute>, color="forestgreen"]
+	c1q3 -> c0q1[label=<Repair>, color="forestgreen"]
+	c0q1 -> c2q1[label=<Tic>, color="forestgreen"]
+	c2q1 -> c5q1[label=<Commute>, color="forestgreen"]
+	c7q1 -> c0q1[label=<Commute>, color="deepskyblue4", style="dashed"]
+	c8q3 -> c9q3[label=<Commute>, color="deepskyblue4", style="dashed"]
+	c10q3 -> c11q3[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c12q3 -> c13q2[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c14q3 -> c15q3[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c16q3 -> c17q3[label=<Tic>, color="deepskyblue4", style="dashed"]
+	c18q2 -> c19q3[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c20q2 -> c21q2[label=<Tic>, color="deepskyblue4", style="dashed"]
+
+}

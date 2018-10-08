@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <fun-decreases>
+            <fun name="counterChv">
+                <enum-value name="chv1"/>
+            </fun>
+        </fun-decreases>
+
+        <fun-decreases>
+            <fun name="counterChv">
+                <enum-value name="chv2"/>
+            </fun>
+        </fun-decreases>
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <all-transitions/>
+    </expected-transitions>
+
+</relevance>

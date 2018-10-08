@@ -1,0 +1,6 @@
+Abstract States (4 in 00:00:00.048):
+
+q0 = ¬(p0 = h=tic[6]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))
+q1 = ¬(p0 = h=tic[6]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))
+q2 = (p0 = h=tic[6]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))
+q3 = (p0 = h=tic[6]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))

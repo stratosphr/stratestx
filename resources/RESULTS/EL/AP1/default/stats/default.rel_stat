@@ -1,0 +1,44 @@
+Relevance Predicate:
+
+or(
+	and(
+		bat(1)=ok[3]
+		bat_(1)=ko[2]
+	)
+	and(
+		bat(2)=ok[3]
+		bat_(2)=ko[2]
+	)
+	and(
+		bat(3)=ok[3]
+		bat_(3)=ko[2]
+	)
+	and(
+		bat(4)=ok[3]
+		bat_(4)=ko[2]
+	)
+	and(
+		bat(5)=ok[3]
+		bat_(5)=ko[2]
+	)
+	and(
+		bat(6)=ok[3]
+		bat_(6)=ko[2]
+	)
+	and(
+		bat(7)=ok[3]
+		bat_(7)=ko[2]
+	)
+	and(
+		bat(8)=ok[3]
+		bat_(8)=ko[2]
+	)
+	and(
+		bat(9)=ok[3]
+		bat_(9)=ko[2]
+	)
+	and(
+		bat(10)=ok[3]
+		bat_(10)=ko[2]
+	)
+)

@@ -108,6 +108,12 @@ public final class FullSemanticsComputer extends AComputer<ATS> {
                     transitions.add(new ConcreteTransition(c, e, c_));
                     alpha.put(c_, q_);
                     kappa.put(c_, GREEN);
+                    if (transitions.size() % 100 == 0) {
+                        System.out.println("transitions: " + transitions.size());
+                    }
+                    if (states.size() % 100 == 0) {
+                        System.out.println("states: " + states.size());
+                    }
                 }
             }
             state = states.entrySet().stream().filter(entry -> entry.getValue().equals(false)).findFirst();

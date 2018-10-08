@@ -1,0 +1,16 @@
+Relevance Predicate:
+
+or(
+	and(
+		currentDirectory=mf[1]
+		currentDirectory_=dfgsm[2]
+	)
+	and(
+		currentFile=none[0]
+		currentFile_=efimsi[5]
+	)
+	and(
+		dd=nodata[28]
+		dd_=d3[21]
+	)
+)

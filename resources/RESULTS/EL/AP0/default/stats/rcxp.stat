@@ -1,0 +1,192 @@
+Results for RCXP (in 00:00:05.070):
+
+NB_EV: 4
+
+AP: AP0
+
+NB_AP: 2
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 4
+
+NB_AS_RCHD: 4
+
+TAU_AS: 100.00
+
+NB_AT: 11
+
+NB_AT_RCHD: 11
+
+TAU_AT: 100.00
+
+NB_EXPECTED_AS: 4
+
+NB_EXPECTED_AS_RCHD: 4
+
+TAU_EXPECTED_AS: 100.00
+
+NB_EXPECTED_AT: 2
+
+NB_EXPECTED_AT_RCHD: 2
+
+TAU_EXPECTED_AT: 100.00
+
+NB_CS: 53
+
+NB_CS_RCHD: 35
+
+NB_CT: 48
+
+NB_CT_RCHD: 39
+
+RHO_CS: 66.04
+
+RHO_CT: 81.25
+
+NB_TESTS: 7
+
+NB_STEPS: 62
+
+TESTS: 
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Tic ]-> c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1
+c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1 -[ Commute ]-> c15q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=2
+c15q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=2 -[ Fail ]-> c35q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=4
+c35q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=4 -[ Fail ]-> c36q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=5
+c36q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=5 -[ Fail ]-> c37q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=5
+c37q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=5 -[ Fail ]-> c38q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=1
+c38q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=1 -[ Fail ]-> c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3 -[ Repair ]-> c52q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Repair ]-> c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c45q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=2
+c45q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=2 -[ Fail ]-> c46q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=5
+c46q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=5 -[ Fail ]-> c47q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=3, bat(7)=3, h=1, sw=6
+c47q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=3, bat(7)=3, h=1, sw=6 -[ Fail ]-> c48q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=3, bat(7)=2, h=1, sw=6
+c48q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=3, bat(7)=2, h=1, sw=6 -[ Fail ]-> c49q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+c49q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3 -[ Fail ]-> c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3 -[ Tic ]-> c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3 -[ Repair ]-> c51q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Tic ]-> c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1
+c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1 -[ Fail ]-> c39q3 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=2
+c39q3 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=2 -[ Fail ]-> c40q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=6
+c40q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=6 -[ Fail ]-> c33q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=4
+c33q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=4 -[ Fail ]-> c34q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=4
+c34q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=4 -[ Fail ]-> c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3 -[ Repair ]-> c51q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Tic ]-> c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1
+c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1 -[ Fail ]-> c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1
+c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1 -[ Repair ]-> c23q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c23q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c28q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c28q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c29q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c29q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c30q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c30q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c31q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=3, h=0, sw=1
+c31q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c26q2 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1
+c26q2 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1 -[ Repair ]-> c50q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Tic ]-> c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1
+c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1 -[ Fail ]-> c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1
+c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1 -[ Fail ]-> c32q3 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=2
+c32q3 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=2 -[ Fail ]-> c33q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=4
+c33q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=4 -[ Fail ]-> c34q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=4
+c34q3 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=4 -[ Fail ]-> c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+c14q2 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3 -[ Repair ]-> c51q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=3
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Tic ]-> c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1
+c8q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=0, sw=1 -[ Fail ]-> c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1
+c18q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=0, sw=1 -[ Repair ]-> c23q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c23q3 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c28q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c28q3 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c29q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c29q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c30q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1
+c30q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=3, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c31q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=3, h=0, sw=1
+c31q3 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=3, h=0, sw=1 -[ Fail ]-> c26q2 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1
+c26q2 = bat(1)=3, bat(2)=2, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1 -[ Repair ]-> c27q3 = bat(1)=3, bat(2)=3, bat(3)=2, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=0, sw=1
+############################################
+c0q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=3, h=1, sw=1 -[ Fail ]-> c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1
+c1q1 = bat(1)=3, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=1 -[ Fail ]-> c41q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=6
+c41q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=3, bat(7)=2, h=1, sw=6 -[ Fail ]-> c42q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=2
+c42q1 = bat(1)=2, bat(2)=3, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=2 -[ Fail ]-> c43q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=4
+c43q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=3, bat(6)=2, bat(7)=2, h=1, sw=4 -[ Fail ]-> c44q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=4
+c44q1 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=3, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=4 -[ Fail ]-> c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+c13q0 = bat(1)=2, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3 -[ Repair ]-> c52q1 = bat(1)=3, bat(2)=2, bat(3)=3, bat(4)=2, bat(5)=2, bat(6)=2, bat(7)=2, h=1, sw=3
+############################################
+
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Repair ]-> q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Tic ]-> q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Repair ]-> q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Tic ]-> q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Repair ]-> q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Commute ]-> q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Repair ]-> q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_RCHD_EXPECTED_AT: 
+q1 = ¬(p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q0 = ¬(p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+q3 = (p0 = h=tic[0]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3])))) -[ Fail ]-> q2 = (p0 = h=tic[0]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[3], bat(j)=ok[3]))))
+
+
+SET_UNRCHD_AS: 
+
+
+
+SET_UNRCHD_EXPECTED_AS: 
+
+
+
+SET_UNRCHD_AT: 
+
+
+
+SET_UNRCHD_EXPECTED_AT: 
+
+
+
+TIME_ATS: 00:00:05.070
+
+TIME_TESTS: 00:00:00.004

@@ -1,0 +1,46 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q1[label=<<b>c<sub>0</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c2q3[label=<<b>c<sub>2</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c7q3[label=<<b>c<sub>7</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c14q3[label=<<b>c<sub>14</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c4q1[label=<<b>c<sub>4</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c1q1[label=<<b>c<sub>1</sub>q<sub>1</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c3q3[label=<<b>c<sub>3</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c5q3[label=<<b>c<sub>5</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c6q3[label=<<b>c<sub>6</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c8q3[label=<<b>c<sub>8</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c9q3[label=<<b>c<sub>9</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c10q3[label=<<b>c<sub>10</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c11q2[label=<<b>c<sub>11</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c12q3[label=<<b>c<sub>12</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c13q3[label=<<b>c<sub>13</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c15q3[label=<<b>c<sub>15</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c16q3[label=<<b>c<sub>16</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c17q2[label=<<b>c<sub>17</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c18q3[label=<<b>c<sub>18</sub>q<sub>3</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c19q2[label=<<b>c<sub>19</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c20q2[label=<<b>c<sub>20</sub>q<sub>2</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+
+	__invisible__ -> c0q1[penwidth=3, color="forestgreen"]
+	c0q1 -> c2q3[label=<Fail>, color="forestgreen"]
+	c2q3 -> c7q3[label=<Fail>, color="forestgreen"]
+	c7q3 -> c2q3[label=<Repair>, color="forestgreen"]
+	c7q3 -> c14q3[label=<Tic>, color="forestgreen"]
+	c2q3 -> c0q1[label=<Repair>, color="forestgreen"]
+	c0q1 -> c4q1[label=<Tic>, color="forestgreen"]
+	c1q1 -> c0q1[label=<Commute>, color="deepskyblue4", style="dashed"]
+	c1q1 -> c3q3[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c5q3 -> c6q3[label=<Commute>, color="deepskyblue4", style="dashed"]
+	c8q3 -> c9q3[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c10q3 -> c11q2[label=<Fail>, color="deepskyblue4", style="dashed"]
+	c12q3 -> c8q3[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c13q3 -> c1q1[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c15q3 -> c16q3[label=<Tic>, color="deepskyblue4", style="dashed"]
+	c17q2 -> c18q3[label=<Repair>, color="deepskyblue4", style="dashed"]
+	c19q2 -> c20q2[label=<Tic>, color="deepskyblue4", style="dashed"]
+
+}

@@ -109,8 +109,8 @@ public final class ResourcesManager {
 
     public enum EModel {CA, CM, EL, EV, EXAMPLE, GSM, L14, L14_2, PH}
 
-    public enum EAbstractionPredicatesSet {AP0, AP1, AP2, AP3, AP4}
+    public enum EAbstractionPredicatesSet {AP0, AP1, AP2, AP3, AP4, AP5, AP6}
 
-    public enum ERelevancePredicate {REL0, REL1, REL2, REL3, REL4}
+    public enum ERelevancePredicate {REL0, REL1, REL2, REL3, REL4, REL5, REL6}
 
 }

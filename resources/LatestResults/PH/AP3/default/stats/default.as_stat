@@ -1,0 +1,7 @@
+Abstract States (5 in 00:00:00.035):
+
+q0 = ¬(p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))
+q1 = ¬(p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), (p2 = and(Combine=1, Etat=5))
+q4 = (p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))
+q5 = (p0 = NbEssai=0), ¬(p1 = and(Etat=4, Combine=0, NbEssai=0)), (p2 = and(Combine=1, Etat=5))
+q6 = (p0 = NbEssai=0), (p1 = and(Etat=4, Combine=0, NbEssai=0)), ¬(p2 = and(Combine=1, Etat=5))

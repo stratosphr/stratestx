@@ -1,0 +1,5 @@
+Abstraction Predicates (3):
+
+(p0 = Portes(1)=ouvertes[0])
+(p1 = Portes(1)=refermees[2])
+(p2 = ∃(R).(and(and(R ∈ Rames), and(R=1, Mvt(R)=1, ∀(R1).(and(R1 ∈ Rames) => and(R1 ≠ R) => or(Pos(R1) ≠ (Pos(R) + Dir(R)), , Dir(R1) ≠ Dir(R)))))))

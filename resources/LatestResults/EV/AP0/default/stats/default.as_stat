@@ -1,0 +1,6 @@
+Abstract States (4 in 00:00:00.162):
+
+q0 = ¬(Montee_Cabine = and(Pos < LF, Pos >= 0, PC=refermees[5], PE(Pos)=fermees[4], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Etage = and(PE(Pos)=fermees[4], PC=fermees[4])), ¬(p0 = PC=ouvertes[3])
+q1 = ¬(Montee_Cabine = and(Pos < LF, Pos >= 0, PC=refermees[5], PE(Pos)=fermees[4], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), (Ouverture_Portes_Etage = and(PE(Pos)=fermees[4], PC=fermees[4])), ¬(p0 = PC=ouvertes[3])
+q2 = (Montee_Cabine = and(Pos < LF, Pos >= 0, PC=refermees[5], PE(Pos)=fermees[4], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Etage = and(PE(Pos)=fermees[4], PC=fermees[4])), ¬(p0 = PC=ouvertes[3])
+q4 = ¬(Montee_Cabine = and(Pos < LF, Pos >= 0, PC=refermees[5], PE(Pos)=fermees[4], Dir=1, or(∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BM(etage)=1)), ∃(etage).(and(and(etage ∈ [(Pos + 1)..LF], ), , BC(etage)=1))))), ¬(Ouverture_Portes_Etage = and(PE(Pos)=fermees[4], PC=fermees[4])), (p0 = PC=ouvertes[3])

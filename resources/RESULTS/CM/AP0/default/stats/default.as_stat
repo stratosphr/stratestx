@@ -1,0 +1,7 @@
+Abstract States (5 in 00:00:00.134):
+
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))

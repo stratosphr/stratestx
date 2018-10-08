@@ -1,0 +1,120 @@
+Results for CXPASO (in 00:00:00.662):
+
+NB_EV: 4
+
+AP: AP1
+
+NB_AP: 2
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 3
+
+NB_AS_RCHD: 2
+
+TAU_AS: 66.67
+
+NB_AT: 9
+
+NB_AT_RCHD: 6
+
+TAU_AT: 66.67
+
+NB_EXPECTED_AS: 3
+
+NB_EXPECTED_AS_RCHD: 2
+
+TAU_EXPECTED_AS: 66.67
+
+NB_EXPECTED_AT: 1
+
+NB_EXPECTED_AT_RCHD: 0
+
+TAU_EXPECTED_AT: 0.00
+
+NB_CS: 18
+
+NB_CS_RCHD: 6
+
+NB_CT: 13
+
+NB_CT_RCHD: 6
+
+RHO_CS: 33.33
+
+RHO_CT: 46.15
+
+NB_TESTS: 1
+
+NB_STEPS: 6
+
+TESTS: 
+c0q1 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=1 -[ Fail ]-> c1q1 = bat(1)=8, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=7
+c1q1 = bat(1)=8, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=7 -[ Repair ]-> c2q1 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=7
+c2q1 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=7 -[ Tic ]-> c3q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=6, sw=7
+c3q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=6, sw=7 -[ Fail ]-> c5q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=8, bat(7)=9, bat(8)=9, h=6, sw=7
+c5q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=8, bat(7)=9, bat(8)=9, h=6, sw=7 -[ Repair ]-> c3q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=6, sw=7
+c3q2 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=6, sw=7 -[ Commute ]-> c4q1 = bat(1)=9, bat(2)=9, bat(3)=9, bat(4)=9, bat(5)=9, bat(6)=9, bat(7)=9, bat(8)=9, h=7, sw=3
+############################################
+
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_AS: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_EXPECTED_AS: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_AT: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Fail ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Repair ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Commute ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Fail ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Repair ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_EXPECTED_AT: 
+
+
+
+SET_UNRCHD_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_UNRCHD_EXPECTED_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_UNRCHD_AT: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Repair ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Fail ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_UNRCHD_EXPECTED_AT: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+TIME_ATS: 00:00:00.662
+
+TIME_TESTS: 00:00:00.000

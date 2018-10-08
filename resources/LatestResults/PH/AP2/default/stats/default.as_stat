@@ -1,0 +1,9 @@
+Abstract States (7 in 00:00:00.042):
+
+q2 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q3 = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q4 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q6 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q7 = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))
+q10 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), ¬(p3 = and(Combine=1, ¬Etat=5))
+q11 = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), (p2 = or(Combine=1, Etat=5)), (p3 = and(Combine=1, ¬Etat=5))

@@ -21,7 +21,8 @@ import static utilities.ResourcesManager.EAbstractionPredicatesSet;
  * Time : 17:23
  */
 
-final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
+@SuppressWarnings("WeakerAccess")
+public final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
 
     private final ATS ats;
     private final EAbstractionPredicatesSet abstractionPredicatesSet;
@@ -47,6 +48,7 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
         this.atsComputationTime = atsComputationTime;
         for (EStatistic statistic : statistics) {
             AStatistic value;
+            System.out.print("Started computation of " + statistic + "...");
             switch (statistic) {
                 case NB_EV:
                     value = getNbEv();
@@ -171,6 +173,7 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
                 default:
                     throw new Error("Unable to compute value for unknown statistic \"" + statistic + "\".");
             }
+            System.out.println("Statistics " + statistic + " computed.");
             put(statistic, value);
         }
     }
@@ -357,14 +360,21 @@ final class Statistics extends LinkedHashMap<EStatistic, AStatistic> {
     private ComputerResult<List<Test>> getTestsComputation() {
         if (this.tests == null) {
             Tuple<LinkedHashSet<ConcreteState>, ArrayList<ConcreteTransition>> result = getConcreteRchdPartComputation().getResult();
+            System.out.println("1");
             ConcreteState ghostState = new ConcreteState("__ghost__", new TreeMap<>());
+            System.out.println("2");
             ComputerResult<AGraph<ConcreteState, ConcreteTransition>> scGraphComputation = new SCConcreteGraphComputer(new CTS(ats.getCTS().getInitialStates(), result.getLeft(), result.getRight()), ghostState, "__init__", "__reset__").compute();
+            System.out.println("3");
             AGraph<ConcreteState, ConcreteTransition> scGraph = scGraphComputation.getResult();
+            System.out.println("4");
             ComputerResult<List<Test>> testsComputation = new TestsComputer(ghostState, scGraph.getStates(), scGraph.getTransitions()).compute();
+            System.out.println("5");
             for (Test test : testsComputation.getResult()) {
                 test.removeIf(concreteTransition -> concreteTransition.getSource().equals(ghostState) || concreteTransition.getTarget().equals(ghostState));
             }
+            System.out.println("6");
             testsComputation.getResult().removeIf(ArrayList::isEmpty);
+            System.out.println("7");
             this.tests = new ComputerResult<>(testsComputation.getResult(), new Time(scGraphComputation.getTime().getNanoseconds() + testsComputation.getTime().getNanoseconds()));
         }
         return tests;

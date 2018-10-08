@@ -1,0 +1,25 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q30[label=<<b>q<sub>30</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q22[label=<<b>q<sub>22</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q39[label=<<b>q<sub>39</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q5[label=<<b>q<sub>5</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q7[label=<<b>q<sub>7</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q30[penwidth=3, color="forestgreen"]
+	q30 -> q22[label=<Appel_Qui_Donc>, color="forestgreen"]
+	q22 -> q22[label=<Start>, color="forestgreen"]
+	q22 -> q39[label=<Timeout>, color="forestgreen"]
+	q39 -> q39[label=<Start>, color="forestgreen"]
+	q39 -> q5[label=<Timeout>, color="forestgreen"]
+	q5 -> q5[label=<Start>, color="forestgreen"]
+	q5 -> q7[label=<Timeout>, color="forestgreen"]
+	q7 -> q30[label=<HangUp>, color="forestgreen"]
+	q5 -> q30[label=<HangUp>, color="forestgreen"]
+	q39 -> q30[label=<HangUp>, color="forestgreen"]
+	q22 -> q30[label=<HangUp>, color="forestgreen"]
+
+}

@@ -1,0 +1,488 @@
+Results for RCXP (in 00:00:03.242):
+
+NB_EV: 11
+
+AP: AP0
+
+NB_AP: 3
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 5
+
+NB_AS_RCHD: 5
+
+TAU_AS: 100.00
+
+NB_AT: 21
+
+NB_AT_RCHD: 16
+
+TAU_AT: 76.19
+
+NB_EXPECTED_AS: 5
+
+NB_EXPECTED_AS_RCHD: 5
+
+TAU_EXPECTED_AS: 100.00
+
+NB_EXPECTED_AT: 2
+
+NB_EXPECTED_AT_RCHD: 2
+
+TAU_EXPECTED_AT: 100.00
+
+NB_CS: 128
+
+NB_CS_RCHD: 98
+
+NB_CT: 154
+
+NB_CT_RCHD: 133
+
+RHO_CS: 76.56
+
+RHO_CT: 86.36
+
+NB_TESTS: 22
+
+NB_STEPS: 331
+
+TESTS: 
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c106q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=6, Pot=0, Status=1
+c106q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c107q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c107q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ backBalance ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c48q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=5, Pot=50, Status=1
+c48q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c50q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=5, Pot=50, Status=1
+c50q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c51q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1
+c51q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1 -[ backBalance ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c60q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=4, Pot=100, Status=1
+c60q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c62q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=4, Pot=100, Status=1
+c62q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c63q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1
+c63q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1 -[ backBalance ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c72q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=3, Pot=150, Status=1
+c72q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c74q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=3, Pot=150, Status=1
+c74q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c75q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1
+c75q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1 -[ backBalance ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c84q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=2, Pot=200, Status=1
+c84q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c86q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=2, Pot=200, Status=1
+c86q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c87q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1
+c87q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1 -[ backBalance ]-> c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1
+c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1 -[ insert100 ]-> c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1
+c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1 -[ insert100 ]-> c95q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=1, Pot=250, Status=1
+c95q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=1, Pot=250, Status=1 -[ cofReq ]-> c97q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=1, Pot=250, Status=1
+c97q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=1, Pot=250, Status=1 -[ serveCof ]-> c98q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=2
+c98q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=2 -[ powerDown ]-> c120q4 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=0
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c106q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=6, Pot=0, Status=1
+c106q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c107q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c107q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ autoOut ]-> c127q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c29q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=6, Pot=0, Status=1
+c29q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c102q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=6, Pot=0, Status=1
+c102q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c103q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1
+c103q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1 -[ backBalance ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c47q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=5, Pot=50, Status=1
+c47q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c53q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c53q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ backBalance ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c59q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=4, Pot=100, Status=1
+c59q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c65q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c65q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ backBalance ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c71q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=3, Pot=150, Status=1
+c71q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c77q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c77q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ backBalance ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c83q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=2, Pot=200, Status=1
+c83q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c89q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1
+c89q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1 -[ backBalance ]-> c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1
+c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1
+c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1
+c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c93q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1
+c93q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c95q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=1, Pot=250, Status=1
+c95q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=1, Pot=250, Status=1 -[ cofReq ]-> c97q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=1, Pot=250, Status=1
+c97q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=1, Pot=250, Status=1 -[ serveCof ]-> c98q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=2
+c98q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=2 -[ powerDown ]-> c120q4 = AskChange=1, AskCof=0, Balance=150, CofLeft=0, Pot=300, Status=0
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1
+c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c81q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=2, Pot=200, Status=1
+c81q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1
+c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1
+c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1 -[ insert100 ]-> c93q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1
+c93q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1 -[ cofReq ]-> c96q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=1, Pot=250, Status=1
+c96q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=1, Pot=250, Status=1 -[ serveCof ]-> c99q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=0, Pot=300, Status=2
+c99q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=0, Pot=300, Status=2 -[ powerDown ]-> c121q4 = AskChange=1, AskCof=0, Balance=100, CofLeft=0, Pot=300, Status=0
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1
+c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1
+c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c85q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=2, Pot=200, Status=1
+c85q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c88q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1
+c88q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1 -[ backBalance ]-> c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1
+c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1 -[ insert50 ]-> c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1
+c91q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1 -[ cofReq ]-> c92q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=1, Pot=250, Status=1
+c92q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=1, Pot=250, Status=1 -[ serveCof ]-> c101q1 = AskChange=0, AskCof=0, Balance=0, CofLeft=0, Pot=300, Status=2
+c101q1 = AskChange=0, AskCof=0, Balance=0, CofLeft=0, Pot=300, Status=2 -[ powerDown ]-> c16q4 = AskChange=0, AskCof=0, Balance=0, CofLeft=0, Pot=300, Status=0
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1
+c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1
+c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c84q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=2, Pot=200, Status=1
+c84q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c86q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=2, Pot=200, Status=1
+c86q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c87q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1
+c87q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=1 -[ autoOut ]-> c117q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=1, Pot=250, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1
+c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c81q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=2, Pot=200, Status=1
+c81q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1
+c42q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=1, Pot=250, Status=1 -[ insert100 ]-> c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1
+c90q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1 -[ cofReq ]-> c94q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=1, Pot=250, Status=1
+c94q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=1, Pot=250, Status=1 -[ serveCof ]-> c100q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=0, Pot=300, Status=2
+c100q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=0, Pot=300, Status=2 -[ powerDown ]-> c122q4 = AskChange=1, AskCof=0, Balance=50, CofLeft=0, Pot=300, Status=0
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1
+c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c73q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=3, Pot=150, Status=1
+c73q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c76q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c76q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ backBalance ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c80q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ insert50 ]-> c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1
+c82q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c85q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=2, Pot=200, Status=1
+c85q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c88q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1
+c88q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=1 -[ autoOut ]-> c118q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=1, Pot=250, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1
+c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c72q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=3, Pot=150, Status=1
+c72q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c74q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=3, Pot=150, Status=1
+c74q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c75q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1
+c75q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=1 -[ autoOut ]-> c114q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=2, Pot=200, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1
+c69q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1
+c78q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=2, Pot=200, Status=1 -[ insert100 ]-> c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c79q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ cofReq ]-> c83q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=2, Pot=200, Status=1
+c83q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=2, Pot=200, Status=1 -[ serveCof ]-> c89q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1
+c89q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=1 -[ autoOut ]-> c119q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=1, Pot=250, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1
+c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c61q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=4, Pot=100, Status=1
+c61q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c64q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c64q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ backBalance ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c68q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ insert50 ]-> c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1
+c70q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c73q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=3, Pot=150, Status=1
+c73q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c76q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1
+c76q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=1 -[ autoOut ]-> c115q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=2, Pot=200, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1
+c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c60q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=4, Pot=100, Status=1
+c60q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c62q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=4, Pot=100, Status=1
+c62q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c63q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1
+c63q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=1 -[ autoOut ]-> c111q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=3, Pot=150, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1
+c57q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1
+c66q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=3, Pot=150, Status=1 -[ insert100 ]-> c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c67q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ cofReq ]-> c71q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=3, Pot=150, Status=1
+c71q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=3, Pot=150, Status=1 -[ serveCof ]-> c77q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1
+c77q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=1 -[ autoOut ]-> c116q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=2, Pot=200, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1
+c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c49q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=5, Pot=50, Status=1
+c49q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c52q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c52q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ backBalance ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c56q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ insert50 ]-> c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1
+c58q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c61q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=4, Pot=100, Status=1
+c61q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c64q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1
+c64q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=1 -[ autoOut ]-> c112q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=3, Pot=150, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1
+c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c48q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=5, Pot=50, Status=1
+c48q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c50q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=5, Pot=50, Status=1
+c50q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c51q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1
+c51q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=1 -[ autoOut ]-> c108q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=4, Pot=100, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1
+c45q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1
+c54q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=4, Pot=100, Status=1 -[ insert100 ]-> c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c55q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ cofReq ]-> c59q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=4, Pot=100, Status=1
+c59q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=4, Pot=100, Status=1 -[ serveCof ]-> c65q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1
+c65q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=1 -[ autoOut ]-> c113q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=3, Pot=150, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1
+c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c104q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=6, Pot=0, Status=1
+c104q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c105q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c105q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ backBalance ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1
+c44q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ insert50 ]-> c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1
+c46q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c49q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=5, Pot=50, Status=1
+c49q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c52q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1
+c52q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=1 -[ autoOut ]-> c109q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=4, Pot=100, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1
+c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c29q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=6, Pot=0, Status=1
+c29q2 = AskChange=0, AskCof=0, Balance=200, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c102q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=6, Pot=0, Status=1
+c102q2 = AskChange=0, AskCof=1, Balance=200, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c103q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1
+c103q2 = AskChange=1, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=1 -[ autoOut ]-> c123q1 = AskChange=1, AskCof=0, Balance=150, CofLeft=5, Pot=50, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1
+c27q2 = AskChange=0, AskCof=0, Balance=150, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c104q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=6, Pot=0, Status=1
+c104q2 = AskChange=0, AskCof=1, Balance=150, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c105q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c105q2 = AskChange=1, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ autoOut ]-> c124q1 = AskChange=1, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ cofReq ]-> c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1
+c25q2 = AskChange=0, AskCof=1, Balance=50, CofLeft=6, Pot=0, Status=1 -[ serveCof ]-> c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1
+c36q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=5, Pot=50, Status=1 -[ insert100 ]-> c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1
+c43q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=5, Pot=50, Status=1 -[ cofReq ]-> c47q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=5, Pot=50, Status=1
+c47q2 = AskChange=0, AskCof=1, Balance=100, CofLeft=5, Pot=50, Status=1 -[ serveCof ]-> c53q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1
+c53q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=1 -[ autoOut ]-> c110q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=4, Pot=100, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ changeReq ]-> c24q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c24q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ backBalance ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ powerDown ]-> c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ autoOut ]-> c5q1 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=2
+c5q1 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=2 -[ powerDown ]-> c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert50 ]-> c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c11q2 = AskChange=0, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ changeReq ]-> c24q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1
+c24q2 = AskChange=1, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=1 -[ autoOut ]-> c125q1 = AskChange=1, AskCof=0, Balance=50, CofLeft=6, Pot=0, Status=2
+############################################
+c0q0 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=0 -[ powerUp ]-> c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1
+c3q3 = AskChange=0, AskCof=0, Balance=0, CofLeft=6, Pot=0, Status=1 -[ insert100 ]-> c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1
+c8q2 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=1 -[ autoOut ]-> c20q1 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=2
+c20q1 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=2 -[ powerDown ]-> c126q0 = AskChange=0, AskCof=0, Balance=100, CofLeft=6, Pot=0, Status=0
+############################################
+
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerUp ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ autoOut ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ backBalance ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ changeReq ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ cofReq ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert100 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert50 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ autoOut ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert100 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ insert50 ]-> q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_RCHD_EXPECTED_AT: 
+q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q2 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ serveCof ]-> q1 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_UNRCHD_AS: 
+
+
+
+SET_UNRCHD_EXPECTED_AS: 
+
+
+
+SET_UNRCHD_AT: 
+q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ addCof ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerDown ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ addCof ]-> q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ powerUp ]-> q3 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), (p1 = Status=on[1]), (p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+q4 = (p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2])) -[ takePot ]-> q0 = ¬(p0 = and(Status=off[0], Pot >= (MaxPot - 50))), ¬(p1 = Status=on[1]), ¬(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+
+
+SET_UNRCHD_EXPECTED_AT: 
+
+
+
+TIME_ATS: 00:00:03.242
+
+TIME_TESTS: 00:00:00.042

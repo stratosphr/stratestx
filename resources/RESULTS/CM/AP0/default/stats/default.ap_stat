@@ -1,0 +1,5 @@
+Abstraction Predicates (3):
+
+(p0 = and(Status=off[0], Pot >= (MaxPot - 50)))
+(p1 = Status=on[1])
+(p2 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))

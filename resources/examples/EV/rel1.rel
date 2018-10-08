@@ -4,7 +4,7 @@
 
     <relevance-predicate>
 
-        <fun-changes>
+        <!--<fun-changes>
             <fun name="PE">
                 <var name="Pos"/>
             </fun>
@@ -67,7 +67,7 @@
 
         <fun-increases>
             <fun name="BD">
-                <int value="2"/>
+                <int value="3"/>
             </fun>
         </fun-increases>
 
@@ -75,7 +75,45 @@
             <fun name="BM">
                 <int value="0"/>
             </fun>
+        </fun-increases>-->
+
+        <fun-increases>
+            <fun name="BC">
+                <int value="3"/>
+            </fun>
         </fun-increases>
+
+        <fun-changes>
+            <fun name="PE">
+                <var name="Pos"/>
+            </fun>
+            <enum-value name="ouvertes"/>
+            <enum-value name="fermees"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="PE">
+                <var name="Pos"/>
+            </fun>
+            <enum-value name="fermees"/>
+            <enum-value name="ouvertes"/>
+        </fun-changes>
+
+        <var-changes>
+            <var name="PC"/>
+            <enum-value name="fermees"/>
+            <enum-value name="ouvertes"/>
+        </var-changes>
+
+        <var-changes>
+            <var name="PC"/>
+            <enum-value name="ouvertes"/>
+            <enum-value name="refermees"/>
+        </var-changes>
+
+        <var-increases>
+            <var name="Pos"/>
+        </var-increases>
 
     </relevance-predicate>
 
@@ -84,7 +122,21 @@
     </expected-states>
 
     <expected-transitions>
-        <all-transitions/>
+        <transition>
+            <state name="q0"/>
+            <event name="aOuverture_Portes_Etage"/>
+            <state name="q0"/>
+        </transition>
+        <transition>
+            <state name="q0"/>
+            <event name="aOuverture_Portes_Etage"/>
+            <state name="q2"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="aOuverture_Portes_Etage"/>
+            <state name="q3"/>
+        </transition>
     </expected-transitions>
 
 </relevance>

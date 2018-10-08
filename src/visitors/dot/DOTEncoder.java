@@ -56,11 +56,11 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
 
     private DOTNode encodeReachedNode(State state) {
         String properties = statesProperties.stream().filter(tuple -> tuple.getRight().containsKey(state)).map(tuple -> "<i>" + tuple.getLeft() + "=" + tuple.getRight().get(state) + "</i>").collect(Collectors.joining("<br/>"));
-        return new DOTNode(state.getName()).setLabel("<b>" + (useFullLabels ? state : state.getName()).toString().replaceAll("<", "&lt;").replaceAll(">", "&gt;") + "</b>" + (properties.isEmpty() ? "" : "<br/><br/>" + properties), true).setShape("box").setStyle("rounded, filled").setFillColor("limegreen").setColor("forestgreen");
+        return new DOTNode(state.getName()).setLabel("<b>" + (useFullLabels ? state : state.getName()).toString().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("c([0-9]+)", "c<sub>$1</sub>").replaceAll("q([0-9]+)", "q<sub>$1</sub>") + "</b>" + (properties.isEmpty() ? "" : "<br/><br/>" + properties), true).setShape("box").setStyle("rounded, filled").setFillColor("limegreen").setColor("forestgreen");
     }
 
     private DOTNode encodeUnreachedNode(State state) {
-        return encodeReachedNode(state).setFillColor("lightblue2").setColor("deepskyblue4");
+        return encodeReachedNode(state).setFillColor("lightblue2").setColor("deepskyblue4").setStyle("rounded, filled, dashed");
     }
 
     private DOTEdge encodeReachedTransition(Transition transition) {
@@ -68,7 +68,7 @@ public final class DOTEncoder<State extends AState, Transition extends ATransiti
     }
 
     private DOTEdge encodeUnreachedTransition(Transition transition) {
-        return encodeReachedTransition(transition).setColor("black").setStyle("dashed");
+        return encodeReachedTransition(transition).setColor("black").setColor("deepskyblue4").setStyle("dashed");
     }
 
     public enum ERankDir {

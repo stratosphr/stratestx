@@ -1,0 +1,6 @@
+Abstraction Predicates (4):
+
+(p0 = NbEssai=1)
+(p1 = NbEssai=0)
+(p2 = or(Combine=1, Etat=5))
+(p3 = and(Combine=1, ¬Etat=5))

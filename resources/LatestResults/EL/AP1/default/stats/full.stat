@@ -1,0 +1,107 @@
+Results for FULL (in 00:10:18.542):
+
+NB_EV: 4
+
+AP: AP1
+
+NB_AP: 2
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 3
+
+NB_AS_RCHD: 3
+
+TAU_AS: 100.00
+
+NB_AT: 9
+
+NB_AT_RCHD: 9
+
+TAU_AT: 100.00
+
+NB_EXPECTED_AS: 3
+
+NB_EXPECTED_AS_RCHD: 3
+
+TAU_EXPECTED_AS: 100.00
+
+NB_EXPECTED_AT: 1
+
+NB_EXPECTED_AT_RCHD: 1
+
+TAU_EXPECTED_AT: 100.00
+
+NB_CS: 2048
+
+NB_CS_RCHD: 2048
+
+NB_CT: 26112
+
+NB_CT_RCHD: 26112
+
+RHO_CS: 100.00
+
+RHO_CT: 100.00
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_EXPECTED_AT: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Repair ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Fail ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Repair ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Commute ]-> q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Fail ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Fail ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7]) -[ Repair ]-> q2 = (p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_RCHD_EXPECTED_AT: 
+q1 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), (p1 = h=tac[7]) -[ Tic ]-> q0 = ¬(p0 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9], h=tic[6])))), ¬(p1 = h=tac[7])
+
+
+SET_UNRCHD_AS: 
+
+
+
+SET_UNRCHD_EXPECTED_AS: 
+
+
+
+SET_UNRCHD_AT: 
+
+
+
+SET_UNRCHD_EXPECTED_AT: 
+
+
+
+TIME_ATS: 00:10:18.542

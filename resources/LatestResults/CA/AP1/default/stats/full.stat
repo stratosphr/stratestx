@@ -1,0 +1,273 @@
+Results for FULL (in 00:00:01.779):
+
+NB_EV: 19
+
+AP: AP1
+
+NB_AP: 3
+
+NB_MAY: -1
+
+NB_MUST_MINUS: -1
+
+NB_MUST_PLUS: -1
+
+NB_MUST_SHARP: -1
+
+NB_AS: 6
+
+NB_AS_RCHD: 6
+
+TAU_AS: 100.00
+
+NB_AT: 56
+
+NB_AT_RCHD: 56
+
+TAU_AT: 100.00
+
+NB_EXPECTED_AS: 6
+
+NB_EXPECTED_AS_RCHD: 6
+
+TAU_EXPECTED_AS: 100.00
+
+NB_EXPECTED_AT: 56
+
+NB_EXPECTED_AT_RCHD: 56
+
+TAU_EXPECTED_AT: 100.00
+
+NB_CS: 60
+
+NB_CS_RCHD: 60
+
+NB_CT: 148
+
+NB_CT_RCHD: 148
+
+RHO_CS: 100.00
+
+RHO_CT: 100.00
+
+SET_EXPECTED_AS: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_RCHD_AS: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_RCHD_EXPECTED_AS: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_EXPECTED_AT: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_RCHD_AT: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_RCHD_EXPECTED_AT: 
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q1 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q2 = ¬(p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Activation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Be_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Stopping ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Ch_Sec_Activation ]-> q0 = ¬(p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Closing ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Increment_Chronometer ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Authorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Alarm_Deactivation ]-> q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Unlocking ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q5 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), (p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ User_Unauthorized ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Car_Moving ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Locking ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Doors_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Glasses_Opening ]-> q4 = (p0 = CS=0), ¬(p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Activation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1)) -[ Light_Deactivation ]-> q6 = (p0 = CS=0), (p1 = and(Tr=0, Mv=0, Do=0, Us=1, Lo=0, Gl=0, AC=0)), ¬(p2 = and(Tr=0, Lo=1, Do=0, Us=1))
+
+
+SET_UNRCHD_AS: 
+
+
+
+SET_UNRCHD_EXPECTED_AS: 
+
+
+
+SET_UNRCHD_AT: 
+
+
+
+SET_UNRCHD_EXPECTED_AT: 
+
+
+
+TIME_ATS: 00:00:01.779

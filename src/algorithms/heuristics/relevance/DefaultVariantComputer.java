@@ -31,7 +31,10 @@ public final class DefaultVariantComputer extends AVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarChanges varChanges, ConcreteState c) {
-        return new Int(((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varChanges.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).size());
+        return new Times(
+                new Int(getRelevantEvents().size()),
+                new Int(((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varChanges.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).size())
+        );
     }
 
     @Override
@@ -41,29 +44,29 @@ public final class DefaultVariantComputer extends AVariantComputer {
 
     @Override
     public AArithExpr getVInit(VarDecreases varDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
-                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        return new Times(new Int(getRelevantEvents().size()), new Int(
+                (int) ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varDecreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).count()
         ));
     }
 
     @Override
     public AArithExpr getVInit(FunDecreases funDecreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
-                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        return new Times(new Int(getRelevantEvents().size()), new Int(
+                (int) ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funDecreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).count()
         ));
     }
 
     @Override
     public AArithExpr getVInit(VarIncreases varIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
-                ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        return new Times(new Int(getRelevantEvents().size()), new Int(
+                (int) ((AFiniteSetExpr) machine.getDefsRegister().getVarsDefs().get(varIncreases.getAssignable().getName())).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).count()
         ));
     }
 
     @Override
     public AArithExpr getVInit(FunIncreases funIncreases, ConcreteState c) {
-        return new Times(new Int(2), new Int(getRelevantEvents().size()), new Int(
-                ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).max().orElse(0)
+        return new Times(new Int(getRelevantEvents().size()), new Int(
+                (int) ((AFiniteSetExpr) machine.getDefsRegister().getFunsDefs().get(funIncreases.getAssignable().getName()).getRight()).getElementsValues(machine.getDefsRegister()).stream().mapToInt(AValue::getValue).count()
         ));
     }
 
@@ -78,7 +81,7 @@ public final class DefaultVariantComputer extends AVariantComputer {
                 return condition.getThenPart().getVInit(this, c);
             }
         }
-        throw new Error("At least one implication condition should be satisfiable with regards to \"" + c + "\" in the following conditional relevance predicate:\n" + conditions + "");
+        throw new Error("At least one implication condition should be satisfiable with regards to \"" + c + "\" in the following conditional relevance predicate:\n" + conditions);
     }
 
     @Override

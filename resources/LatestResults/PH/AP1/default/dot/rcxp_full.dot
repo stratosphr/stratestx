@@ -1,0 +1,46 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q30[label=<<b>c<sub>0</sub>q<sub>30</sub> = Combine=0, Etat=4, NbEssai=0</b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c1q22[label=<<b>c<sub>1</sub>q<sub>22</sub> = Combine=1, Etat=0, NbEssai=0</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c3q22[label=<<b>c<sub>3</sub>q<sub>22</sub> = Combine=1, Etat=1, NbEssai=0</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c4q39[label=<<b>c<sub>4</sub>q<sub>39</sub> = Combine=1, Etat=1, NbEssai=1</b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c6q39[label=<<b>c<sub>6</sub>q<sub>39</sub> = Combine=1, Etat=3, NbEssai=1</b><br/><br/><i>v=16</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c2q22[label=<<b>c<sub>2</sub>q<sub>22</sub> = Combine=1, Etat=3, NbEssai=0</b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c5q39[label=<<b>c<sub>5</sub>q<sub>39</sub> = Combine=1, Etat=0, NbEssai=1</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c7q5[label=<<b>c<sub>7</sub>q<sub>5</sub> = Combine=1, Etat=0, NbEssai=2</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c9q5[label=<<b>c<sub>9</sub>q<sub>5</sub> = Combine=1, Etat=1, NbEssai=2</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c10q7[label=<<b>c<sub>10</sub>q<sub>7</sub> = Combine=1, Etat=5, NbEssai=2</b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c8q5[label=<<b>c<sub>8</sub>q<sub>5</sub> = Combine=1, Etat=3, NbEssai=2</b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> c0q30[penwidth=3, color="forestgreen"]
+	c0q30 -> c1q22[label=<Appel_Qui_Donc>, color="forestgreen"]
+	c1q22 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c1q22 -> c3q22[label=<Start>, color="forestgreen"]
+	c3q22 -> c4q39[label=<Timeout>, color="forestgreen"]
+	c4q39 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c4q39 -> c6q39[label=<Start>, color="forestgreen"]
+	c6q39 -> c4q39[label=<Start>, color="forestgreen"]
+	c6q39 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c3q22 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c3q22 -> c2q22[label=<Start>, color="forestgreen"]
+	c2q22 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c2q22 -> c3q22[label=<Start>, color="forestgreen"]
+	c1q22 -> c5q39[label=<Timeout>, color="forestgreen"]
+	c5q39 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c5q39 -> c4q39[label=<Start>, color="forestgreen"]
+	c5q39 -> c7q5[label=<Timeout>, color="forestgreen"]
+	c7q5 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c7q5 -> c9q5[label=<Start>, color="forestgreen"]
+	c9q5 -> c10q7[label=<Timeout>, color="forestgreen"]
+	c10q7 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c9q5 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c9q5 -> c8q5[label=<Start>, color="forestgreen"]
+	c8q5 -> c0q30[label=<HangUp>, color="forestgreen"]
+	c8q5 -> c9q5[label=<Start>, color="forestgreen"]
+	c8q5 -> c10q7[label=<Timeout>, color="forestgreen"]
+	c7q5 -> c10q7[label=<Timeout>, color="forestgreen"]
+
+}

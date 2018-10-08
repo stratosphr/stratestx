@@ -4,13 +4,13 @@
 
     <consts-defs>
         <const-def name="MaxPot">
-            <int value="350"/>
+            <int value="300"/>
         </const-def>
         <const-def name="MaxBal">
             <int value="200"/>
         </const-def>
-        <const-def name="MaxCoffee">
-            <int value="7"/>
+        <const-def name="MaxCof">
+            <int value="6"/>
         </const-def>
     </consts-defs>
 
@@ -24,20 +24,6 @@
                 <int value="200"/>
                 <int value="250"/>
                 <int value="300"/>
-                <int value="350"/>
-                <int value="400"/>
-                <int value="450"/>
-                <int value="500"/>
-                <int value="550"/>
-                <int value="600"/>
-                <int value="650"/>
-                <int value="700"/>
-                <int value="750"/>
-                <int value="800"/>
-                <int value="850"/>
-                <int value="900"/>
-                <int value="950"/>
-                <int value="1000"/>
             </set>
         </var-def>
         <var-def name="Balance">
@@ -49,10 +35,10 @@
                 <int value="200"/>
             </set>
         </var-def>
-        <var-def name="CoffeeLeft">
+        <var-def name="CofLeft">
             <range>
                 <int value="0"/>
-                <const name="MaxCoffee"/>
+                <const name="MaxCof"/>
             </range>
         </var-def>
         <var-def name="Status">
@@ -62,7 +48,7 @@
                 <enum-value name="error"/>
             </enum>
         </var-def>
-        <var-def name="AskCoffee">
+        <var-def name="AskCof">
             <range>
                 <int value="0"/>
                 <int value="1"/>
@@ -87,7 +73,7 @@
                 </not>
                 <and>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <equals>
@@ -105,7 +91,7 @@
                 </not>
                 <and>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <gt>
@@ -117,7 +103,7 @@
             <or>
                 <not>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="1"/>
                     </equals>
                 </not>
@@ -163,11 +149,11 @@
                 <int value="0"/>
             </var-assignment>
             <var-assignment>
-                <var name="CoffeeLeft"/>
-                <const name="MaxCoffee"/>
+                <var name="CofLeft"/>
+                <const name="MaxCof"/>
             </var-assignment>
             <var-assignment>
-                <var name="AskCoffee"/>
+                <var name="AskCof"/>
                 <int value="0"/>
             </var-assignment>
             <var-assignment>
@@ -191,7 +177,7 @@
                         <int value="0"/>
                     </equals>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <geq>
@@ -224,7 +210,7 @@
                         <int value="0"/>
                     </equals>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <geq>
@@ -253,7 +239,7 @@
                         <enum-value name="off"/>
                     </equals>
                     <gt>
-                        <var name="CoffeeLeft"/>
+                        <var name="CofLeft"/>
                         <int value="0"/>
                     </gt>
                     <geq>
@@ -271,7 +257,7 @@
                         <int value="0"/>
                     </var-assignment>
                     <var-assignment>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </var-assignment>
                     <var-assignment>
@@ -295,7 +281,7 @@
                             <int value="0"/>
                         </equals>
                         <equals>
-                            <var name="AskCoffee"/>
+                            <var name="AskCof"/>
                             <int value="0"/>
                         </equals>
                         <equals>
@@ -350,7 +336,7 @@
             </select>
         </event>
 
-        <event name="coffeeReq">
+        <event name="cofReq">
             <select>
                 <and>
                     <equals>
@@ -362,7 +348,7 @@
                         <int value="50"/>
                     </geq>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <equals>
@@ -371,7 +357,7 @@
                     </equals>
                 </and>
                 <var-assignment>
-                    <var name="AskCoffee"/>
+                    <var name="AskCof"/>
                     <int value="1"/>
                 </var-assignment>
             </select>
@@ -389,7 +375,7 @@
                         <int value="0"/>
                     </gt>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="0"/>
                     </equals>
                     <equals>
@@ -404,20 +390,20 @@
             </select>
         </event>
 
-        <event name="addCoffee">
+        <event name="addCof">
             <any>
                 <vars-defs>
                     <var-def name="x">
                         <range>
                             <int value="1"/>
-                            <const name="MaxCoffee"/>
+                            <const name="MaxCof"/>
                         </range>
                     </var-def>
                 </vars-defs>
                 <geq>
-                    <const name="MaxCoffee"/>
+                    <const name="MaxCof"/>
                     <plus>
-                        <var name="CoffeeLeft"/>
+                        <var name="CofLeft"/>
                         <var name="x"/>
                     </plus>
                 </geq>
@@ -428,14 +414,14 @@
                             <enum-value name="off"/>
                         </equals>
                         <gt>
-                            <const name="MaxCoffee"/>
-                            <var name="CoffeeLeft"/>
+                            <const name="MaxCof"/>
+                            <var name="CofLeft"/>
                         </gt>
                     </and>
                     <var-assignment>
-                        <var name="CoffeeLeft"/>
+                        <var name="CofLeft"/>
                         <plus>
-                            <var name="CoffeeLeft"/>
+                            <var name="CofLeft"/>
                             <var name="x"/>
                         </plus>
                     </var-assignment>
@@ -443,7 +429,7 @@
             </any>
         </event>
 
-        <event name="serveCoffee">
+        <event name="serveCof">
             <select>
                 <and>
                     <equals>
@@ -455,11 +441,11 @@
                         <int value="50"/>
                     </geq>
                     <equals>
-                        <var name="AskCoffee"/>
+                        <var name="AskCof"/>
                         <int value="1"/>
                     </equals>
                     <gt>
-                        <var name="CoffeeLeft"/>
+                        <var name="CofLeft"/>
                         <int value="0"/>
                     </gt>
                 </and>
@@ -474,7 +460,7 @@
                                 <const name="MaxPot"/>
                             </gt>
                             <equals>
-                                <var name="CoffeeLeft"/>
+                                <var name="CofLeft"/>
                                 <int value="1"/>
                             </equals>
                         </or>
@@ -493,7 +479,7 @@
                             <int value="1"/>
                         </var-assignment>
                         <var-assignment>
-                            <var name="AskCoffee"/>
+                            <var name="AskCof"/>
                             <int value="0"/>
                         </var-assignment>
                         <var-assignment>
@@ -504,9 +490,9 @@
                             </minus>
                         </var-assignment>
                         <var-assignment>
-                            <var name="CoffeeLeft"/>
+                            <var name="CofLeft"/>
                             <minus>
-                                <var name="CoffeeLeft"/>
+                                <var name="CofLeft"/>
                                 <int value="1"/>
                             </minus>
                         </var-assignment>
@@ -528,7 +514,7 @@
                                 <const name="MaxPot"/>
                             </gt>
                             <equals>
-                                <var name="CoffeeLeft"/>
+                                <var name="CofLeft"/>
                                 <int value="1"/>
                             </equals>
                         </or>
@@ -538,7 +524,7 @@
                                 <enum-value name="error"/>
                             </var-assignment>
                             <var-assignment>
-                                <var name="AskCoffee"/>
+                                <var name="AskCof"/>
                                 <int value="0"/>
                             </var-assignment>
                             <var-assignment>
@@ -549,9 +535,9 @@
                                 </minus>
                             </var-assignment>
                             <var-assignment>
-                                <var name="CoffeeLeft"/>
+                                <var name="CofLeft"/>
                                 <minus>
-                                    <var name="CoffeeLeft"/>
+                                    <var name="CofLeft"/>
                                     <int value="1"/>
                                 </minus>
                             </var-assignment>
@@ -574,7 +560,7 @@
                                     <int value="1"/>
                                 </var-assignment>
                                 <var-assignment>
-                                    <var name="AskCoffee"/>
+                                    <var name="AskCof"/>
                                     <int value="0"/>
                                 </var-assignment>
                                 <var-assignment>
@@ -585,9 +571,9 @@
                                     </minus>
                                 </var-assignment>
                                 <var-assignment>
-                                    <var name="CoffeeLeft"/>
+                                    <var name="CofLeft"/>
                                     <minus>
-                                        <var name="CoffeeLeft"/>
+                                        <var name="CofLeft"/>
                                         <int value="1"/>
                                     </minus>
                                 </var-assignment>
@@ -601,7 +587,7 @@
                             </assignments>
                             <assignments>
                                 <var-assignment>
-                                    <var name="AskCoffee"/>
+                                    <var name="AskCof"/>
                                     <int value="0"/>
                                 </var-assignment>
                                 <var-assignment>
@@ -612,9 +598,9 @@
                                     </minus>
                                 </var-assignment>
                                 <var-assignment>
-                                    <var name="CoffeeLeft"/>
+                                    <var name="CofLeft"/>
                                     <minus>
-                                        <var name="CoffeeLeft"/>
+                                        <var name="CofLeft"/>
                                         <int value="1"/>
                                     </minus>
                                 </var-assignment>
@@ -632,7 +618,7 @@
             </select>
         </event>
 
-        <event name="changeBack">
+        <event name="backBalance">
             <select>
                 <and>
                     <equals>

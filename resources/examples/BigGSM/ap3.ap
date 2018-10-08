@@ -1,0 +1,48 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <and>
+            <equals>
+                <var name="currentFile"/>
+                <enum-value name="eficcid"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="never"/>
+                </fun>
+                <enum-value name="ltgFalse"/>
+            </equals>
+        </and>
+    </predicate>
+
+    <predicate name="p1">
+        <and>
+            <equals>
+                <var name="currentFile"/>
+                <enum-value name="efimsi"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="chv1"/>
+                </fun>
+                <enum-value name="ltgFalse"/>
+            </equals>
+        </and>
+    </predicate>
+
+    <predicate name="p2">
+        <and>
+            <equals>
+                <var name="currentFile"/>
+                <enum-value name="efad"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="adm"/>
+                </fun>
+                <enum-value name="ltgFalse"/>
+            </equals>
+        </and>
+    </predicate>
+
+</predicates>

@@ -1,0 +1,47 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	c0q5[label=<<b>c<sub>0</sub>q<sub>5</sub></b><br/><br/><i>v=15</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	c1q6[label=<<b>c<sub>1</sub>q<sub>6</sub></b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c2q6[label=<<b>c<sub>2</sub>q<sub>6</sub></b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c6q2[label=<<b>c<sub>6</sub>q<sub>2</sub></b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c12q2[label=<<b>c<sub>12</sub>q<sub>2</sub></b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c3q6[label=<<b>c<sub>3</sub>q<sub>6</sub></b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c7q2[label=<<b>c<sub>7</sub>q<sub>2</sub></b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c8q2[label=<<b>c<sub>8</sub>q<sub>2</sub></b><br/><br/><i>v=18</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c9q2[label=<<b>c<sub>9</sub>q<sub>2</sub></b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c11q2[label=<<b>c<sub>11</sub>q<sub>2</sub></b><br/><br/><i>v=16</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c10q2[label=<<b>c<sub>10</sub>q<sub>2</sub></b><br/><br/><i>v=17</i>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	c4q6[label=<<b>c<sub>4</sub>q<sub>6</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+	c5q6[label=<<b>c<sub>5</sub>q<sub>6</sub></b>>, shape="box", style="rounded, filled, dashed", fillcolor="lightblue2", color="deepskyblue4"]
+
+	__invisible__ -> c0q5[penwidth=3, color="forestgreen"]
+	c0q5 -> c1q6[label=<Appel_Qui_Donc>, color="forestgreen"]
+	c1q6 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c1q6 -> c2q6[label=<Start>, color="forestgreen"]
+	c2q6 -> c6q2[label=<Timeout>, color="forestgreen"]
+	c6q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c6q2 -> c12q2[label=<Start>, color="forestgreen"]
+	c12q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c2q6 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c2q6 -> c3q6[label=<Start>, color="forestgreen"]
+	c3q6 -> c2q6[label=<Start>, color="forestgreen"]
+	c3q6 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c1q6 -> c7q2[label=<Timeout>, color="forestgreen"]
+	c7q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c7q2 -> c6q2[label=<Start>, color="forestgreen"]
+	c7q2 -> c8q2[label=<Timeout>, color="forestgreen"]
+	c8q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c8q2 -> c9q2[label=<Start>, color="forestgreen"]
+	c9q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c9q2 -> c11q2[label=<Start>, color="forestgreen"]
+	c11q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c11q2 -> c10q2[label=<Timeout>, color="forestgreen"]
+	c10q2 -> c0q5[label=<HangUp>, color="forestgreen"]
+	c9q2 -> c10q2[label=<Timeout>, color="forestgreen"]
+	c8q2 -> c10q2[label=<Timeout>, color="forestgreen"]
+	c4q6 -> c5q6[label=<Timeout>, color="deepskyblue4", style="dashed"]
+
+}

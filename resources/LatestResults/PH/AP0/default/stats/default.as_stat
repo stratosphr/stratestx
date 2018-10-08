@@ -1,0 +1,5 @@
+Abstract States (3 in 00:00:00.213):
+
+q2 = ¬(p0 = NbEssai=0), (p1 = or(Combine=1, Etat=5)), ¬(p2 = Combine=0)
+q5 = (p0 = NbEssai=0), ¬(p1 = or(Combine=1, Etat=5)), (p2 = Combine=0)
+q6 = (p0 = NbEssai=0), (p1 = or(Combine=1, Etat=5)), ¬(p2 = Combine=0)

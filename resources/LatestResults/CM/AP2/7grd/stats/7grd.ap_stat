@@ -1,0 +1,9 @@
+Abstraction Predicates (7):
+
+(p0 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 50)))
+(p1 = and(Status=on[1], AskChange=0, AskCof=0, MaxBal >= (Balance + 100)))
+(p2 = and(Status=off[0], CofLeft > 0, MaxPot >= Pot))
+(p3 = or(and(Status=on[1], AskChange=0, AskCof=0, Balance=0), Status=error[2]))
+(p4 = Status=on[1])
+(p5 = and(Status=off[0], Pot >= (MaxPot - 50)))
+(p6 = and(Status=on[1], Balance >= 50, AskCof=0, AskChange=0))

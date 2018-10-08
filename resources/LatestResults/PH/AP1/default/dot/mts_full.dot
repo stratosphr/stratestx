@@ -1,0 +1,25 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q30[label=<<b>q<sub>30</sub> = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), (p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 =&gt; Etat=5), (p4 = and(¬Etat=2, NbEssai=2) =&gt; Etat=5), ¬(p5 = and(¬Etat=2, ¬NbEssai=2) =&gt; or(NbEssai=1, NbEssai=2))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q22[label=<<b>q<sub>22</sub> = ¬(p0 = NbEssai=1), (p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 =&gt; Etat=5), (p4 = and(¬Etat=2, NbEssai=2) =&gt; Etat=5), ¬(p5 = and(¬Etat=2, ¬NbEssai=2) =&gt; or(NbEssai=1, NbEssai=2))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q39[label=<<b>q<sub>39</sub> = (p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 =&gt; Etat=5), (p4 = and(¬Etat=2, NbEssai=2) =&gt; Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) =&gt; or(NbEssai=1, NbEssai=2))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q5[label=<<b>q<sub>5</sub> = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 =&gt; Etat=5), ¬(p4 = and(¬Etat=2, NbEssai=2) =&gt; Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) =&gt; or(NbEssai=1, NbEssai=2))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q7[label=<<b>q<sub>7</sub> = ¬(p0 = NbEssai=1), ¬(p1 = NbEssai=0), ¬(p2 = and(Etat=4, Combine=0, NbEssai=0)), (p3 = Etat=2 =&gt; Etat=5), (p4 = and(¬Etat=2, NbEssai=2) =&gt; Etat=5), (p5 = and(¬Etat=2, ¬NbEssai=2) =&gt; or(NbEssai=1, NbEssai=2))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q30[penwidth=3, color="forestgreen"]
+	q30 -> q22[label=<Appel_Qui_Donc>, color="forestgreen"]
+	q22 -> q22[label=<Start>, color="forestgreen"]
+	q22 -> q39[label=<Timeout>, color="forestgreen"]
+	q39 -> q39[label=<Start>, color="forestgreen"]
+	q39 -> q5[label=<Timeout>, color="forestgreen"]
+	q5 -> q5[label=<Start>, color="forestgreen"]
+	q5 -> q7[label=<Timeout>, color="forestgreen"]
+	q7 -> q30[label=<HangUp>, color="forestgreen"]
+	q5 -> q30[label=<HangUp>, color="forestgreen"]
+	q39 -> q30[label=<HangUp>, color="forestgreen"]
+	q22 -> q30[label=<HangUp>, color="forestgreen"]
+
+}

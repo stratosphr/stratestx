@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <fun-changes>
+            <fun name="permissionSession">
+                <enum-value name="chv1"/>
+            </fun>
+            <enum-value name="ltgFalse"/>
+            <enum-value name="ltgTrue"/>
+        </fun-changes>
+
+        <var-changes>
+            <var name="currentDirectory"/>
+            <enum-value name="mf"/>
+            <enum-value name="dfgsm"/>
+        </var-changes>
+
+        <var-changes>
+            <var name="currentFile"/>
+            <enum-value name="nofiles"/>
+            <enum-value name="efimsi"/>
+        </var-changes>
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <all-transitions/>
+    </expected-transitions>
+
+</relevance>

@@ -1,0 +1,25 @@
+Relevance Predicate:
+
+or(
+	and(
+		PE(Pos)=ouvertes[0]
+		PE_(Pos)=fermees[1]
+	)
+	and(
+		PE(Pos)=fermees[1]
+		PE_(Pos)=ouvertes[0]
+	)
+	and(
+		PC=fermees[1]
+		PC_=ouvertes[0]
+	)
+	and(
+		PC=ouvertes[0]
+		PC_=refermees[2]
+	)
+	and(
+		BC(3)=0
+		BC_(3)=1
+	)
+	Pos_ > Pos
+)

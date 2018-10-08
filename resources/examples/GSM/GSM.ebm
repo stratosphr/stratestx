@@ -4,7 +4,7 @@
 
     <consts-defs>
 
-        <const-def name="MaxChv">
+        <const-def name="MaxCHV">
             <int value="3"/>
         </const-def>
 
@@ -16,40 +16,31 @@
 
     <sets-defs>
 
-        <set-def name="PERMISSION">
-            <enum>
-                <enum-value name="always"/>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-                <enum-value name="adm"/>
-                <enum-value name="never"/>
-            </enum>
-        </set-def>
-
-        <set-def name="VALUE">
-            <enum>
-                <enum-value name="ltgTrue"/>
-                <enum-value name="ltgFalse"/>
-            </enum>
-        </set-def>
-
         <set-def name="FILES">
             <enum>
-                <enum-value name="nofiles"/>
+                <enum-value name="none"/>
                 <enum-value name="mf"/>
                 <enum-value name="dfgsm"/>
                 <enum-value name="eficcid"/>
                 <enum-value name="eflp"/>
                 <enum-value name="efimsi"/>
-                <enum-value name="efkc"/>
                 <enum-value name="efad"/>
             </enum>
         </set-def>
 
-        <set-def name="ENABLEDSTATUS">
+        <set-def name="PERMISSION">
             <enum>
-                <enum-value name="enabled"/>
-                <enum-value name="disabled"/>
+                <enum-value name="always"/>
+                <enum-value name="chv"/>
+                <enum-value name="never"/>
+                <enum-value name="adm"/>
+            </enum>
+        </set-def>
+
+        <set-def name="VALUE">
+            <enum>
+                <enum-value name="true"/>
+                <enum-value name="false"/>
             </enum>
         </set-def>
 
@@ -71,449 +62,302 @@
 
         <set-def name="DATA">
             <enum>
-                <enum-value name="nodata"/>
                 <enum-value name="d1"/>
                 <enum-value name="d2"/>
                 <enum-value name="d3"/>
                 <enum-value name="d4"/>
-                <enum-value name="d5"/>
             </enum>
+        </set-def>
+
+        <set-def name="MF">
+            <enum>
+                <enum-value name="mf"/>
+            </enum>
+        </set-def>
+
+        <set-def name="DF">
+            <enum>
+                <enum-value name="dfgsm"/>
+            </enum>
+        </set-def>
+
+        <set-def name="EF">
+            <enum>
+                <enum-value name="none"/>
+                <enum-value name="eficcid"/>
+                <enum-value name="eflp"/>
+                <enum-value name="efimsi"/>
+                <enum-value name="efad"/>
+            </enum>
+        </set-def>
+
+        <set-def name="COUNTERCHV">
+            <range>
+                <int value="0"/>
+                <const name="MaxCHV"/>
+            </range>
+        </set-def>
+
+        <set-def name="COUNTERUNBLOCKCHV">
+            <range>
+                <int value="0"/>
+                <const name="MaxUnblock"/>
+            </range>
         </set-def>
 
         <set-def name="STATUSWORD">
             <enum>
                 <enum-value name="sw9000"/>
-                <enum-value name="sw9001"/>
                 <enum-value name="sw9400"/>
                 <enum-value name="sw9404"/>
                 <enum-value name="sw9804"/>
-                <enum-value name="sw9808"/>
                 <enum-value name="sw9840"/>
             </enum>
         </set-def>
 
     </sets-defs>
 
+    <vars-defs>
+        <var-def name="puk">
+            <named-set name="CODE"/>
+        </var-def>
+        <var-def name="currentFile">
+            <named-set name="EF"/>
+        </var-def>
+        <var-def name="currentDirectory">
+            <enum>
+                <enum-value name="dfgsm"/>
+                <enum-value name="mf"/>
+            </enum>
+        </var-def>
+        <var-def name="counterCHV">
+            <named-set name="COUNTERCHV"/>
+        </var-def>
+        <var-def name="counterUnblockCHV">
+            <named-set name="COUNTERUNBLOCKCHV"/>
+        </var-def>
+        <var-def name="blockedCHVStatus">
+            <named-set name="BLOCKEDSTATUS"/>
+        </var-def>
+        <var-def name="blockedStatus">
+            <named-set name="BLOCKEDSTATUS"/>
+        </var-def>
+        <var-def name="pin">
+            <named-set name="CODE"/>
+        </var-def>
+        <var-def name="sw">
+            <named-set name="STATUSWORD"/>
+        </var-def>
+        <var-def name="dd">
+            <enum>
+                <enum-value name="nodata"/>
+                <enum-value name="d1"/>
+                <enum-value name="d2"/>
+                <enum-value name="d3"/>
+                <enum-value name="d4"/>
+            </enum>
+        </var-def>
+    </vars-defs>
+
     <funs-defs>
-
-        <fun-def name="codeUnblock">
+        <fun-def name="filesChildren">
             <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
+                <enum-value name="mf"/>
+                <enum-value name="dfgsm"/>
             </enum>
-            <named-set name="CODE"/>
-        </fun-def>
-
-        <fun-def name="parentFiles">
-            <named-set name="FILES"/>
             <named-set name="FILES"/>
         </fun-def>
-
         <fun-def name="permissionRead">
-            <enum>
-                <enum-value name="eficcid"/>
-                <enum-value name="eflp"/>
-                <enum-value name="efimsi"/>
-                <enum-value name="efkc"/>
-                <enum-value name="efad"/>
-            </enum>
+            <named-set name="EF"/>
             <named-set name="PERMISSION"/>
         </fun-def>
-
-        <fun-def name="permissionUpdate">
-            <enum>
-                <enum-value name="eficcid"/>
-                <enum-value name="eflp"/>
-                <enum-value name="efimsi"/>
-                <enum-value name="efkc"/>
-                <enum-value name="efad"/>
-            </enum>
-            <named-set name="PERMISSION"/>
-        </fun-def>
-
-        <fun-def name="counterChv">
-            <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-            </enum>
-            <range>
-                <int value="0"/>
-                <const name="MaxChv"/>
-            </range>
-        </fun-def>
-
-        <fun-def name="counterUnblock">
-            <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-            </enum>
-            <range>
-                <int value="0"/>
-                <const name="MaxUnblock"/>
-            </range>
-        </fun-def>
-
-        <fun-def name="codeChv">
-            <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-            </enum>
-            <named-set name="CODE"/>
-        </fun-def>
-
         <fun-def name="permissionSession">
             <named-set name="PERMISSION"/>
             <named-set name="VALUE"/>
         </fun-def>
-
-        <fun-def name="blockedChvStatus">
-            <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-            </enum>
-            <named-set name="BLOCKEDSTATUS"/>
-        </fun-def>
-
-        <fun-def name="blockedStatus">
-            <enum>
-                <enum-value name="chv1"/>
-                <enum-value name="chv2"/>
-            </enum>
-            <named-set name="BLOCKEDSTATUS"/>
-        </fun-def>
-
         <fun-def name="data">
-            <enum>
-                <enum-value name="eficcid"/>
-                <enum-value name="eflp"/>
-                <enum-value name="efimsi"/>
-                <enum-value name="efkc"/>
-                <enum-value name="efad"/>
-            </enum>
+            <named-set name="EF"/>
             <named-set name="DATA"/>
         </fun-def>
-
     </funs-defs>
-
-    <vars-defs>
-
-        <var-def name="currentFile">
-            <enum>
-                <enum-value name="nofiles"/>
-                <enum-value name="eficcid"/>
-                <enum-value name="eflp"/>
-                <enum-value name="efimsi"/>
-                <enum-value name="efkc"/>
-                <enum-value name="efad"/>
-            </enum>
-        </var-def>
-
-        <var-def name="currentDirectory">
-            <enum>
-                <enum-value name="mf"/>
-                <enum-value name="dfgsm"/>
-            </enum>
-        </var-def>
-
-        <var-def name="enabledChv1Status">
-            <named-set name="ENABLEDSTATUS"/>
-        </var-def>
-
-        <var-def name="sw">
-            <named-set name="STATUSWORD"/>
-        </var-def>
-
-        <var-def name="ddOut">
-            <named-set name="DATA"/>
-        </var-def>
-
-    </vars-defs>
 
     <invariant>
         <and>
-            <equals>
-                <fun name="codeUnblock">
-                    <enum-value name="chv1"/>
-                </fun>
-                <enum-value name="a3"/>
-            </equals>
-            <equals>
-                <fun name="codeUnblock">
-                    <enum-value name="chv2"/>
-                </fun>
-                <enum-value name="a4"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
+            <or>
+                <equals>
+                    <fun name="filesChildren">
+                        <enum-value name="mf"/>
+                    </fun>
                     <enum-value name="dfgsm"/>
-                </fun>
-                <enum-value name="mf"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
+                </equals>
+                <equals>
+                    <fun name="filesChildren">
+                        <enum-value name="mf"/>
+                    </fun>
                     <enum-value name="eficcid"/>
-                </fun>
-                <enum-value name="mf"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
+                </equals>
+            </or>
+            <or>
+                <equals>
+                    <fun name="filesChildren">
+                        <enum-value name="dfgsm"/>
+                    </fun>
                     <enum-value name="eflp"/>
-                </fun>
-                <enum-value name="dfgsm"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
+                </equals>
+                <equals>
+                    <fun name="filesChildren">
+                        <enum-value name="dfgsm"/>
+                    </fun>
                     <enum-value name="efimsi"/>
-                </fun>
-                <enum-value name="dfgsm"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
-                    <enum-value name="efkc"/>
-                </fun>
-                <enum-value name="dfgsm"/>
-            </equals>
-            <equals>
-                <fun name="parentFiles">
+                </equals>
+                <equals>
+                    <fun name="filesChildren">
+                        <enum-value name="dfgsm"/>
+                    </fun>
                     <enum-value name="efad"/>
-                </fun>
-                <enum-value name="dfgsm"/>
-            </equals>
+                </equals>
+            </or>
             <equals>
                 <fun name="permissionRead">
-                    <enum-value name="eficcid"/>
-                </fun>
-                <enum-value name="always"/>
-            </equals>
-            <equals>
-                <fun name="permissionRead">
-                    <enum-value name="eflp"/>
-                </fun>
-                <enum-value name="always"/>
-            </equals>
-            <equals>
-                <fun name="permissionRead">
-                    <enum-value name="efimsi"/>
-                </fun>
-                <enum-value name="chv1"/>
-            </equals>
-            <equals>
-                <fun name="permissionRead">
-                    <enum-value name="efkc"/>
-                </fun>
-                <enum-value name="chv1"/>
-            </equals>
-            <equals>
-                <fun name="permissionRead">
-                    <enum-value name="efad"/>
-                </fun>
-                <enum-value name="always"/>
-            </equals>
-            <equals>
-                <fun name="permissionUpdate">
                     <enum-value name="eficcid"/>
                 </fun>
                 <enum-value name="never"/>
             </equals>
             <equals>
-                <fun name="permissionUpdate">
+                <fun name="permissionRead">
                     <enum-value name="eflp"/>
                 </fun>
-                <enum-value name="chv1"/>
+                <enum-value name="always"/>
             </equals>
             <equals>
-                <fun name="permissionUpdate">
+                <fun name="permissionRead">
                     <enum-value name="efimsi"/>
                 </fun>
-                <enum-value name="adm"/>
+                <enum-value name="chv"/>
             </equals>
             <equals>
-                <fun name="permissionUpdate">
-                    <enum-value name="efkc"/>
-                </fun>
-                <enum-value name="chv1"/>
-            </equals>
-            <equals>
-                <fun name="permissionUpdate">
+                <fun name="permissionRead">
                     <enum-value name="efad"/>
                 </fun>
                 <enum-value name="adm"/>
             </equals>
+            <equals>
+                <var name="puk"/>
+                <enum-value name="a3"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="always"/>
+                </fun>
+                <enum-value name="true"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="adm"/>
+                </fun>
+                <enum-value name="false"/>
+            </equals>
+            <equals>
+                <fun name="permissionSession">
+                    <enum-value name="never"/>
+                </fun>
+                <enum-value name="false"/>
+            </equals>
+            <implies>
+                <equals>
+                    <var name="blockedCHVStatus"/>
+                    <enum-value name="blocked"/>
+                </equals>
+                <equals>
+                    <fun name="permissionSession">
+                        <enum-value name="chv"/>
+                    </fun>
+                    <enum-value name="false"/>
+                </equals>
+            </implies>
             <equiv>
                 <equals>
-                    <fun name="counterChv">
-                        <enum-value name="chv1"/>
-                    </fun>
+                    <var name="counterCHV"/>
                     <int value="0"/>
                 </equals>
                 <equals>
-                    <fun name="blockedChvStatus">
-                        <enum-value name="chv1"/>
-                    </fun>
+                    <var name="blockedCHVStatus"/>
                     <enum-value name="blocked"/>
                 </equals>
             </equiv>
             <equiv>
                 <equals>
-                    <fun name="counterChv">
-                        <enum-value name="chv2"/>
-                    </fun>
+                    <var name="counterUnblockCHV"/>
                     <int value="0"/>
                 </equals>
                 <equals>
-                    <fun name="blockedChvStatus">
-                        <enum-value name="chv2"/>
-                    </fun>
+                    <var name="blockedStatus"/>
                     <enum-value name="blocked"/>
                 </equals>
             </equiv>
-            <equiv>
-                <equals>
-                    <fun name="counterUnblock">
-                        <enum-value name="chv1"/>
-                    </fun>
-                    <int value="0"/>
-                </equals>
-                <equals>
-                    <fun name="blockedChvStatus">
-                        <enum-value name="chv1"/>
-                    </fun>
-                    <enum-value name="blocked"/>
-                </equals>
-            </equiv>
-            <equiv>
-                <equals>
-                    <fun name="counterUnblock">
-                        <enum-value name="chv2"/>
-                    </fun>
-                    <int value="0"/>
-                </equals>
-                <equals>
-                    <fun name="blockedChvStatus">
-                        <enum-value name="chv2"/>
-                    </fun>
-                    <enum-value name="blocked"/>
-                </equals>
-            </equiv>
-            <or>
-                <equals>
-                    <var name="currentFile"/>
-                    <enum-value name="nofiles"/>
-                </equals>
-                <equals>
-                    <fun name="parentFiles">
-                        <var name="currentFile"/>
-                    </fun>
-                    <var name="currentDirectory"/>
-                </equals>
-            </or>
         </and>
     </invariant>
 
     <initialisation>
         <assignments>
+            <fun-assignment>
+                <fun name="filesChildren">
+                    <enum-value name="dfgsm"/>
+                </fun>
+                <enum-value name="efimsi"/>
+            </fun-assignment>
             <var-assignment>
                 <var name="currentFile"/>
-                <enum-value name="nofiles"/>
+                <enum-value name="none"/>
             </var-assignment>
             <var-assignment>
                 <var name="currentDirectory"/>
                 <enum-value name="mf"/>
             </var-assignment>
-            <fun-assignment>
-                <fun name="counterChv">
-                    <enum-value name="chv1"/>
-                </fun>
-                <const name="MaxChv"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="counterChv">
-                    <enum-value name="chv2"/>
-                </fun>
-                <const name="MaxChv"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="counterUnblock">
-                    <enum-value name="chv1"/>
-                </fun>
-                <const name="MaxUnblock"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="counterUnblock">
-                    <enum-value name="chv2"/>
-                </fun>
-                <const name="MaxUnblock"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="codeChv">
-                    <enum-value name="chv1"/>
-                </fun>
-                <enum-value name="a1"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="codeChv">
-                    <enum-value name="chv2"/>
-                </fun>
-                <enum-value name="a2"/>
-            </fun-assignment>
             <var-assignment>
-                <var name="enabledChv1Status"/>
-                <enum-value name="enabled"/>
+                <var name="counterCHV"/>
+                <const name="MaxCHV"/>
             </var-assignment>
-            <fun-assignment>
-                <fun name="blockedChvStatus">
-                    <enum-value name="chv1"/>
-                </fun>
+            <var-assignment>
+                <var name="counterUnblockCHV"/>
+                <const name="MaxUnblock"/>
+            </var-assignment>
+            <var-assignment>
+                <var name="blockedCHVStatus"/>
                 <enum-value name="unblocked"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="blockedChvStatus">
-                    <enum-value name="chv2"/>
-                </fun>
+            </var-assignment>
+            <var-assignment>
+                <var name="blockedStatus"/>
                 <enum-value name="unblocked"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="blockedStatus">
-                    <enum-value name="chv1"/>
-                </fun>
-                <enum-value name="unblocked"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="blockedStatus">
-                    <enum-value name="chv2"/>
-                </fun>
-                <enum-value name="unblocked"/>
-            </fun-assignment>
+            </var-assignment>
             <fun-assignment>
                 <fun name="permissionSession">
                     <enum-value name="always"/>
                 </fun>
-                <enum-value name="ltgTrue"/>
+                <enum-value name="true"/>
             </fun-assignment>
             <fun-assignment>
                 <fun name="permissionSession">
-                    <enum-value name="chv1"/>
+                    <enum-value name="chv"/>
                 </fun>
-                <enum-value name="ltgFalse"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="permissionSession">
-                    <enum-value name="chv2"/>
-                </fun>
-                <enum-value name="ltgFalse"/>
+                <enum-value name="false"/>
             </fun-assignment>
             <fun-assignment>
                 <fun name="permissionSession">
                     <enum-value name="adm"/>
                 </fun>
-                <enum-value name="ltgFalse"/>
+                <enum-value name="false"/>
             </fun-assignment>
             <fun-assignment>
                 <fun name="permissionSession">
                     <enum-value name="never"/>
                 </fun>
-                <enum-value name="ltgFalse"/>
+                <enum-value name="false"/>
             </fun-assignment>
+            <var-assignment>
+                <var name="pin"/>
+                <enum-value name="a1"/>
+            </var-assignment>
             <fun-assignment>
                 <fun name="data">
                     <enum-value name="eficcid"/>
@@ -534,87 +378,22 @@
             </fun-assignment>
             <fun-assignment>
                 <fun name="data">
-                    <enum-value name="efkc"/>
-                </fun>
-                <enum-value name="d4"/>
-            </fun-assignment>
-            <fun-assignment>
-                <fun name="data">
                     <enum-value name="efad"/>
                 </fun>
-                <enum-value name="d5"/>
+                <enum-value name="d4"/>
             </fun-assignment>
             <var-assignment>
                 <var name="sw"/>
                 <enum-value name="sw9000"/>
             </var-assignment>
             <var-assignment>
-                <var name="ddOut"/>
+                <var name="dd"/>
                 <enum-value name="nodata"/>
             </var-assignment>
         </assignments>
     </initialisation>
 
     <events>
-
-        <event name="Reset">
-            <select>
-                <or>
-                    <equals>
-                        <fun name="permissionSession">
-                            <enum-value name="always"/>
-                        </fun>
-                        <enum-value name="ltgTrue"/>
-                    </equals>
-                    <equals>
-                        <fun name="permissionSession">
-                            <enum-value name="always"/>
-                        </fun>
-                        <enum-value name="ltgFalse"/>
-                    </equals>
-                </or>
-                <assignments>
-                    <var-assignment>
-                        <var name="currentFile"/>
-                        <enum-value name="nofiles"/>
-                    </var-assignment>
-                    <var-assignment>
-                        <var name="currentDirectory"/>
-                        <enum-value name="mf"/>
-                    </var-assignment>
-                    <fun-assignment>
-                        <fun name="permissionSession">
-                            <enum-value name="always"/>
-                        </fun>
-                        <enum-value name="ltgTrue"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="permissionSession">
-                            <enum-value name="chv1"/>
-                        </fun>
-                        <enum-value name="ltgFalse"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="permissionSession">
-                            <enum-value name="chv2"/>
-                        </fun>
-                        <enum-value name="ltgFalse"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="permissionSession">
-                            <enum-value name="adm"/>
-                        </fun>
-                        <enum-value name="ltgFalse"/>
-                    </fun-assignment>
-                    <fun-assignment>
-                        <fun name="permissionSession">
-                            <enum-value name="never"/>
-                        </fun>
-                        <enum-value name="ltgFalse"/>
-                    </fun-assignment>
-                </assignments>
-            </select>
-        </event>
 
         <event name="Select_File">
             <any>
@@ -628,27 +407,51 @@
                     <or>
                         <equals>
                             <var name="ff"/>
-                            <enum-value name="mf"/>
+                            <enum-value name="dfgsm"/>
                         </equals>
                         <equals>
                             <var name="ff"/>
-                            <enum-value name="dfgsm"/>
+                            <enum-value name="mf"/>
                         </equals>
                     </or>
                     <if-then-else>
                         <or>
                             <equals>
-                                <fun name="parentFiles">
+                                <fun name="filesChildren">
                                     <var name="ff"/>
                                 </fun>
                                 <var name="currentDirectory"/>
                             </equals>
                             <equals>
-                                <fun name="parentFiles">
+                                <fun name="filesChildren">
                                     <var name="currentDirectory"/>
                                 </fun>
                                 <var name="ff"/>
                             </equals>
+                            <exists>
+                                <vars-defs>
+                                    <var-def name="dp">
+                                        <enum>
+                                            <enum-value name="dfgsm"/>
+                                            <enum-value name="mf"/>
+                                        </enum>
+                                    </var-def>
+                                </vars-defs>
+                                <and>
+                                    <equals>
+                                        <fun name="filesChildren">
+                                            <var name="dp"/>
+                                        </fun>
+                                        <var name="currentDirectory"/>
+                                    </equals>
+                                    <equals>
+                                        <fun name="filesChildren">
+                                            <var name="dp"/>
+                                        </fun>
+                                        <var name="ff"/>
+                                    </equals>
+                                </and>
+                            </exists>
                             <equals>
                                 <var name="ff"/>
                                 <enum-value name="mf"/>
@@ -665,7 +468,7 @@
                             </var-assignment>
                             <var-assignment>
                                 <var name="currentFile"/>
-                                <enum-value name="nofiles"/>
+                                <enum-value name="none"/>
                             </var-assignment>
                         </assignments>
                         <var-assignment>
@@ -675,10 +478,10 @@
                     </if-then-else>
                     <if-then-else>
                         <equals>
-                            <fun name="parentFiles">
-                                <var name="ff"/>
+                            <fun name="filesChildren">
+                                <var name="currentDirectory"/>
                             </fun>
-                            <var name="currentDirectory"/>
+                            <var name="ff"/>
                         </equals>
                         <assignments>
                             <var-assignment>
@@ -700,456 +503,90 @@
         </event>
 
         <event name="Read_Binary">
-            <select>
-                <or>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="eficcid"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="eflp"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efimsi"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efkc"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efad"/>
-                    </equals>
-                </or>
-                <if-then-else>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="nofiles"/>
-                    </equals>
+            <if-then-else>
+                <equals>
+                    <var name="currentFile"/>
+                    <enum-value name="none"/>
+                </equals>
+                <assignments>
                     <var-assignment>
                         <var name="sw"/>
                         <enum-value name="sw9400"/>
                     </var-assignment>
-                    <if-then-else>
-                        <or>
-                            <equals>
-                                <fun name="permissionSession">
-                                    <fun name="permissionRead">
-                                        <var name="currentFile"/>
-                                    </fun>
-                                </fun>
-                                <enum-value name="ltgTrue"/>
-                            </equals>
+                    <var-assignment>
+                        <var name="dd"/>
+                        <enum-value name="nodata"/>
+                    </var-assignment>
+                </assignments>
+                <if-then-else>
+                    <exists>
+                        <vars-defs>
+                            <var-def name="dp">
+                                <named-set name="PERMISSION"/>
+                            </var-def>
+                        </vars-defs>
+                        <and>
                             <equals>
                                 <fun name="permissionRead">
                                     <var name="currentFile"/>
                                 </fun>
-                                <enum-value name="chv1"/>
+                                <var name="dp"/>
                             </equals>
-                            <equals>
-                                <var name="enabledChv1Status"/>
-                                <enum-value name="disabled"/>
-                            </equals>
-                        </or>
-                        <assignments>
-                            <var-assignment>
-                                <var name="sw"/>
-                                <enum-value name="sw9000"/>
-                            </var-assignment>
-                            <var-assignment>
-                                <var name="ddOut"/>
-                                <fun name="data">
-                                    <var name="currentFile"/>
-                                </fun>
-                            </var-assignment>
-                        </assignments>
-                        <var-assignment>
-                            <var name="sw"/>
-                            <enum-value name="sw9804"/>
-                        </var-assignment>
-                    </if-then-else>
-                </if-then-else>
-            </select>
-        </event>
-
-        <event name="Update_Binary">
-            <any>
-                <vars-defs>
-                    <var-def name="dd">
-                        <named-set name="DATA"/>
-                    </var-def>
-                </vars-defs>
-                <or>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="eficcid"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="eflp"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efimsi"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efkc"/>
-                    </equals>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="efad"/>
-                    </equals>
-                </or>
-                <if-then-else>
-                    <equals>
-                        <var name="currentFile"/>
-                        <enum-value name="nofiles"/>
-                    </equals>
-                    <var-assignment>
-                        <var name="sw"/>
-                        <enum-value name="sw9400"/>
-                    </var-assignment>
-                    <if-then-else>
-                        <or>
                             <equals>
                                 <fun name="permissionSession">
-                                    <fun name="permissionUpdate">
-                                        <var name="currentFile"/>
-                                    </fun>
+                                    <var name="dp"/>
                                 </fun>
-                                <enum-value name="ltgTrue"/>
+                                <enum-value name="true"/>
                             </equals>
-                            <equals>
-                                <fun name="permissionUpdate">
-                                    <var name="currentFile"/>
-                                </fun>
-                                <enum-value name="chv1"/>
-                            </equals>
-                            <equals>
-                                <var name="enabledChv1Status"/>
-                                <enum-value name="disabled"/>
-                            </equals>
-                        </or>
+                        </and>
+                    </exists>
+                    <if-then-else>
+                        <neq>
+                            <var name="currentFile"/>
+                            <enum-value name="none"/>
+                        </neq>
                         <assignments>
                             <var-assignment>
                                 <var name="sw"/>
                                 <enum-value name="sw9000"/>
                             </var-assignment>
-                            <fun-assignment>
+                            <var-assignment>
+                                <var name="dd"/>
                                 <fun name="data">
                                     <var name="currentFile"/>
                                 </fun>
-                                <var name="dd"/>
-                            </fun-assignment>
+                            </var-assignment>
                         </assignments>
+                        <var-assignment>
+                            <var name="sw"/>
+                            <enum-value name="sw9000"/>
+                        </var-assignment>
+                    </if-then-else>
+                    <assignments>
                         <var-assignment>
                             <var name="sw"/>
                             <enum-value name="sw9804"/>
                         </var-assignment>
-                    </if-then-else>
-                </if-then-else>
-            </any>
-        </event>
-
-        <event name="Change_Chv">
-            <any>
-                <vars-defs>
-                    <var-def name="cc">
-                        <enum>
-                            <enum-value name="chv1"/>
-                            <enum-value name="chv2"/>
-                        </enum>
-                    </var-def>
-                    <var-def name="oldCodeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
-                    </var-def>
-                    <var-def name="newCodeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
-                    </var-def>
-                </vars-defs>
-                <true/>
-                <if-then-else>
-                    <equals>
-                        <fun name="blockedChvStatus">
-                            <var name="cc"/>
-                        </fun>
-                        <enum-value name="blocked"/>
-                    </equals>
-                    <var-assignment>
-                        <var name="sw"/>
-                        <enum-value name="sw9840"/>
-                    </var-assignment>
-                    <if-then-else>
-                        <and>
-                            <equals>
-                                <var name="cc"/>
-                                <enum-value name="chv1"/>
-                            </equals>
-                            <equals>
-                                <var name="enabledChv1Status"/>
-                                <enum-value name="disabled"/>
-                            </equals>
-                        </and>
                         <var-assignment>
-                            <var name="sw"/>
-                            <enum-value name="sw9808"/>
+                            <var name="dd"/>
+                            <enum-value name="nodata"/>
                         </var-assignment>
-                        <if-then-else>
-                            <equals>
-                                <fun name="codeChv">
-                                    <var name="cc"/>
-                                </fun>
-                                <var name="oldCodeCc"/>
-                            </equals>
-                            <assignments>
-                                <fun-assignment>
-                                    <fun name="codeChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <var name="newCodeCc"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="sw"/>
-                                    <enum-value name="sw9000"/>
-                                </var-assignment>
-                            </assignments>
-                            <if-then-else>
-                                <equals>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <int value="1"/>
-                                </equals>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <int value="0"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="blockedChvStatus">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <enum-value name="blocked"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="permissionSession">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <enum-value name="ltgFalse"/>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9840"/>
-                                    </var-assignment>
-                                </assignments>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <minus>
-                                            <fun name="counterChv">
-                                                <var name="cc"/>
-                                            </fun>
-                                            <int value="1"/>
-                                        </minus>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9804"/>
-                                    </var-assignment>
-                                </assignments>
-                            </if-then-else>
-                        </if-then-else>
-                    </if-then-else>
+                    </assignments>
                 </if-then-else>
-            </any>
+            </if-then-else>
         </event>
 
-        <event name="Verify_Chv">
+        <event name="Verify_CHV">
             <any>
                 <vars-defs>
-                    <var-def name="cc">
-                        <enum>
-                            <enum-value name="chv1"/>
-                            <enum-value name="chv2"/>
-                        </enum>
-                    </var-def>
-                    <var-def name="codeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
+                    <var-def name="code">
+                        <named-set name="CODE"/>
                     </var-def>
                 </vars-defs>
                 <true/>
                 <if-then-else>
                     <equals>
-                        <fun name="blockedChvStatus">
-                            <var name="cc"/>
-                        </fun>
-                        <enum-value name="blocked"/>
-                    </equals>
-                    <var-assignment>
-                        <var name="sw"/>
-                        <enum-value name="sw9840"/>
-                    </var-assignment>
-                    <if-then-else>
-                        <and>
-                            <equals>
-                                <var name="cc"/>
-                                <enum-value name="chv1"/>
-                            </equals>
-                            <equals>
-                                <var name="enabledChv1Status"/>
-                                <enum-value name="disabled"/>
-                            </equals>
-                        </and>
-                        <var-assignment>
-                            <var name="sw"/>
-                            <enum-value name="sw9808"/>
-                        </var-assignment>
-                        <if-then-else>
-                            <equals>
-                                <fun name="codeChv">
-                                    <var name="cc"/>
-                                </fun>
-                                <var name="codeCc"/>
-                            </equals>
-                            <assignments>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="sw"/>
-                                    <enum-value name="sw9000"/>
-                                </var-assignment>
-                            </assignments>
-                            <if-then-else>
-                                <equals>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <int value="1"/>
-                                </equals>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <int value="0"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="blockedChvStatus">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <enum-value name="blocked"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="permissionSession">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <enum-value name="ltgFalse"/>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9840"/>
-                                    </var-assignment>
-                                </assignments>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <var name="cc"/>
-                                        </fun>
-                                        <minus>
-                                            <fun name="counterChv">
-                                                <var name="cc"/>
-                                            </fun>
-                                            <int value="1"/>
-                                        </minus>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9804"/>
-                                    </var-assignment>
-                                </assignments>
-                            </if-then-else>
-                        </if-then-else>
-                    </if-then-else>
-                </if-then-else>
-            </any>
-        </event>
-
-        <event name="Unblock_Chv">
-            <any>
-                <vars-defs>
-                    <var-def name="cc">
-                        <enum>
-                            <enum-value name="chv1"/>
-                            <enum-value name="chv2"/>
-                        </enum>
-                    </var-def>
-                    <var-def name="codeUnblockCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
-                    </var-def>
-                    <var-def name="newCodeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
-                    </var-def>
-                </vars-defs>
-                <true/>
-                <if-then-else>
-                    <equals>
-                        <fun name="blockedStatus">
-                            <var name="cc"/>
-                        </fun>
+                        <var name="blockedCHVStatus"/>
                         <enum-value name="blocked"/>
                     </equals>
                     <var-assignment>
@@ -1158,112 +595,44 @@
                     </var-assignment>
                     <if-then-else>
                         <equals>
-                            <fun name="codeUnblock">
-                                <var name="cc"/>
-                            </fun>
-                            <var name="codeUnblockCc"/>
+                            <var name="pin"/>
+                            <var name="code"/>
                         </equals>
-                        <if-then-else>
-                            <equals>
-                                <var name="cc"/>
-                                <enum-value name="chv1"/>
-                            </equals>
-                            <assignments>
-                                <var-assignment>
-                                    <var name="enabledChv1Status"/>
-                                    <enum-value name="enabled"/>
-                                </var-assignment>
-                                <fun-assignment>
-                                    <fun name="codeChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <var name="newCodeCc"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="blockedChvStatus">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="unblocked"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="counterUnblock">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxUnblock"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="sw"/>
-                                    <enum-value name="sw9000"/>
-                                </var-assignment>
-                            </assignments>
-                            <assignments>
-                                <fun-assignment>
-                                    <fun name="codeChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <var name="newCodeCc"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="blockedChvStatus">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="unblocked"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="counterUnblock">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <const name="MaxUnblock"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <var name="cc"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="sw"/>
-                                    <enum-value name="sw9000"/>
-                                </var-assignment>
-                            </assignments>
-                        </if-then-else>
-                        <if-then-else>
-                            <equals>
-                                <fun name="counterUnblock">
-                                    <var name="cc"/>
+                        <assignments>
+                            <var-assignment>
+                                <var name="counterCHV"/>
+                                <const name="MaxCHV"/>
+                            </var-assignment>
+                            <fun-assignment>
+                                <fun name="permissionSession">
+                                    <enum-value name="chv"/>
                                 </fun>
+                                <enum-value name="true"/>
+                            </fun-assignment>
+                            <var-assignment>
+                                <var name="sw"/>
+                                <enum-value name="sw9000"/>
+                            </var-assignment>
+                        </assignments>
+                        <if-then-else>
+                            <equals>
+                                <var name="counterCHV"/>
                                 <int value="1"/>
                             </equals>
                             <assignments>
-                                <fun-assignment>
-                                    <fun name="counterUnblock">
-                                        <var name="cc"/>
-                                    </fun>
+                                <var-assignment>
+                                    <var name="counterCHV"/>
                                     <int value="0"/>
-                                </fun-assignment>
-                                <fun-assignment>
-                                    <fun name="blockedStatus">
-                                        <var name="cc"/>
-                                    </fun>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="blockedCHVStatus"/>
                                     <enum-value name="blocked"/>
+                                </var-assignment>
+                                <fun-assignment>
+                                    <fun name="permissionSession">
+                                        <enum-value name="chv"/>
+                                    </fun>
+                                    <enum-value name="false"/>
                                 </fun-assignment>
                                 <var-assignment>
                                     <var name="sw"/>
@@ -1271,17 +640,13 @@
                                 </var-assignment>
                             </assignments>
                             <assignments>
-                                <fun-assignment>
-                                    <fun name="counterUnblock">
-                                        <var name="cc"/>
-                                    </fun>
+                                <var-assignment>
+                                    <var name="counterCHV"/>
                                     <minus>
-                                        <fun name="counterUnblock">
-                                            <var name="cc"/>
-                                        </fun>
+                                        <var name="counterCHV"/>
                                         <int value="1"/>
                                     </minus>
-                                </fun-assignment>
+                                </var-assignment>
                                 <var-assignment>
                                     <var name="sw"/>
                                     <enum-value name="sw9804"/>
@@ -1293,24 +658,20 @@
             </any>
         </event>
 
-        <event name="Enable_Chv">
+        <event name="Unblock_CHV">
             <any>
                 <vars-defs>
-                    <var-def name="codeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
+                    <var-def name="codeUnblock">
+                        <named-set name="CODE"/>
+                    </var-def>
+                    <var-def name="newCode">
+                        <named-set name="CODE"/>
                     </var-def>
                 </vars-defs>
                 <true/>
                 <if-then-else>
                     <equals>
-                        <fun name="blockedChvStatus">
-                            <enum-value name="chv1"/>
-                        </fun>
+                        <var name="blockedStatus"/>
                         <enum-value name="blocked"/>
                     </equals>
                     <var-assignment>
@@ -1319,224 +680,110 @@
                     </var-assignment>
                     <if-then-else>
                         <equals>
-                            <var name="enabledChv1Status"/>
-                            <enum-value name="enabled"/>
+                            <var name="puk"/>
+                            <var name="codeUnblock"/>
                         </equals>
-                        <var-assignment>
-                            <var name="sw"/>
-                            <enum-value name="sw9808"/>
-                        </var-assignment>
+                        <assignments>
+                            <var-assignment>
+                                <var name="pin"/>
+                                <var name="newCode"/>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="blockedCHVStatus"/>
+                                <enum-value name="unblocked"/>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="counterCHV"/>
+                                <const name="MaxCHV"/>
+                            </var-assignment>
+                            <var-assignment>
+                                <var name="counterUnblockCHV"/>
+                                <const name="MaxUnblock"/>
+                            </var-assignment>
+                            <fun-assignment>
+                                <fun name="permissionSession">
+                                    <enum-value name="chv"/>
+                                </fun>
+                                <enum-value name="true"/>
+                            </fun-assignment>
+                            <var-assignment>
+                                <var name="sw"/>
+                                <enum-value name="sw9000"/>
+                            </var-assignment>
+                        </assignments>
                         <if-then-else>
                             <equals>
-                                <fun name="codeChv">
-                                    <enum-value name="chv1"/>
-                                </fun>
-                                <var name="codeCc"/>
+                                <var name="counterUnblockCHV"/>
+                                <int value="1"/>
                             </equals>
                             <assignments>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
                                 <var-assignment>
-                                    <var name="enabledChv1Status"/>
-                                    <enum-value name="enabled"/>
+                                    <var name="counterUnblockCHV"/>
+                                    <int value="0"/>
                                 </var-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
+                                <var-assignment>
+                                    <var name="blockedStatus"/>
+                                    <enum-value name="blocked"/>
+                                </var-assignment>
                                 <var-assignment>
                                     <var name="sw"/>
-                                    <enum-value name="sw9000"/>
+                                    <enum-value name="sw9840"/>
                                 </var-assignment>
                             </assignments>
-                            <if-then-else>
-                                <equals>
-                                    <fun name="counterChv">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <int value="1"/>
-                                </equals>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <int value="0"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="blockedChvStatus">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <enum-value name="blocked"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="permissionSession">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <enum-value name="ltgFalse"/>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="enabledChv1Status"/>
-                                        <enum-value name="enabled"/>
-                                    </var-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9840"/>
-                                    </var-assignment>
-                                </assignments>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <minus>
-                                            <fun name="counterChv">
-                                                <enum-value name="chv1"/>
-                                            </fun>
-                                            <int value="1"/>
-                                        </minus>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9804"/>
-                                    </var-assignment>
-                                </assignments>
-                            </if-then-else>
+                            <assignments>
+                                <var-assignment>
+                                    <var name="counterUnblockCHV"/>
+                                    <minus>
+                                        <var name="counterUnblockCHV"/>
+                                        <int value="1"/>
+                                    </minus>
+                                </var-assignment>
+                                <var-assignment>
+                                    <var name="sw"/>
+                                    <enum-value name="sw9804"/>
+                                </var-assignment>
+                            </assignments>
                         </if-then-else>
                     </if-then-else>
                 </if-then-else>
             </any>
         </event>
 
-        <event name="Disable_Chv">
-            <any>
-                <vars-defs>
-                    <var-def name="codeCc">
-                        <enum>
-                            <enum-value name="a1"/>
-                            <enum-value name="a2"/>
-                            <enum-value name="a3"/>
-                            <enum-value name="a4"/>
-                        </enum>
-                    </var-def>
-                </vars-defs>
-                <true/>
-                <if-then-else>
-                    <equals>
-                        <fun name="blockedChvStatus">
-                            <enum-value name="chv1"/>
-                        </fun>
-                        <enum-value name="blocked"/>
-                    </equals>
-                    <var-assignment>
-                        <var name="sw"/>
-                        <enum-value name="sw9840"/>
-                    </var-assignment>
-                    <if-then-else>
-                        <equals>
-                            <var name="enabledChv1Status"/>
-                            <enum-value name="disabled"/>
-                        </equals>
-                        <var-assignment>
-                            <var name="sw"/>
-                            <enum-value name="sw9808"/>
-                        </var-assignment>
-                        <if-then-else>
-                            <equals>
-                                <var name="codeCc"/>
-                                <fun name="codeChv">
-                                    <enum-value name="chv1"/>
-                                </fun>
-                            </equals>
-                            <assignments>
-                                <fun-assignment>
-                                    <fun name="counterChv">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <const name="MaxChv"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="enabledChv1Status"/>
-                                    <enum-value name="disabled"/>
-                                </var-assignment>
-                                <fun-assignment>
-                                    <fun name="permissionSession">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <enum-value name="ltgTrue"/>
-                                </fun-assignment>
-                                <var-assignment>
-                                    <var name="sw"/>
-                                    <enum-value name="sw9000"/>
-                                </var-assignment>
-                            </assignments>
-                            <if-then-else>
-                                <equals>
-                                    <fun name="counterChv">
-                                        <enum-value name="chv1"/>
-                                    </fun>
-                                    <int value="1"/>
-                                </equals>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <int value="0"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="blockedChvStatus">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <enum-value name="blocked"/>
-                                    </fun-assignment>
-                                    <fun-assignment>
-                                        <fun name="permissionSession">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <enum-value name="ltgFalse"/>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="enabledChv1Status"/>
-                                        <enum-value name="enabled"/>
-                                    </var-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9840"/>
-                                    </var-assignment>
-                                </assignments>
-                                <assignments>
-                                    <fun-assignment>
-                                        <fun name="counterChv">
-                                            <enum-value name="chv1"/>
-                                        </fun>
-                                        <minus>
-                                            <fun name="counterChv">
-                                                <enum-value name="chv1"/>
-                                            </fun>
-                                            <int value="1"/>
-                                        </minus>
-                                    </fun-assignment>
-                                    <var-assignment>
-                                        <var name="enabledChv1Status"/>
-                                        <enum-value name="enabled"/>
-                                    </var-assignment>
-                                    <var-assignment>
-                                        <var name="sw"/>
-                                        <enum-value name="sw9804"/>
-                                    </var-assignment>
-                                </assignments>
-                            </if-then-else>
-                        </if-then-else>
-                    </if-then-else>
-                </if-then-else>
-            </any>
+        <event name="Reset">
+            <assignments>
+                <var-assignment>
+                    <var name="currentFile"/>
+                    <enum-value name="none"/>
+                </var-assignment>
+                <var-assignment>
+                    <var name="currentDirectory"/>
+                    <enum-value name="mf"/>
+                </var-assignment>
+                <fun-assignment>
+                    <fun name="permissionSession">
+                        <enum-value name="always"/>
+                    </fun>
+                    <enum-value name="true"/>
+                </fun-assignment>
+                <fun-assignment>
+                    <fun name="permissionSession">
+                        <enum-value name="chv"/>
+                    </fun>
+                    <enum-value name="false"/>
+                </fun-assignment>
+                <fun-assignment>
+                    <fun name="permissionSession">
+                        <enum-value name="adm"/>
+                    </fun>
+                    <enum-value name="false"/>
+                </fun-assignment>
+                <fun-assignment>
+                    <fun name="permissionSession">
+                        <enum-value name="never"/>
+                    </fun>
+                    <enum-value name="false"/>
+                </fun-assignment>
+            </assignments>
         </event>
 
     </events>

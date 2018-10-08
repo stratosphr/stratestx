@@ -4,7 +4,7 @@
 
     <consts-defs>
         <const-def name="NE">
-            <int value="3"/>
+            <int value="4"/>
         </const-def>
         <const-def name="LF"> <!-- Last Floor -->
             <minus>
@@ -150,7 +150,7 @@
                 <var name="Dir"/>
                 <int value="1"/>
             </var-assignment>
-            <fun-assignment>
+            <!--<fun-assignment>
                 <fun name="PE">
                     <int value="0"/>
                 </fun>
@@ -167,8 +167,11 @@
                     <int value="2"/>
                 </fun>
                 <enum-value name="fermees"/>
-            </fun-assignment>
-            <fun-assignment>
+            </fun-assignment>-->
+            <total-fun-assignment name="PE">
+                <enum-value name="fermees"/>
+            </total-fun-assignment>
+            <!--<fun-assignment>
                 <fun name="BC">
                     <int value="0"/>
                 </fun>
@@ -185,8 +188,11 @@
                     <int value="2"/>
                 </fun>
                 <int value="0"/>
-            </fun-assignment>
-            <fun-assignment>
+            </fun-assignment>-->
+            <total-fun-assignment name="BC">
+                <int value="0"/>
+            </total-fun-assignment>
+            <!--<fun-assignment>
                 <fun name="BM">
                     <int value="0"/>
                 </fun>
@@ -203,8 +209,11 @@
                     <int value="2"/>
                 </fun>
                 <int value="0"/>
-            </fun-assignment>
-            <fun-assignment>
+            </fun-assignment>-->
+            <total-fun-assignment name="BM">
+                <int value="0"/>
+            </total-fun-assignment>
+            <!--<fun-assignment>
                 <fun name="BD">
                     <int value="0"/>
                 </fun>
@@ -221,13 +230,16 @@
                     <int value="2"/>
                 </fun>
                 <int value="0"/>
-            </fun-assignment>
+            </fun-assignment>-->
+            <total-fun-assignment name="BD">
+                <int value="0"/>
+            </total-fun-assignment>
         </assignments>
     </initialisation>
 
     <events>
 
-        <event name="Appel_Montee_Etage">
+        <event name="gAppel_Montee_Etage">
             <any>
                 <vars-defs>
                     <var-def name="etage">
@@ -255,7 +267,7 @@
             </any>
         </event>
 
-        <event name="Appel_Descente_Etage">
+        <event name="hAppel_Descente_Etage">
             <any>
                 <vars-defs>
                     <var-def name="etage">
@@ -280,7 +292,7 @@
             </any>
         </event>
 
-        <event name="Appel_Montee_Cabine">
+        <event name="eAppel_Montee_Cabine">
             <any>
                 <vars-defs>
                     <var-def name="etage">
@@ -308,7 +320,7 @@
             </any>
         </event>
 
-        <event name="Appel_Descente_Cabine">
+        <event name="fAppel_Descente_Cabine">
             <any>
                 <vars-defs>
                     <var-def name="etage">
@@ -336,7 +348,7 @@
             </any>
         </event>
 
-        <event name="Ouverture_Portes_Cabine">
+        <event name="bOuverture_Portes_Cabine">
             <select>
                 <and>
                     <equals>
@@ -357,7 +369,7 @@
             </select>
         </event>
 
-        <event name="Fermeture_Portes_Cabine">
+        <event name="cFermeture_Portes_Cabine">
             <select>
                 <and>
                     <equals>
@@ -378,7 +390,7 @@
             </select>
         </event>
 
-        <event name="Ouverture_Portes_Etage">
+        <event name="aOuverture_Portes_Etage">
             <select>
                 <and>
                     <equals>
@@ -401,7 +413,7 @@
             </select>
         </event>
 
-        <event name="Fermeture_Portes_Etage">
+        <event name="dFermeture_Portes_Etage">
             <select>
                 <and>
                     <equals>
@@ -424,7 +436,7 @@
             </select>
         </event>
 
-        <event name="Montee_Cabine">
+        <event name="iMontee_Cabine">
             <select>
                 <and>
                     <lt>
@@ -570,7 +582,7 @@
             </select>
         </event>
 
-        <event name="Descente_Cabine">
+        <event name="kDescente_Cabine">
             <select>
                 <and>
                     <gt>
@@ -716,7 +728,7 @@
             </select>
         </event>
 
-        <event name="Changement_Direction">
+        <event name="jChangement_Direction">
             <select>
                 <and>
                     <equals>

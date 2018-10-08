@@ -4,7 +4,7 @@
 
     <relevance-predicate>
 
-        <fun-changes>
+        <!--<fun-changes>
             <fun name="PE">
                 <var name="Pos"/>
             </fun>
@@ -66,16 +66,49 @@
         </conditions>
 
         <fun-increases>
-            <fun name="BD">
-                <int value="2"/>
+            <fun name="BC">
+                <int value="3"/>
+            </fun>
+        </fun-increases>-->
+
+        <fun-increases>
+            <fun name="BC">
+                <int value="3"/>
             </fun>
         </fun-increases>
 
-        <fun-increases>
-            <fun name="BM">
-                <int value="0"/>
+        <fun-changes>
+            <fun name="PE">
+                <var name="Pos"/>
             </fun>
-        </fun-increases>
+            <enum-value name="ouvertes"/>
+            <enum-value name="fermees"/>
+        </fun-changes>
+
+        <fun-changes>
+            <fun name="PE">
+                <var name="Pos"/>
+            </fun>
+            <enum-value name="fermees"/>
+            <enum-value name="ouvertes"/>
+        </fun-changes>
+
+        <var-changes>
+            <var name="PC"/>
+            <enum-value name="fermees"/>
+            <enum-value name="ouvertes"/>
+        </var-changes>
+
+        <var-changes>
+            <var name="PC"/>
+            <enum-value name="ouvertes"/>
+            <enum-value name="refermees"/>
+        </var-changes>
+
+        <var-increases>
+            <var name="Pos"/>
+        </var-increases>
+
 
     </relevance-predicate>
 
@@ -84,7 +117,16 @@
     </expected-states>
 
     <expected-transitions>
-        <all-transitions/>
+        <transition>
+            <state name="q6"/>
+            <event name="bOuverture_Portes_Cabine"/>
+            <state name="q4"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="iMontee_Cabine"/>
+            <state name="q0"/>
+        </transition>
     </expected-transitions>
 
 </relevance>

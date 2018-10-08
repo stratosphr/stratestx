@@ -1,0 +1,10 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <equals>
+            <var name="dd"/>
+            <enum-value name="nodata"/>
+        </equals>
+    </predicate>
+
+</predicates>

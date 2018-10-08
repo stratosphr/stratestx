@@ -1,0 +1,17 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <equals>
+            <var name="counterCHV"/>
+            <int value="0"/>
+        </equals>
+    </predicate>
+
+    <predicate name="p1">
+        <equals>
+            <var name="counterUnblockCHV"/>
+            <int value="0"/>
+        </equals>
+    </predicate>
+
+</predicates>

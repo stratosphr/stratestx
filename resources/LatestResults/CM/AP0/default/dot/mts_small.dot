@@ -1,0 +1,35 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q3[label=<<b>q<sub>3</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q2[label=<<b>q<sub>2</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q1[label=<<b>q<sub>1</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q4[label=<<b>q<sub>4</sub></b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q0[penwidth=3, color="forestgreen"]
+	q0 -> q3[label=<powerUp>, color="forestgreen"]
+	q3 -> q2[label=<insert50>, color="forestgreen"]
+	q2 -> q2[label=<insert50>, color="forestgreen"]
+	q2 -> q2[label=<insert100>, color="forestgreen"]
+	q2 -> q1[label=<autoOut>, color="forestgreen"]
+	q1 -> q0[label=<powerDown>, color="forestgreen"]
+	q1 -> q4[label=<powerDown>, color="forestgreen"]
+	q4 -> q3[label=<powerUp>, color="forestgreen"]
+	q4 -> q0[label=<takePot>, color="forestgreen"]
+	q4 -> q4[label=<addCof>, color="forestgreen"]
+	q2 -> q2[label=<cofReq>, color="forestgreen"]
+	q2 -> q2[label=<changeReq>, color="forestgreen"]
+	q2 -> q3[label=<serveCof>, color="forestgreen"]
+	q2 -> q3[label=<backBalance>, color="forestgreen"]
+	q2 -> q2[label=<serveCof>, color="forestgreen"]
+	q2 -> q1[label=<serveCof>, color="forestgreen"]
+	q3 -> q2[label=<insert100>, color="forestgreen"]
+	q3 -> q0[label=<powerDown>, color="forestgreen"]
+	q3 -> q1[label=<autoOut>, color="forestgreen"]
+	q3 -> q4[label=<powerDown>, color="forestgreen"]
+	q0 -> q0[label=<addCof>, color="forestgreen"]
+
+}

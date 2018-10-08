@@ -1,0 +1,37 @@
+<predicates xmlns="ap">
+
+    <predicate name="p0">
+        <and>
+            <equals>
+                <var name="currentFile"/>
+                <enum-value name="eflp"/>
+            </equals>
+            <or>
+                <equals>
+                    <fun name="permissionSession">
+                        <enum-value name="always"/>
+                    </fun>
+                    <enum-value name="ltgTrue"/>
+                </equals>
+            </or>
+        </and>
+    </predicate>
+
+    <predicate name="p1">
+        <and>
+            <equals>
+                <var name="currentFile"/>
+                <enum-value name="efimsi"/>
+            </equals>
+            <or>
+                <equals>
+                    <fun name="permissionSession">
+                        <enum-value name="chv1"/>
+                    </fun>
+                    <enum-value name="ltgTrue"/>
+                </equals>
+            </or>
+        </and>
+    </predicate>
+
+</predicates>

@@ -1,86 +1,10 @@
 <predicates xmlns="ap">
+
     <predicate name="p0">
-        <exists>
-            <vars-defs>
-                <var-def name="cc">
-                    <enum>
-                        <enum-value name="chv1"/>
-                        <enum-value name="chv2"/>
-                    </enum>
-                </var-def>
-            </vars-defs>
-            <equals>
-                <fun name="blockedChvStatus">
-                    <var name="cc"/>
-                </fun>
-                <enum-value name="blocked"/>
-            </equals>
-        </exists>
+        <equals>
+            <var name="counterCHV"/>
+            <int value="0"/>
+        </equals>
     </predicate>
-    <predicate name="p1">
-        <exists>
-            <vars-defs>
-                <var-def name="cc">
-                    <enum>
-                        <enum-value name="chv1"/>
-                        <enum-value name="chv2"/>
-                    </enum>
-                </var-def>
-            </vars-defs>
-            <and>
-                <equals>
-                    <var name="cc"/>
-                    <enum-value name="chv1"/>
-                </equals>
-                <equals>
-                    <var name="enabledChv1Status"/>
-                    <enum-value name="disabled"/>
-                </equals>
-            </and>
-        </exists>
-    </predicate>
-    <predicate name="p2">
-        <exists>
-            <vars-defs>
-                <var-def name="cc">
-                    <enum>
-                        <enum-value name="chv1"/>
-                        <enum-value name="chv2"/>
-                    </enum>
-                </var-def>
-                <var-def name="codeCc">
-                    <enum>
-                        <enum-value name="a1"/>
-                        <enum-value name="a2"/>
-                        <enum-value name="a3"/>
-                        <enum-value name="a4"/>
-                    </enum>
-                </var-def>
-            </vars-defs>
-            <equals>
-                <fun name="codeChv">
-                    <var name="cc"/>
-                </fun>
-                <var name="codeCc"/>
-            </equals>
-        </exists>
-    </predicate>
-    <predicate name="p3">
-        <exists>
-            <vars-defs>
-                <var-def name="cc">
-                    <enum>
-                        <enum-value name="chv1"/>
-                        <enum-value name="chv2"/>
-                    </enum>
-                </var-def>
-            </vars-defs>
-            <equals>
-                <fun name="counterChv">
-                    <var name="cc"/>
-                </fun>
-                <int value="1"/>
-            </equals>
-        </exists>
-    </predicate>
+
 </predicates>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<relevance xmlns="rel">
+
+    <relevance-predicate>
+
+        <var-changes>
+            <var name="currentDirectory"/>
+            <enum-value name="mf"/>
+            <enum-value name="dfgsm"/>
+        </var-changes>
+
+        <var-changes>
+            <var name="currentFile"/>
+            <enum-value name="none"/>
+            <enum-value name="efimsi"/>
+        </var-changes>
+
+        <var-changes>
+            <var name="dd"/>
+            <enum-value name="nodata"/>
+            <enum-value name="d3"/>
+        </var-changes>
+
+    </relevance-predicate>
+
+    <expected-states>
+        <all-states/>
+    </expected-states>
+
+    <expected-transitions>
+        <transition>
+            <state name="q0"/>
+            <event name="Read_Binary"/>
+            <state name="q1"/>
+        </transition>
+        <transition>
+            <state name="q1"/>
+            <event name="Read_Binary"/>
+            <state name="q1"/>
+        </transition>
+    </expected-transitions>
+
+</relevance>

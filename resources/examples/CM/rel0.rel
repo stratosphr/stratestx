@@ -9,11 +9,11 @@
         </var-increases>
 
         <var-decreases>
-            <var name="CoffeeLeft"/>
+            <var name="CofLeft"/>
         </var-decreases>
 
         <var-changes>
-            <var name="AskCoffee"/>
+            <var name="AskCof"/>
             <int value="0"/>
             <int value="1"/>
         </var-changes>
@@ -27,7 +27,7 @@
     <expected-transitions>
         <transition>
             <state name="q2"/>
-            <event name="serveCoffee"/>
+            <event name="serveCof"/>
             <state name="q1"/>
         </transition>
         <transition>

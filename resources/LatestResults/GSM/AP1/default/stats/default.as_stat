@@ -1,0 +1,6 @@
+Abstract States (4 in 00:00:00.054):
+
+q0 = ¬(p0 = counterCHV=0), ¬(p1 = counterUnblockCHV=0)
+q1 = ¬(p0 = counterCHV=0), (p1 = counterUnblockCHV=0)
+q2 = (p0 = counterCHV=0), ¬(p1 = counterUnblockCHV=0)
+q3 = (p0 = counterCHV=0), (p1 = counterUnblockCHV=0)

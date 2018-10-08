@@ -1,0 +1,24 @@
+digraph g {
+
+	rankdir="LR"
+
+	__invisible__[shape="point", color="forestgreen"]
+	q1[label=<<b>q<sub>1</sub> = ¬(p0 = h=tic[6]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen", penwidth=3] // Initial
+	q3[label=<<b>q<sub>3</sub> = (p0 = h=tic[6]), (p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q2[label=<<b>q<sub>2</sub> = (p0 = h=tic[6]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+	q0[label=<<b>q<sub>0</sub> = ¬(p0 = h=tic[6]), ¬(p1 = ∃(i, j).(and(and(i ∈ [1..n], j ∈ [1..n]), and(i ≠ j, bat(i)=ok[9], bat(j)=ok[9]))))</b>>, shape="box", style="rounded, filled", fillcolor="limegreen", color="forestgreen"]
+
+	__invisible__ -> q1[penwidth=3, color="forestgreen"]
+	q1 -> q3[label=<Tic>, color="forestgreen"]
+	q3 -> q1[label=<Commute>, color="forestgreen"]
+	q3 -> q3[label=<Fail>, color="forestgreen"]
+	q3 -> q3[label=<Repair>, color="forestgreen"]
+	q3 -> q2[label=<Fail>, color="forestgreen"]
+	q2 -> q3[label=<Repair>, color="forestgreen"]
+	q1 -> q1[label=<Fail>, color="forestgreen"]
+	q1 -> q1[label=<Repair>, color="forestgreen"]
+	q1 -> q0[label=<Fail>, color="forestgreen"]
+	q0 -> q2[label=<Tic>, color="forestgreen"]
+	q0 -> q1[label=<Repair>, color="forestgreen"]
+
+}
